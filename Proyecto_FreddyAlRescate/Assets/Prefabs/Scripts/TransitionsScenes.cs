@@ -2,9 +2,9 @@ using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class AnimationsController : MonoBehaviour // la idea es que se utilice para las tranciciones entre cambios de escenas
+public class TransitionsScenes : MonoBehaviour // la idea es que se utilice para las tranciciones entre cambios de escenas
 {
-    public static AnimationsController Instance { get; private set; }
+    public static TransitionsScenes Instance { get; private set; }
 
     private float _delay = 2f;
     private float _delayTransitions = 2.5f;
