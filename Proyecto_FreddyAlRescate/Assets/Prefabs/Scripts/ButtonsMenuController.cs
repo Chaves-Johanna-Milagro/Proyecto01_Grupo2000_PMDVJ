@@ -18,7 +18,7 @@ public class ButtonsMenuController : MonoBehaviour
     {
         Debug.Log("Delay activado, esperando " + _delay + " segundos...");
 
-        AnimationsController.Instance.ActiveFadeInAndOut(); //activar la transision Fade
+        TransitionsScenes.Instance.ActiveFadeInAndOut(); //activar la transision Fade
 
         yield return new WaitForSeconds(_delay);
 
