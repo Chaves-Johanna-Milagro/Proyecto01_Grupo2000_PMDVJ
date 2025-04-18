@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 233112560}
   - component: {fileID: 233112559}
   m_Layer: 5
-  m_Name: FriendCaracter
+  m_Name: FriendCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1255,7 +1255,7 @@ GameObject:
   - component: {fileID: 952508389}
   - component: {fileID: 952508388}
   m_Layer: 0
-  m_Name: Caracter
+  m_Name: Character
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
