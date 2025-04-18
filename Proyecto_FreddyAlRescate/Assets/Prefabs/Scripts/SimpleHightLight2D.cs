@@ -9,7 +9,7 @@ public class SimpleHightLight2D : MonoBehaviour
 
     void Start()
     {
-        Transform _light = transform.GetChild(2);
+        Transform _light = transform.Find("Light");
         spriteRenderer = _light.GetComponent<SpriteRenderer>();
         currentColor = spriteRenderer.color;
         targetColor = currentColor;
