@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Arrastrable
   - MiniGame
+  - Interactive
   layers:
   - Default
   - TransparentFX
