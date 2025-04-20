@@ -33,6 +33,9 @@ public class DropZone : MonoBehaviour
             if (receivedCount >= totalToReceive)
             {
                 miniGame.gameObject.SetActive(false);
+
+                //Object.FindFirstObjectByType<MiniGameManager>().MiniGameCompleted(); // va sumando a la cantidad de minijuegos completados
+
             }
         }
     }
