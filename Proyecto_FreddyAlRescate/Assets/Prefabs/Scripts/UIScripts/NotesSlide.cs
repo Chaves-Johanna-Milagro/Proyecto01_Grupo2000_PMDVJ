@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UIHoverSlideVertical : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class NotesSlide : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private float slideY = -200f;   // Y final al apoyar el cursor
     private float slideSpeed = 5f;

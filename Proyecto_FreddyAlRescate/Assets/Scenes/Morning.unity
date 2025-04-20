@@ -1434,6 +1434,7 @@ GameObject:
   - component: {fileID: 1423560563}
   - component: {fileID: 1423560562}
   - component: {fileID: 1423560564}
+  - component: {fileID: 1423560565}
   m_Layer: 0
   m_Name: Bathroom
   m_TagString: Untagged
@@ -1551,6 +1552,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd3d3adf58f5d634588d207d9f94c3da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1423560565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423560556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24aa1e58e52165c4e808860af1c250bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1484751068
