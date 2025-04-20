@@ -3,8 +3,8 @@ using UnityEngine;
 public class SimpleScaling : MonoBehaviour
 {
     // Porcentaje de aumento relativo (por ejemplo, 1.1 = 10% más grande)
-    [SerializeField] private float ScaleMultiplier = 1.1f;
-    [SerializeField] private float scaleSpeed = 5f;
+     private float ScaleMultiplier = 1.1f;
+     private float scaleSpeed = 5f;
 
     private Vector3 originalScale;
     private Vector3 targetScale;  //la escala aumentada

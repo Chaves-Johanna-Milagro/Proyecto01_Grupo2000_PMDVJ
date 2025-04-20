@@ -1,10 +1,11 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MiniGameManager : MonoBehaviour
 {
 
-    private int completedMiniGames = 0;
+  /*  private int completedMiniGames = 0;
     private int totalMiniGames;
 
     void Start()
@@ -30,5 +31,6 @@ public class MiniGameManager : MonoBehaviour
             if (nextLevelBackground != null)
                 nextLevelBackground.gameObject.SetActive(true);
         }
-    }
+    }*/
+
 }

@@ -1,10 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
-public class ClickBounce : MonoBehaviour
+public class SimpleClickBounce : MonoBehaviour
 {
-    [SerializeField] private float bounceMultiplier = 1.2f;   // cuánto se agranda en el rebote
-    [SerializeField] private float bounceDuration = 0.4f;     // duración total del rebote
+    private float bounceMultiplier = 1.2f;   // cuánto se agranda en el rebote
+    private float bounceDuration = 0.4f;     // duración total del rebote
 
     private Vector3 originalScale;
     private bool isBouncing = false;
