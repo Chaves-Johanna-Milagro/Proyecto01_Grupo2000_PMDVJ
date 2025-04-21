@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -5,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class NotesController : MonoBehaviour
 {
     public static NotesController Instance { get; private set; }
+
+    private int _objInScene = 0;
 
     private void Awake()
     {
@@ -21,9 +24,11 @@ public class NotesController : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Start()  
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex; // obtiene el index de la escena
+        _objInScene = 0;  // recargar/reiniciar los contadores de los objetivos
+
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex; // obtiene el index de la escena para determinar que objetivos tiene
 
         // Activar solo el hijo correspondiente al índice de la escena
         for (int i = 1; i < transform.childCount; i++)  //el index de la escena y el del hijo deben coincidir
@@ -51,15 +56,20 @@ public class NotesController : MonoBehaviour
     }
 
 
-    public void DesactiveChecks() // pa ser llamadoCuando se pase al sig nvl
+   public void WinLevel()
     {
-        Transform check1 = transform.GetChild(3);
-        check1.gameObject.SetActive(false);
+        _objInScene++;
 
-        Transform check2 = transform.GetChild(4);
-        check2.gameObject.SetActive(false);
+        string currentScene = SceneManager.GetActiveScene().name;   
 
-        Transform check3 = transform.GetChild(5);
-        check3.gameObject.SetActive(false);
+        if( currentScene == "Morning" && _objInScene == 3 || currentScene == "Breackfast" && _objInScene == 2)
+        {
+            _objInScene = 0;
+
+            Transform parent = transform.parent;
+            Transform imgVictory = parent.Find("NextLevelImage");
+
+            if( imgVictory != null ) imgVictory.gameObject.SetActive(true);
+        }
     }
 }
