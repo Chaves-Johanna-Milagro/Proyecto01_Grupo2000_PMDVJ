@@ -34,7 +34,7 @@ public class DropZone : MonoBehaviour
             {
                 miniGame.gameObject.SetActive(false);
 
-                //Object.FindFirstObjectByType<MiniGameManager>().MiniGameCompleted(); // va sumando a la cantidad de minijuegos completados
+                NotesController.Instance.WinLevel();
 
             }
         }

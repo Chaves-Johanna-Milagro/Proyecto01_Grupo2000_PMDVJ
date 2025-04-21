@@ -484,6 +484,7 @@ GameObject:
   - component: {fileID: 8623822014935149682}
   - component: {fileID: 3979560043338693902}
   - component: {fileID: 4718805773512028216}
+  - component: {fileID: 8151451361949430264}
   m_Layer: 5
   m_Name: ButtonNextNvl
   m_TagString: Untagged
@@ -602,6 +603,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73c15875b1aa0f1498a89195ea5987d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8151451361949430264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3465815470166168086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 758d4f7bceb8d6547ab7966973173b61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3620300407073627258
