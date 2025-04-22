@@ -17,4 +17,6 @@ public class PauseButtonAnimation : MonoBehaviour
     {
         _animator.SetBool("PauseEnter", true);
     }
+
+
 }
