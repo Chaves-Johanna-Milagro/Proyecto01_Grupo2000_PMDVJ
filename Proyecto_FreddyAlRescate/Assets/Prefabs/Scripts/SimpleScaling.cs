@@ -12,7 +12,7 @@ public class SimpleScaling : MonoBehaviour
 
     private bool _isScaling = false;
     
-    public AudioSource hoverButton;
+   // public AudioSource hoverButton;
 
     private void Start()
     {
@@ -25,7 +25,7 @@ public class SimpleScaling : MonoBehaviour
     private void OnMouseEnter()
     {
         _isScaling = true;
-        hoverButton.Play();
+       // hoverButton.Play();
     }
 
     private void OnMouseExit()
