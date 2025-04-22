@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ChangeSprite : MonoBehaviour
@@ -11,4 +12,5 @@ public class ChangeSprite : MonoBehaviour
         accionComplete.gameObject.SetActive(true);
 
     }
+
 }

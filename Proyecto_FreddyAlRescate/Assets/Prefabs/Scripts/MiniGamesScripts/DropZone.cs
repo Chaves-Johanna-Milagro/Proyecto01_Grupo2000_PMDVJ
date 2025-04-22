@@ -1,24 +1,26 @@
+using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class DropZone : MonoBehaviour
 {
-    private int totalToReceive = 0; //la cantidad de objetos
-    private int receivedCount = 0;
+    private int _totalToReceive = 0; //la cantidad de objetos
+    private int _receivedCount = 0;
 
-    private Transform miniGame;
+    private Transform _miniGame;
 
 
     void Start()
     {
         // miniGame es el padre de este objeto (MiniGameBackpack/Moth)
-        miniGame = transform.parent;
+        _miniGame = transform.parent;
 
         // Contar cuántos hermanos (menos este mismo) tienen el tag "Arrastrable"
-        foreach (Transform child in miniGame)
+        foreach (Transform child in _miniGame)
         {
             if (child != transform && child.CompareTag("Arrastrable"))
             {
-                totalToReceive++;
+                _totalToReceive++;
             }
         }
     }
@@ -28,15 +30,27 @@ public class DropZone : MonoBehaviour
         {
             other.gameObject.SetActive(false);
 
-            receivedCount++;
+            _receivedCount++;
 
-            if (receivedCount >= totalToReceive)
+            if (_receivedCount >= _totalToReceive)
             {
-                miniGame.gameObject.SetActive(false);
+                _miniGame.gameObject.SetActive(false);
 
                 NotesController.Instance.WinLevel();
 
             }
         }
+
+        if (other.name == "Brush") // para objetos que requieran un delay para completarse la accion
+        {
+            StartCoroutine(DelayInZone());
+        }
+    }
+
+    private IEnumerator DelayInZone() // los objetos que requieran el delay no deben tener el tag arrastrable
+    {
+        NotesController.Instance.WinLevel();
+        yield return new WaitForSeconds(2f);
+        _miniGame.gameObject.SetActive(false);
     }
 }

@@ -5,9 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class FriendCharacterButton : MonoBehaviour
 {
-    private GameObject globoImage;
-    private GameObject textObj;
-    private TextMeshProUGUI textComponent;
+    private GameObject _globoImage;
+    private GameObject _textObj;
+    private TextMeshProUGUI _textComponent;
 
     private string[] randomTextNvl1 = new string[]
     {
@@ -25,16 +25,16 @@ public class FriendCharacterButton : MonoBehaviour
 
 };
 
-    private bool hasBeenActivated = false;
+    private bool _hasBeenActivated = false;
 
     private void Start()
     {
         // Obtiene los hijos por índice
-        globoImage = transform.GetChild(0).gameObject;
-        textObj = transform.GetChild(1).gameObject;
+        _globoImage = transform.GetChild(0).gameObject;
+        _textObj = transform.GetChild(1).gameObject;
 
         // Obtiene el componente TextMeshProUGUI del objeto de texto
-        textComponent = textObj.GetComponent<TextMeshProUGUI>();
+        _textComponent = _textObj.GetComponent<TextMeshProUGUI>();
 
         // Asocia el evento de click
         GetComponent<Button>().onClick.AddListener(OnClick);
@@ -42,11 +42,11 @@ public class FriendCharacterButton : MonoBehaviour
 
     private void OnClick()
     {
-        if (!hasBeenActivated)
+        if (!_hasBeenActivated)
         {
-            globoImage.SetActive(true);
-            textObj.SetActive(true);
-            hasBeenActivated = true;
+            _globoImage.SetActive(true);
+            _textObj.SetActive(true);
+            _hasBeenActivated = true;
         }
 
         string currentScene = SceneManager.GetActiveScene().name; // para que los concejos cambien segun la escena
@@ -54,13 +54,13 @@ public class FriendCharacterButton : MonoBehaviour
         if (currentScene == "Morning" && randomTextNvl1.Length > 0)  // Selecciona un concejo aleatorio
         {
             string randomLine = randomTextNvl1[Random.Range(0, randomTextNvl1.Length)];
-            textComponent.text = randomLine;
+            _textComponent.text = randomLine;
         }
 
         if (currentScene == "Breackfast" && randomTextNvl2.Length > 0)
         {
             string randomLine = randomTextNvl2[Random.Range(0, randomTextNvl2.Length)];
-            textComponent.text = randomLine;
+            _textComponent.text = randomLine;
         }
     }
 }

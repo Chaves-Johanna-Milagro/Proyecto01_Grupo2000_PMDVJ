@@ -8,6 +8,7 @@ public class NotesController : MonoBehaviour
     public static NotesController Instance { get; private set; }
 
     private int _objInScene = 0;
+    private int _desicionInScene = 0;
 
     private void Awake()
     {
@@ -37,39 +38,63 @@ public class NotesController : MonoBehaviour
         }
     }
 
-    public void ActiveCheck1() // pa ser llamado por los demas objetos cuando se interactue con ellos
-    {
-        Transform check1 = transform.GetChild(3);
-        check1.gameObject.SetActive(true);
-    }
 
-    public void ActiveCheck2() // pa ser llamado por los demas objetos cuando se interactue con ellos
-    {
-        Transform check2 = transform.GetChild(4);
-        check2.gameObject.SetActive(true);
-    }
-
-    public void ActiveCheck3() // pa ser llamado por los demas objetos cuando se interactue con ellos
-    {
-        Transform check2 = transform.GetChild(5);
-        check2.gameObject.SetActive(true);
-    }
+    // Activadores de checks individuales
+    public void ActiveCheck1() => transform.GetChild(3).gameObject.SetActive(true);
+    public void ActiveCheck2() => transform.GetChild(4).gameObject.SetActive(true);
+    public void ActiveCheck3() => transform.GetChild(5).gameObject.SetActive(true);
 
 
-   public void WinLevel()
+    public void WinLevel()
     {
         _objInScene++;
 
         string currentScene = SceneManager.GetActiveScene().name;   
 
-        if( currentScene == "Morning" && _objInScene == 3 || currentScene == "Breackfast" && _objInScene == 2)
+        if( currentScene == "Morning" && _objInScene == 3 )
         {
             _objInScene = 0;
 
             Transform parent = transform.parent;
-            Transform imgVictory = parent.Find("NextLevelImage");
+            Transform imgVictory = parent.Find("NextLevelImageNvl1");
 
             if( imgVictory != null ) imgVictory.gameObject.SetActive(true);
         }
+
+        else if( currentScene == "Breackfast" && _objInScene == 2 ) 
+        {
+            _objInScene = 0;
+
+            Transform parent = transform.parent;
+            Transform imgDesicion = parent.Find("Desicion2Nvl2");
+
+            if (imgDesicion != null) imgDesicion.gameObject.SetActive(true);
+
+        }
+
     }
+
+    public void CompleteDesicions()
+    {
+        _desicionInScene++;
+
+        string currentScene = SceneManager.GetActiveScene().name;
+
+
+        if (currentScene == "Breackfast" && _desicionInScene == 1)
+        {
+            _objInScene = 0;
+            _desicionInScene = 0;
+
+            Transform parent = transform.parent;
+            Transform imgDesicion = parent.Find("Desicion2Nvl2");
+            Transform imgVictory = parent.Find("NextLevelImageNvl2");
+
+            if (imgDesicion != null) imgDesicion.gameObject.SetActive(false);
+
+            if (imgVictory != null) imgVictory.gameObject.SetActive(true);
+        }
+
+    }
+
 }
