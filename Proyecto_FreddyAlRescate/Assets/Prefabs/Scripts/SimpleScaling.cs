@@ -3,38 +3,38 @@ using UnityEngine;
 public class SimpleScaling : MonoBehaviour
 {
     // Porcentaje de aumento relativo (por ejemplo, 1.1 = 10% más grande)
-     private float ScaleMultiplier = 1.1f;
-     private float scaleSpeed = 5f;
+     private float _scaleMultiplier = 1.1f;
+     private float _scaleSpeed = 5f;
 
-    private Vector3 originalScale;
-    private Vector3 targetScale;  //la escala aumentada
+    private Vector3 _originalScale;
+    private Vector3 _targetScale;  //la escala aumentada
 
-    private bool isScaling = false;
+    private bool _isScaling = false;
 
     private void Start()
     {
-        originalScale = transform.localScale;
+        _originalScale = transform.localScale;
 
         // Calcula la escala como un multiplicador relativo
-        targetScale = originalScale * ScaleMultiplier;
+        _targetScale = _originalScale * _scaleMultiplier;
     }
 
     private void OnMouseEnter()
     {
-        isScaling = true;
+        _isScaling = true;
     }
 
     private void OnMouseExit()
     {
-        isScaling = false;
+        _isScaling = false;
     }
 
     private void Update()
     {
         // Elige la escala objetivo dependiendo del estado del mouse (si paso sobre el obj)
-        Vector3 targetScaling = isScaling ? targetScale : originalScale;
+        Vector3 targetScaling = _isScaling ? _targetScale : _originalScale;
 
         // Transición suave hacia la escala objetivo
-        transform.localScale = Vector3.Lerp(transform.localScale, targetScaling, Time.deltaTime * scaleSpeed);
+        transform.localScale = Vector3.Lerp(transform.localScale, targetScaling, Time.deltaTime * _scaleSpeed);
     }
 }

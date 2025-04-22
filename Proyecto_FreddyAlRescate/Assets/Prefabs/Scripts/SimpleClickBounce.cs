@@ -3,36 +3,36 @@ using System.Collections;
 
 public class SimpleClickBounce : MonoBehaviour
 {
-    private float bounceMultiplier = 1.2f;   // cuánto se agranda en el rebote
-    private float bounceDuration = 0.4f;     // duración total del rebote
+    private float _bounceMultiplier = 1.2f;   // cuánto se agranda en el rebote
+    private float _bounceDuration = 0.4f;     // duración total del rebote
 
-    private Vector3 originalScale;
-    private bool isBouncing = false;
+    private Vector3 _originalScale;
+    private bool _isBouncing = false;
 
     private void Start()
     {
-        originalScale = transform.localScale;
+        _originalScale = transform.localScale;
     }
 
     private void OnMouseDown()
     {
-        if (!isBouncing)
+        if (!_isBouncing)
             StartCoroutine(DoBounce());
     }
 
     private IEnumerator DoBounce()
     {
-        isBouncing = true;
+        _isBouncing = true;
 
-        Vector3 targetScale = originalScale * bounceMultiplier;
-        float halfDuration = bounceDuration / 2f;
+        Vector3 targetScale = _originalScale * _bounceMultiplier;
+        float halfDuration = _bounceDuration / 2f;
 
         // Escala hacia arriba (fase de expansión)
         float t = 0f;
         while (t < halfDuration)
         {
             t += Time.deltaTime;
-            transform.localScale = Vector3.Lerp(originalScale, targetScale, t / halfDuration);
+            transform.localScale = Vector3.Lerp(_originalScale, targetScale, t / halfDuration);
             yield return null;
         }
 
@@ -41,11 +41,11 @@ public class SimpleClickBounce : MonoBehaviour
         while (t < halfDuration)
         {
             t += Time.deltaTime;
-            transform.localScale = Vector3.Lerp(targetScale, originalScale, t / halfDuration);
+            transform.localScale = Vector3.Lerp(targetScale, _originalScale, t / halfDuration);
             yield return null;
         }
 
-        transform.localScale = originalScale;
-        isBouncing = false;
+        transform.localScale = _originalScale;
+        _isBouncing = false;
     }
 }

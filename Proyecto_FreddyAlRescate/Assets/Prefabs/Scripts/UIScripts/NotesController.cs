@@ -84,6 +84,7 @@ public class NotesController : MonoBehaviour
         if (currentScene == "Breackfast" && _desicionInScene == 1)
         {
             _objInScene = 0;
+            _desicionInScene = 0;
 
             Transform parent = transform.parent;
             Transform imgDesicion = parent.Find("Desicion2Nvl2");

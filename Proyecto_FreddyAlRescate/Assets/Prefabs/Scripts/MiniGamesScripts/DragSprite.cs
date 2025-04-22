@@ -2,25 +2,25 @@ using UnityEngine;
 
 public class DragSprite : MonoBehaviour
 {
-    private Vector3 offset;
-    private bool isDragging = false;
+    private Vector3 _offset;
+    private bool _isDragging = false;
 
     void OnMouseDown()
     {
-        offset = transform.position - GetMouseWorldPos();
-        isDragging = true;
+        _offset = transform.position - GetMouseWorldPos();
+        _isDragging = true;
     }
 
     void OnMouseUp()
     {
-        isDragging = false;
+        _isDragging = false;
     }
 
     void Update()
     {
-        if (isDragging)
+        if (_isDragging)
         {
-            transform.position = GetMouseWorldPos() + offset;
+            transform.position = GetMouseWorldPos() + _offset;
         }
     }
 

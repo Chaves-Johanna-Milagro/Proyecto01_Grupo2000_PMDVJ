@@ -3,33 +3,34 @@ using UnityEngine.EventSystems;
 
 public class ButtonsScaling : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    private float scaleMultiplier = 1.1f;
-    private float scaleSpeed = 5f;
+    private float _scaleMultiplier = 1.1f;
+    private float _scaleSpeed = 5f;
 
-    private RectTransform rectTransform;
-    private Vector3 originalScale;
-    private Vector3 targetScale;
-    private bool isScaling = false;
+    private RectTransform _rectTransform;
+
+    private Vector3 _originalScale;
+
+    private bool _isScaling = false;
 
     private void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
-        originalScale = rectTransform.localScale;
+        _rectTransform = GetComponent<RectTransform>();
+        _originalScale = _rectTransform.localScale;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        isScaling = true;
+        _isScaling = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        isScaling = false;
+        _isScaling = false;
     }
 
     private void Update()
     {
-        Vector3 desiredScale = isScaling ? originalScale * scaleMultiplier : originalScale;
-        rectTransform.localScale = Vector3.Lerp(rectTransform.localScale, desiredScale, Time.deltaTime * scaleSpeed);
+        Vector3 desiredScale = _isScaling ? _originalScale * _scaleMultiplier : _originalScale;
+        _rectTransform.localScale = Vector3.Lerp(_rectTransform.localScale, desiredScale, Time.deltaTime * _scaleSpeed);
     }
 }

@@ -4,38 +4,38 @@ using UnityEngine.UI;
 
 public class DesicionController : MonoBehaviour
 {
-    private Transform characterDesicion; // seria el por defecto
+    private Transform _characterDesicion; // seria el por defecto
 
-    private Transform characterOpt1;
-    private Transform characterOpt2;
+    private Transform _characterOpt1;
+    private Transform _characterOpt2;
 
-    private Transform option1;
-    private Transform option2;
+    private Transform _option1;
+    private Transform _option2;
 
-    private Button option1Button;
-    private Button option2Button;
+    private Button _option1Button;
+    private Button _option2Button;
 
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        characterDesicion = transform.Find("CharacterDesicion");
+        _characterDesicion = transform.Find("CharacterDesicion");
 
-        characterOpt1 = transform.Find("CharacterOpt1");
+        _characterOpt1 = transform.Find("CharacterOpt1");
 
-        option1 = transform.Find("Option1");
-        option2 = transform.Find("Option2");
+        _option1 = transform.Find("Option1");
+        _option2 = transform.Find("Option2");
 
-        option1Button = option1.GetComponent<Button>();
+        _option1Button = _option1.GetComponent<Button>();
 
-        option1Button.onClick.AddListener(OnOption1Clicked);
+        _option1Button.onClick.AddListener(OnOption1Clicked);
     }
 
     private void OnOption1Clicked() // si elije la opcion uno se activa su sprite 
     {         
 
-        characterOpt1.gameObject.SetActive(true);
+        _characterOpt1.gameObject.SetActive(true);
 
         DesactiveDefaults();
 
@@ -45,11 +45,11 @@ public class DesicionController : MonoBehaviour
 
     private void DesactiveDefaults() //y desactiva todo lo otro
     { 
-        characterDesicion.gameObject.SetActive(false);
+        _characterDesicion.gameObject.SetActive(false);
 
-        option1.gameObject.SetActive(false);
+        _option1.gameObject.SetActive(false);
 
-        option2.gameObject.SetActive(false);
+        _option2.gameObject.SetActive(false);
     }
 
     private  IEnumerator DelayChoice() 
