@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SimpleScaling : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class SimpleScaling : MonoBehaviour
 
     private Vector3 originalScale;
     private Vector3 targetScale;  //la escala aumentada
+    public AudioSource hoverButton;
 
     private bool isScaling = false;
 
@@ -22,6 +24,7 @@ public class SimpleScaling : MonoBehaviour
     private void OnMouseEnter()
     {
         isScaling = true;
+        hoverButton.Play();
     }
 
     private void OnMouseExit()
