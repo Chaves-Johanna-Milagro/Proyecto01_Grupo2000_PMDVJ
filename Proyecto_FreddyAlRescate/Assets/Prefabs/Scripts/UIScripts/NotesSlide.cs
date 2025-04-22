@@ -3,36 +3,36 @@ using UnityEngine.EventSystems;
 
 public class NotesSlide : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    private float slideY = -200f;   // Y final al apoyar el cursor
-    private float slideSpeed = 5f;
+    private float _slideY = -200f;   // Y final al apoyar el cursor
+    private float _slideSpeed = 5f;
 
-    private RectTransform rectTransform;
-    private Vector2 originalPosition;
-    private float currentY;
-    private bool isSlip = false;
+    private RectTransform _rectTransform;
+    private Vector2 _originalPosition;
+    private float _currentY;
+    private bool _isSlip = false;
 
     private void Awake()
     {
-        rectTransform = GetComponent<RectTransform>();
-        originalPosition = rectTransform.anchoredPosition;
-        currentY = originalPosition.y;
+        _rectTransform = GetComponent<RectTransform>();
+        _originalPosition = _rectTransform.anchoredPosition;
+        _currentY = _originalPosition.y;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        isSlip = true;
+        _isSlip = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        isSlip = false;
+        _isSlip = false;
     }
 
     private void Update()
     {
         // Calculamos la Y deseada, pero mantenemos la X original
-        float targetY = isSlip ? slideY : originalPosition.y;
-        currentY = Mathf.Lerp(currentY, targetY, Time.deltaTime * slideSpeed);
-        rectTransform.anchoredPosition = new Vector2(originalPosition.x, currentY);
+        float targetY = _isSlip ? _slideY : _originalPosition.y;
+        _currentY = Mathf.Lerp(_currentY, targetY, Time.deltaTime * _slideSpeed);
+        _rectTransform.anchoredPosition = new Vector2(_originalPosition.x, _currentY);
     }
 }
