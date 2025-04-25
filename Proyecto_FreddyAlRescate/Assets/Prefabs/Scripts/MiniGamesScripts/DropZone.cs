@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class DropZone : MonoBehaviour
 
     private Transform _miniGame;
 
+    private HashSet<Collider2D> _detectedObjects = new HashSet<Collider2D>(); // es como una lista de colliders
 
     void Start()
     {
@@ -36,10 +38,17 @@ public class DropZone : MonoBehaviour
             {
                 _miniGame.gameObject.SetActive(false);
 
+                NotesController.Instance.ActiveCheck2();
                 NotesController.Instance.WinLevel();
 
             }
         }
+
+        if (_detectedObjects.Contains(other)) return; //retorna si es que el other es un objeto que ya colisiono
+
+
+        _detectedObjects.Add(other);
+
 
         if (other.name == "Brush") // para objetos que requieran un delay para completarse la accion
         {
@@ -49,8 +58,12 @@ public class DropZone : MonoBehaviour
 
     private IEnumerator DelayInZone() // los objetos que requieran el delay no deben tener el tag arrastrable
     {
-        NotesController.Instance.WinLevel();
+
         yield return new WaitForSeconds(2f);
+
         _miniGame.gameObject.SetActive(false);
+
+        NotesController.Instance.ActiveCheck3();
+        NotesController.Instance.WinLevel();
     }
 }

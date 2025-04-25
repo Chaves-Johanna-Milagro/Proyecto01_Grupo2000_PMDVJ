@@ -23,19 +23,33 @@ public class DesicionController : MonoBehaviour
         _characterDesicion = transform.Find("CharacterDesicion");
 
         _characterOpt1 = transform.Find("CharacterOpt1");
+        _characterOpt2 = transform.Find("CharacterOpt2");
 
         _option1 = transform.Find("Option1");
         _option2 = transform.Find("Option2");
 
         _option1Button = _option1.GetComponent<Button>();
+        _option2Button = _option2.GetComponent<Button>();
 
         _option1Button.onClick.AddListener(OnOption1Clicked);
+        _option2Button.onClick.AddListener(OnOption2Clicked);
     }
 
     private void OnOption1Clicked() // si elije la opcion uno se activa su sprite 
     {         
 
         _characterOpt1.gameObject.SetActive(true);
+
+        DesactiveDefaults();
+
+        StartCoroutine(DelayChoice());
+
+    }
+
+    private void OnOption2Clicked() // si elije la opcion uno se activa su sprite 
+    {
+
+        _characterOpt2.gameObject.SetActive(true);
 
         DesactiveDefaults();
 
@@ -54,7 +68,7 @@ public class DesicionController : MonoBehaviour
 
     private  IEnumerator DelayChoice() 
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         NotesController.Instance.CompleteDesicions();        
     }
 }

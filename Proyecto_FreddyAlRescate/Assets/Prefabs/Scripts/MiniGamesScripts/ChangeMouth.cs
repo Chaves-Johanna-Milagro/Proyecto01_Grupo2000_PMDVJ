@@ -15,7 +15,6 @@ public class ChangeMouth : MonoBehaviour
 
     private HashSet<Collider2D> _detectedObjects = new HashSet<Collider2D>(); // es como una lista de colliders
 
-
     private void Start()
     {
         _miniGame = transform.parent;
@@ -65,6 +64,7 @@ public class ChangeMouth : MonoBehaviour
 
         _miniGame.gameObject.SetActive(false);
 
+        NotesController.Instance.ActiveCheck1();
         NotesController.Instance.WinLevel();
     }
 }
