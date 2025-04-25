@@ -40,48 +40,49 @@ public class NotesController : MonoBehaviour
 
 
     // Activadores de checks individuales
-    public void ActiveCheck1() => transform.GetChild(3).gameObject.SetActive(true);
-    public void ActiveCheck2() => transform.GetChild(4).gameObject.SetActive(true);
-    public void ActiveCheck3() => transform.GetChild(5).gameObject.SetActive(true);
+    public void ActiveCheck1() => ActivateChild(3);
+    public void ActiveCheck2() => ActivateChild(4);
+    public void ActiveCheck3() => ActivateChild(5);
 
 
+
+    // Activa un check específico por índice
+    private void ActivateChild(int index)
+    {
+        if (index >= 0 && index < transform.childCount)
+            transform.GetChild(index).gameObject.SetActive(true);
+    }
+
+
+    // Se llama cuando se completa un objetivo
     public void WinLevel()
     {
         _objInScene++;
+        string scene = SceneManager.GetActiveScene().name;
 
-        string currentScene = SceneManager.GetActiveScene().name;   
+        if (scene == "Morning" && _objInScene == 3)
+        {
+            _objInScene = 0;
+            StartCoroutine(ShowNextImage("NextLevelImageNvl1")); // Mostrar imagen de victoria
 
-        if( currentScene == "Morning" && _objInScene == 3 )
+        }
+        else if (scene == "Breackfast" && _objInScene == 2)
         {
             _objInScene = 0;
 
-            Transform parent = transform.parent;
-            Transform imgVictory = parent.Find("NextLevelImageNvl1");
-
-            if( imgVictory != null ) imgVictory.gameObject.SetActive(true);
+            Transform imgDesicion = transform.parent.Find("Desicion2Nvl2");
+            if (imgDesicion != null) StartCoroutine(ShowNextImage("Desicion2Nvl2")); // pa un pequño delay
         }
-
-        else if( currentScene == "Breackfast" && _objInScene == 2 ) 
-        {
-            _objInScene = 0;
-
-            Transform parent = transform.parent;
-            Transform imgDesicion = parent.Find("Desicion2Nvl2");
-
-            if (imgDesicion != null) imgDesicion.gameObject.SetActive(true);
-
-        }
-
     }
 
+
+    // Se llama cuando se completan todas las decisiones
     public void CompleteDesicions()
     {
         _desicionInScene++;
+        string scene = SceneManager.GetActiveScene().name;
 
-        string currentScene = SceneManager.GetActiveScene().name;
-
-
-        if (currentScene == "Breackfast" && _desicionInScene == 1)
+        if (scene == "Breackfast" && _desicionInScene == 1)
         {
             _objInScene = 0;
             _desicionInScene = 0;
@@ -91,10 +92,21 @@ public class NotesController : MonoBehaviour
             Transform imgVictory = parent.Find("NextLevelImageNvl2");
 
             if (imgDesicion != null) imgDesicion.gameObject.SetActive(false);
-
             if (imgVictory != null) imgVictory.gameObject.SetActive(true);
-        }
 
+        }
+    }
+
+
+    // busca la imagen por nombre y la muestra después de un pequeño delay
+    private IEnumerator ShowNextImage(string imageName)
+    {
+        Transform image = transform.parent.Find(imageName);
+        if (image != null)
+        {
+            yield return new WaitForSeconds(1.2f); // Espera antes de mostrar la imagen
+            image.gameObject.SetActive(true);
+        }
     }
 
 }

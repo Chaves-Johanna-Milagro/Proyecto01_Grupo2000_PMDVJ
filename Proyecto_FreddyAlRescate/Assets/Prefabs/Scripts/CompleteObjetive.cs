@@ -18,20 +18,6 @@ public class CompleteObjetive : MonoBehaviour // lo tendran los objetos que al h
             NotesController.Instance.ActiveCheck2();
             NotesController.Instance.WinLevel();
         }
-        else if (nameObj == "Bathroom") // los que tengan mini juego seran controlados por el script DropZone
-        {
-            NotesController.Instance.ActiveCheck3();
-        }
 
-
-        //para los del nvl 2
-        if (nameObj == "Diningroom")
-        {
-            NotesController.Instance.ActiveCheck1();
-        }
-        else if(nameObj == "Backpack")
-        {
-            NotesController.Instance.ActiveCheck2();
-        }
     }
 }

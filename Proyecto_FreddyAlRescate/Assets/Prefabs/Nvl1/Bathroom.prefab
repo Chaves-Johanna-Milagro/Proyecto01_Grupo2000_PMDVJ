@@ -188,7 +188,7 @@ GameObject:
   - component: {fileID: 7392430347629320002}
   - component: {fileID: 163762153245205558}
   - component: {fileID: 6060916699652032294}
-  - component: {fileID: 7201706201332430142}
+  - component: {fileID: 2714672188476113080}
   m_Layer: 0
   m_Name: Mouth
   m_TagString: Untagged
@@ -329,7 +329,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7201706201332430142
+--- !u!114 &2714672188476113080
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -338,7 +338,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1697502243218028660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a54d0f1ba67ce74486f9be50f95d770, type: 3}
+  m_Script: {fileID: 11500000, guid: 14628935164218143b35bfc5ebbfe2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4403849471638658123
@@ -439,8 +439,8 @@ GameObject:
   - component: {fileID: 7944780248619946432}
   - component: {fileID: 8533425517787539358}
   - component: {fileID: 208662964073027153}
-  - component: {fileID: 3146959474973862404}
   - component: {fileID: 3791524983618868222}
+  - component: {fileID: 6603183756699982231}
   m_Layer: 0
   m_Name: Brush
   m_TagString: Untagged
@@ -545,18 +545,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3146959474973862404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5857991307414288416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c704b8740826c86458c09a04f0ba31e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!60 &3791524983618868222
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -679,6 +667,18 @@ PolygonCollider2D:
       - {x: 10.71875, y: -17.84375}
       - {x: 11.21875, y: -17.34375}
   m_UseDelaunayMesh: 0
+--- !u!114 &6603183756699982231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5857991307414288416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c704b8740826c86458c09a04f0ba31e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7837705795633848122
 GameObject:
   m_ObjectHideFlags: 0

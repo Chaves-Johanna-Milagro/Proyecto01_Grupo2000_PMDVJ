@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3059198138001740978}
   m_Layer: 0
   m_Name: MiniGame
-  m_TagString: Untagged
+  m_TagString: MiniGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1019,7 +1019,7 @@ GameObject:
   - component: {fileID: 6614638168474269091}
   m_Layer: 0
   m_Name: Diningroom
-  m_TagString: MiniGame
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

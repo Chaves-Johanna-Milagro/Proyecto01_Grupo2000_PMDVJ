@@ -6,18 +6,9 @@ public class CharacterInScene : MonoBehaviour
 {
     public static CharacterInScene Instance {  get; private set; }
 
-
-    private string _currentScene;
-
-    private Transform _charNvl1;
-    private Transform _charNvl2;
-
-    private Transform _idleNvl1;  //personaje en pijama
-    private Transform _action1Nvl1; // sprite con la ropa cambiada
-    private Transform _action2Nvl1; //temdiemdo la cama
-
-    private Transform _idleNvl2;  //personaje con la ropa cambiada
-    private Transform _action1Nvl2; // sprite despues de desayunar
+    private Transform _charNvl1, _charNvl2;
+    private Transform[] _spritesNvl1; // [0] idle pijama, [1] uniforme, [2] cama tendida (pijama), [3] cama tendida (uniforme)
+    private Transform[] _spritesNvl2; // [0] idle uniforme, [1] después de desayunar
 
     private void Awake()
     {
@@ -31,77 +22,109 @@ public class CharacterInScene : MonoBehaviour
             Instance = this;
 
             DontDestroyOnLoad(this); //permite que sobreviva a cambios de escena
+
+            SceneManager.sceneLoaded += OnSceneLoaded; //evento de cambio de escena
         }
     }
-    void Start()
+
+
+    private void Start()
     {
         _charNvl1 = transform.GetChild(0);
         _charNvl2 = transform.GetChild(1);
 
-        _idleNvl1 = _charNvl1.transform.GetChild(0);
-        _action1Nvl1 = _charNvl1.transform.GetChild(1);
-        _action2Nvl1 = _charNvl1.transform.GetChild(2);
+        _spritesNvl1 = new Transform[]
+        {
+            _charNvl1.GetChild(0), // idle pijama
+            _charNvl1.GetChild(1), // uniforme
+            _charNvl1.GetChild(2), // cama tendida pijama
+            _charNvl1.GetChild(3)  // cama tendida uniforme
+        };
+
+        _spritesNvl2 = new Transform[]
+        {
+            _charNvl2.GetChild(0), // idle uniforme
+            _charNvl2.GetChild(1)  // después de desayunar
+        };
+
+        // Inicializa según la escena activa al empezar el juego
+        InitializeScene(SceneManager.GetActiveScene().name);
+    }
 
 
-        _idleNvl2 = _charNvl2.transform.GetChild(0);
-        _action1Nvl2 = _charNvl2.transform.GetChild(1);
+    // se llama automáticamente cada vez que se carga una nueva escena
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        InitializeScene(scene.name);
+    }
 
+    private void InitializeScene(string sceneName)
+    {
+        _charNvl1.gameObject.SetActive(false);
+        _charNvl2.gameObject.SetActive(false);
 
-        _currentScene = SceneManager.GetActiveScene().name;
+        DeactivateAll(_spritesNvl1);
+        DeactivateAll(_spritesNvl2);
 
-
-        if (_currentScene == "Morning")
+        if (sceneName == "Morning")
         {
             _charNvl1.gameObject.SetActive(true);
-            _idleNvl1 .gameObject.SetActive(true);
-
+            _spritesNvl1[0].gameObject.SetActive(true); // idle pijama
         }
-
-        else if (_currentScene == "Breackfast")
+        else if (sceneName == "Breackfast")
         {
             _charNvl2.gameObject.SetActive(true);
-            _idleNvl2.gameObject.SetActive(true);
+            _spritesNvl2[0].gameObject.SetActive(true); // idle uniforme
         }
     }
+
+
+    public void PutUniform()
+    {
+        SwitchSprite(_spritesNvl1, 1); // uniforme
+        _spritesNvl1[0] = _spritesNvl1[1]; // actualiza el idle
+    }
+
+
 
     public void MakeTheBed()
     {
-        _idleNvl1.gameObject.SetActive(false);
-
-        _action2Nvl1 .gameObject.SetActive(true);
+        SwitchSprite(_spritesNvl1, 2); // cama tendida con pijama
     }
-    public void PutUniform()
+
+    public bool IsCharacterPutUniform()  // para saber si es que el sprite con el uniforme puesto se activo
     {
-        _idleNvl1.gameObject.SetActive (false);
-
-        _action1Nvl1.gameObject.SetActive(true);
-
-        _idleNvl1 = _action1Nvl1;
-
+        return _spritesNvl1[1].gameObject.activeSelf;
     }
+
+
+    public void MakeTheBedUniform()
+    {
+        SwitchSprite(_spritesNvl1, 3); // cama tendida con uniforme
+    }
+
 
 
     public void HaveBreackfast()
     {
-        _idleNvl2.gameObject.SetActive(false);
-
-        _action1Nvl2.gameObject.SetActive(true);
+        SwitchSprite(_spritesNvl2, 1); // después de desayunar
     }
-    public void DesactiveAction()
+
+
+    private void SwitchSprite(Transform[] sprites, int indexToActivate)
     {
-        if(_currentScene == "Morning")
+        for (int i = 0; i < sprites.Length; i++)
         {
-            _idleNvl1.gameObject.SetActive(false);
-            _action1Nvl1.gameObject.SetActive(false);
-            _action2Nvl1.gameObject.SetActive(false);
+            sprites[i].gameObject.SetActive(i == indexToActivate);
         }
+    }
 
-        else if (_currentScene == "Breackfast")
+    private void DeactivateAll(Transform[] sprites)
+    {
+        foreach (var sprite in sprites)
         {
-            _idleNvl2.gameObject.SetActive(false);
-            _action1Nvl2.gameObject.SetActive(false);
+            sprite.gameObject.SetActive(false);
         }
-
     }
 
 }
