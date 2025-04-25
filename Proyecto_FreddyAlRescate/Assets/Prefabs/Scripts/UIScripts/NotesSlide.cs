@@ -8,8 +8,12 @@ public class NotesSlide : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     private RectTransform _rectTransform;
     private Vector2 _originalPosition;
+
     private float _currentY;
     private bool _isSlip = false;
+
+    private Vector2 _miniGamePos = new Vector2(560f,-1000f);
+    private bool _isMiniGameActive = false;
 
     private void Awake()
     {
@@ -30,8 +34,30 @@ public class NotesSlide : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     private void Update()
     {
-        // Calculamos la Y deseada, pero mantenemos la X original
-        float targetY = _isSlip ? _slideY : _originalPosition.y;
+        // Chequea si hay un objeto activo con tag "Minigame"
+        GameObject minigame = GameObject.FindGameObjectWithTag("MiniGame");
+
+        if (minigame != null && minigame.activeInHierarchy)
+        {
+            // Si el minijuego está activo, mueve el panel más abajo y bloquea el slide
+            _isMiniGameActive = true;
+        }
+        else
+        {
+            _isMiniGameActive = false;
+        }
+
+        // Calculamos el targetY según el estado actual
+        float targetY;
+
+        if (_isMiniGameActive)
+        {
+            targetY = _miniGamePos.y;
+        }
+        else
+        {
+            targetY = _isSlip ? _slideY : _originalPosition.y;
+        }
         _currentY = Mathf.Lerp(_currentY, targetY, Time.deltaTime * _slideSpeed);
         _rectTransform.anchoredPosition = new Vector2(_originalPosition.x, _currentY);
     }

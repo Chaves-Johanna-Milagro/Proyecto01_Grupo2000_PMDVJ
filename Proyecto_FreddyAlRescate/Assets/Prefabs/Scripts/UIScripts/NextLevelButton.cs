@@ -15,8 +15,6 @@ public class NextLevelButton : MonoBehaviour, IPointerDownHandler
         if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
         {
             SceneManager.LoadScene(nextSceneIndex);
-
-            CharacterInScene.Instance.DesactiveAction();
         }
         else
         {

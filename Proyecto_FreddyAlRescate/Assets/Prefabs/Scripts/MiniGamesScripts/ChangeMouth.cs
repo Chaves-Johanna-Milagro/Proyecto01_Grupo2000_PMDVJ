@@ -26,39 +26,36 @@ public class ChangeMouth : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (_detectedObjects.Contains(other)) return; //retorna si es que el other es un objeto que ya colisiono
+        if (!_detectedObjects.Add(other)) return; // solo si es nuevo
 
-
-        _detectedObjects.Add(other);
         _count++;
 
-        if (_count < 3 && (other.name == "Cup" || other.name == "Bread")) StartCoroutine(ChangeSpriteMouth(other));
-                
+        if (_count < 3 && IsFood(other))  StartCoroutine(AnimateChewing(other));
+          
 
-        if (_count == 3 && other.name == "Napkin") StartCoroutine(LastObject());
-                
-
+        else if (_count == 3 && other.name == "Napkin")  StartCoroutine(FinishMiniGame());
+ 
     }
-    private IEnumerator ChangeSpriteMouth(Collider2D collider)
-    {
-        _mouthChewing.gameObject.SetActive(false);
-        _mouthClose.gameObject.SetActive(false);
 
-        _mouthOpen.gameObject.SetActive(true);
+    private bool IsFood(Collider2D obj)
+    {
+        return obj.name == "Cup" || obj.name == "Bread";
+    }
+
+    private IEnumerator AnimateChewing(Collider2D obj)
+    {
+        SetMouth(open: true);
 
         yield return new WaitForSeconds(1);
 
-        _mouthOpen.gameObject.SetActive(false);
+        obj.gameObject.SetActive(false);
 
-        collider.gameObject.SetActive(false);
-
-        _mouthChewing.gameObject.SetActive(true);
+        SetMouth(chewing: true);
     }
 
-    private IEnumerator LastObject()
+    private IEnumerator FinishMiniGame()
     {
-        _mouthOpen.gameObject.SetActive(false);
-        _mouthChewing.gameObject.SetActive(true);
+        SetMouth(chewing: true);
 
         yield return new WaitForSeconds(1);
 
@@ -66,5 +63,12 @@ public class ChangeMouth : MonoBehaviour
 
         NotesController.Instance.ActiveCheck1();
         NotesController.Instance.WinLevel();
+    }
+
+    private void SetMouth(bool closed = false, bool open = false, bool chewing = false)
+    {
+        _mouthClose.gameObject.SetActive(closed);
+        _mouthOpen.gameObject.SetActive(open);
+        _mouthChewing.gameObject.SetActive(chewing);
     }
 }

@@ -6,9 +6,6 @@ public class CharacterInScene : MonoBehaviour
 {
     public static CharacterInScene Instance {  get; private set; }
 
-
-    private string _currentScene;
-
     private Transform _charNvl1, _charNvl2;
     private Transform[] _spritesNvl1; // [0] idle pijama, [1] uniforme, [2] cama tendida (pijama), [3] cama tendida (uniforme)
     private Transform[] _spritesNvl2; // [0] idle uniforme, [1] después de desayunar
@@ -25,6 +22,8 @@ public class CharacterInScene : MonoBehaviour
             Instance = this;
 
             DontDestroyOnLoad(this); //permite que sobreviva a cambios de escena
+
+            SceneManager.sceneLoaded += OnSceneLoaded; //evento de cambio de escena
         }
     }
 
@@ -48,20 +47,36 @@ public class CharacterInScene : MonoBehaviour
             _charNvl2.GetChild(1)  // después de desayunar
         };
 
-        _currentScene = SceneManager.GetActiveScene().name;
+        // Inicializa según la escena activa al empezar el juego
+        InitializeScene(SceneManager.GetActiveScene().name);
+    }
 
-        if (_currentScene == "Morning")
+
+    // se llama automáticamente cada vez que se carga una nueva escena
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        InitializeScene(scene.name);
+    }
+
+    private void InitializeScene(string sceneName)
+    {
+        _charNvl1.gameObject.SetActive(false);
+        _charNvl2.gameObject.SetActive(false);
+
+        DeactivateAll(_spritesNvl1);
+        DeactivateAll(_spritesNvl2);
+
+        if (sceneName == "Morning")
         {
             _charNvl1.gameObject.SetActive(true);
             _spritesNvl1[0].gameObject.SetActive(true); // idle pijama
         }
-        else if (_currentScene == "Breackfast")
+        else if (sceneName == "Breackfast")
         {
             _charNvl2.gameObject.SetActive(true);
             _spritesNvl2[0].gameObject.SetActive(true); // idle uniforme
         }
     }
-
 
 
     public void PutUniform()
@@ -95,19 +110,6 @@ public class CharacterInScene : MonoBehaviour
         SwitchSprite(_spritesNvl2, 1); // después de desayunar
     }
 
-
-
-    public void DesactiveAction()
-    {
-        if (_currentScene == "Morning")
-        {
-            DeactivateAll(_spritesNvl1);
-        }
-        else if (_currentScene == "Breackfast")
-        {
-            DeactivateAll(_spritesNvl2);
-        }
-    }
 
     private void SwitchSprite(Transform[] sprites, int indexToActivate)
     {

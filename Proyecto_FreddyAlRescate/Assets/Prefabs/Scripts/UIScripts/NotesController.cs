@@ -64,6 +64,7 @@ public class NotesController : MonoBehaviour
         {
             _objInScene = 0;
             StartCoroutine(ShowNextImage("NextLevelImageNvl1")); // Mostrar imagen de victoria
+
         }
         else if (scene == "Breackfast" && _objInScene == 2)
         {
@@ -92,6 +93,7 @@ public class NotesController : MonoBehaviour
 
             if (imgDesicion != null) imgDesicion.gameObject.SetActive(false);
             if (imgVictory != null) imgVictory.gameObject.SetActive(true);
+
         }
     }
 
