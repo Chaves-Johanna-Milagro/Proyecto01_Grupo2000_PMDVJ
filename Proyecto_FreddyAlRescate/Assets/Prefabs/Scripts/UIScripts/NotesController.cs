@@ -63,14 +63,14 @@ public class NotesController : MonoBehaviour
         if (scene == "Morning" && _objInScene == 3)
         {
             _objInScene = 0;
-            StartCoroutine(ShowVictoryImage("NextLevelImageNvl1")); // Mostrar imagen de victoria
+            StartCoroutine(ShowNextImage("NextLevelImageNvl1")); // Mostrar imagen de victoria
         }
         else if (scene == "Breackfast" && _objInScene == 2)
         {
             _objInScene = 0;
 
             Transform imgDesicion = transform.parent.Find("Desicion2Nvl2");
-            if (imgDesicion != null) imgDesicion.gameObject.SetActive(true);
+            if (imgDesicion != null) StartCoroutine(ShowNextImage("Desicion2Nvl2")); // pa un pequño delay
         }
     }
 
@@ -91,13 +91,13 @@ public class NotesController : MonoBehaviour
             Transform imgVictory = parent.Find("NextLevelImageNvl2");
 
             if (imgDesicion != null) imgDesicion.gameObject.SetActive(false);
-            if (imgVictory != null) StartCoroutine(ShowVictoryImage("NextLevelImageNvl2"));
+            if (imgVictory != null) imgVictory.gameObject.SetActive(true);
         }
     }
 
 
     // busca la imagen por nombre y la muestra después de un pequeño delay
-    private IEnumerator ShowVictoryImage(string imageName)
+    private IEnumerator ShowNextImage(string imageName)
     {
         Transform image = transform.parent.Find(imageName);
         if (image != null)

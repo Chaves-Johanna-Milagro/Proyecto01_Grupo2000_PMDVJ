@@ -10,11 +10,10 @@ public class DropZone : MonoBehaviour
 
     private Transform _miniGame;
 
-    private HashSet<Collider2D> _detectedObjects = new HashSet<Collider2D>(); // es como una lista de colliders
 
     void Start()
     {
-        // miniGame es el padre de este objeto (MiniGameBackpack/Moth)
+        // miniGame es el padre de este objeto MiniGameBackpack
         _miniGame = transform.parent;
 
         // Contar cuántos hermanos (menos este mismo) tienen el tag "Arrastrable"
@@ -44,26 +43,6 @@ public class DropZone : MonoBehaviour
             }
         }
 
-        if (_detectedObjects.Contains(other)) return; //retorna si es que el other es un objeto que ya colisiono
-
-
-        _detectedObjects.Add(other);
-
-
-        if (other.name == "Brush") // para objetos que requieran un delay para completarse la accion
-        {
-            StartCoroutine(DelayInZone());
-        }
     }
-
-    private IEnumerator DelayInZone() // los objetos que requieran el delay no deben tener el tag arrastrable
-    {
-
-        yield return new WaitForSeconds(2f);
-
-        _miniGame.gameObject.SetActive(false);
-
-        NotesController.Instance.ActiveCheck3();
-        NotesController.Instance.WinLevel();
-    }
+  
 }

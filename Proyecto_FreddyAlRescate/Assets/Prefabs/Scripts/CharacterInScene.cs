@@ -67,7 +67,7 @@ public class CharacterInScene : MonoBehaviour
     public void PutUniform()
     {
         SwitchSprite(_spritesNvl1, 1); // uniforme
-        //_spritesNvl1[0] = _spritesNvl1[1]; // actualiza el idle
+        _spritesNvl1[0] = _spritesNvl1[1]; // actualiza el idle
     }
 
 

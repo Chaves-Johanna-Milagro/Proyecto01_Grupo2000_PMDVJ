@@ -68,7 +68,7 @@ public class DesicionController : MonoBehaviour
 
     private  IEnumerator DelayChoice() 
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
         NotesController.Instance.CompleteDesicions();        
     }
 }
