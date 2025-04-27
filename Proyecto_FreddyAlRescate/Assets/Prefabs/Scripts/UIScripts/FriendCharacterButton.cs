@@ -18,12 +18,20 @@ public class FriendCharacterButton : MonoBehaviour
     };
 
     private string[] randomTextNvl2 = new string[]
-{
+    {
         "¡ORDENAR LOS UTILES ES IMPORTANTE!",
         "¡QUE HAMBRE!",
         "¡ES BUENO DESPEDIRSE ANTES DE IR A LA ESCUELA!",
 
-};
+    };
+
+    private string[] randomTextNvl3 = new string[]
+    {
+        "¡HAY QUE LLEGAR PRONTO A LA PARADA!",
+        "¡LA APP PODRIA AYUDARNOS!",
+        "¡ES BUENO SALUDAR A LOS VECINOS!",
+
+    };
 
     private bool _hasBeenActivated = false;
 
@@ -60,6 +68,12 @@ public class FriendCharacterButton : MonoBehaviour
         if (currentScene == "Breackfast" && randomTextNvl2.Length > 0)
         {
             string randomLine = randomTextNvl2[Random.Range(0, randomTextNvl2.Length)];
+            _textComponent.text = randomLine;
+        }
+
+        if (currentScene == "WayToSchool" && randomTextNvl3.Length > 0)
+        {
+            string randomLine = randomTextNvl3[Random.Range(0, randomTextNvl3.Length)];
             _textComponent.text = randomLine;
         }
     }
