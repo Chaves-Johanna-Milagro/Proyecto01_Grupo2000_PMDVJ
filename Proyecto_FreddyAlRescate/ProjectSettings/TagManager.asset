@@ -10,6 +10,8 @@ TagManager:
   - SUBE
   - Reader
   - Map
+  - RightBlock
+  - LeftBlock
   layers:
   - Default
   - TransparentFX

@@ -54,4 +54,10 @@ public class PlayerClicksMove : MonoBehaviour
         mousePoint.z = 10f;  // Distancia de la cámara
         return Camera.main.ScreenToWorldPoint(mousePoint);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Cuando colisiona con cualquier objeto, se detiene
+        _isMoving = false;
+    }
 }
