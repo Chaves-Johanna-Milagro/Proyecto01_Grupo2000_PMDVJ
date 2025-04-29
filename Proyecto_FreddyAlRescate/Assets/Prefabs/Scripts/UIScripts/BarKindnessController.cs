@@ -34,19 +34,6 @@ public class BarKindnessController : MonoBehaviour
      
     }
 
-    //pruebas desde teclado
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            GoodDecision();
-        }
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            BadDecision();
-        }
-    }
-
     public void GoodDecision()
     {
         Vector2 newPos = _nowBar.anchoredPosition + new Vector2(_amount, 0f);

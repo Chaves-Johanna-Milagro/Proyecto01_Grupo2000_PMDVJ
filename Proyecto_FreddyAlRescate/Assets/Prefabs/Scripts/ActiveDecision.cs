@@ -18,6 +18,10 @@ public class ActiveDecision : MonoBehaviour
         { 
             if (gameObject.name == "Arrows") DecisionsNvl3.Instance.ActiveDecisionRoad();
 
+            if(gameObject.name == "Kiosk") DecisionsNvl3.Instance.ActiveGreetKiosk();
+
+            if(gameObject.name == "Greengrocery") DecisionsNvl3.Instance.ActiveGreetGreengrocery();
+
             _col.enabled = false;// desactivamos en collider
         }
 

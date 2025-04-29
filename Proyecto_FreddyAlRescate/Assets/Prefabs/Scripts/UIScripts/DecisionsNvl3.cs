@@ -5,9 +5,11 @@ public class DecisionsNvl3 : MonoBehaviour
 {
     public static DecisionsNvl3 Instance { get; private set; }
 
-    private Transform _bg; // activar el background
 
-    private Transform _bgRoad; // fondo para la desicion del camino
+    private Transform _choiceRoad; // pa la desicion del camino
+
+    private Transform _kiosk; // pa la desicion de saludar o no
+    private Transform _greengrocery; // pa la desicion de saludar o no
 
     private void Awake()
     {
@@ -26,13 +28,23 @@ public class DecisionsNvl3 : MonoBehaviour
     }
     void Start()
     {
-        _bg = transform.GetChild(0);
+        _choiceRoad = transform.GetChild(0);
 
-        _bgRoad = _bg.transform.GetChild(0);
+        _kiosk = transform.GetChild(1);
+        _greengrocery = transform.GetChild(2);
     }
 
     public void ActiveDecisionRoad()
     {
-        _bgRoad.gameObject.SetActive(true);
+        _choiceRoad.gameObject.SetActive(true);
+    }
+
+    public void ActiveGreetKiosk() 
+    {
+        _kiosk.gameObject.SetActive(true);
+    }
+    public void ActiveGreetGreengrocery() 
+    {
+        _greengrocery.gameObject.SetActive(true);
     }
 }
