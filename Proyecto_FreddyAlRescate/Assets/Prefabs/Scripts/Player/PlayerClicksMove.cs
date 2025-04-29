@@ -55,7 +55,7 @@ public class PlayerClicksMove : MonoBehaviour
         return Camera.main.ScreenToWorldPoint(mousePoint);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionStay2D(Collision2D collision)
     {
         // Cuando colisiona con cualquier objeto, se detiene
         _isMoving = false;
