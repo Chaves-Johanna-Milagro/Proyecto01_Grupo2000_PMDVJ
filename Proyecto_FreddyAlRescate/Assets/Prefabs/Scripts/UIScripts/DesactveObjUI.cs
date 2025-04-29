@@ -8,7 +8,7 @@ public class DesactveObjUI : MonoBehaviour
     private Button _pause;
     private Button _resume;
 
-    private int[] _objIU = new int[] {0,1,2,3}; // pa desactivar los obj de la ui
+    private int[] _objIU = new int[] {0,1,2}; // pa desactivar los obj de la ui
 
     private void Start()
     {
