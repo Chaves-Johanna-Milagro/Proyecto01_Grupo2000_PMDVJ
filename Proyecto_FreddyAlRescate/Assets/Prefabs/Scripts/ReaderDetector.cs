@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ReaderDetector : MonoBehaviour
 {
@@ -48,9 +49,11 @@ public class ReaderDetector : MonoBehaviour
             { 
                 Debug.Log("Pago exitoso");
                 paymentSuccessful = true;
-            if (checkAnimator != null)
+         
+                if (checkAnimator != null)
             
                 checkAnimator.SetTrigger("Successful");
+                StartCoroutine(LoadFinalScene());
             }
         }
         else 
@@ -96,5 +99,11 @@ IEnumerator ResetCross()
             paymentSuccessful = false;
             showedFailure = false;
         }
+    }
+
+    IEnumerator LoadFinalScene()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("BusLevelComplete");
     }
 }

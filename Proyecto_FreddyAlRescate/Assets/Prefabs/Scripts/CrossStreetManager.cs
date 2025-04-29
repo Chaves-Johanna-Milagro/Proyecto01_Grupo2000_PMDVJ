@@ -15,6 +15,8 @@ public class CrossStreetManager : MonoBehaviour
         panel1.SetActive(false);
         panel2.SetActive(true);
         StartCoroutine(SwitchPanels());
+        StartCoroutine(LoadSceneMinigameSUBE());
+
     }
 
     IEnumerator SwitchPanels()
@@ -23,5 +25,10 @@ public class CrossStreetManager : MonoBehaviour
 
         panel1.SetActive(true);
         panel2.SetActive(false);
+    }
+    IEnumerator LoadSceneMinigameSUBE()
+    {
+        yield return new WaitForSeconds(6f);
+        SceneManager.LoadScene("GreetingsBus");
     }
 }

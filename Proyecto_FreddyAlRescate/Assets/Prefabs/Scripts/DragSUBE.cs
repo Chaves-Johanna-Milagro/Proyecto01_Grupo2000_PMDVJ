@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DragSUBE3D : MonoBehaviour
+public class DragSUBE : MonoBehaviour
 {
     private bool isDragging = false;
     private Vector3 offset;
