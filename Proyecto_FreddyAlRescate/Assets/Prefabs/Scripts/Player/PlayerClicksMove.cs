@@ -51,7 +51,7 @@ public class PlayerClicksMove : MonoBehaviour
     Vector3 GetMouseWorldPos()
     {
         Vector3 mousePoint = Input.mousePosition;
-        mousePoint.z = 10f;  // Distancia de la cámara
+        mousePoint.z = 8f;  // Distancia de la cámara
         return Camera.main.ScreenToWorldPoint(mousePoint);
     }
 

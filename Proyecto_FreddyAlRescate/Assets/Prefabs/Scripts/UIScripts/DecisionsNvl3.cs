@@ -32,6 +32,7 @@ public class DecisionsNvl3 : MonoBehaviour
 
         _kiosk = transform.GetChild(1);
         _greengrocery = transform.GetChild(2);
+
     }
 
     public void ActiveDecisionRoad()
@@ -46,5 +47,11 @@ public class DecisionsNvl3 : MonoBehaviour
     public void ActiveGreetGreengrocery() 
     {
         _greengrocery.gameObject.SetActive(true);
+    }
+
+    public void DesactiveDecision()
+    { 
+        _kiosk.gameObject.SetActive(false);
+        _greengrocery.gameObject.SetActive(false);
     }
 }

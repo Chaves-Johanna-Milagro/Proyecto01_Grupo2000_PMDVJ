@@ -12,6 +12,7 @@ TagManager:
   - Map
   - RightBlock
   - LeftBlock
+  - Pause
   layers:
   - Default
   - TransparentFX

@@ -46,6 +46,11 @@ public class ChoiceOptGreet : MonoBehaviour // este script lo tendra kiosko/verd
     private IEnumerator Delay()
     {
         yield return new WaitForSeconds(1f);
-        gameObject.SetActive(false);
+
+        if (gameObject.name == "Kiosk") ActiveMiniGameUI.Instance.MiniGameKiosk(); 
+
+        if (gameObject.name == "Greengrocery") ActiveMiniGameUI.Instance.MiniGameGreengrocery(); 
+
+        DecisionsNvl3.Instance.DesactiveDecision();
     }
 }
