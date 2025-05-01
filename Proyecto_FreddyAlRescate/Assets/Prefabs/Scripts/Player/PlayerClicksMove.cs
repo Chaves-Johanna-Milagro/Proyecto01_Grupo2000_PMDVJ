@@ -17,9 +17,10 @@ public class PlayerClicksMove : MonoBehaviour
         if (_isMoving)
         {
             MovePlayer();
-        }
+            RotatePlayer();
+        } 
 
-        RotatePlayer();
+        DetectDecisionAndMiniGame();
     }
 
     private void MovePlayer()
@@ -32,8 +33,7 @@ public class PlayerClicksMove : MonoBehaviour
         {
             _isMoving = false;
         }
-
-
+       
     }
 
     private void RotatePlayer() 
@@ -59,5 +59,15 @@ public class PlayerClicksMove : MonoBehaviour
     {
         // Cuando colisiona con cualquier objeto, se detiene
         _isMoving = false;
+    }
+
+    public void DetectDecisionAndMiniGame() //desactivar el movimiento si esta desidiendo o en un minijuego
+    {
+        GameObject pause = GameObject.FindGameObjectWithTag("Pause");
+        GameObject decision = GameObject.FindGameObjectWithTag("Decision");
+        GameObject miniGame = GameObject.FindGameObjectWithTag("MiniGame");
+
+        if(pause != null || decision != null || miniGame != null) { _isMoving = false; }
+        
     }
 }

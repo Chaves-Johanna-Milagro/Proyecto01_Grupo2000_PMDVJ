@@ -13,7 +13,7 @@ public class PausePanel : MonoBehaviour
 
     private Vector2 _target;
 
-    private float _speed = 5f;
+    private float _speed = 8f;
 
     private bool _isPause = false;
     
@@ -23,7 +23,6 @@ public class PausePanel : MonoBehaviour
         _panel = transform.GetChild(0).GetComponent<RectTransform>();
         _panel.anchoredPosition = _up;
         _target = _up;
-
 
         _buttonContinue = _panel.transform.GetChild(0).GetComponent<Button>();
         _buttonPause = transform.GetChild(1).GetComponent<Button>();
@@ -38,14 +37,23 @@ public class PausePanel : MonoBehaviour
     {
         //movimiento suave hacia arriba
         _panel.anchoredPosition = Vector2.Lerp(_panel.anchoredPosition,_target, Time.unscaledDeltaTime * _speed);
-    
+
+
+        // Si estamos despausando y el panel ya llegó arriba, lo desactivamos
+        if (!_isPause && Vector2.Distance(_panel.anchoredPosition, _up) < 15f)
+        {
+            _panel.gameObject.SetActive(false);
+        }
     }
 
     public void Toggle()
     {
+
         _isPause = !_isPause;
         _target = _isPause ? _center : _up;
-        
+
+        if (_isPause) _panel.gameObject.SetActive(true);
+
     }
 
 }

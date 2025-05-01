@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 572030813791964111}
   m_Layer: 5
   m_Name: Greengrocery
-  m_TagString: Untagged
+  m_TagString: MiniGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -636,7 +636,7 @@ GameObject:
   - component: {fileID: 8802283758316129425}
   m_Layer: 5
   m_Name: ChoiceOptCorrect
-  m_TagString: Untagged
+  m_TagString: Decision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1334,7 +1334,7 @@ GameObject:
   - component: {fileID: 4347362834741119915}
   m_Layer: 5
   m_Name: Greengrocery
-  m_TagString: Untagged
+  m_TagString: Decision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2327,7 +2327,7 @@ GameObject:
   - component: {fileID: 7952884385473365116}
   m_Layer: 5
   m_Name: Kiosk
-  m_TagString: Untagged
+  m_TagString: Decision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4414,7 +4414,7 @@ GameObject:
   - component: {fileID: 1063519336926714133}
   m_Layer: 5
   m_Name: ChoiceOptCorrect
-  m_TagString: Untagged
+  m_TagString: Decision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6767,7 +6767,7 @@ GameObject:
   - component: {fileID: 7558071389885497812}
   m_Layer: 5
   m_Name: ChoiseRoad
-  m_TagString: Untagged
+  m_TagString: Decision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6944,11 +6944,11 @@ GameObject:
   - component: {fileID: 3766573254942819988}
   m_Layer: 5
   m_Name: Panel
-  m_TagString: Untagged
+  m_TagString: Pause
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5749501718087494659
 RectTransform:
   m_ObjectHideFlags: 0
