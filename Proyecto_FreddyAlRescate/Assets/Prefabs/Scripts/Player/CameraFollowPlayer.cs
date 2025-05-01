@@ -21,6 +21,8 @@ public class CameraFollowPlayer : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (_player == null) return;
+
         Vector3 target = new Vector3(_player.position.x, _player.position.y, transform.position.z);
 
         // Limitar dentro del fondo
