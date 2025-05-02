@@ -24,5 +24,12 @@ public class DesactiveAnimation : MonoBehaviour
         if ( miniGame != null && miniGame.activeInHierarchy) _collider2D.enabled = false;
 
         if( miniGame == null && _isClick == false) _collider2D.enabled = true;
+
+
+        GameObject pause = GameObject.FindGameObjectWithTag("Pause");
+
+        if (pause != null && pause.activeInHierarchy) _collider2D.enabled = false;
+
+        if (miniGame == null && _isClick == false) _collider2D.enabled = true;
     }
 }

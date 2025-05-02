@@ -17,9 +17,10 @@ public class PlayerClicksMove : MonoBehaviour
         if (_isMoving)
         {
             MovePlayer();
-        }
+            RotatePlayer();
+        } 
 
-        RotatePlayer();
+        DetectDecisionAndMiniGame();
     }
 
     private void MovePlayer()
@@ -32,8 +33,7 @@ public class PlayerClicksMove : MonoBehaviour
         {
             _isMoving = false;
         }
-
-
+       
     }
 
     private void RotatePlayer() 
@@ -42,7 +42,7 @@ public class PlayerClicksMove : MonoBehaviour
         Vector3 dir = GetMouseWorldPos() - transform.position;
         if (dir != Vector3.zero)
         {
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg -90f;
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
     }
@@ -59,5 +59,15 @@ public class PlayerClicksMove : MonoBehaviour
     {
         // Cuando colisiona con cualquier objeto, se detiene
         _isMoving = false;
+    }
+
+    public void DetectDecisionAndMiniGame() //desactivar el movimiento si esta desidiendo o en un minijuego
+    {
+        GameObject pause = GameObject.FindGameObjectWithTag("Pause");
+        GameObject decision = GameObject.FindGameObjectWithTag("Decision");
+        GameObject miniGame = GameObject.FindGameObjectWithTag("MiniGame");
+
+        if(pause != null || decision != null || miniGame != null) { _isMoving = false; }
+        
     }
 }

@@ -10,7 +10,7 @@ public class BarKindnessController : MonoBehaviour
     private float _maxX = 200; //limite derecho
     private float _minX = -200; //limite izquierdo
 
-    private float _amount = 20f; // la cantidad de frames que se movera
+    private float _amount = 50f; // la cantidad de frames que se movera
 
     private void Awake()
     {
