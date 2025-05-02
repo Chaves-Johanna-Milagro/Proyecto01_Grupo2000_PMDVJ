@@ -42,7 +42,7 @@ public class PlayerClicksMove : MonoBehaviour
         Vector3 dir = GetMouseWorldPos() - transform.position;
         if (dir != Vector3.zero)
         {
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg -90f;
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
     }

@@ -36,8 +36,9 @@ public class NotesSlide : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     {
         // Chequea si hay un objeto activo con tag "Minigame"
         GameObject minigame = GameObject.FindGameObjectWithTag("MiniGame");
+        GameObject pause = GameObject.FindGameObjectWithTag("Pause");
 
-        if (minigame != null && minigame.activeInHierarchy)
+        if (minigame != null && minigame.activeInHierarchy || pause != null)
         {
             // Si el minijuego está activo, mueve el panel más abajo y bloquea el slide
             _isMiniGameActive = true;
