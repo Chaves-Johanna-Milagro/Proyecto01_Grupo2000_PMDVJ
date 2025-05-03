@@ -52,7 +52,15 @@ public class PausePanel : MonoBehaviour
         _isPause = !_isPause;
         _target = _isPause ? _center : _up;
 
-        if (_isPause) _panel.gameObject.SetActive(true);
+        if (_isPause)
+        {
+            _panel.gameObject.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
 
     }
 

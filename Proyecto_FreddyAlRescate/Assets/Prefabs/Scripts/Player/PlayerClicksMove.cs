@@ -8,6 +8,8 @@ public class PlayerClicksMove : MonoBehaviour
 
     void Update()
     {
+        if (DesactiveMove()) return;
+
         if (Input.GetMouseButtonDown(0))  // Detectar el clic izquierdo
         {
             _targetPosition = GetMouseWorldPos();
@@ -19,8 +21,6 @@ public class PlayerClicksMove : MonoBehaviour
             MovePlayer();
             RotatePlayer();
         } 
-
-        DetectDecisionAndMiniGame();
     }
 
     private void MovePlayer()
@@ -61,13 +61,11 @@ public class PlayerClicksMove : MonoBehaviour
         _isMoving = false;
     }
 
-    public void DetectDecisionAndMiniGame() //desactivar el movimiento si esta desidiendo o en un minijuego
+    public bool DesactiveMove() //desactivar el movimiento si esta desidiendo o en un minijuego
     {
-        GameObject pause = GameObject.FindGameObjectWithTag("Pause");
-        GameObject decision = GameObject.FindGameObjectWithTag("Decision");
-        GameObject miniGame = GameObject.FindGameObjectWithTag("MiniGame");
+       return  GameObject.FindGameObjectWithTag("Pause") != null ||
+               GameObject.FindGameObjectWithTag("Decision") != null ||
+               GameObject.FindGameObjectWithTag("MiniGame") != null;
 
-        if(pause != null || decision != null || miniGame != null) { _isMoving = false; }
-        
     }
 }

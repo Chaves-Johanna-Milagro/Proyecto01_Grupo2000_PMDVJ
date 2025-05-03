@@ -12,8 +12,9 @@ public class NotesSlide : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private float _currentY;
     private bool _isSlip = false;
 
-    private Vector2 _miniGamePos = new Vector2(560f,-1000f);
-    private bool _isMiniGameActive = false;
+    private Vector2 _newPos = new Vector2(560f,-1000f);
+
+    private bool _isMiniGameOrPauseActive = false;
 
     private void Awake()
     {
@@ -34,32 +35,29 @@ public class NotesSlide : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
     private void Update()
     {
-        // Chequea si hay un objeto activo con tag "Minigame"
+        // Verifica si hay un objeto activo con tag "MiniGame" o "Pause"
         GameObject minigame = GameObject.FindGameObjectWithTag("MiniGame");
         GameObject pause = GameObject.FindGameObjectWithTag("Pause");
 
-        if (minigame != null && minigame.activeInHierarchy || pause != null)
-        {
-            // Si el minijuego está activo, mueve el panel más abajo y bloquea el slide
-            _isMiniGameActive = true;
-        }
-        else
-        {
-            _isMiniGameActive = false;
-        }
+        bool isMinigameActive = minigame != null && minigame.activeInHierarchy;
+        bool isPauseActive = pause != null && pause.activeInHierarchy;
 
-        // Calculamos el targetY según el estado actual
+        _isMiniGameOrPauseActive = isMinigameActive || isPauseActive;
+
+        // Determina a qué posición debe ir
         float targetY;
 
-        if (_isMiniGameActive)
+        if (_isMiniGameOrPauseActive)
         {
-            targetY = _miniGamePos.y;
+            targetY = _newPos.y;  // Se desliza hacia abajo
         }
         else
         {
-            targetY = _isSlip ? _slideY : _originalPosition.y;
+            targetY = _isSlip ? _slideY : _originalPosition.y;  // Slide al pasar el mouse
         }
-        _currentY = Mathf.Lerp(_currentY, targetY, Time.deltaTime * _slideSpeed);
+
+        // Desliza suavemente (aunque el juego esté en pausa)
+        _currentY = Mathf.Lerp(_currentY, targetY, Time.unscaledDeltaTime * _slideSpeed);
         _rectTransform.anchoredPosition = new Vector2(_originalPosition.x, _currentY);
     }
 }
