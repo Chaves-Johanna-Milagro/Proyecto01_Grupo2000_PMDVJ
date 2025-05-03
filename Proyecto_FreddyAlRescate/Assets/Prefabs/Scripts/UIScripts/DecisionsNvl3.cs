@@ -11,6 +11,7 @@ public class DecisionsNvl3 : MonoBehaviour
     private Transform _kiosk; // pa la desicion de saludar o no
     private Transform _greengrocery; // pa la desicion de saludar o no
 
+
     private void Awake()
     {
         //limita la instancia a una sola

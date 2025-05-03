@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Breackfast.unity
     guid: d7bc8a1e2199bf3448752df629daa9af
   - enabled: 1
+    path: Assets/Scenes/WayToSchool.unity
+    guid: e1fcafab2a6f0a748b5f37a403815c34
+  - enabled: 1
     path: Assets/Scenes/MainStreet.unity
     guid: de0f0041568554741a0cf297a64f9ae2
   - enabled: 1

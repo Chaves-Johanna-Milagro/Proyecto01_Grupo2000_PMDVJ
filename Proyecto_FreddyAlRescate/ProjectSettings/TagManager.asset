@@ -14,6 +14,7 @@ TagManager:
   - LeftBlock
   - Pause
   - Decision
+  - Block
   layers:
   - Default
   - TransparentFX
