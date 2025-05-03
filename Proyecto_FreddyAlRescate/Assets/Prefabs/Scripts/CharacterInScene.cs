@@ -12,6 +12,16 @@ public class CharacterInScene : MonoBehaviour
 
     private void Awake()
     {
+        string sceneName = SceneManager.GetActiveScene().name;
+
+        // Destruir si no está en las escenas permitidas
+        if (sceneName != "Morning" && sceneName != "Breackfast")
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+
         // para que solo haya una instancia
         if (Instance != null && Instance != this)
         {
