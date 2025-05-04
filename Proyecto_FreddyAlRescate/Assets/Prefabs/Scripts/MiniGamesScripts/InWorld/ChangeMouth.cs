@@ -11,9 +11,12 @@ public class ChangeMouth : MonoBehaviour
     private Transform _mouthOpen;
     private Transform _mouthChewing;
 
-    private int _count = 0;
+    private int _foodCount = 0;
+    private bool _isChewing = false;
+    private bool _napkinUsed = false;
 
-    private HashSet<Collider2D> _detectedObjects = new HashSet<Collider2D>(); // es como una lista de colliders
+    private HashSet<Collider2D> _processedFood = new HashSet<Collider2D>();
+    private bool _gameFinished = false;
 
     private void Start()
     {
@@ -26,15 +29,17 @@ public class ChangeMouth : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (!_detectedObjects.Add(other)) return; // solo si es nuevo
+        if (_gameFinished) return;
 
-        _count++;
-
-        if (_count < 3 && IsFood(other))  StartCoroutine(AnimateChewing(other));
-          
-
-        else if (_count == 3 && other.name == "Napkin")  StartCoroutine(FinishMiniGame());
- 
+        if (IsFood(other) && !_isChewing && !_processedFood.Contains(other) && _foodCount < 2)
+        {
+            StartCoroutine(AnimateChewing(other));
+        }
+        else if (other.name == "Napkin" && _foodCount >= 2 && !_napkinUsed)
+        {
+            _napkinUsed = true;
+            StartCoroutine(FinishMiniGame());
+        }
     }
 
     private bool IsFood(Collider2D obj)
@@ -44,23 +49,30 @@ public class ChangeMouth : MonoBehaviour
 
     private IEnumerator AnimateChewing(Collider2D obj)
     {
-        SetMouth(open: true);
+        _isChewing = true;
 
+        SetMouth(open: true);
         yield return new WaitForSeconds(1);
 
         obj.gameObject.SetActive(false);
+        _processedFood.Add(obj);  // Ahora sí lo agregamos porque ya fue procesado
 
         SetMouth(chewing: true);
+        yield return new WaitForSeconds(1);
+
+        SetMouth(closed: true);
+        _foodCount++;
+        _isChewing = false;
     }
 
     private IEnumerator FinishMiniGame()
     {
-        SetMouth(chewing: true);
+        _gameFinished = true;
 
+        SetMouth(chewing: true);
         yield return new WaitForSeconds(1);
 
         _miniGame.gameObject.SetActive(false);
-
         NotesController.Instance.ActiveCheck1();
         NotesController.Instance.WinLevel();
     }
