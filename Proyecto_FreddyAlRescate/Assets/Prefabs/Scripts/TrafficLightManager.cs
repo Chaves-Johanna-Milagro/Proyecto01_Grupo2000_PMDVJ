@@ -36,7 +36,8 @@ public class TrafficLightScene : MonoBehaviour
 
         // guardar el estado directamente
         PlayerPrefs.SetInt("LookedAtTrafficLight", 1);
-
+        PlayerPrefs.SetString("PendingDialogue", "semaforo");
+        
         SceneManager.LoadScene("MainStreet");
     }
 }

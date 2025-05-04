@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
+using System.Collections;
 
-public class StreetCrossingManager : MonoBehaviour
+public class MainStreetManager : MonoBehaviour
 {
     public Button trafficLightButton;
     public Button lookAroundButton;
@@ -12,6 +14,10 @@ public class StreetCrossingManager : MonoBehaviour
     private bool lookedBothWays = false;
 
     private static bool initialized = false;
+
+    [SerializeField] private GameObject parrotSpeechBubble;
+    [SerializeField] private TMP_Text parrotDialogueText;
+    [SerializeField] private float typeSpeed = 0.04f;
 
     void Start()
     {
@@ -26,6 +32,24 @@ public class StreetCrossingManager : MonoBehaviour
         trafficLightButton.onClick.AddListener(OnClickTrafficLight);
         lookAroundButton.onClick.AddListener(OnClickEyes);
         crosswalkButton.onClick.AddListener(OnClickCrosswalk);
+
+        parrotSpeechBubble.SetActive(false);
+        parrotDialogueText = parrotSpeechBubble.GetComponentInChildren<TMPro.TMP_Text>(); 
+
+
+        string pendingDialogue = PlayerPrefs.GetString("PendingDialogue", "");
+
+        if (pendingDialogue == "semaforo")
+        {
+            StartCoroutine(ShowParrotDialogue("¡MUY BIEN! MIRAR EL SEMÁFORO ES IMPORANTE PARA CRUZAR SEGURO."));
+            PlayerPrefs.SetString("PendingDialogue", "");
+        }
+        else if (pendingDialogue == "costados")
+        {
+            StartCoroutine(ShowParrotDialogue("¡EXCELENTE! MIRAR A AMBOS LADOS EVITA ACCIDENTES."));
+            PlayerPrefs.SetString("PendingDialogue", "");
+        }
+
     }
 
     void OnClickTrafficLight()
@@ -55,5 +79,20 @@ public class StreetCrossingManager : MonoBehaviour
         trafficLightButton.interactable = true;
         lookAroundButton.interactable = lookedAtTrafficLight;
         crosswalkButton.interactable = lookedAtTrafficLight && lookedBothWays;
+    }
+
+    IEnumerator ShowParrotDialogue(string message)
+    {
+        parrotSpeechBubble.SetActive(true);
+        parrotDialogueText.text = "";
+
+        foreach (char c in message.ToCharArray())
+        {
+            parrotDialogueText.text += c;
+            yield return new WaitForSeconds(typeSpeed);
+        }
+
+        yield return new WaitForSeconds(3f);
+        parrotSpeechBubble.SetActive(false);
     }
 }
