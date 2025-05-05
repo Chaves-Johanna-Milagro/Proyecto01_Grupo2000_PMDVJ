@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class ChoiceRoad : MonoBehaviour // lo tendra el cartel para elegir el camino
 {
+    private PhoneController _phoneController;
+
     private GameObject _rightBlock;
     private GameObject _leftBlock;
 
@@ -12,6 +14,8 @@ public class ChoiceRoad : MonoBehaviour // lo tendra el cartel para elegir el ca
 
     void Start()
     {
+        _phoneController = Object.FindFirstObjectByType<PhoneController>();
+
         _rightBlock = GameObject.FindGameObjectWithTag("RightBlock");
         _leftBlock = GameObject.FindGameObjectWithTag("LeftBlock");
 
@@ -24,12 +28,18 @@ public class ChoiceRoad : MonoBehaviour // lo tendra el cartel para elegir el ca
 
     public void ChoiceRoadRight()
     {
+        _phoneController.RoadRight();
+
         _rightBlock.SetActive(false);
+
         StartCoroutine(Delay());
     }
     public void ChoiceRoadLeft() 
     { 
+        _phoneController.RoadLeft();
+
         _leftBlock.SetActive(false);
+        
         StartCoroutine(Delay());
     }
 

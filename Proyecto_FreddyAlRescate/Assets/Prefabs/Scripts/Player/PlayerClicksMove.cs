@@ -8,6 +8,8 @@ public class PlayerClicksMove : MonoBehaviour
 
     void Update()
     {
+        if (DesactiveMove()) return;
+
         if (Input.GetMouseButtonDown(0))  // Detectar el clic izquierdo
         {
             _targetPosition = GetMouseWorldPos();
@@ -17,9 +19,8 @@ public class PlayerClicksMove : MonoBehaviour
         if (_isMoving)
         {
             MovePlayer();
-        }
-
-        RotatePlayer();
+            RotatePlayer();
+        } 
     }
 
     private void MovePlayer()
@@ -32,8 +33,7 @@ public class PlayerClicksMove : MonoBehaviour
         {
             _isMoving = false;
         }
-
-
+       
     }
 
     private void RotatePlayer() 
@@ -42,7 +42,7 @@ public class PlayerClicksMove : MonoBehaviour
         Vector3 dir = GetMouseWorldPos() - transform.position;
         if (dir != Vector3.zero)
         {
-            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg -90f;
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
     }
@@ -51,7 +51,7 @@ public class PlayerClicksMove : MonoBehaviour
     Vector3 GetMouseWorldPos()
     {
         Vector3 mousePoint = Input.mousePosition;
-        mousePoint.z = 10f;  // Distancia de la cámara
+        mousePoint.z = 8f;  // Distancia de la cámara
         return Camera.main.ScreenToWorldPoint(mousePoint);
     }
 
@@ -59,5 +59,13 @@ public class PlayerClicksMove : MonoBehaviour
     {
         // Cuando colisiona con cualquier objeto, se detiene
         _isMoving = false;
+    }
+
+    public bool DesactiveMove() //desactivar el movimiento si esta desidiendo o en un minijuego
+    {
+       return  GameObject.FindGameObjectWithTag("Pause") != null ||
+               GameObject.FindGameObjectWithTag("Decision") != null ||
+               GameObject.FindGameObjectWithTag("MiniGame") != null;
+
     }
 }

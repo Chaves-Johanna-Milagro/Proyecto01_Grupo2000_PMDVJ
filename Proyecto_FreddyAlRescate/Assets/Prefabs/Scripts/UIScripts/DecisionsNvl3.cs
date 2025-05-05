@@ -11,6 +11,7 @@ public class DecisionsNvl3 : MonoBehaviour
     private Transform _kiosk; // pa la desicion de saludar o no
     private Transform _greengrocery; // pa la desicion de saludar o no
 
+
     private void Awake()
     {
         //limita la instancia a una sola
@@ -32,6 +33,7 @@ public class DecisionsNvl3 : MonoBehaviour
 
         _kiosk = transform.GetChild(1);
         _greengrocery = transform.GetChild(2);
+
     }
 
     public void ActiveDecisionRoad()
@@ -46,5 +48,11 @@ public class DecisionsNvl3 : MonoBehaviour
     public void ActiveGreetGreengrocery() 
     {
         _greengrocery.gameObject.SetActive(true);
+    }
+
+    public void DesactiveDecision()
+    { 
+        _kiosk.gameObject.SetActive(false);
+        _greengrocery.gameObject.SetActive(false);
     }
 }

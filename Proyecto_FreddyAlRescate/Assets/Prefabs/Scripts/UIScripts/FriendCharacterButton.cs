@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class FriendCharacterButton : MonoBehaviour
 {
@@ -31,6 +32,13 @@ public class FriendCharacterButton : MonoBehaviour
         "¡LA APP PODRIA AYUDARNOS!",
         "¡ES BUENO SALUDAR A LOS VECINOS!",
 
+    };
+
+    private string[] _indicationsTextNvl3 = new string[]
+    {
+        "PRIMERO ELIJAMOS UN CAMINO",
+        "NO ES TIEMPO DE DISTRACCIONES",
+        "QUE TAL SI COMPRAMOS ALGO PARA COMER"
     };
 
     private bool _hasBeenActivated = false;
@@ -76,5 +84,28 @@ public class FriendCharacterButton : MonoBehaviour
             string randomLine = randomTextNvl3[Random.Range(0, randomTextNvl3.Length)];
             _textComponent.text = randomLine;
         }
+
+        StartCoroutine(DelayDesactive());
+    }
+
+    public void IndicationsForThePlayer(string nameBlock)
+    {
+        _globoImage.SetActive(true);
+        _textObj.SetActive(true);
+        _hasBeenActivated = true;
+        if (nameBlock == "BlockArrow") _textComponent.text = _indicationsTextNvl3[0];
+        if (nameBlock == "RightBlock" || nameBlock == "LeftBlock") _textComponent.text = _indicationsTextNvl3[1];
+        if (nameBlock == "Block") _textComponent.text = _indicationsTextNvl3[2];
+
+        StartCoroutine(DelayDesactive());
+        
+    }
+
+    private IEnumerator DelayDesactive() 
+    { 
+        yield return new WaitForSeconds(5f);
+        _globoImage.SetActive(false);
+        _textObj.SetActive(false);
+        _hasBeenActivated = false;
     }
 }
