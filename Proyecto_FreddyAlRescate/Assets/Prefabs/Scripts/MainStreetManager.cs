@@ -17,6 +17,9 @@ public class MainStreetManager : MonoBehaviour
 
     [SerializeField] private GameObject parrotSpeechBubble;
     [SerializeField] private TMP_Text parrotDialogueText;
+    [SerializeField] private GameObject childSpeechBubble;
+    [SerializeField] private TMP_Text childDialogueText;
+    private static bool childIntroShown = false;
     [SerializeField] private float typeSpeed = 0.04f;
 
     void Start()
@@ -48,6 +51,15 @@ public class MainStreetManager : MonoBehaviour
         {
             StartCoroutine(ShowParrotDialogue("¡EXCELENTE! MIRAR A AMBOS LADOS EVITA ACCIDENTES."));
             PlayerPrefs.SetString("PendingDialogue", "");
+        }
+
+        childSpeechBubble.SetActive(false);
+        childDialogueText = childSpeechBubble.GetComponentInChildren<TMP_Text>();
+
+        if (!childIntroShown)
+        {
+            childIntroShown = true;
+            StartCoroutine(ShowChildDialogue("TENGO QUE TOMAR EL COLECTIVO PERO DEBO CRUZAR ESTA CALLE ¿QUÉ TENÍA QUE HACER PRIMERO?."));
         }
 
     }
@@ -94,5 +106,20 @@ public class MainStreetManager : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
         parrotSpeechBubble.SetActive(false);
+    }
+
+    IEnumerator ShowChildDialogue(string message)
+    {
+        childSpeechBubble.SetActive(true);
+        childDialogueText.text = "";
+
+        foreach (char c in message.ToCharArray())
+        {
+            childDialogueText.text += c;
+            yield return new WaitForSeconds(typeSpeed);
+        }
+
+        yield return new WaitForSeconds(8f);
+        childSpeechBubble.SetActive(false);
     }
 }

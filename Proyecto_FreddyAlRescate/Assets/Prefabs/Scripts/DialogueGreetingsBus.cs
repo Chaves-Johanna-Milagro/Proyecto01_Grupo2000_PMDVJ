@@ -6,16 +6,16 @@ using System.Collections;
 
 public class DialogueGreetingsBus : MonoBehaviour
 {
-    public GameObject greetButton;
-    public GameObject stayQuietButton;
+    [SerializeField] private GameObject greetButton;
+    [SerializeField] private GameObject stayQuietButton;
 
-    public GameObject childSpeechBubble;
-    public TMP_Text childDialogueText;
+    [SerializeField] private GameObject childSpeechBubble;
+    [SerializeField] private TMP_Text childDialogueText;
 
-    public GameObject driverSpeechBubble;
-    public TMP_Text driverDialogueText;
+    [SerializeField] private GameObject driverSpeechBubble;
+    [SerializeField] private TMP_Text driverDialogueText;
 
-    public float typeSpeed = 0.05f; // velocidad entre letras
+    [SerializeField] private float typeSpeed = 0.05f; // velocidad entre letras
 
     void Start()
     {
