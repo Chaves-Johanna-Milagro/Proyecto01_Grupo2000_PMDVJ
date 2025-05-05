@@ -9,7 +9,7 @@ public class LookBothWaysManager : MonoBehaviour
     [SerializeField] private GameObject panel2;
     
 
-    [SerializeField] private float delay = 2f;
+    [SerializeField] private float delay = 1f;
 
 
     void Start()
@@ -34,6 +34,7 @@ public class LookBothWaysManager : MonoBehaviour
 
         // se guarda el estado directamente
         PlayerPrefs.SetInt("LookedBothWays", 1);
+        PlayerPrefs.SetString("PendingDialogue", "costados");
 
         SceneManager.LoadScene("MainStreet");
     }

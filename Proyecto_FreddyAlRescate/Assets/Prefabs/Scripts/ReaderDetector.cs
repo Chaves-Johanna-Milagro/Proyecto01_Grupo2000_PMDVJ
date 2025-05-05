@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class ReaderDetector : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class ReaderDetector : MonoBehaviour
     private GameObject subeCard;
     private bool paymentSuccessful = false;
     private bool showedFailure = false;
-    
+    [SerializeField] private TMP_Text payText;
 
     public Animator checkAnimator;
     public Animator crossAnimator;
@@ -54,7 +55,15 @@ public class ReaderDetector : MonoBehaviour
             
                 checkAnimator.SetTrigger("Successful");
                 StartCoroutine(LoadFinalScene());
+
+                if (payText != null)
+                {
+                    payText.text = "PAGO EXITOSO";
+                    payText.gameObject.SetActive(true);
+                }
             }
+
+
         }
         else 
         {
@@ -75,7 +84,7 @@ public class ReaderDetector : MonoBehaviour
 
 IEnumerator ResetCross()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         if (crossAnimator != null)
         {
             crossAnimator.SetTrigger("Reset"); // Esto vuelve al estado gris
