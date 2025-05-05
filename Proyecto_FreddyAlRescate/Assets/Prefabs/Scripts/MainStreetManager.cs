@@ -59,7 +59,7 @@ public class MainStreetManager : MonoBehaviour
         if (!childIntroShown)
         {
             childIntroShown = true;
-            StartCoroutine(ShowChildDialogue("TENGO QUE TOMAR EL COLECTIVO PERO DEBO CRUZAR ESTA CALLE ¿QUÉ TENÍA QUE HACER PRIMERO?."));
+            StartCoroutine(ShowChildDialogue("TENGO QUE TOMAR EL COLECTIVO PERO DEBO CRUZAR ESTA CALLE ¿QUÉ TENGO QUE HACER PRIMERO?."));
         }
 
     }

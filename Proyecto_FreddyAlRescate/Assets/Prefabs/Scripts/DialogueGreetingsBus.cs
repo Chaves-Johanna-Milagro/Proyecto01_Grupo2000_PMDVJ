@@ -46,7 +46,7 @@ public class DialogueGreetingsBus : MonoBehaviour
 
         childSpeechBubble.SetActive(false);
         driverSpeechBubble.SetActive(true);
-        yield return StartCoroutine(TypeText(driverDialogueText, "¡HOLA JOVEN! PASA POR FAVOR"));
+        yield return StartCoroutine(TypeText(driverDialogueText, "¡HOLA JOVEN! PASE POR FAVOR."));
 
         yield return new WaitForSeconds(4f);
         SceneManager.LoadScene("MinigameSube");
@@ -61,7 +61,7 @@ public class DialogueGreetingsBus : MonoBehaviour
 
         childSpeechBubble.SetActive(false);
         driverSpeechBubble.SetActive(true);
-        yield return StartCoroutine(TypeText(driverDialogueText, "ADELANTE, POR FAVOR"));
+        yield return StartCoroutine(TypeText(driverDialogueText, "ADELANTE, POR FAVOR."));
 
         yield return new WaitForSeconds(4f);
         SceneManager.LoadScene("MinigameSube");

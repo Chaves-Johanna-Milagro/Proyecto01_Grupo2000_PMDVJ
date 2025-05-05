@@ -84,7 +84,7 @@ public class ReaderDetector : MonoBehaviour
 
 IEnumerator ResetCross()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         if (crossAnimator != null)
         {
             crossAnimator.SetTrigger("Reset"); // Esto vuelve al estado gris
