@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Audio;
 
 public class PhoneSlide : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     private float _slideY = -200f;   // Y final al apoyar el cursor
     private float _slideSpeed = 5f;
+    public AudioSource phoneNoti;
 
     private RectTransform _rectTransform;
     private Vector2 _originalPosition;
@@ -25,6 +27,7 @@ public class PhoneSlide : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnPointerEnter(PointerEventData eventData)
     {
         _isSlip = true;
+        phoneNoti.Play();
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -39,7 +42,7 @@ public class PhoneSlide : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
 
         if (minigame != null && minigame.activeInHierarchy)
         {
-            // Si el minijuego est· activo, mueve el panel m·s abajo y bloquea el slide
+            // Si el minijuego estÅEactivo, mueve el panel m·s abajo y bloquea el slide
             _isMiniGameActive = true;
         }
         else

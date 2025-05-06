@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class ChangeMouth : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class ChangeMouth : MonoBehaviour
 
     private HashSet<Collider2D> _processedFood = new HashSet<Collider2D>();
     private bool _gameFinished = false;
+    public AudioSource eatingSound;
 
     private void Start()
     {
@@ -34,6 +36,8 @@ public class ChangeMouth : MonoBehaviour
         if (IsFood(other) && !_isChewing && !_processedFood.Contains(other) && _foodCount < 2)
         {
             StartCoroutine(AnimateChewing(other));
+            eatingSound.Play();
+
         }
         else if (other.name == "Napkin" && _foodCount >= 2 && !_napkinUsed)
         {
@@ -55,7 +59,7 @@ public class ChangeMouth : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         obj.gameObject.SetActive(false);
-        _processedFood.Add(obj);  // Ahora sÌ lo agregamos porque ya fue procesado
+        _processedFood.Add(obj);  // Ahora sÅElo agregamos porque ya fue procesado
 
         SetMouth(chewing: true);
         yield return new WaitForSeconds(1);
