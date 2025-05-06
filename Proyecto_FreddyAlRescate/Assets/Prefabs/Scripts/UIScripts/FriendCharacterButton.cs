@@ -3,12 +3,14 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.Audio;
 
 public class FriendCharacterButton : MonoBehaviour
 {
     private GameObject _globoImage;
     private GameObject _textObj;
     private TextMeshProUGUI _textComponent;
+    public AudioSource aftonChirp;
 
     private string[] randomTextNvl1 = new string[]
     {
@@ -45,7 +47,7 @@ public class FriendCharacterButton : MonoBehaviour
 
     private void Start()
     {
-        // Obtiene los hijos por índice
+        // Obtiene los hijos por ú‹dice
         _globoImage = transform.GetChild(0).gameObject;
         _textObj = transform.GetChild(1).gameObject;
 
@@ -86,6 +88,8 @@ public class FriendCharacterButton : MonoBehaviour
         }
 
         StartCoroutine(DelayDesactive());
+        aftonChirp.Play();
+        
     }
 
     public void IndicationsForThePlayer(string nameBlock)

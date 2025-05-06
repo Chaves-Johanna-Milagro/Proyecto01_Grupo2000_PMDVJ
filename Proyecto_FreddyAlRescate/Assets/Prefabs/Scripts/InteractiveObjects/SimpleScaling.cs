@@ -9,6 +9,7 @@ public class SimpleScaling : MonoBehaviour
 
     private Vector3 _originalScale;
     private Vector3 _targetScale;  //la escala aumentada
+    public AudioSource hoverButton;
 
     private bool _isScaling = false;
     
@@ -25,7 +26,7 @@ public class SimpleScaling : MonoBehaviour
     private void OnMouseEnter()
     {
         _isScaling = true;
-       // hoverButton.Play();
+        hoverButton.Play();
     }
 
     private void OnMouseExit()
