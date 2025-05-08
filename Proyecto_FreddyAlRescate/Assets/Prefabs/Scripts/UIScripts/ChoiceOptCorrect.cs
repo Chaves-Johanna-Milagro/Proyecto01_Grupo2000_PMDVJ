@@ -21,15 +21,18 @@ public class ChoiceOptCorrect : MonoBehaviour //se encargara se cambiara el pers
     public void ChoiceOpt1() 
     {
         ActiveMiniGameUI.Instance.DesactiveMiniGame();
+        BarKindnessController.Instance.BadDecision();
     }
     public void ChoiceOpt2()
     {
 
         ActiveMiniGameUI.Instance.DesactiveMiniGame();
+        BarKindnessController.Instance.GoodDecision();//pa que suba la barra si elige bien
 
     }
     public void ChoiceOpt3()
     {
         ActiveMiniGameUI.Instance.DesactiveMiniGame();
+        BarKindnessController.Instance.BadDecision();
     }
 }
