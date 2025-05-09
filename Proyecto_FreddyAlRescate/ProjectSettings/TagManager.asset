@@ -15,6 +15,7 @@ TagManager:
   - Pause
   - Decision
   - Block
+  - Music
   layers:
   - Default
   - TransparentFX
