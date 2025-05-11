@@ -26,7 +26,7 @@ public class SimpleScaling : MonoBehaviour
     private void OnMouseEnter()
     {
         _isScaling = true;
-        hoverButton.Play();
+        if (hoverButton != null) hoverButton.Play();
     }
 
     private void OnMouseExit()
