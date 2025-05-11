@@ -16,6 +16,7 @@ TagManager:
   - Decision
   - Block
   - Music
+  - Interactuable
   layers:
   - Default
   - TransparentFX
