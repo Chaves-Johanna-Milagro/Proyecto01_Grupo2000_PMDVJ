@@ -3,43 +3,40 @@ using UnityEngine.UI;
 
 public class MiniMenu : MonoBehaviour
 {
-    private GameObject _BPause;
-    private GameObject _BNotes;
-    private GameObject _BKindness;
-    private GameObject _BAfton;
+    // Índices:
+    // [0] = Botón de Pausa
+    // [1] = Botón de Notas
+    // [2] = Botón de Kindness
+    // [3] = Botón de Afton
+    private GameObject[] _buttons;
 
     private Button _BMiniMenu;
 
-    private bool _isActive = false;
+    private bool _isActive = true;
+
     void Start()
     {
-        _BPause = transform.GetChild(0).gameObject;
-        _BNotes = transform.GetChild(1).gameObject;
-        _BKindness = transform.GetChild(2).gameObject;
-        _BAfton = transform.GetChild(3).gameObject;
+        // Inicializamos el array con 4 elementos (los hijos del menú)
+        _buttons = new GameObject[4];
+
+        for (int i = 0; i < 4; i++)
+        {
+            _buttons[i] = transform.GetChild(i).gameObject;
+            _buttons[i].SetActive(false); //desactivados al inicio
+        }
 
         _BMiniMenu = GetComponent<Button>();
-
         _BMiniMenu.onClick.AddListener(Toggle);
     }
 
-    public void Toggle() 
+    public void Toggle()
     {
         _isActive = !_isActive;
 
-        if (_isActive)
+        for (int i = 0; i < _buttons.Length; i++)
         {
-            _BPause.SetActive(false);
-            _BNotes.SetActive(false);
-            _BKindness.SetActive(false);
-            _BAfton.SetActive(false);
-        }
-        else
-        {
-            _BPause.SetActive(true);
-            _BNotes.SetActive(true);
-            _BKindness.SetActive(true);
-            _BAfton.SetActive(true);
+            // Activamos o desactivamos todos los botones según el estado
+            _buttons[i].SetActive(!_isActive);
         }
     }
 }
