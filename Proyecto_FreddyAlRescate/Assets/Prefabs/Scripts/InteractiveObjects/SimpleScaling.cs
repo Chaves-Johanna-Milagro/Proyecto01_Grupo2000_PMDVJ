@@ -9,11 +9,11 @@ public class SimpleScaling : MonoBehaviour
 
     private Vector3 _originalScale;
     private Vector3 _targetScale;  //la escala aumentada
-    public AudioSource hoverButton;
-
+   
     private bool _isScaling = false;
+
+    public AudioSource hoverButton;
     
-   // public AudioSource hoverButton;
 
     private void Start()
     {
@@ -36,6 +36,9 @@ public class SimpleScaling : MonoBehaviour
 
     private void Update()
     {
+        if (CharacterBlockMoveUI.IsPointerOverUI()) _isScaling = false; //si el cursor esta sobre la UI se desactiva la escala
+
+
         // Elige la escala objetivo dependiendo del estado del mouse (si paso sobre el obj)
         Vector3 targetScaling = _isScaling ? _targetScale : _originalScale;
 
