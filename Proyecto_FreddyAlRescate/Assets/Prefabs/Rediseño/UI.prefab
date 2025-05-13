@@ -1823,6 +1823,7 @@ GameObject:
   - component: {fileID: 3862738584650064887}
   - component: {fileID: 4980396686758543095}
   - component: {fileID: 1220723374337674797}
+  - component: {fileID: 6478689962404811204}
   m_Layer: 5
   m_Name: BKindness
   m_TagString: Untagged
@@ -1957,6 +1958,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2cbb73a78f66e1d47b3d8235f93e70dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6478689962404811204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6533794166725276294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8266205bf6a0b2141adaa757dacc338b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6656158168629722869
