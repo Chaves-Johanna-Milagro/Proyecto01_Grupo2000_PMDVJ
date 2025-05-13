@@ -25,6 +25,10 @@ public class SimpleScaling : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        // Verifica si el juego está en pausa antes de procesar el click
+        if (PauseStatus.IsPaused)
+            return;
+
         _isScaling = true;
         if (hoverButton != null) hoverButton.Play();
     }

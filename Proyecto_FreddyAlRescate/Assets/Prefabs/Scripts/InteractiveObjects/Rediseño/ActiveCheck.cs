@@ -15,6 +15,9 @@ public class ActiveCheck : MonoBehaviour
 
     public void OnMouseDown()
     {
+        // Verifica si el juego está en pausa antes de procesar el click
+        if (PauseStatus.IsPaused)
+            return;
 
         if (_objName == "Bed" || _objName == "Diningroom") _check.Check1();
 

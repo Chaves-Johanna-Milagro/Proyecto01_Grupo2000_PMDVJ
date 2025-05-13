@@ -34,15 +34,26 @@ public class BNotesChecks : MonoBehaviour
         UpdateChecks();
     }
 
+    private void Update()
+    {
+        if (PauseStatus.IsPaused && _isActive)
+        {
+            _isActive = false;
+            _imgChecks.SetActive(false);
+        }
+    }
+
     public void ActiveChecks()
     {
+        if (PauseStatus.IsPaused) return;
+
         _isActive = !_isActive;
         _imgChecks.SetActive(_isActive);
     }
 
     public void Check1()
     {
-        ChecksStatus.SetCheckActive(_sceneName,0);
+        ChecksStatus.SetCheckActive(_sceneName, 0);
         UpdateChecks();
     }
 
@@ -57,6 +68,7 @@ public class BNotesChecks : MonoBehaviour
         ChecksStatus.SetCheckActive(_sceneName, 2);
         UpdateChecks();
     }
+
     private void UpdateChecks()
     {
         bool[] current = ChecksStatus.GetChecksForScene(_sceneName);

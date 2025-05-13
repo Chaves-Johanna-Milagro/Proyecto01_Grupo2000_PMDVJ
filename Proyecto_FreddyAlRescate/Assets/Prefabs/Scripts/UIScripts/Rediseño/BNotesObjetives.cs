@@ -27,6 +27,17 @@ public class BNotesObjetives : MonoBehaviour
         _buttonActive.onClick.AddListener(ActveObjetives);
     }
 
+
+    void Update()
+    {
+        if (PauseStatus.IsPaused && _active)
+        {
+            _active = false;
+            _objNvl1.SetActive(false);
+            _objNvl2.SetActive(false);
+        }
+    }
+
     public void ActveObjetives()
     {
         _active = !_active;
@@ -44,7 +55,7 @@ public class BNotesObjetives : MonoBehaviour
     public void ShowByScene()
     {
         if (_sceneName == "Morning2.0") ObjNvl1();
-        if (_sceneName == "Breackfast2.0") ObjNvl2();
+        else if (_sceneName == "Breackfast2.0") ObjNvl2();
     }
 
     public void ObjNvl1()

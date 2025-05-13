@@ -26,13 +26,28 @@ public class BKindness : MonoBehaviour
         _BKind.onClick.AddListener(Toggle);
     }
 
+
+    void Update()
+    {
+        if (PauseStatus.IsPaused && _isActive)
+        {
+            _isActive = false;
+            for (int i = 0; i < _count; i++)
+            {
+                _imgs[i].SetActive(false);
+            }
+        }
+    }
+
     public void Toggle()
     {
+        if (PauseStatus.IsPaused) return;
+
         _isActive = !_isActive;
 
         for (int i = 0; i < _count; i++)
         {
-            _imgs[i].SetActive(_isActive); // activa o desactiva según el estado
+            _imgs[i].SetActive(_isActive);
         }
     }
 }

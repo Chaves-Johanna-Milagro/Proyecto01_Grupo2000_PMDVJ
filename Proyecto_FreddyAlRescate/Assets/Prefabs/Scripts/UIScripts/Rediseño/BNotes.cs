@@ -8,7 +8,7 @@ public class BNotes : MonoBehaviour
     
     private Button _BNotes;
 
-    private bool _isActive = true;
+    private bool _isActive = false;
     void Start()
     {
         _img = transform.GetChild(0).gameObject;
@@ -22,19 +22,23 @@ public class BNotes : MonoBehaviour
         _BNotes.onClick.AddListener(Toggle);
     }
 
+
+    void Update()
+    {
+        // Si el juego está pausado y hay algo activo, lo cerramos
+        if (PauseStatus.IsPaused && _isActive)
+        {
+            _img.SetActive(false);
+            _text.SetActive(false);
+            _isActive = false;
+        }
+    }
+
     public void Toggle()
     {
         _isActive = !_isActive;
 
-        if (_isActive)
-        {
-            _img.SetActive(false);
-            _text.SetActive(false);
-        }
-        else
-        {
-            _img.SetActive(true);
-            _text.SetActive(true);
-        }
+        _img.SetActive(_isActive);
+        _text.SetActive(_isActive);
     }
 }
