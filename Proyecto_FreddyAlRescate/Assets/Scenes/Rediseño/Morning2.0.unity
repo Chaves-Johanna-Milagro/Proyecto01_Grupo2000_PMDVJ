@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 403888308}
   - component: {fileID: 403888307}
   - component: {fileID: 403888309}
+  - component: {fileID: 403888310}
   m_Layer: 0
   m_Name: Cupboard
   m_TagString: Interactuable
@@ -357,6 +358,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dad0cf1dcb6b09042a1dfc6af0101287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &403888310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403888304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222ad7aacaec5b341a93620359b11a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1115366476
@@ -643,6 +656,7 @@ GameObject:
   - component: {fileID: 1241550071}
   - component: {fileID: 1241550070}
   - component: {fileID: 1241550072}
+  - component: {fileID: 1241550073}
   m_Layer: 0
   m_Name: Bed
   m_TagString: Interactuable
@@ -789,6 +803,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dad0cf1dcb6b09042a1dfc6af0101287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1241550073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241550067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222ad7aacaec5b341a93620359b11a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1517342120
@@ -1046,7 +1072,6 @@ GameObject:
   - component: {fileID: 1853937919}
   - component: {fileID: 1853937918}
   - component: {fileID: 1853937923}
-  - component: {fileID: 1853937924}
   m_Layer: 0
   m_Name: DoorDiningroom
   m_TagString: Interactuable
@@ -1207,18 +1232,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b7a51003b65bab42a223670de4a0666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1853937924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1853937917}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 772fcf681826d6d43bb684965a8a5385, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1862797854
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,6 +1245,7 @@ GameObject:
   - component: {fileID: 1862797858}
   - component: {fileID: 1862797857}
   - component: {fileID: 1862797859}
+  - component: {fileID: 1862797860}
   m_Layer: 0
   m_Name: Bathroom
   m_TagString: Interactuable
@@ -1378,6 +1392,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dad0cf1dcb6b09042a1dfc6af0101287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1862797860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1862797854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 222ad7aacaec5b341a93620359b11a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
