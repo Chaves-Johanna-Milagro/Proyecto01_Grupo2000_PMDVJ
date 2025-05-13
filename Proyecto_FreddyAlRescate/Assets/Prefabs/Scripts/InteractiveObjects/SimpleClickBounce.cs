@@ -16,7 +16,7 @@ public class SimpleClickBounce : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!_isBouncing)
+        if (!_isBouncing && !CharacterBlockMoveUI.IsPointerOverUI()) //pa que no rebote si se clickea en la UI
             StartCoroutine(DoBounce());
     }
 

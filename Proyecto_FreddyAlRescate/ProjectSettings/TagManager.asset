@@ -17,6 +17,7 @@ TagManager:
   - Block
   - Music
   - Interactuable
+  - Room
   layers:
   - Default
   - TransparentFX
