@@ -40,7 +40,7 @@ public class SimpleScaling : MonoBehaviour
 
     private void Update()
     {
-        if (CharacterBlockMoveUI.IsPointerOverUI()) _isScaling = false; //si el cursor esta sobre la UI se desactiva la escala
+        if (CursorStatusInUI.IsPointerOverUI()) _isScaling = false; //si el cursor esta sobre la UI se desactiva la escala
 
         if (MiniGameStatus.ActiveMiniGame()) _isScaling = false; //si esta en un minijuego desactive la escala
 

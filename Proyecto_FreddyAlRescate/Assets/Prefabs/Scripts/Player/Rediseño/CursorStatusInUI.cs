@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public static class CharacterBlockMoveUI
+public static class CursorStatusInUI
 {
     // Devuelve true si el mouse está sobre cualquier UI
     public static bool IsPointerOverUI()

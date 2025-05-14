@@ -13,7 +13,7 @@ public class CharacterPointMove : MonoBehaviour
     {
         if (MiniGameStatus.ActiveMiniGame()) return; //evitar el movimiento si hay un minijuego
 
-        if (Input.GetMouseButtonDown(0) && !(ClicEnInteractuable() || CharacterBlockMoveUI.IsPointerOverUI())) //para que no se mueva si clickeo en un obj interactuable o en la UI
+        if (Input.GetMouseButtonDown(0) && !(ClicEnInteractuable() || CursorStatusInUI.IsPointerOverUI())) //para que no se mueva si clickeo en un obj interactuable o en la UI
         {
             // Convertir la posición del mouse a coordenadas del mundo
             Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);

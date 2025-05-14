@@ -21,7 +21,7 @@ public class SimpleClickBounce : MonoBehaviour
             
         if (MiniGameStatus.ActiveMiniGame()) return; // si esta un mini juego no procese el click
 
-        if (!_isBouncing && !CharacterBlockMoveUI.IsPointerOverUI()) //pa que no rebote si se clickea en la UI
+        if (!_isBouncing && !CursorStatusInUI.IsPointerOverUI()) //pa que no rebote si se clickea en la UI
             StartCoroutine(DoBounce());
     }
 
