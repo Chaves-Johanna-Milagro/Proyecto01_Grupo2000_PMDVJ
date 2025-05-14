@@ -132,7 +132,6 @@ GameObject:
   - component: {fileID: 330590348}
   - component: {fileID: 330590347}
   - component: {fileID: 330590346}
-  - component: {fileID: 330590351}
   m_Layer: 0
   m_Name: DoorStreet
   m_TagString: Interactuable
@@ -281,18 +280,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
---- !u!114 &330590351
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 330590345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4a61906a84d6df489a073499d7ea82a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &612865971
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,7 +502,6 @@ GameObject:
   - component: {fileID: 1245940767}
   - component: {fileID: 1245940766}
   - component: {fileID: 1245940769}
-  - component: {fileID: 1245940770}
   m_Layer: 0
   m_Name: DoorRoom
   m_TagString: Interactuable
@@ -676,18 +662,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b7a51003b65bab42a223670de4a0666, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1245940770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1245940763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4a61906a84d6df489a073499d7ea82a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1301005154
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,7 +676,6 @@ GameObject:
   - component: {fileID: 1301005158}
   - component: {fileID: 1301005157}
   - component: {fileID: 1301005160}
-  - component: {fileID: 1301005161}
   m_Layer: 0
   m_Name: Diningroom
   m_TagString: Interactuable
@@ -863,18 +836,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 222ad7aacaec5b341a93620359b11a82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1301005161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1301005154}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4a61906a84d6df489a073499d7ea82a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1459092466
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,7 +987,6 @@ GameObject:
   - component: {fileID: 1656708309}
   - component: {fileID: 1656708308}
   - component: {fileID: 1656708311}
-  - component: {fileID: 1656708312}
   m_Layer: 0
   m_Name: Backpack
   m_TagString: Interactuable
@@ -1185,18 +1145,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 222ad7aacaec5b341a93620359b11a82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1656708312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1656708305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4a61906a84d6df489a073499d7ea82a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1732032676

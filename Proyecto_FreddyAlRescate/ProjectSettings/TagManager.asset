@@ -18,6 +18,8 @@ TagManager:
   - Music
   - Interactuable
   - Room
+  - Kindness
+  - Notes
   layers:
   - Default
   - TransparentFX

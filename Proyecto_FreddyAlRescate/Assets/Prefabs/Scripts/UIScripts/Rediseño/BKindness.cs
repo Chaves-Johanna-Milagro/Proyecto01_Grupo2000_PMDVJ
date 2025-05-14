@@ -1,3 +1,4 @@
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,15 +28,13 @@ public class BKindness : MonoBehaviour
     }
 
 
+
     void Update()
     {
         if (PauseStatus.IsPaused && _isActive)
         {
             _isActive = false;
-            for (int i = 0; i < _count; i++)
-            {
-                _imgs[i].SetActive(false);
-            }
+            SetActive(false);
         }
     }
 
@@ -43,11 +42,19 @@ public class BKindness : MonoBehaviour
     {
         if (PauseStatus.IsPaused) return;
 
-        _isActive = !_isActive;
+        GameObject notes = GameObject.FindWithTag("Notes");
 
+        if (notes != null && notes.activeInHierarchy) return; // No se activa si Notes está activo
+
+        _isActive = !_isActive;
+        SetActive(_isActive);
+    }
+
+    private void SetActive(bool state)
+    {
         for (int i = 0; i < _count; i++)
         {
-            _imgs[i].SetActive(_isActive);
+            _imgs[i].SetActive(state);
         }
     }
 }

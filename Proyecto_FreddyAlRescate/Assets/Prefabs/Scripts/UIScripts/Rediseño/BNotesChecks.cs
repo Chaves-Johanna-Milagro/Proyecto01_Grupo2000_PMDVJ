@@ -47,6 +47,10 @@ public class BNotesChecks : MonoBehaviour
     {
         if (PauseStatus.IsPaused) return;
 
+        GameObject kindness = GameObject.FindWithTag("Kindness");
+
+        if (kindness != null && kindness.activeInHierarchy) return; // No se activa si Kindness está activo
+
         _isActive = !_isActive;
         _imgChecks.SetActive(_isActive);
     }

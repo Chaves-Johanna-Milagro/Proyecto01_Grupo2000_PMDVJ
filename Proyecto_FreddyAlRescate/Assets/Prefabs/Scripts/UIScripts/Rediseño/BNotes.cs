@@ -22,23 +22,31 @@ public class BNotes : MonoBehaviour
         _BNotes.onClick.AddListener(Toggle);
     }
 
-
     void Update()
     {
-        // Si el juego está pausado y hay algo activo, lo cerramos
         if (PauseStatus.IsPaused && _isActive)
         {
-            _img.SetActive(false);
-            _text.SetActive(false);
             _isActive = false;
+            SetActive(false);
         }
     }
 
     public void Toggle()
     {
-        _isActive = !_isActive;
+        if (PauseStatus.IsPaused) return;
 
-        _img.SetActive(_isActive);
-        _text.SetActive(_isActive);
+        GameObject kindness = GameObject.FindWithTag("Kindness");
+
+        if (kindness != null && kindness.activeInHierarchy) return;    // No se activa si Kindness está activo
+       
+
+        _isActive = !_isActive;
+        SetActive(_isActive);
+    }
+
+    private void SetActive(bool state)
+    {
+        _img.SetActive(state);
+        _text.SetActive(state);
     }
 }

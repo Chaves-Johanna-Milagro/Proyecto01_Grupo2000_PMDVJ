@@ -30,22 +30,27 @@ public class BNotesObjetives : MonoBehaviour
 
     void Update()
     {
+
         if (PauseStatus.IsPaused && _active)
         {
             _active = false;
-            _objNvl1.SetActive(false);
-            _objNvl2.SetActive(false);
+            Desactive();
         }
     }
 
     public void ActveObjetives()
     {
+        if (PauseStatus.IsPaused) return;
+
+        GameObject kindness = GameObject.FindWithTag("Kindness");
+
+        if (kindness != null && kindness.activeInHierarchy) return; // No se activa si Kindness está activo
+
         _active = !_active;
 
         if (!_active)
         {
-            _objNvl1.SetActive(false);
-            _objNvl2.SetActive(false);
+            Desactive();
             return;
         }
 
@@ -68,5 +73,11 @@ public class BNotesObjetives : MonoBehaviour
     {
         _objNvl1.SetActive(false);
         _objNvl2.SetActive(true);
+    }
+
+    private void Desactive()
+    {
+        _objNvl1.SetActive(false);
+        _objNvl2.SetActive(false);
     }
 }
