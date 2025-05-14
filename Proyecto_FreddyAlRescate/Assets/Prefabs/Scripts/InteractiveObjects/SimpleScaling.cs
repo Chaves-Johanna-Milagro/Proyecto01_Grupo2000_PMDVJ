@@ -42,6 +42,8 @@ public class SimpleScaling : MonoBehaviour
     {
         if (CharacterBlockMoveUI.IsPointerOverUI()) _isScaling = false; //si el cursor esta sobre la UI se desactiva la escala
 
+        if (MiniGameStatus.ActiveMiniGame()) _isScaling = false; //si esta en un minijuego desactive la escala
+
 
         // Elige la escala objetivo dependiendo del estado del mouse (si paso sobre el obj)
         Vector3 targetScaling = _isScaling ? _targetScale : _originalScale;
@@ -49,4 +51,5 @@ public class SimpleScaling : MonoBehaviour
         // Transición suave hacia la escala objetivo
         transform.localScale = Vector3.Lerp(transform.localScale, targetScaling, Time.deltaTime * _scaleSpeed);
     }
+
 }

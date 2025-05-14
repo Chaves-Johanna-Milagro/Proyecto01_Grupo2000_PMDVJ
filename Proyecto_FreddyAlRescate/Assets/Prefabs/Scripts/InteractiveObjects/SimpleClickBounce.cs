@@ -17,8 +17,9 @@ public class SimpleClickBounce : MonoBehaviour
     private void OnMouseDown()
     {
         // Verifica si el juego está en pausa antes de procesar el click
-        if (PauseStatus.IsPaused)
-            return;
+        if (PauseStatus.IsPaused) return;
+            
+        if (MiniGameStatus.ActiveMiniGame()) return; // si esta un mini juego no procese el click
 
         if (!_isBouncing && !CharacterBlockMoveUI.IsPointerOverUI()) //pa que no rebote si se clickea en la UI
             StartCoroutine(DoBounce());
@@ -52,4 +53,5 @@ public class SimpleClickBounce : MonoBehaviour
         transform.localScale = _originalScale;
         _isBouncing = false;
     }
+
 }

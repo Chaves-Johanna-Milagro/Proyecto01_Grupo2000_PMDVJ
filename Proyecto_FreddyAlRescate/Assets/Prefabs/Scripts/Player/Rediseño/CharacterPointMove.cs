@@ -11,7 +11,7 @@ public class CharacterPointMove : MonoBehaviour
 
     void Update()
     {
-        if (MovimientoDesactivado()) return;
+        if (MiniGameStatus.ActiveMiniGame()) return; //evitar el movimiento si hay un minijuego
 
         if (Input.GetMouseButtonDown(0) && !(ClicEnInteractuable() || CharacterBlockMoveUI.IsPointerOverUI())) //para que no se mueva si clickeo en un obj interactuable o en la UI
         {
@@ -33,11 +33,4 @@ public class CharacterPointMove : MonoBehaviour
         return hit.collider != null && hit.collider.CompareTag("Interactuable");
     }
 
-    // Verifica si hay algo que impida moverse (pausa, decisiones, minijuegos)
-    private bool MovimientoDesactivado()
-    {
-        return GameObject.FindGameObjectWithTag("Pause") != null ||
-               GameObject.FindGameObjectWithTag("Decision") != null ||
-               GameObject.FindGameObjectWithTag("MiniGame") != null;
-    }
 }

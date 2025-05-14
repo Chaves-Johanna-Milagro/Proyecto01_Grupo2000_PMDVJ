@@ -16,8 +16,10 @@ public class ActiveCheck : MonoBehaviour
     public void OnMouseDown()
     {
         // Verifica si el juego está en pausa antes de procesar el click
-        if (PauseStatus.IsPaused)
-            return;
+        if (PauseStatus.IsPaused) return;
+
+        if (MiniGameStatus.ActiveMiniGame()) return; // no active checks si esta un mini juego
+            
 
         if (_objName == "Bed" || _objName == "Diningroom") _check.Check1();
 
@@ -25,5 +27,4 @@ public class ActiveCheck : MonoBehaviour
 
         if (_objName == "Bathroom") _check.Check3();
     }
-
 }
