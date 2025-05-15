@@ -5,7 +5,6 @@ public class MGBathroom : MonoBehaviour
     private Collider2D _col;
     private GameObject _miniGame;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _miniGame = transform.GetChild(0).gameObject;
@@ -17,8 +16,16 @@ public class MGBathroom : MonoBehaviour
 
     public void OnMouseDown()
     {
+        // Verifica si el juego está en pausa antes de procesar el click
+        if (PauseStatus.IsPaused) return;
+           
         _miniGame?.SetActive(true);
 
-        _col.enabled = false;
+        //_col.enabled = false;
+    }
+
+    public void ExitMiniGame()
+    {
+        _miniGame?.SetActive(false);
     }
 }
