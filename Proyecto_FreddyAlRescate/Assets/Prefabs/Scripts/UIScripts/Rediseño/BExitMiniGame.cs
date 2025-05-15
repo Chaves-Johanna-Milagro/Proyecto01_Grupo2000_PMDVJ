@@ -12,10 +12,10 @@ public class BExitMiniGame : MonoBehaviour
 
     private Button _bExit;
 
-    private MGBathroom _mgBathroom;
+    private MGBase _mgBathroom;
     void Start()
     {
-        _mgBathroom = Object.FindFirstObjectByType<MGBathroom>();
+        _mgBathroom = Object.FindFirstObjectByType<MGBase>();
 
         _img = transform.GetChild(0).gameObject;
         _text = transform.GetChild(1).gameObject;
