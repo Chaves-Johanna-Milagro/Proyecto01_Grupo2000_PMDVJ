@@ -12,10 +12,11 @@ public class BExitMiniGame : MonoBehaviour
 
     private Button _bExit;
 
-    private MGBase _mgBathroom;
+    private MGBase[] _allMiniGames; // array de todos los MGBase en la escena
     void Start()
     {
-        _mgBathroom = Object.FindFirstObjectByType<MGBase>();
+        // Obtiene todos los MGBase en la escena
+        _allMiniGames = Object.FindObjectsByType<MGBase>(FindObjectsSortMode.None);
 
         _img = transform.GetChild(0).gameObject;
         _text = transform.GetChild(1).gameObject;
@@ -43,7 +44,14 @@ public class BExitMiniGame : MonoBehaviour
     {
         if (PauseStatus.IsPaused) return;
 
-        _mgBathroom.ExitMiniGame();
+        foreach (var mg in _allMiniGames)
+        {
+            if (mg.gameObject.activeInHierarchy)
+            {
+                mg.ExitMiniGame();
+            }
+        }
+
         ActiveObjs(false);
     }
 

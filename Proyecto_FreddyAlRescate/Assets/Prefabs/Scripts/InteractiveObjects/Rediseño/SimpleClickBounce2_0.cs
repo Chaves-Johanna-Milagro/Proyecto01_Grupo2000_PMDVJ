@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class SimpleClickBounce : MonoBehaviour
+public class SimpleClickBounce2_0 : MonoBehaviour
 {
     private float _bounceMultiplier = 1.2f;   // cuánto se agranda en el rebote
     private float _bounceDuration = 0.4f;     // duración total del rebote
@@ -16,7 +16,12 @@ public class SimpleClickBounce : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (!_isBouncing)
+        // Verifica si el juego está en pausa antes de procesar el click
+        if (PauseStatus.IsPaused) return;
+
+        if (MiniGameStatus.ActiveMiniGame()) return; // si esta un mini juego no procese el click
+
+        if (!_isBouncing && !CursorStatusInUI.IsPointerOverUI()) //pa que no rebote si se clickea en la UI
             StartCoroutine(DoBounce());
     }
 
@@ -48,5 +53,4 @@ public class SimpleClickBounce : MonoBehaviour
         transform.localScale = _originalScale;
         _isBouncing = false;
     }
-
 }

@@ -1,19 +1,18 @@
 using UnityEngine;
-using UnityEngine.Audio;
 
-public class SimpleScaling : MonoBehaviour
+public class SimpleScaling2_0 : MonoBehaviour
 {
-    // Porcentaje de aumento relativo (por ejemplo, 1.1 = 10% m√°s grande)
+    // Porcentaje de aumento relativo (por ejemplo, 1.1 = 10% m·s grande)
     private float _scaleMultiplier = 1.1f;
     private float _scaleSpeed = 5f;
 
     private Vector3 _originalScale;
     private Vector3 _targetScale;  //la escala aumentada
-    public AudioSource hoverButton;
 
     private bool _isScaling = false;
 
-    // public AudioSource hoverButton;
+    public AudioSource hoverButton;
+
 
     private void Start()
     {
@@ -25,8 +24,12 @@ public class SimpleScaling : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        // Verifica si el juego est· en pausa antes de procesar el click
+        if (PauseStatus.IsPaused)
+            return;
+
         _isScaling = true;
-        hoverButton.Play();
+        if (hoverButton != null) hoverButton.Play();
     }
 
     private void OnMouseExit()
@@ -36,11 +39,15 @@ public class SimpleScaling : MonoBehaviour
 
     private void Update()
     {
+        if (CursorStatusInUI.IsPointerOverUI()) _isScaling = false; //si el cursor esta sobre la UI se desactiva la escala
+
+        if (MiniGameStatus.ActiveMiniGame()) _isScaling = false; //si esta en un minijuego desactive la escala
+
+
         // Elige la escala objetivo dependiendo del estado del mouse (si paso sobre el obj)
         Vector3 targetScaling = _isScaling ? _targetScale : _originalScale;
 
-        // Transici√≥n suave hacia la escala objetivo
+        // TransiciÛn suave hacia la escala objetivo
         transform.localScale = Vector3.Lerp(transform.localScale, targetScaling, Time.deltaTime * _scaleSpeed);
     }
-
 }

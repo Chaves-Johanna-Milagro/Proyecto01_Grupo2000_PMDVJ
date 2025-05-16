@@ -21,7 +21,8 @@ public class ActiveCheck : MonoBehaviour
         if (MiniGameStatus.ActiveMiniGame()) return; // no active checks si esta un mini juego
             
 
-        if (_objName == "Bed" || _objName == "Diningroom") _check.Check1();
+        //if (_objName == "Bed" || _objName == "Diningroom") _check.Check1();
+        if (_objName == "Bed") _check.Check1();
 
         if (_objName == "Cupboard" || _objName == "Backpack") _check.Check2();
 
