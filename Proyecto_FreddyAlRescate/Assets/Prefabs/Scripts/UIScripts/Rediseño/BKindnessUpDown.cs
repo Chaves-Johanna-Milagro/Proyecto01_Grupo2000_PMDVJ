@@ -7,7 +7,7 @@ public class BKindnessUpDown : MonoBehaviour
     private float _maxY = -270f; //limite superior
     private float _minY = -720f; //limite inferior
 
-    private float _amount = 5f; // la cantidad de frames que se movera
+    private float _amount = 30f; // la cantidad de frames que se movera
 
     void Start()
     {
@@ -21,11 +21,11 @@ public class BKindnessUpDown : MonoBehaviour
         _nowBar.anchoredPosition = newPos;
     }
 
-    public void Update()//prueba de funcionamiento
+  /*  public void Update()//prueba de funcionamiento
     {
         if (Input.GetMouseButtonDown(0)) GoodDecision();
         if (Input.GetMouseButtonDown(1)) BadDecision();
-    }
+    }*/
 
     public void GoodDecision()
     {

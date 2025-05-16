@@ -12,6 +12,7 @@ public class BrushTeeh : MonoBehaviour // ste script lo tiene MouthDirty
 
 
     private BNotesChecks _check;
+    private BKindnessUpDown _kind;
 
 
     private void Start()
@@ -22,6 +23,7 @@ public class BrushTeeh : MonoBehaviour // ste script lo tiene MouthDirty
 
 
         _check = Object.FindFirstObjectByType<BNotesChecks>();
+        _kind = Object.FindFirstObjectByType<BKindnessUpDown>();
 
     }
 
@@ -34,6 +36,7 @@ public class BrushTeeh : MonoBehaviour // ste script lo tiene MouthDirty
         if (_timer >= _requiredTime)
         {
             _check.Check3(); //si se completa activa el check
+            _kind.GoodDecision(); //si se completa sube la barrita
 
             gameObject.SetActive(false);        // Desactiva MouthDirty
             _mouthClean?.SetActive(true);       // Activa MouthClean

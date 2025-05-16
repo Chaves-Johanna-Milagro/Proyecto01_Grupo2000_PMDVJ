@@ -16,6 +16,7 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
     private float _tiempoParaComer = 0.5f;
 
     private BNotesChecks _check;
+    private BKindnessUpDown _kind;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
         _mouthClose = parent.transform.Find("MouthClose").gameObject;
 
         _check = Object.FindFirstObjectByType<BNotesChecks>();
+        _kind = Object.FindFirstObjectByType<BKindnessUpDown>();
 
         ActivarBoca("default");
 
@@ -113,6 +115,7 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
         _objetosComidos.Add("Napkin");
 
         _check.Check1(); // marcar minijuego como completado
+        _kind.GoodDecision(); // sube la barrita
 
         _terminado = true;
         _comiendo = false;

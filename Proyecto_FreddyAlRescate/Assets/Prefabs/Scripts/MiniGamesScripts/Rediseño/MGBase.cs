@@ -38,6 +38,8 @@ public class MGBase : MonoBehaviour // se encarga de activar los minijuegos y gu
     {
         if (PauseStatus.IsPaused) return;
 
+        if (MiniGameStatus.ActiveMiniGame()) return; //si hay uno activo que retorne
+
         _miniGame?.SetActive(true);
     }
 
