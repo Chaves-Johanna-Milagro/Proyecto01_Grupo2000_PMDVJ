@@ -40,6 +40,7 @@ public class BMiniAfton : MonoBehaviour
         "SI TE VAS SIN DESPEDIRTE, ALGUIEN TE VA A EXTRAÑAR."
     };
 
+    private AudioSource _soundAfton;
     void Start()
     {
         _globoImg = transform.GetChild(0).gameObject;
@@ -54,6 +55,8 @@ public class BMiniAfton : MonoBehaviour
         _bMiniAfton = GetComponent<Button>();
 
         _bMiniAfton.onClick.AddListener(Toggle);
+
+        _soundAfton = GetComponent<AudioSource>();
 
     }
     public void Update()
@@ -72,6 +75,8 @@ public class BMiniAfton : MonoBehaviour
         SetActive(_activated);
 
         ShowByScene();
+
+        if (_activated) _soundAfton.Play();
     }
 
     private void SetActive(bool state)
