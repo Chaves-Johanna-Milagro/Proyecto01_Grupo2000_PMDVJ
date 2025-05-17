@@ -4,16 +4,16 @@ using UnityEngine.Audio;
 public class SimpleScaling : MonoBehaviour
 {
     // Porcentaje de aumento relativo (por ejemplo, 1.1 = 10% más grande)
-     private float _scaleMultiplier = 1.1f;
-     private float _scaleSpeed = 5f;
+    private float _scaleMultiplier = 1.1f;
+    private float _scaleSpeed = 5f;
 
     private Vector3 _originalScale;
     private Vector3 _targetScale;  //la escala aumentada
     public AudioSource hoverButton;
 
     private bool _isScaling = false;
-    
-   // public AudioSource hoverButton;
+
+    // public AudioSource hoverButton;
 
     private void Start()
     {
@@ -42,4 +42,5 @@ public class SimpleScaling : MonoBehaviour
         // Transición suave hacia la escala objetivo
         transform.localScale = Vector3.Lerp(transform.localScale, targetScaling, Time.deltaTime * _scaleSpeed);
     }
+
 }

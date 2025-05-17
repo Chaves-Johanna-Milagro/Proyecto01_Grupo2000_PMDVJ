@@ -16,6 +16,10 @@ TagManager:
   - Decision
   - Block
   - Music
+  - Interactuable
+  - Room
+  - Kindness
+  - Notes
   layers:
   - Default
   - TransparentFX

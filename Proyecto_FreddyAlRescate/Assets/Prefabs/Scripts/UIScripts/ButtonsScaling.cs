@@ -12,15 +12,20 @@ public class ButtonsScaling : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     private bool _isScaling = false;
 
+    private AudioSource _hover;
+
     private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
         _originalScale = _rectTransform.localScale;
+
+        _hover = GetComponent<AudioSource>();
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         _isScaling = true;
+        //if (_hover != null) _hover.Play();
     }
 
     public void OnPointerExit(PointerEventData eventData)

@@ -48,4 +48,5 @@ public class SimpleClickBounce : MonoBehaviour
         transform.localScale = _originalScale;
         _isBouncing = false;
     }
+
 }
