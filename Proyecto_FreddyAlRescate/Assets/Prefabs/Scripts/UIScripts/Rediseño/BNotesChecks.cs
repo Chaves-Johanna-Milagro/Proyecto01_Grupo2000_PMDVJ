@@ -16,6 +16,8 @@ public class BNotesChecks : MonoBehaviour
 
     private bool _isActive = false;
 
+    private AudioSource _audioCheck;
+
     private void Start()
     {
         _imgChecks = transform.Find("ImgChecks")?.gameObject;
@@ -32,6 +34,8 @@ public class BNotesChecks : MonoBehaviour
         _BNotes.onClick.AddListener(ActiveChecks);
 
         UpdateChecks();
+
+        _audioCheck = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -59,18 +63,24 @@ public class BNotesChecks : MonoBehaviour
     {
         ChecksStatus.SetCheckActive(_sceneName, 0);
         UpdateChecks();
+
+        _audioCheck.Play();
     }
 
     public void Check2()
     {
         ChecksStatus.SetCheckActive(_sceneName, 1);
         UpdateChecks();
+
+        _audioCheck.Play();
     }
 
     public void Check3()
     {
         ChecksStatus.SetCheckActive(_sceneName, 2);
         UpdateChecks();
+
+        _audioCheck.Play();
     }
 
     private void UpdateChecks()

@@ -11,7 +11,7 @@ public class SimpleScaling2_0 : MonoBehaviour
 
     private bool _isScaling = false;
 
-    public AudioSource hoverButton;
+    private AudioSource _hoverButton;
 
 
     private void Start()
@@ -20,15 +20,19 @@ public class SimpleScaling2_0 : MonoBehaviour
 
         // Calcula la escala como un multiplicador relativo
         _targetScale = _originalScale * _scaleMultiplier;
+
+        _hoverButton = GetComponent<AudioSource>();
     }
 
     private void OnMouseEnter()
     {
         // Verifica si el juego está en pausa antes de procesar el click
-        if (PauseStatus.IsPaused) return;          
+        if (PauseStatus.IsPaused) return;         
+        
+        if(MiniGameStatus.ActiveMiniGame()) return; // verifica que no este acivo un minijuego
 
         _isScaling = true;
-        if (hoverButton != null) hoverButton.Play();
+        if (_hoverButton != null) _hoverButton.Play();
     }
 
     private void OnMouseExit()
