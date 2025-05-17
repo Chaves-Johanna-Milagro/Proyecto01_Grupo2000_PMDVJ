@@ -18,6 +18,8 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
     private BNotesChecks _check;
     private BKindnessUpDown _kind;
 
+    private AudioSource _soundEat;
+
     void Start()
     {
         GameObject parent = transform.parent.gameObject;
@@ -51,6 +53,8 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
         {
             _terminado = true;
         }
+
+        _soundEat = GetComponent<AudioSource>();
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -92,6 +96,7 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
 
         yield return new WaitForSeconds(0.3f);
         ActivarBoca("close");
+        _soundEat?.Play();
 
         yield return new WaitForSeconds(0.3f);
         ActivarBoca("default");

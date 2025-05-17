@@ -3612,7 +3612,6 @@ GameObject:
   - component: {fileID: 4109657568510006729}
   - component: {fileID: 1078442048868866443}
   - component: {fileID: 3518754952966999440}
-  - component: {fileID: 3864486142328299026}
   - component: {fileID: 4387379732728643285}
   m_Layer: 5
   m_Name: BMiniAfton
@@ -3770,18 +3769,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8dbb2dd548706148ad996f01aa4358b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &3864486142328299026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8945857736109000666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c36ae3933bed80345bda32108f4d9fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!82 &4387379732728643285

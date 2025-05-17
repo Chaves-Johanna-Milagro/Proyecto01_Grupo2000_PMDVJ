@@ -8,6 +8,8 @@ public class MGBase : MonoBehaviour // se encarga de activar los minijuegos y gu
     private string _objName;
     private string _sceneName;
 
+    private AudioSource _soundMG;
+
     private void Start()
     {
         _miniGame = transform.Find("MiniGame")?.gameObject;
@@ -17,6 +19,8 @@ public class MGBase : MonoBehaviour // se encarga de activar los minijuegos y gu
 
         _objName = gameObject.name;
         _sceneName = SceneManager.GetActiveScene().name;
+
+        _soundMG = _miniGame.GetComponent<AudioSource>();
 
         // Restaurar estado de los hijos del objeto MiniGame
         if (MiniGameStatus.TieneEstado(_sceneName, _objName))
@@ -41,6 +45,7 @@ public class MGBase : MonoBehaviour // se encarga de activar los minijuegos y gu
         if (MiniGameStatus.ActiveMiniGame()) return; //si hay uno activo que retorne
 
         _miniGame?.SetActive(true);
+        if (_soundMG != null) _soundMG.Play();
     }
 
     public void ExitMiniGame()
