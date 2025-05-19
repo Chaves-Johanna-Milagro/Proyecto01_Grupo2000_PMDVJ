@@ -53,7 +53,7 @@ public class BrushTeeh : MonoBehaviour // ste script lo tiene MouthDirty
     {
         if (_completed) return;
 
-        if (collision.gameObject.name == "Brush")
+        if (collision.gameObject.name == "Cepillo")
         {
             _soundBrush?.Play();
         }
@@ -63,7 +63,7 @@ public class BrushTeeh : MonoBehaviour // ste script lo tiene MouthDirty
     {
         if (_completed) return;
 
-        if (other.gameObject.name == "Brush")
+        if (other.gameObject.name == "Cepillo")
         {
             _isTouching = true;
         }
@@ -71,7 +71,7 @@ public class BrushTeeh : MonoBehaviour // ste script lo tiene MouthDirty
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.name == "Brush")
+        if (other.gameObject.name == "Cepillo")
         {
             _isTouching = false;
             _timer = 0f;

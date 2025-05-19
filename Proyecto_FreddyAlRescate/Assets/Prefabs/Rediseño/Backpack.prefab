@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 7621348422078467398}
   - component: {fileID: 1507424314794783283}
   - component: {fileID: 3706270617409353963}
+  - component: {fileID: 1006751068151779708}
   m_Layer: 0
-  m_Name: Obj1
+  m_Name: Cuaderno
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -256,6 +257,18 @@ PolygonCollider2D:
       - {x: 5.03125, y: -9.8125}
       - {x: 5.21875, y: -9.375}
   m_UseDelaunayMesh: 0
+--- !u!114 &1006751068151779708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317923031491894709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e967a09f7aff51e4c887020e865b325d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2051146655165063588
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,7 +674,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5668700511823519381
 Transform:
   m_ObjectHideFlags: 0
@@ -799,8 +812,9 @@ GameObject:
   - component: {fileID: 5907060027996315691}
   - component: {fileID: 4050942432953718671}
   - component: {fileID: 1190751355128822863}
+  - component: {fileID: 3621763493801192506}
   m_Layer: 0
-  m_Name: Obj2
+  m_Name: Goma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1020,6 +1034,18 @@ PolygonCollider2D:
       - {x: 2.5625, y: -8.46875}
       - {x: 2.875, y: -7.78125}
   m_UseDelaunayMesh: 0
+--- !u!114 &3621763493801192506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2851226721805507059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e967a09f7aff51e4c887020e865b325d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3800631494998164029
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,8 +1060,9 @@ GameObject:
   - component: {fileID: 5145927581259992959}
   - component: {fileID: 3336164960374294958}
   - component: {fileID: 1748695625063789031}
+  - component: {fileID: 7407004814225909226}
   m_Layer: 0
-  m_Name: Obj7
+  m_Name: Media
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1271,6 +1298,18 @@ PolygonCollider2D:
       - {x: 1.96875, y: -8.46875}
       - {x: 3.15625, y: -8.21875}
   m_UseDelaunayMesh: 0
+--- !u!114 &7407004814225909226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3800631494998164029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e967a09f7aff51e4c887020e865b325d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4411145072766782819
 GameObject:
   m_ObjectHideFlags: 0
@@ -1285,8 +1324,9 @@ GameObject:
   - component: {fileID: 3949001371753478061}
   - component: {fileID: 7623654186463569698}
   - component: {fileID: 7051511738898012953}
+  - component: {fileID: 3760588051333605957}
   m_Layer: 0
-  m_Name: Obj8
+  m_Name: Calculadora
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1499,6 +1539,18 @@ PolygonCollider2D:
       - {x: 6.34375, y: -7.65625}
       - {x: 6.78125, y: -6.65625}
   m_UseDelaunayMesh: 0
+--- !u!114 &3760588051333605957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411145072766782819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e967a09f7aff51e4c887020e865b325d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6982480398212782868
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,8 +1565,9 @@ GameObject:
   - component: {fileID: 936807372367928462}
   - component: {fileID: 743917284311236098}
   - component: {fileID: 3279427486395905470}
+  - component: {fileID: 5234995923405228700}
   m_Layer: 0
-  m_Name: Obj4
+  m_Name: Regla
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1723,6 +1776,18 @@ PolygonCollider2D:
       - {x: -0.59375, y: -8.78125}
       - {x: -0.21875, y: -7.96875}
   m_UseDelaunayMesh: 0
+--- !u!114 &5234995923405228700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6982480398212782868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e967a09f7aff51e4c887020e865b325d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7236935018264425583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1737,8 +1802,9 @@ GameObject:
   - component: {fileID: 8571323409033625056}
   - component: {fileID: 6066965820806485932}
   - component: {fileID: 8695512450264090376}
+  - component: {fileID: 3941199292413399177}
   m_Layer: 0
-  m_Name: Obj5
+  m_Name: Joystick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1969,6 +2035,18 @@ PolygonCollider2D:
       - {x: 8.40625, y: -6.65625}
       - {x: 8.90625, y: -5.84375}
   m_UseDelaunayMesh: 0
+--- !u!114 &3941199292413399177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7236935018264425583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e967a09f7aff51e4c887020e865b325d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7641432981230966043
 GameObject:
   m_ObjectHideFlags: 0
@@ -1983,8 +2061,9 @@ GameObject:
   - component: {fileID: 733722335613856514}
   - component: {fileID: 1355141513686498205}
   - component: {fileID: 2332449916340762981}
+  - component: {fileID: 3717697621420883367}
   m_Layer: 0
-  m_Name: Obj9
+  m_Name: Plasticola
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2207,6 +2286,18 @@ PolygonCollider2D:
       - {x: 2.84375, y: -7.65625}
       - {x: 4.46875, y: -4.21875}
   m_UseDelaunayMesh: 0
+--- !u!114 &3717697621420883367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7641432981230966043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e967a09f7aff51e4c887020e865b325d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8151818091660428895
 GameObject:
   m_ObjectHideFlags: 0
@@ -2312,8 +2403,9 @@ GameObject:
   - component: {fileID: 412085897599233342}
   - component: {fileID: 1388125714706156055}
   - component: {fileID: 7347425388643823019}
+  - component: {fileID: 2619307024264607066}
   m_Layer: 0
-  m_Name: Obj3
+  m_Name: Cepillo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2543,6 +2635,18 @@ PolygonCollider2D:
       - {x: -1.46875, y: -10.8125}
       - {x: -1.09375, y: -10}
   m_UseDelaunayMesh: 0
+--- !u!114 &2619307024264607066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8376860302359451687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e967a09f7aff51e4c887020e865b325d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8396944375752355680
 GameObject:
   m_ObjectHideFlags: 0
@@ -2557,8 +2661,9 @@ GameObject:
   - component: {fileID: 1100881688730161632}
   - component: {fileID: 9119926433661725277}
   - component: {fileID: 1664669197763196290}
+  - component: {fileID: 9117395801345962314}
   m_Layer: 0
-  m_Name: Obj6
+  m_Name: Lapices
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2821,6 +2926,18 @@ PolygonCollider2D:
       - {x: 7.0625, y: -9.8125}
       - {x: 7.5, y: -8.0625}
   m_UseDelaunayMesh: 0
+--- !u!114 &9117395801345962314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8396944375752355680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e967a09f7aff51e4c887020e865b325d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8511368954553211667
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 public class PrepareBackpack : MonoBehaviour
 {
-    private HashSet<string> _incorrectos = new HashSet<string> { "Obj3", "Obj5", "Obj7" };
+    private HashSet<string> _incorrectos = new HashSet<string> { "Cepillo", "Joystick", "Media" };
     private int _totalCorrectos = 6;
 
-    private Dictionary<string, Vector3> _posInit = new Dictionary<string, Vector3>(); // pa guardar la pos inicial de los obj
+    private Dictionary<string, Vector3> _posInit = new Dictionary<string, Vector3>();// pa guardar la pos inicial de los obj
 
     private Transform _parent;
 
@@ -24,20 +24,18 @@ public class PrepareBackpack : MonoBehaviour
         foreach (Transform child in _parent)
         {
             string nombre = child.name;
-
-            if (!nombre.StartsWith("Obj")) continue; // para que ignore a aquellos que no comiencen con Obj
-
+            if(nombre == "Backpack" && nombre == "Img") continue;
             _posInit[nombre] = child.position;
         }
 
-        VerificarCheck(); // Por si ya estaban todos desactivados al inicio
+        VerificarCheck();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (PauseStatus.IsPaused) return;
 
-        if (other.transform.parent != transform.parent || !other.name.StartsWith("Obj")) return; //pa que no 
+        if (other.transform.parent != transform.parent) return;
 
         string nombre = other.name;
 
@@ -51,8 +49,6 @@ public class PrepareBackpack : MonoBehaviour
         }
 
         other.gameObject.SetActive(false);
-
-        // Verifica si se llegó al total
         VerificarCheck();
     }
 
@@ -64,14 +60,13 @@ public class PrepareBackpack : MonoBehaviour
         {
             string nombre = child.name;
 
-            if (!nombre.StartsWith("Obj")) continue;
             if (_incorrectos.Contains(nombre)) continue;
             if (!child.gameObject.activeInHierarchy) desactivadosCorrectos++;
         }
 
         if (desactivadosCorrectos >= _totalCorrectos)
         {
-            _check.Check2(); // activa el check
+            _check.Check2(); //activa el check
             _kind.GoodDecision(); //sube la barrita
         }
     }

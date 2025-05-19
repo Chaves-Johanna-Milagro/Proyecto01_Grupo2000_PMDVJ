@@ -101,8 +101,9 @@ GameObject:
   - component: {fileID: 4318035061560933542}
   - component: {fileID: 7443574601340957499}
   - component: {fileID: 6543326835607942821}
+  - component: {fileID: 3171651951287581952}
   m_Layer: 0
-  m_Name: Bread
+  m_Name: Pan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -335,6 +336,18 @@ PolygonCollider2D:
       - {x: -4.6875, y: -4.96875}
       - {x: -3.375, y: -4.71875}
   m_UseDelaunayMesh: 0
+--- !u!114 &3171651951287581952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3050607593521407727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e967a09f7aff51e4c887020e865b325d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3918080600058118393
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,8 +449,9 @@ GameObject:
   - component: {fileID: 4023693239196551893}
   - component: {fileID: 3190850768924591983}
   - component: {fileID: 6516093037262392493}
+  - component: {fileID: 3626344887377533502}
   m_Layer: 0
-  m_Name: Cup
+  m_Name: Taza
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -734,6 +748,18 @@ PolygonCollider2D:
       - {x: 3.71875, y: 5.6875}
       - {x: 5.21875, y: 6.4375}
   m_UseDelaunayMesh: 0
+--- !u!114 &3626344887377533502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5035257553426100861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e967a09f7aff51e4c887020e865b325d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5411063454385812280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,8 +1664,9 @@ GameObject:
   - component: {fileID: 4610448952471965761}
   - component: {fileID: 6960935810032400460}
   - component: {fileID: 8541468890852428283}
+  - component: {fileID: 7062331833229007918}
   m_Layer: 0
-  m_Name: Napkin
+  m_Name: Servilleta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1886,3 +1913,15 @@ PolygonCollider2D:
       - {x: -0.40625, y: -4.09375}
       - {x: 0.09375, y: -4.09375}
   m_UseDelaunayMesh: 0
+--- !u!114 &7062331833229007918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9169632762755155983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e967a09f7aff51e4c887020e865b325d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
