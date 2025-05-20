@@ -20,7 +20,7 @@ public class MGBase : MonoBehaviour // se encarga de activar los minijuegos y gu
         _objName = gameObject.name;
         _sceneName = SceneManager.GetActiveScene().name;
 
-        _soundMG = _miniGame.GetComponent<AudioSource>();
+        _soundMG = _miniGame?.GetComponent<AudioSource>();
 
         // Restaurar estado de los hijos del objeto MiniGame
         if (MiniGameStatus.TieneEstado(_sceneName, _objName))
