@@ -35,13 +35,16 @@ public class DecisionBase : MonoBehaviour
     }
     public void OnMouseDown()
     {
-        if (PauseStatus.IsPaused) return;
+       
+        if (PauseStatus.IsPaused) return; // Verifica si el juego está en pausa antes de procesar el click
 
         if (CursorStatusInUI.IsPointerOverUI()) return; // si el cursor esta sobre la ui
 
-        if (MiniGameStatus.ActiveMiniGame()) return; //si hay uno activo que retorne
+        if (MiniGameStatus.ActiveMiniGame()) return; // si esta un mini juego no procese el click
 
         if (CinematicStatus.ActiveCinematic()) return; // si hay alguna cinematica corriendo
+
+        if (DecisionStatus.ActiveDecision()) return; // si hay alguna desicion corriendo
 
         _decision?.SetActive(true);
     }

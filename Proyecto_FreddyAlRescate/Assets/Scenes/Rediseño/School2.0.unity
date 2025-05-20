@@ -620,7 +620,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5548796629368485665, guid: e489ab70dcb423f48b89e6d6fe3a9e12, type: 3}
       propertyPath: m_Name
-      value: DoorAula
+      value: DoorClassroom
       objectReference: {fileID: 0}
     - target: {fileID: 8125585861755465064, guid: e489ab70dcb423f48b89e6d6fe3a9e12, type: 3}
       propertyPath: m_LocalPosition.x
@@ -950,13 +950,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8726412165508240026, guid: 83e7630094c1654479cc312088436442, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
-    - targetCorrespondingSourceObject: {fileID: 1594091691043688706, guid: 83e7630094c1654479cc312088436442, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83e7630094c1654479cc312088436442, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

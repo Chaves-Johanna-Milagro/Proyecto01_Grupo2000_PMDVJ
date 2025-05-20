@@ -44,6 +44,12 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/Scenes/Redise\xF1o/Breackfast2.0.unity"
     guid: 3a5b77dba9c8d0941abad3bd547cfc58
+  - enabled: 1
+    path: "Assets/Scenes/Redise\xF1o/School2.0.unity"
+    guid: 05fb9400ae927ca45a12390ef7603865
+  - enabled: 1
+    path: "Assets/Scenes/Redise\xF1o/Classroom2.0.unity"
+    guid: d7f2e3a622f64c2488eb078c859d77f5
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -40,7 +40,7 @@ public class ChangeSprite2_0 : MonoBehaviour
 
         if (CursorStatusInUI.IsPointerOverUI()) return; // si el cursor esta sobre la ui
 
-        if (MiniGameStatus.ActiveMiniGame()) return;
+        if (MiniGameStatus.ActiveMiniGame()) return; // si hay algun minijuego
 
         if (DecisionStatus.ActiveDecision()) return; // si hay alguna desicion corriendo
 
