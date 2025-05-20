@@ -14,9 +14,14 @@ public class CharacterPointMove : MonoBehaviour
 
     void Update()
     {
-        if (MiniGameStatus.ActiveMiniGame()) return; //evitar el movimiento si hay un minijuego
+        
+        if (PauseStatus.IsPaused) return;// Verifica si el juego está en pausa antes de procesar el click
 
-        if (PauseStatus.IsPaused) return; //evitar el movimiento si  estsa en pausa por si caso
+        if (MiniGameStatus.ActiveMiniGame()) return; // verifica que no este acivo un minijuego
+
+        if (CinematicStatus.ActiveCinematic()) return; // si hay alguna cinematica corriendo
+
+        if (DecisionStatus.ActiveDecision()) return; // si hay alguna desicion corriendo
 
         if (Input.GetMouseButtonDown(0) && !(ClicEnInteractuable() || CursorStatusInUI.IsPointerOverUI())) //para que no se mueva si clickeo en un obj interactuable o en la UI
         {

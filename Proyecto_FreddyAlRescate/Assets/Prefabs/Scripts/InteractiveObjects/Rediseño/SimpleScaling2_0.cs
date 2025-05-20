@@ -31,6 +31,10 @@ public class SimpleScaling2_0 : MonoBehaviour
         
         if(MiniGameStatus.ActiveMiniGame()) return; // verifica que no este acivo un minijuego
 
+        if (CinematicStatus.ActiveCinematic()) return; // si hay alguna cinematica corriendo
+
+        if (DecisionStatus.ActiveDecision()) return; // si hay alguna desicion corriendo
+
         _isScaling = true;
         if (_hoverButton != null) _hoverButton.Play();
     }
@@ -45,6 +49,10 @@ public class SimpleScaling2_0 : MonoBehaviour
         if (CursorStatusInUI.IsPointerOverUI()) _isScaling = false; //si el cursor esta sobre la UI se desactiva la escala
 
         if (MiniGameStatus.ActiveMiniGame()) _isScaling = false; //si esta en un minijuego desactive la escala
+
+        if (CinematicStatus.ActiveCinematic()) _isScaling = false; // si hay alguna cinematica corriendo
+
+        if (DecisionStatus.ActiveDecision()) _isScaling = false; // si hay alguna desicion corriendo
 
 
         // Elige la escala objetivo dependiendo del estado del mouse (si paso sobre el obj)

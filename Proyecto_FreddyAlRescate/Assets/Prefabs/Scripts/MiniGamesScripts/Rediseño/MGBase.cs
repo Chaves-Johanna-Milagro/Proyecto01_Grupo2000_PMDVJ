@@ -42,7 +42,13 @@ public class MGBase : MonoBehaviour // se encarga de activar los minijuegos y gu
     {
         if (PauseStatus.IsPaused) return;
 
+        if (CursorStatusInUI.IsPointerOverUI()) return; // si el cursor esta sobre la ui
+
         if (MiniGameStatus.ActiveMiniGame()) return; //si hay uno activo que retorne
+
+        if (CinematicStatus.ActiveCinematic()) return; // si hay alguna cinematica corriendo
+
+        if (DecisionStatus.ActiveDecision()) return; // si hay alguna desicion corriendo
 
         _miniGame?.SetActive(true);
         if (_soundMG != null) _soundMG.Play();
