@@ -23,17 +23,17 @@ public class DecisionBase : MonoBehaviour
 
         _soundDes = _decision?.GetComponent<AudioSource>();
 
-        // Restaurar estado de los hijos del objeto MiniGame
-        if (DecisionStatus.TieneEstado(_sceneName, _objName))
+        // Restaurar estado de los hijos del objeto Base
+        /*if (DecisionStatus.TieneEstado(_sceneName, _objName))
         {
             DecisionStatus.RestaurarEstado(_sceneName, _objName, _decision.transform);
-        }
+        }*/
     }
     private void OnDisable()
     {
         if (_decision != null)
         {
-            // Guarda la posición y estado activo de todos los hijos de MiniGame
+            // Guarda la posición y estado activo de todos los hijos de Decision
             DecisionStatus.GuardarEstado(_sceneName, _objName, _decision.transform);
         }
     }

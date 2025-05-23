@@ -24,7 +24,9 @@ public class ChangeRoom : MonoBehaviour
 
         if (_roomName == "DoorRoom") SceneManager.LoadScene(11); // aquella que te dirige a la habitacion
         if (_roomName == "DoorDiningroom") SceneManager.LoadScene(12); // aquella que te dirige al comedor
-       // if (_roomName == "DoorStreet") SceneManager.LoadScene(13); // aqulla que te dirige fuera de la casa
+        if (_roomName == "DoorStreet") SceneManager.LoadScene("WayToSchool2.0"); // aqulla que te dirige fuera de la casa
+       // if (_roomName == "DoorHouse") SceneManager.LoadScene(12); // aqulla que te dirige al comedor
+
 
         if (_roomName == "DoorSchool") SceneManager.LoadScene(13); // aqulla que te dirige a la entrada de la escuela
 

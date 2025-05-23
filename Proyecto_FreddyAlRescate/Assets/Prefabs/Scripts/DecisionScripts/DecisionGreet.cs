@@ -16,6 +16,12 @@ public class DecisionGreet : MonoBehaviour
 
     private DecisionFood _choiseFood;
 
+    private BKindnessUpDown _kind;
+
+    // Estado para saber dónde quedó la decisión
+    private enum EstadoDecision { Ninguno, GreetElegido, NoGreetElegido, MensajeSellerMostrado }
+    private EstadoDecision _estado = EstadoDecision.Ninguno;
+
     void Start()
     {
         GameObject parent = transform.parent.gameObject;
@@ -31,6 +37,31 @@ public class DecisionGreet : MonoBehaviour
         _greetSeller = parent.transform.Find("GreetSeller").gameObject;
 
         _choiseFood = GetComponent<DecisionFood>();
+
+        _kind = Object.FindFirstObjectByType<BKindnessUpDown>();
+    }
+
+    void OnEnable()
+    {
+        // Se llama cuando se vuelve a activar el objeto (por ejemplo, luego de ocultarlo)
+        if (_estado == EstadoDecision.GreetElegido)
+        {
+            _charGreet.SetActive(true);
+            _greet.SetActive(true);
+            StartCoroutine(MensajeSeller());
+        }
+        
+        if (_estado == EstadoDecision.NoGreetElegido)
+        {
+            _charDontGreet.SetActive(true);
+            StartCoroutine(MensajeSeller());
+        }
+        
+        if (_estado == EstadoDecision.MensajeSellerMostrado)
+        {
+            _greetSeller.SetActive(true);
+            _choiseFood.ActiveFood();
+        }
     }
 
     public void ChoiceOpt(string name)
@@ -39,14 +70,24 @@ public class DecisionGreet : MonoBehaviour
         {
             _charGreet.SetActive(true);
             _greet.SetActive(true);
+
+            _kind.GoodDecision();
+
             DesactiveOpts();
+
+            _estado = EstadoDecision.GreetElegido;
 
             StartCoroutine(MensajeSeller());
         }
         if (name == "Opt2")
         {
             _charDontGreet.SetActive(true);
+
+            _kind.BadDecision();
+
             DesactiveOpts();
+
+            _estado = EstadoDecision.NoGreetElegido;
 
             StartCoroutine(MensajeSeller());
         }
@@ -69,5 +110,7 @@ public class DecisionGreet : MonoBehaviour
 
         _greetSeller.SetActive(true);
         _choiseFood.ActiveFood();
+
+        _estado = EstadoDecision.MensajeSellerMostrado;
     }
 }

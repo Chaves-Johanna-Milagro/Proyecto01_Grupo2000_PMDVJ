@@ -25,7 +25,7 @@ public static class DecisionStatus
         public bool activo;
     }
 
-    // Guarda: escena -> minijuego -> nombreHijo -> estado
+    // Guarda: escena -> desicion -> nombreHijo -> estado
     private static Dictionary<string, Dictionary<string, Dictionary<string, HijoEstado>>> _data =
         new Dictionary<string, Dictionary<string, Dictionary<string, HijoEstado>>>();
 
