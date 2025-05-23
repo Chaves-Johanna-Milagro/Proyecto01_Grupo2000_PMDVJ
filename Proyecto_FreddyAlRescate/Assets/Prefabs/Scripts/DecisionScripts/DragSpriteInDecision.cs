@@ -8,7 +8,7 @@ public class DragSpriteInDecision : MonoBehaviour
     private Vector2 _minBounds;
     private Vector2 _maxBounds;
 
-    public float padding = 1f; // margen  para que no toque los bordes exactos
+    private float padding = 5f; // margen  para que no toque los bordes exactos
 
     void OnMouseDown()
     {

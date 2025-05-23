@@ -4,6 +4,21 @@ using UnityEngine.SceneManagement;
 
 public static class CinematicStatus //para aquellos obj que muetren alguna cinematica/imagen
 {
+    public static bool ActiveCinematic()
+    {
+        GameObject[] cinematics = GameObject.FindGameObjectsWithTag("Cinematic");
+
+        foreach (GameObject cinematic in cinematics)
+        {
+            if (cinematic.activeInHierarchy)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     private class HijoEstado
     {
         public Vector3 pos;
@@ -66,10 +81,4 @@ public static class CinematicStatus //para aquellos obj que muetren alguna cinem
         return _data.ContainsKey(escena) && _data[escena].ContainsKey(nombreObjeto);
     }
 
-    public static bool ActiveCinematic()
-    {
-        GameObject _imgActived = GameObject.FindGameObjectWithTag("Cinematic");
-
-        return (_imgActived != null && _imgActived.activeInHierarchy);
-    }
 }

@@ -8,7 +8,9 @@ public class DecisionBase : MonoBehaviour
     private string _sceneName;
 
     private string _objName;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    private AudioSource _soundDes;
+    
     void Start()
     {
         _decision = transform.Find("Decision").gameObject;
@@ -18,6 +20,8 @@ public class DecisionBase : MonoBehaviour
         _objName = gameObject.name;
 
         _sceneName = SceneManager.GetActiveScene().name;
+
+        _soundDes = _decision?.GetComponent<AudioSource>();
 
         // Restaurar estado de los hijos del objeto MiniGame
         if (DecisionStatus.TieneEstado(_sceneName, _objName))
@@ -47,6 +51,8 @@ public class DecisionBase : MonoBehaviour
         if (DecisionStatus.ActiveDecision()) return; // si hay alguna desicion corriendo
 
         _decision?.SetActive(true);
+
+        if(_soundDes != null) _soundDes.Play();
     }
 
     public void ExitDecision()

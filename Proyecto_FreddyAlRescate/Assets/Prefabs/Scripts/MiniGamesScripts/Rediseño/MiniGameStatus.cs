@@ -5,11 +5,18 @@ public static class MiniGameStatus
 {
     public static bool ActiveMiniGame()
     {
-        GameObject _mg = GameObject.FindGameObjectWithTag("MiniGame");
+        GameObject[] miniGames = GameObject.FindGameObjectsWithTag("MiniGame");
 
-        return (_mg != null && _mg.activeInHierarchy);
+        foreach (GameObject mg in miniGames)
+        {
+            if (mg.activeInHierarchy)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
-
     // Estado de un hijo (posición y si está activo)
     private class HijoEstado
     {

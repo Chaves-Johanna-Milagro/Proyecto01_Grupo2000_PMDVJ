@@ -15,8 +15,10 @@ public class DropSpriteInDecision : MonoBehaviour
 
         if (CinematicStatus.ActiveCinematic()) return; // si hay alguna cinematica corriendo
 
+        if (collision.CompareTag("Player")) return;
 
         if (_isOccupied) return;
+
 
         string dropName = gameObject.name;               // nombre del objeto que tiene este script
         string objetoName = collision.name;   // nombre del objeto que cayó

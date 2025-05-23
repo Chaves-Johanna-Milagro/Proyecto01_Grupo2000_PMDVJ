@@ -5,9 +5,17 @@ public static class DecisionStatus
 {
     public static bool ActiveDecision()
     {
-        GameObject des = GameObject.FindGameObjectWithTag("Decision");
+        GameObject[] decisions = GameObject.FindGameObjectsWithTag("Decision");
 
-        return (des != null && des.activeInHierarchy);
+        foreach (GameObject decision in decisions)
+        {
+            if (decision.activeInHierarchy)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     // Estado de un hijo (posición y si está activo)
