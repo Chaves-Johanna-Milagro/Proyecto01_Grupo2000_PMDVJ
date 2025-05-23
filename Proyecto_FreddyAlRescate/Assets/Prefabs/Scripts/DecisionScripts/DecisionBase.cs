@@ -24,10 +24,10 @@ public class DecisionBase : MonoBehaviour
         _soundDes = _decision?.GetComponent<AudioSource>();
 
         // Restaurar estado de los hijos del objeto Base
-        /*if (DecisionStatus.TieneEstado(_sceneName, _objName))
+        if (DecisionStatus.TieneEstado(_sceneName, _objName))
         {
             DecisionStatus.RestaurarEstado(_sceneName, _objName, _decision.transform);
-        }*/
+        }
     }
     private void OnDisable()
     {
