@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DecisionGreet2_0 : MonoBehaviour
+public class DecisionGreet2_0 : MonoBehaviour //para objetos que tengan de hijos a los obj de la decision
 {
     private GameObject _img;
 
@@ -46,6 +46,14 @@ public class DecisionGreet2_0 : MonoBehaviour
 
     public void OnMouseDown()
     {
+        if (PauseStatus.IsPaused) return;
+
+        if (CursorStatusInUI.IsPointerOverUI()) return;
+
+        if (MiniGameStatus.ActiveMiniGame()) return;
+
+        if (CinematicStatus.ActiveCinematic()) return;
+
         StatusSprites(true);
     }
 

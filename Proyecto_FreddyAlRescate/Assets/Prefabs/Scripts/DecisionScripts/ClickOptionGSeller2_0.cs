@@ -1,14 +1,16 @@
 using UnityEngine;
 
-public class ClickOption2_0 : MonoBehaviour
+public class ClickOptionGSeller2_0 : MonoBehaviour
 {
-    private DecisionGreet2_0 _des;
+    private DecisionGreetSeller2_0 _des;
 
     private string _nameOpt;
-    
     void Start()
     {
-        _des = GetComponentInParent<DecisionGreet2_0>();
+        GameObject _parent = transform.parent.gameObject; 
+
+        _des = _parent?.transform.GetComponentInParent<DecisionGreetSeller2_0>();
+
         _nameOpt = gameObject.name;
     }
 
@@ -24,4 +26,5 @@ public class ClickOption2_0 : MonoBehaviour
 
         _des.SelectOpt(_nameOpt);
     }
+
 }

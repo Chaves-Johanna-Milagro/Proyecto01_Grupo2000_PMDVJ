@@ -22,6 +22,12 @@ public class DecisionRoad : MonoBehaviour
         _instruction = transform.Find("Instruccion").gameObject;
 
         _phone = Object.FindFirstObjectByType<BPhone>();
+
+        //asegurarse de que esten activos al inicio
+        _img.SetActive(true);
+        _roadRight.SetActive(true);
+        _roadLeft.SetActive(true);
+        _instruction.SetActive(true);
     }
 
     public void ChoiceRoad(string name)
