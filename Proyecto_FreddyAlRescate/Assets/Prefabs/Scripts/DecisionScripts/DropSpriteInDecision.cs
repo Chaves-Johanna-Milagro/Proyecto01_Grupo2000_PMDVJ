@@ -6,6 +6,16 @@ public class DropSpriteInDecision : MonoBehaviour
 {
     private bool _isOccupied = false;
 
+    private MGMath _mgMath;
+
+    private void Start()
+    {
+        GameObject parent = transform.parent.gameObject;
+        GameObject parentDes = parent.transform.parent.gameObject;
+
+        _mgMath = parentDes.GetComponent<MGMath>();
+    }
+
     void OnTriggerEnter2D(Collider2D collision)
     {
 
@@ -60,6 +70,8 @@ public class DropSpriteInDecision : MonoBehaviour
 
         DragSpriteInDecision drag = obj.GetComponent<DragSpriteInDecision>();
         if (drag != null) drag.enabled = false;
+
+        _mgMath.ActiveMGMath();
     }
 
 

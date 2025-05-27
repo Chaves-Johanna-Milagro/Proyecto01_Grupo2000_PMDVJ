@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class DecisionGreet : MonoBehaviour
+public class DecisionGreetSeller : MonoBehaviour
 {
     private GameObject _bOpt1;
     private GameObject _bOpt2;

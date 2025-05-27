@@ -5,14 +5,12 @@ public class ClickRoad : MonoBehaviour
     private string _name;
 
     private DecisionRoad _des;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         _name = gameObject.name;
 
-        GameObject parent = transform.parent.gameObject;
-
-        _des = transform.parent.GetComponentInChildren<DecisionRoad>();
+        _des = GetComponentInParent<DecisionRoad>();
     }
 
     void OnMouseDown()

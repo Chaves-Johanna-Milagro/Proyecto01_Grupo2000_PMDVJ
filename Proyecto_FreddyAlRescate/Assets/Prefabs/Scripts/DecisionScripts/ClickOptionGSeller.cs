@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class ClickOption : MonoBehaviour
+public class ClickOptionGSeller : MonoBehaviour
 {
     private string _name;
 
-    private DecisionGreet _decision;
+    private DecisionGreetSeller _decision;
 
     void Start()
     {
@@ -12,7 +12,7 @@ public class ClickOption : MonoBehaviour
 
         GameObject parent = transform.parent.gameObject;
         
-        _decision = transform.parent.GetComponentInChildren<DecisionGreet>();
+        _decision = transform.parent.GetComponentInChildren<DecisionGreetSeller>();
     }
 
     public void OnMouseDown()

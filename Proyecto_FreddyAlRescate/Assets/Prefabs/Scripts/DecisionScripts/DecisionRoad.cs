@@ -1,20 +1,25 @@
+using System.Collections;
 using UnityEngine;
 
 public class DecisionRoad : MonoBehaviour
 {
-    private GameObject _des;
+    private GameObject _img;
 
     private GameObject _roadLeft; //serviran de botones
     private GameObject _roadRight;
+
+    private GameObject _instruction;
 
     private BPhone _phone;
 
     void Start()
     {
-        _des = transform.parent.gameObject;
+        _img = transform.Find("Img").gameObject;
+    
+        _roadRight = transform.Find("ArrowRight").gameObject;
+        _roadLeft = transform.Find("ArrowLeft").gameObject;
 
-        _roadLeft = _des.transform.Find("RoadLeft").gameObject;
-        _roadRight = _des.transform.Find("RoadRight").gameObject;
+        _instruction = transform.Find("Instruccion").gameObject;
 
         _phone = Object.FindFirstObjectByType<BPhone>();
     }
@@ -23,7 +28,17 @@ public class DecisionRoad : MonoBehaviour
     {
         if (_phone == null) return;
 
-        if (name == "RoadLeft") _phone.ActiveRoad("Izquierda");
-        else if (name == "RoadRight") _phone.ActiveRoad("Derecha");
+        if (name == "ArrowLeft") _phone.ActiveRoad("Izquierda");
+        else if (name == "ArrowRight") _phone.ActiveRoad("Derecha");
+        StartCoroutine(Delay());
+    }
+
+    private IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(1f);
+        _img.SetActive(false);
+        _roadRight.SetActive(false);
+        _roadLeft.SetActive(false);
+        _instruction.SetActive(false);
     }
 }

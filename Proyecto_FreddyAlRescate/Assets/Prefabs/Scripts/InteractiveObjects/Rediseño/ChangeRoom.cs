@@ -30,6 +30,9 @@ public class ChangeRoom : MonoBehaviour
 
         if (_roomName == "DoorSchool") SceneManager.LoadScene(13); // aqulla que te dirige a la entrada de la escuela
 
+        //de momento se saltara el mg de la sube
+        if (_roomName == "TrafficLight") SceneManager.LoadScene(13); // aqulla que te dirige a la entrada de la escuela
+
         if (_roomName == "DoorClassroom") SceneManager.LoadScene(14); // aqulla que te dirige al aula
 
     }
