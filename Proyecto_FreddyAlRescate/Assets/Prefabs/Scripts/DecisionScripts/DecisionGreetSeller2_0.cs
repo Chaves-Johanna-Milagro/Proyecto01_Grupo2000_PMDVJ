@@ -48,6 +48,8 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
 
     private void Update()
     {
+        if (PauseStatus.IsPaused) return;
+
         if (_next) NextAction();
     }
 
@@ -60,6 +62,8 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
         if (MiniGameStatus.ActiveMiniGame()) return;
 
         if (CinematicStatus.ActiveCinematic()) return;
+
+        if (DecisionStatus.ActiveDecision()) return;
 
         _img.SetActive(true);
     }
