@@ -447,8 +447,8 @@ GameObject:
   - component: {fileID: 2199843446498347369}
   - component: {fileID: 7743824464737059156}
   - component: {fileID: 7030455599798990518}
-  - component: {fileID: 3221889604225645605}
   - component: {fileID: 8388874414864450283}
+  - component: {fileID: 2757338475722122709}
   m_Layer: 0
   m_Name: DoorKitchen
   m_TagString: Interactuable
@@ -466,7 +466,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.07344403, y: 0.4611949, z: -0.3128089, w: 0.8270767}
   m_LocalPosition: {x: 26.77, y: 1.72, z: -0.10000002}
-  m_LocalScale: {x: 0.2, y: 0.25, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5131278229465850180}
@@ -516,7 +516,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 84093f3f18af7fd439404047fca2f08c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 86457262240c0a34cb55200ab322717e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -551,8 +551,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b53217f8932b1ef49a6a2566e904ed46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &3221889604225645605
-BoxCollider2D:
+--- !u!114 &8388874414864450283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4715707440390546785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa0f9fdb17d5a74584738d7b05a9e97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!60 &2757338475722122709
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -589,26 +601,40 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 26.5, y: 33.375}
+    oldSize: {x: 14.125, y: 26.75}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 26.5, y: 33.375}
-  m_EdgeRadius: 0
---- !u!114 &8388874414864450283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4715707440390546785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fa0f9fdb17d5a74584738d7b05a9e97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Points:
+    m_Paths:
+    - - {x: 4.9375, y: -5.8125}
+      - {x: 5.5, y: -5.5}
+      - {x: 5.6875, y: -3.375}
+      - {x: 5.6875, y: 4.5625}
+      - {x: 5.5625, y: 7.1875}
+      - {x: 5.4375, y: 8.75}
+      - {x: 5.25, y: 11.3125}
+      - {x: 5.125, y: 12.125}
+      - {x: 5.0625, y: 12.25}
+      - {x: 4.8125, y: 12.25}
+      - {x: 4.5625, y: 12.1875}
+      - {x: 2.4375, y: 10.25}
+      - {x: -0.6875, y: 7.125}
+      - {x: -2.25, y: 5.6875}
+      - {x: -3.5, y: 4.375}
+      - {x: -5.625, y: 1.875}
+      - {x: -5.8125, y: 0.875}
+      - {x: -5.9375, y: -1.9375}
+      - {x: -6, y: -3.5625}
+      - {x: -6, y: -10.25}
+      - {x: -5.75, y: -11}
+      - {x: -5.5, y: -11}
+      - {x: -3.8125, y: -10.25}
+      - {x: 0.375, y: -8.25}
+      - {x: 4.0625, y: -6.3125}
+  m_UseDelaunayMesh: 0
 --- !u!1 &5570491554046199359
 GameObject:
   m_ObjectHideFlags: 0

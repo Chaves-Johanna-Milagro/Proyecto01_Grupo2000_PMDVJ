@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2339802305349995733}
   - component: {fileID: 8882228817561708177}
   - component: {fileID: 5310693974017736079}
-  - component: {fileID: 7178028497691130991}
+  - component: {fileID: 2285374319037370899}
   m_Layer: 0
   m_Name: DoorSchool
   m_TagString: Interactuable
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0cf58262ff44a60478e6d589a4ea3887, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8a8743dea448ee14e964a90742c3dda8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -127,8 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b53217f8932b1ef49a6a2566e904ed46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &7178028497691130991
-BoxCollider2D:
+--- !u!60 &2285374319037370899
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -161,15 +161,61 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -6.3019347, y: -0.57156205}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 30, y: 17.5}
+    oldSize: {x: 16.6875, y: 26.125}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 13.126912, y: 16.356876}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.03125, y: -10.5}
+      - {x: 0.53125, y: -10.3125}
+      - {x: 0.96875, y: -10.1875}
+      - {x: 3.03125, y: -9.75}
+      - {x: 6.09375, y: -8.875}
+      - {x: 6.90625, y: -8.625}
+      - {x: 7.21875, y: -8.3125}
+      - {x: 7.28125, y: -8}
+      - {x: 7.28125, y: -6.3125}
+      - {x: 7.21875, y: -4.5}
+      - {x: 7.09375, y: -2.25}
+      - {x: 7.03125, y: -0.8125}
+      - {x: 6.96875, y: 0.75}
+      - {x: 6.90625, y: 2.4375}
+      - {x: 6.84375, y: 4.3125}
+      - {x: 6.78125, y: 6.375}
+      - {x: 6.71875, y: 8.625}
+      - {x: 6.65625, y: 10.6875}
+      - {x: 6.59375, y: 11.875}
+      - {x: 6.34375, y: 12.1875}
+      - {x: 6.03125, y: 12.1875}
+      - {x: 5.46875, y: 11.9375}
+      - {x: 5.21875, y: 11.75}
+      - {x: 4.46875, y: 11.3125}
+      - {x: 4.09375, y: 11.0625}
+      - {x: 3.78125, y: 10.8125}
+      - {x: 2.21875, y: 9.8125}
+      - {x: -0.34375, y: 8.3125}
+      - {x: -3.90625, y: 6.25}
+      - {x: -5.03125, y: 5.5625}
+      - {x: -6.28125, y: 4.6875}
+      - {x: -7.03125, y: 4.125}
+      - {x: -7.21875, y: 3.9375}
+      - {x: -7.28125, y: 3.125}
+      - {x: -7.28125, y: 0.625}
+      - {x: -7.34375, y: 0.5625}
+      - {x: -7.34375, y: -7.5}
+      - {x: -7.28125, y: -9.5}
+      - {x: -7.21875, y: -10.4375}
+      - {x: -7.09375, y: -11.25}
+      - {x: -6.84375, y: -11.8125}
+      - {x: -6.71875, y: -11.8125}
+      - {x: -5.96875, y: -11.6875}
+      - {x: -4.96875, y: -11.5}
+      - {x: -2.40625, y: -10.9375}
+  m_UseDelaunayMesh: 0
