@@ -11,9 +11,8 @@ public class DropSpriteInDecision : MonoBehaviour
     private void Start()
     {
         GameObject parent = transform.parent.gameObject;
-        GameObject parentDes = parent.transform.parent.gameObject;
 
-        _mgMath = parentDes.GetComponent<MGMath>();
+        _mgMath = parent.GetComponentInParent<MGMath>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -35,11 +34,11 @@ public class DropSpriteInDecision : MonoBehaviour
 
         Vector3 offset = Vector3.zero;
 
-        if (dropName == "Balanza" && EsFruta(objetoName))
+        if (dropName == "BALANZA" && EsFruta(objetoName))
         {
             offset = new Vector3(0f, -0.2f, 0f); // más abajo
         }
-        if (dropName == "Mostrador" && EsSandwich(objetoName))
+        if (dropName == "MOSTRADOR" && EsSandwich(objetoName))
         {
             offset = new Vector3(0f, 3f, 0f); // más arriba
         }
@@ -71,17 +70,17 @@ public class DropSpriteInDecision : MonoBehaviour
         DragSpriteInDecision drag = obj.GetComponent<DragSpriteInDecision>();
         if (drag != null) drag.enabled = false;
 
-        _mgMath.ActiveMGMath();
+        _mgMath.ActiveMGMath(true); // una vez este dropiada la comida tonce active el minijuego
     }
 
 
     private bool EsFruta(string nombre)
     {
-        return nombre == "Manzana" || nombre == "Banana" || nombre == "Naranja";
+        return nombre == "MANZANA" || nombre == "BANANA" || nombre == "NARANJA";
     }
 
     private bool EsSandwich(string nombre)
     {
-        return nombre == "Sanwi" || nombre == "Sanwi de jamon" || nombre == "Sanwi de queso";
+        return nombre == "SANWI" || nombre == "SANWI DE JAMON" || nombre == "SANWI DE QUESO";
     }
 }

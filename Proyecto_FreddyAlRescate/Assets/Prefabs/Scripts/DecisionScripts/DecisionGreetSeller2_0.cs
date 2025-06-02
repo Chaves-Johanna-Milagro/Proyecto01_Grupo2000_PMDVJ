@@ -24,9 +24,10 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
 
     private BKindnessUpDown _kind;
 
+
     void Start()
     {
-        _img = transform.Find("Img").gameObject;
+        _img = transform?.Find("ImgDes").gameObject;
 
         _charDefault = _img.transform.Find("CharDefault").gameObject;
         _charGreet = _img.transform.Find("CharGreet").gameObject;
@@ -125,5 +126,42 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
         _greetSeller.SetActive(false);
         _instructionSeller.SetActive(true);
 
+        yield return new WaitForSeconds(1f);
+
+        DragDropFood();    
+
+    }
+
+    private void DragDropFood()
+    {
+        if (_nameObj == "Greengrocery")
+        {
+            GameObject _manz = _img.transform.Find("MANZANA").gameObject;
+            GameObject _ban = _img.transform.Find("BANANA").gameObject;
+            GameObject _nar = _img.transform.Find("NARANJA").gameObject;
+
+            GameObject _bal = _img.transform.Find("BALANZA").gameObject;
+
+            _manz.SetActive(true);
+            _ban.SetActive(true);
+            _nar.SetActive(true);
+
+            _bal.SetActive(true);
+        }
+
+        if (_nameObj == "Kiosk")
+        {
+            GameObject _san = _img.transform.Find("SANWI").gameObject;
+            GameObject _sanJam = _img.transform.Find("SANWI DE JAMON").gameObject;
+            GameObject _sanQue = _img.transform.Find("SANWI DE QUESO").gameObject;
+
+            GameObject _most = _img.transform.Find("MOSTRADOR").gameObject;
+
+            _san.SetActive(true);
+            _sanJam.SetActive(true);
+            _sanQue.SetActive(true);
+
+            _most.SetActive(true);
+        }
     }
 }
