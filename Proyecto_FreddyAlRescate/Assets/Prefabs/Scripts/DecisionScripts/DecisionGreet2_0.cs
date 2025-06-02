@@ -19,6 +19,9 @@ public class DecisionGreet2_0 : MonoBehaviour //para objetos que tengan de hijos
 
     private bool _next = false;
 
+    private bool _greet = false; // se utilizara para saber si se eligio la opcion de saludar
+    private bool _nextScene = false; // se utilizara para saber si ya se eligio alguna opcion
+
     private BKindnessUpDown _kind;
 
     void Start()
@@ -41,7 +44,7 @@ public class DecisionGreet2_0 : MonoBehaviour //para objetos que tengan de hijos
 
     public void Update()
     {
-        if (_next) NextAction();
+        if (_next && !_nextScene) NextAction();
     }
 
     public void OnMouseDown()
@@ -82,6 +85,7 @@ public class DecisionGreet2_0 : MonoBehaviour //para objetos que tengan de hijos
             _kind.GoodDecision();
 
             _next = true;
+            _greet = true;
            
         }
         if (opt == "Opt2")
@@ -95,21 +99,21 @@ public class DecisionGreet2_0 : MonoBehaviour //para objetos que tengan de hijos
             _kind.BadDecision();
 
             _next = true;
+            _greet = false;
         }
     } 
 
     private void NextAction()
     {
-        if (_nameObj == "DoorStreet")
+        _nextScene = true;
+
+        if (_nameObj == "DoorStreet" && _greet)
         {
-            GameObject _despedida = transform.Find("Despedida").gameObject;
-
-            _despedida.SetActive(true);
-
-            StartCoroutine(Delay());
-            
-            _next = false;
+            GameObject _despedida = transform.Find("Despedida")?.gameObject;
+            _despedida?.SetActive(true);
         }
+
+        StartCoroutine(Delay());
     }
   
     private IEnumerator Delay()

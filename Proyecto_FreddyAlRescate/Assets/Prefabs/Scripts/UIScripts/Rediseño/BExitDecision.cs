@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BExitDecision : MonoBehaviour
@@ -37,7 +38,7 @@ public class BExitDecision : MonoBehaviour
 
         if (PauseStatus.IsPaused) return;
 
-        if (DecisionStatus.ActiveDecision()) ActiveObjs(true);
+        if (DecisionStatus.ActiveDecision() && SceneManager.GetActiveScene().name != "WayToSchool2.0") ActiveObjs(true);
 
     }
     public void ExitDes()
