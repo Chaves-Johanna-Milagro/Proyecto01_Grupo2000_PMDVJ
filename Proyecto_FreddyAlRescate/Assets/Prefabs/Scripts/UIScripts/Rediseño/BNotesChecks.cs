@@ -16,7 +16,7 @@ public class BNotesChecks : MonoBehaviour
 
     private bool _isActive = false;
 
-    private AudioSource _audioCheck;
+    //private AudioSource _audioCheck;
 
     private void Start()
     {
@@ -35,7 +35,7 @@ public class BNotesChecks : MonoBehaviour
 
         UpdateChecks();
 
-        _audioCheck = GetComponent<AudioSource>();
+        //_audioCheck = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -64,7 +64,8 @@ public class BNotesChecks : MonoBehaviour
         ChecksStatus.SetCheckActive(_sceneName, 0);
         UpdateChecks();
 
-        _audioCheck.Play();
+        //_audioCheck.Play();
+        PlaySound("Correct");
     }
 
     public void Check2()
@@ -72,7 +73,8 @@ public class BNotesChecks : MonoBehaviour
         ChecksStatus.SetCheckActive(_sceneName, 1);
         UpdateChecks();
 
-        _audioCheck.Play();
+        //_audioCheck.Play();
+        PlaySound("Correct");
     }
 
     public void Check3()
@@ -80,7 +82,7 @@ public class BNotesChecks : MonoBehaviour
         ChecksStatus.SetCheckActive(_sceneName, 2);
         UpdateChecks();
 
-        _audioCheck.Play();
+        PlaySound("Correct");
     }
 
     private void UpdateChecks()
@@ -90,5 +92,15 @@ public class BNotesChecks : MonoBehaviour
         if (_check1 != null) _check1.SetActive(current[0]);
         if (_check2 != null) _check2.SetActive(current[1]);
         if (_check3 != null) _check3.SetActive(current[2]);
+    }
+
+    public void PlaySound(string name)
+    {
+        AudioSource[] sounds = GetComponents<AudioSource>();
+
+        foreach (AudioSource sound in sounds)
+        {
+            if (sound.clip != null && sound.clip.name == name) sound.Play();
+        }
     }
 }

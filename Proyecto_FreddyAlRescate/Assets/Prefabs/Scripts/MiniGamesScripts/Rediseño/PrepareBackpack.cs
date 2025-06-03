@@ -4,15 +4,17 @@ using System.Collections.Generic;
 
 public class PrepareBackpack : MonoBehaviour
 {
-    private HashSet<string> _incorrectos = new HashSet<string> { "Obj3", "Obj5", "Obj7" };
+    private HashSet<string> _incorrectos = new HashSet<string> { "CEPILLO", "JOYSTICK", "MEDIA" };
     private int _totalCorrectos = 6;
 
-    private Dictionary<string, Vector3> _posInit = new Dictionary<string, Vector3>(); // pa guardar la pos inicial de los obj
+    private Dictionary<string, Vector3> _posInit = new Dictionary<string, Vector3>();// pa guardar la pos inicial de los obj
 
     private Transform _parent;
 
     private BNotesChecks _check;
     private BKindnessUpDown _kind;
+
+    private AudioSource _audioSource;
 
     void Start()
     {
@@ -24,25 +26,33 @@ public class PrepareBackpack : MonoBehaviour
         foreach (Transform child in _parent)
         {
             string nombre = child.name;
-
-            if (!nombre.StartsWith("Obj")) continue; // para que ignore a aquellos que no comiencen con Obj
-
+            if(nombre == "Backpack" && nombre == "Img") continue;
             _posInit[nombre] = child.position;
         }
 
-        VerificarCheck(); // Por si ya estaban todos desactivados al inicio
+        _audioSource = GetComponent<AudioSource>();
+
+        VerificarCheck();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (PauseStatus.IsPaused) return;
 
-        if (other.transform.parent != transform.parent || !other.name.StartsWith("Obj")) return; //pa que no 
+        if (other.transform.parent != transform.parent) return;
 
         string nombre = other.name;
 
+
         if (_incorrectos.Contains(nombre))
         {
+            // Reproducir sonido si el objeto tiene un AudioSource
+            AudioSource audio = other.GetComponent<AudioSource>();
+            if (audio != null)
+            {
+                audio.Play();
+            }
+
             if (_posInit.TryGetValue(nombre, out Vector3 destino)) //movera a su pos inicial a los incorrectos
             {
                 StartCoroutine(MoverSuavemente(other.transform, destino, 0.3f));
@@ -50,9 +60,8 @@ public class PrepareBackpack : MonoBehaviour
             return;
         }
 
+        _audioSource.Play();
         other.gameObject.SetActive(false);
-
-        // Verifica si se llegó al total
         VerificarCheck();
     }
 
@@ -64,14 +73,13 @@ public class PrepareBackpack : MonoBehaviour
         {
             string nombre = child.name;
 
-            if (!nombre.StartsWith("Obj")) continue;
             if (_incorrectos.Contains(nombre)) continue;
             if (!child.gameObject.activeInHierarchy) desactivadosCorrectos++;
         }
 
         if (desactivadosCorrectos >= _totalCorrectos)
         {
-            _check.Check2(); // activa el check
+            _check.Check2(); //activa el check
             _kind.GoodDecision(); //sube la barrita
         }
     }

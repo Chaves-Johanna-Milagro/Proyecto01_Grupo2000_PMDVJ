@@ -19,7 +19,13 @@ public class SimpleClickBounce2_0 : MonoBehaviour
         // Verifica si el juego está en pausa antes de procesar el click
         if (PauseStatus.IsPaused) return;
 
+        if (CursorStatusInUI.IsPointerOverUI()) return; // si el cursor esta sobre la ui
+
         if (MiniGameStatus.ActiveMiniGame()) return; // si esta un mini juego no procese el click
+
+        if (CinematicStatus.ActiveCinematic()) return; // si hay alguna cinematica corriendo
+
+        if (DecisionStatus.ActiveDecision()) return; // si hay alguna desicion corriendo
 
         if (!_isBouncing && !CursorStatusInUI.IsPointerOverUI()) //pa que no rebote si se clickea en la UI
             StartCoroutine(DoBounce());

@@ -14,6 +14,15 @@ public class CharacterClickMove : MonoBehaviour // se encargara de mover al play
     {
         if (!_canMove || !_isMoving) return;
 
+        // Verifica si el juego está en pausa antes de procesar el click
+        if (PauseStatus.IsPaused) return;
+
+        if (MiniGameStatus.ActiveMiniGame()) return; // verifica que no este acivo un minijuego
+
+        if (CinematicStatus.ActiveCinematic()) return; // si hay alguna cinematica corriendo
+
+        if (DecisionStatus.ActiveDecision()) return; // si hay alguna desicion corriendo
+
         // Mover suavemente hacia el objetivo
         transform.position = Vector3.MoveTowards(transform.position, _targetPosition, _speed * Time.deltaTime);
 

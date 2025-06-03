@@ -5,7 +5,7 @@ public class BNotes : MonoBehaviour
 {
     private GameObject _img;
     private GameObject _text;
-    
+
     private Button _BNotes;
 
     private bool _isActive = false;
@@ -38,15 +38,26 @@ public class BNotes : MonoBehaviour
         GameObject kindness = GameObject.FindWithTag("Kindness");
 
         if (kindness != null && kindness.activeInHierarchy) return;    // No se activa si Kindness está activo
-       
+
 
         _isActive = !_isActive;
         SetActive(_isActive);
+        if (_isActive) PlaySound("ButtonNotes");
     }
 
     private void SetActive(bool state)
     {
         _img.SetActive(state);
         _text.SetActive(state);
+    }
+
+    public void PlaySound(string name)
+    {
+        AudioSource[] sounds = GetComponents<AudioSource>();
+
+        foreach (AudioSource sound in sounds)
+        {
+            if (sound.clip != null &&  sound.clip.name == name) sound.Play();
+        }
     }
 }

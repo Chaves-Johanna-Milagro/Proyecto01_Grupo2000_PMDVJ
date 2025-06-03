@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class BExitMiniGame : MonoBehaviour
@@ -37,7 +38,7 @@ public class BExitMiniGame : MonoBehaviour
 
         if (PauseStatus.IsPaused) return;
 
-        if (MiniGameStatus.ActiveMiniGame()) ActiveObjs(true);
+        if (MiniGameStatus.ActiveMiniGame() && SceneManager.GetActiveScene().name != "WayToSchool2.0") ActiveObjs(true);
 
     }
     public void ExitMG()

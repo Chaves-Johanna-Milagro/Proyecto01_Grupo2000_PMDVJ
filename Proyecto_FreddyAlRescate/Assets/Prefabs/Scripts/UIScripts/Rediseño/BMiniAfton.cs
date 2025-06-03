@@ -40,6 +40,17 @@ public class BMiniAfton : MonoBehaviour
         "SI TE VAS SIN DESPEDIRTE, ALGUIEN TE VA A EXTRAÑAR."
     };
 
+    private string[] _randomTextNvl3 = new string[]
+    {
+        "¡SALUDAR ES EL PRIMER PASO PARA UNA BUENA COMPRA!",
+        "FREDDY, RECORDÁ MIRAR A AMBOS LADOS ANTES DE CRUZAR.",
+        "SI EL SEMÁFORO ESTÁ EN ROJO, ¡ESPERÁ!",
+        "NO HAY APURO SI SE TRATA DE CRUZAR SEGURO.",
+        "¡YA CASI LLEGÁS A LA PARADA!",
+        "CAMINAR CON ATENCIÓN TAMBIÉN ES SER UN HÉROE.",
+        "¿VISTE QUE NADIE VENÍA? ¡BUEN MOMENTO PARA CRUZAR!"
+    };
+
     private AudioSource _soundAfton;
     void Start()
     {
@@ -89,6 +100,7 @@ public class BMiniAfton : MonoBehaviour
     {
         if (_sceneName == "Morning2.0") ConcejosNvl1();
         else if (_sceneName == "Breackfast2.0") ConcejosNvl2();
+        else if (_sceneName == "WayToSchool2.0") ConcejosNvl3();
     }
 
 
@@ -108,5 +120,11 @@ public class BMiniAfton : MonoBehaviour
             string randomLine = _randomTextNvl2[Random.Range(0, _randomTextNvl2.Length)];
             _textComp.text = randomLine;
         }
+    }
+
+    private void ConcejosNvl3()
+    {
+        if (_randomTextNvl3.Length > 0)
+            _textComp.text = _randomTextNvl3[Random.Range(0, _randomTextNvl3.Length)];
     }
 }
