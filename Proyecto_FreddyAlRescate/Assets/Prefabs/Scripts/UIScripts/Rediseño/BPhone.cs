@@ -12,6 +12,7 @@ public class BPhone : MonoBehaviour
 
     private string _lastRoad = ""; // Guarda el último camino elegido
 
+    private AudioSource _audioSource;
     void Start()
     {
         _img1 = transform.GetChild(0).gameObject;
@@ -22,6 +23,8 @@ public class BPhone : MonoBehaviour
 
         _BPhone = GetComponent<Button>();
         _BPhone.onClick.AddListener(Toggle);
+
+        _audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -42,6 +45,7 @@ public class BPhone : MonoBehaviour
 
         _isActive = !_isActive;
         SetActive(_isActive);
+        if (_isActive) _audioSource.Play();
     }
 
     private void SetActive(bool state)

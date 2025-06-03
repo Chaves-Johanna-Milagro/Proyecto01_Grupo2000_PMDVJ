@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class PrepareBackpack : MonoBehaviour
 {
-    private HashSet<string> _incorrectos = new HashSet<string> { "Cepillo", "Joystick", "Media" };
+    private HashSet<string> _incorrectos = new HashSet<string> { "CEPILLO", "JOYSTICK", "MEDIA" };
     private int _totalCorrectos = 6;
 
     private Dictionary<string, Vector3> _posInit = new Dictionary<string, Vector3>();// pa guardar la pos inicial de los obj
@@ -13,6 +13,8 @@ public class PrepareBackpack : MonoBehaviour
 
     private BNotesChecks _check;
     private BKindnessUpDown _kind;
+
+    private AudioSource _audioSource;
 
     void Start()
     {
@@ -28,6 +30,8 @@ public class PrepareBackpack : MonoBehaviour
             _posInit[nombre] = child.position;
         }
 
+        _audioSource = GetComponent<AudioSource>();
+
         VerificarCheck();
     }
 
@@ -39,8 +43,16 @@ public class PrepareBackpack : MonoBehaviour
 
         string nombre = other.name;
 
+
         if (_incorrectos.Contains(nombre))
         {
+            // Reproducir sonido si el objeto tiene un AudioSource
+            AudioSource audio = other.GetComponent<AudioSource>();
+            if (audio != null)
+            {
+                audio.Play();
+            }
+
             if (_posInit.TryGetValue(nombre, out Vector3 destino)) //movera a su pos inicial a los incorrectos
             {
                 StartCoroutine(MoverSuavemente(other.transform, destino, 0.3f));
@@ -48,6 +60,7 @@ public class PrepareBackpack : MonoBehaviour
             return;
         }
 
+        _audioSource.Play();
         other.gameObject.SetActive(false);
         VerificarCheck();
     }

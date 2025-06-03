@@ -39,17 +39,17 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
         _objetosComidos.Clear();
 
         // Verificar estado de cada objeto
-        GameObject bread = GameObject.Find("Pan");
-        if (bread == null || !bread.activeInHierarchy) _objetosComidos.Add("Pan");
+        GameObject bread = GameObject.Find("PAN");
+        if (bread == null || !bread.activeInHierarchy) _objetosComidos.Add("PAN");
 
-        GameObject cup = GameObject.Find("Taza");
-        if (cup == null || !cup.activeInHierarchy) _objetosComidos.Add("Taza");
+        GameObject cup = GameObject.Find("TAZA");
+        if (cup == null || !cup.activeInHierarchy) _objetosComidos.Add("TAZA");
 
-        GameObject napkin = GameObject.Find("Servilleta");
-        if (napkin == null || !napkin.activeInHierarchy) _objetosComidos.Add("Servilleta");
+        GameObject napkin = GameObject.Find("SERVILLETA");
+        if (napkin == null || !napkin.activeInHierarchy) _objetosComidos.Add("SERVILLETA");
 
         // Marcar como terminado si ya están los 3 comidos
-        if (_objetosComidos.Contains("Pan") && _objetosComidos.Contains("Taza") && _objetosComidos.Contains("Servilleta"))
+        if (_objetosComidos.Contains("PAN") && _objetosComidos.Contains("TAZA") && _objetosComidos.Contains("SERVILLETA"))
         {
             _terminado = true;
         }
@@ -71,17 +71,17 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
         if (_objetosComidos.Contains(nombre)) return;
 
         // Primera comida: Bread o Cup
-        if ((_objetosComidos.Count == 0 && (nombre == "Pan" || nombre == "Taza")) ||
-            (_objetosComidos.Count == 1 && (nombre == "Pan" || nombre == "Taza") && !_objetosComidos.Contains(nombre)))
+        if ((_objetosComidos.Count == 0 && (nombre == "PAN" || nombre == "TAZA")) ||
+            (_objetosComidos.Count == 1 && (nombre == "PAN" || nombre == "TAZA") && !_objetosComidos.Contains(nombre)))
         {
             StartCoroutine(ComerObjeto(other.gameObject));
         }
 
         // Napkin solo si ya se comieron Bread y Cup
-        else if (nombre == "Servilleta" &&
-                 _objetosComidos.Contains("Pan") &&
-                 _objetosComidos.Contains("Taza") &&
-                 !_objetosComidos.Contains("Servilleta"))
+        else if (nombre == "SERVILLETA" &&
+                 _objetosComidos.Contains("PAN") &&
+                 _objetosComidos.Contains("TAZA") &&
+                 !_objetosComidos.Contains("SERVILLETA"))
         {
             StartCoroutine(LimpiarBocaConNapkin(other.gameObject));
         }
@@ -117,7 +117,7 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
         ActivarBoca("default");
 
         napkin.SetActive(false);
-        _objetosComidos.Add("Servilleta");
+        _objetosComidos.Add("SERVILLETA");
 
         _check.Check1(); // marcar minijuego como completado
         _kind.GoodDecision(); // sube la barrita

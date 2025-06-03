@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BrushTeeh : MonoBehaviour // ste script lo tiene MouthDirty
+public class BrushTeeh : MonoBehaviour // Este script lo tiene Mouth
 {
     private GameObject _mouthDirty;
     private GameObject _mouthClean;
@@ -53,7 +53,7 @@ public class BrushTeeh : MonoBehaviour // ste script lo tiene MouthDirty
     {
         if (_completed) return;
 
-        if (collision.gameObject.name == "Cepillo")
+        if (collision.gameObject.name == "CEPILLO")
         {
             _soundBrush?.Play();
         }
@@ -63,7 +63,7 @@ public class BrushTeeh : MonoBehaviour // ste script lo tiene MouthDirty
     {
         if (_completed) return;
 
-        if (other.gameObject.name == "Cepillo")
+        if (other.gameObject.name == "CEPILLO")
         {
             _isTouching = true;
         }
@@ -71,7 +71,7 @@ public class BrushTeeh : MonoBehaviour // ste script lo tiene MouthDirty
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.name == "Cepillo")
+        if (other.gameObject.name == "CEPILLO")
         {
             _isTouching = false;
             _timer = 0f;

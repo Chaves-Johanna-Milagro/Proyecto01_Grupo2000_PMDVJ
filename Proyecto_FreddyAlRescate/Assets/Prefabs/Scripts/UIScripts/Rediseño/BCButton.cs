@@ -10,6 +10,8 @@ public class BCButton : MonoBehaviour
     private string _bName; //nombre del boton 1,2, c, = ,etc 
 
     private Button _button; //pa su componente 
+
+    private AudioSource _audioSource;
     
     void Start()
     {
@@ -22,10 +24,14 @@ public class BCButton : MonoBehaviour
         _button = GetComponent<Button>();
 
         _button.onClick.AddListener(SendName);
+
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void SendName()
     {
+        if (_audioSource != null) _audioSource.Play();
+
         if (_bName == "c") _showOperation.ClearScreen();
 
         else if (_bName == "=") _showOperation.Evaluate();

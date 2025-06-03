@@ -16,8 +16,8 @@ public class DecisionRoad : MonoBehaviour
     {
         _img = transform.Find("Img").gameObject;
     
-        _roadRight = transform.Find("ArrowRight").gameObject;
-        _roadLeft = transform.Find("ArrowLeft").gameObject;
+        _roadRight = transform?.Find("ArrowRight").gameObject;
+        _roadLeft = transform?.Find("ArrowLeft").gameObject;
 
         _instruction = transform.Find("Instruccion").gameObject;
 
@@ -32,7 +32,7 @@ public class DecisionRoad : MonoBehaviour
 
     public void ChoiceRoad(string name)
     {
-        if (_phone == null) return;
+        if (_phone == null) _phone = Object.FindFirstObjectByType<BPhone>();//buscarlo de nuevo
 
         if (name == "ArrowLeft") _phone.ActiveRoad("Izquierda");
         else if (name == "ArrowRight") _phone.ActiveRoad("Derecha");

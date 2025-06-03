@@ -252,7 +252,7 @@ GameObject:
   - component: {fileID: 5322212944699687400}
   - component: {fileID: 7219102241615437766}
   m_Layer: 0
-  m_Name: Cepillo
+  m_Name: CEPILLO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 6543326835607942821}
   - component: {fileID: 3171651951287581952}
   m_Layer: 0
-  m_Name: Pan
+  m_Name: PAN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 6516093037262392493}
   - component: {fileID: 3626344887377533502}
   m_Layer: 0
-  m_Name: Taza
+  m_Name: TAZA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1666,7 +1666,7 @@ GameObject:
   - component: {fileID: 8541468890852428283}
   - component: {fileID: 7062331833229007918}
   m_Layer: 0
-  m_Name: Servilleta
+  m_Name: SERVILLETA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
