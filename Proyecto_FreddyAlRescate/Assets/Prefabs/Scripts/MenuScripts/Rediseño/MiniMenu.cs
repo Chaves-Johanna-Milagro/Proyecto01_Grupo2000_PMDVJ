@@ -30,19 +30,23 @@ public class MiniMenu : MonoBehaviour
 
     public void Update()
     {
-        GameObject math = GameObject.FindWithTag("Math"); //para que busque con el tag math
 
-        if (math != null && math.activeInHierarchy)//desactiva el telefono y activa la calculadora para usarla
+        if (_sceneName == "WayToSchool2.0")//pa que solo ocurra en esa escena
+        {
+            GameObject math = GameObject.FindWithTag("Math"); //para que busque con el tag math
 
-        {
-            _phone.SetActive(false);
-            _calculator.SetActive(true);
+            if (math != null && math.activeInHierarchy)//desactiva el telefono y activa la calculadora para usarla
+            {
+                _phone.SetActive(false);
+                _calculator.SetActive(true);
+            }
+            else
+            {
+               _phone.SetActive(true);
+               _calculator.SetActive(false);
+            }
         }
-        else
-        {
-            _phone.SetActive(true);
-            _calculator.SetActive(false);
-        }
+
     }
 }
 
