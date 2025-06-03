@@ -12,6 +12,8 @@ public class BKindness : MonoBehaviour
 
     private bool _isActive = false;
 
+    private AudioSource _audioSource;
+
     void Start()
     {
         _count = transform.childCount;
@@ -25,6 +27,8 @@ public class BKindness : MonoBehaviour
 
         _BKind = GetComponent<Button>();
         _BKind.onClick.AddListener(Toggle);
+
+        _audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -48,6 +52,7 @@ public class BKindness : MonoBehaviour
 
         _isActive = !_isActive;
         SetActive(_isActive);
+        if(_isActive) _audioSource.Play();
     }
 
     private void SetActive(bool state)

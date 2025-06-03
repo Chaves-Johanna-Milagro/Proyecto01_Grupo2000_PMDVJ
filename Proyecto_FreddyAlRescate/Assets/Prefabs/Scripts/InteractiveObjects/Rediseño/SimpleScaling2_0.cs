@@ -27,9 +27,11 @@ public class SimpleScaling2_0 : MonoBehaviour
     private void OnMouseEnter()
     {
         // Verifica si el juego está en pausa antes de procesar el click
-        if (PauseStatus.IsPaused) return;         
-        
-        if(MiniGameStatus.ActiveMiniGame()) return; // verifica que no este acivo un minijuego
+        if (PauseStatus.IsPaused) return;
+
+        if (CursorStatusInUI.IsPointerOverUI()) return; // si el cursor esta sobre la ui
+
+        if (MiniGameStatus.ActiveMiniGame()) return; // verifica que no este acivo un minijuego
 
         if (CinematicStatus.ActiveCinematic()) return; // si hay alguna cinematica corriendo
 
