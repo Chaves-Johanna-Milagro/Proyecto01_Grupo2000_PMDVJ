@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class ChoiceLevelMath : MonoBehaviour
+public class ChoiceLevelMath : MonoBehaviour // lo tiene la imagen detro del boton de rediseño del menu
 {
     private GameObject _easy;
     private GameObject _medium;
@@ -31,9 +31,9 @@ public class ChoiceLevelMath : MonoBehaviour
     }
     void SetupLevelButtons()
     {
-        _bEasy.onClick.AddListener(() => SetLevelAndStart("Fácil"));
-        _bMedium.onClick.AddListener(() => SetLevelAndStart("Medio"));
-        _bHard.onClick.AddListener(() => SetLevelAndStart("Difícil"));
+        _bEasy.onClick.AddListener(() => SetLevelAndStart("Facil")); // numeros del 1 al 10
+        _bMedium.onClick.AddListener(() => SetLevelAndStart("Medio")); // numeros del 10 al 100
+        _bHard.onClick.AddListener(() => SetLevelAndStart("Dificil"));  // numeros del 100 al 1000
     }
 
     void SetLevelAndStart(string level)

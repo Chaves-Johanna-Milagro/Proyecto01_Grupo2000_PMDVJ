@@ -1268,6 +1268,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4900677172613949402}
   - component: {fileID: 8524184893491413228}
+  - component: {fileID: 8236144482960898426}
   m_Layer: 0
   m_Name: Dinero
   m_TagString: Untagged
@@ -1346,6 +1347,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8236144482960898426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2928990847437023531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b417f8b01306cc4bb53c04f012d3bbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3567628098140670151
 GameObject:
   m_ObjectHideFlags: 0
@@ -3227,6 +3240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 33058135646095545}
   - component: {fileID: 4110977116634825185}
+  - component: {fileID: 3430374884359516431}
   m_Layer: 0
   m_Name: Precio
   m_TagString: Untagged
@@ -3305,6 +3319,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3430374884359516431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5606573266683516430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b417f8b01306cc4bb53c04f012d3bbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6283232930837393353
 GameObject:
   m_ObjectHideFlags: 0

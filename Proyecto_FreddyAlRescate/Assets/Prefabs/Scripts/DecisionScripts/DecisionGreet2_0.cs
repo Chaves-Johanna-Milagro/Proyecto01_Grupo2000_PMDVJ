@@ -101,21 +101,24 @@ public class DecisionGreet2_0 : MonoBehaviour //para objetos que tengan de hijos
             _next = true;
             _greet = false;
         }
-    } 
+    }
 
     private void NextAction()
     {
         _nextScene = true;
 
-        if (_nameObj == "DoorStreet" && _greet)
+        if (_nameObj == "DoorStreet")
         {
-            GameObject _despedida = transform.Find("Despedida")?.gameObject;
-            _despedida?.SetActive(true);
-        }
+            if (_greet)
+            {
+                GameObject _despedida = transform.Find("Despedida")?.gameObject;
+                _despedida?.SetActive(true);
+            }
 
-        StartCoroutine(Delay());
+            StartCoroutine(Delay());
+        }
     }
-  
+
     private IEnumerator Delay()
     {
         yield return new WaitForSeconds(2f);
