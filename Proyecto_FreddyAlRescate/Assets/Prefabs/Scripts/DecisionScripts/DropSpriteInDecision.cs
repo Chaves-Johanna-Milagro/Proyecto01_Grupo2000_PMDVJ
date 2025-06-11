@@ -8,11 +8,15 @@ public class DropSpriteInDecision : MonoBehaviour
 
     private MGMath _mgMath;
 
+    private CursorManager _cursorManager;
+
     private void Start()
     {
         GameObject parent = transform.parent.gameObject;
 
         _mgMath = parent.GetComponentInParent<MGMath>();
+
+        _cursorManager = Object.FindFirstObjectByType<CursorManager>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -47,6 +51,8 @@ public class DropSpriteInDecision : MonoBehaviour
         _isOccupied = true;
         StartCoroutine(SmoothSnap(collision.gameObject, transform.position + offset));
 
+        _cursorManager?.SetCursorDrop(); //cursor de dropeo
+
     }
 
     private IEnumerator SmoothSnap(GameObject obj, Vector3 destino)
@@ -71,6 +77,8 @@ public class DropSpriteInDecision : MonoBehaviour
         if (drag != null) drag.enabled = false;
 
         _mgMath.ActiveMGMath(true); // una vez este dropiada la comida tonce active el minijuego
+
+        _cursorManager.SetCursorDefault(); // setee al cursor por defecto
     }
 
 

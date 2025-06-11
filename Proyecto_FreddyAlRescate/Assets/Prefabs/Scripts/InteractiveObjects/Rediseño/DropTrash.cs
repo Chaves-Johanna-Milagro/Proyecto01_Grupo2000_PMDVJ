@@ -5,9 +5,12 @@ public class DropTrash : MonoBehaviour
 {
     private BKindnessUpDown _Kind;
 
+    private CursorManager _cursorManager;
     private void Start()
     {
         _Kind = Object.FindFirstObjectByType<BKindnessUpDown>();
+
+        _cursorManager = Object.FindFirstObjectByType<CursorManager>();
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,6 +30,8 @@ public class DropTrash : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             _Kind.MiniGoodDecision();
+
+            _cursorManager.SetCursorDrop(); // cursor de dropeo
         }
     }
 }

@@ -11,6 +11,8 @@ public class DragTrash : MonoBehaviour
     private Collider2D _myCollider;
     private Collider2D _playerCollider;
 
+    private CursorManager _cursorManager; //pa cambiar el cursor
+
     void Start()
     {
         _myCollider = GetComponent<Collider2D>();
@@ -19,6 +21,8 @@ public class DragTrash : MonoBehaviour
 
         if (player != null)
             _playerCollider = player.GetComponent<Collider2D>();
+
+        _cursorManager = Object.FindFirstObjectByType<CursorManager>(); 
     }
 
 
@@ -40,6 +44,8 @@ public class DragTrash : MonoBehaviour
         // Ignorar colisiones mientras arrastra para evitar choques raros
         if (_playerCollider != null)
             Physics2D.IgnoreCollision(_myCollider, _playerCollider, true);
+
+        _cursorManager?.SetCursorDrag();
     }
 
     void OnMouseUp()
@@ -55,6 +61,8 @@ public class DragTrash : MonoBehaviour
         if (DecisionStatus.ActiveDecision()) return; // si hay alguna desicion corriendo
 
         _isDragging = false;
+
+        _cursorManager?.SetCursorDefault();
     }
 
     void Update()

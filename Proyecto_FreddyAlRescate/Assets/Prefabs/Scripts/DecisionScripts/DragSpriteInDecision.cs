@@ -10,6 +10,12 @@ public class DragSpriteInDecision : MonoBehaviour
 
     private float padding = 5f; // margen  para que no toque los bordes exactos
 
+    private CursorManager _cursorManager;
+
+    private void Start()
+    {
+        _cursorManager = Object.FindFirstObjectByType<CursorManager>();
+    }
     void OnMouseDown()
     {
         if (PauseStatus.IsPaused) return;
@@ -17,6 +23,8 @@ public class DragSpriteInDecision : MonoBehaviour
 
         _offset = transform.position - GetMouseWorldPos();
         _isDragging = true;
+
+        _cursorManager.SetCursorDrag(); // cursor de arrastre
     }
 
     void OnMouseUp()
@@ -25,6 +33,8 @@ public class DragSpriteInDecision : MonoBehaviour
         if (CursorStatusInUI.IsPointerOverUI()) return;
 
         _isDragging = false;
+
+        _cursorManager.SetCursorDefault(); //cursor por defecto
     }
 
     void Update()
