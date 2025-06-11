@@ -5,12 +5,12 @@ public class CharacterPointMove : MonoBehaviour
 {
     private CharacterClickMove _mover;
 
-    private Vector2 _min = new Vector2(-25f, -10f); // Límites para el movimiento
-    private Vector2 _max = new Vector2(25f, 8f);
+    private Vector2 _min = new Vector2(-20f, -10f); // Límites para el movimiento
+    private Vector2 _max = new Vector2(20f, 8f);
 
 
-    private Vector2 _minNav = new Vector2(-25f, -32f); //limites para la escen waytoschool
-    private Vector2 _maxNav = new Vector2(25f, 32f); //limites para la escen waytoschool
+    private Vector2 _minNav = new Vector2(-20f, -32f); //limites para la escen waytoschool
+    private Vector2 _maxNav = new Vector2(20f, 32f); //limites para la escen waytoschool
 
     private string _nvlName;
     void Awake()
