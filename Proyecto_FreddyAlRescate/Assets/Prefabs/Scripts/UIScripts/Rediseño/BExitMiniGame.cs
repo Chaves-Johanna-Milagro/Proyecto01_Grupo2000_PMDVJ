@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using static UnityEngine.InputManagerEntry;
 
 public class BExitMiniGame : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class BExitMiniGame : MonoBehaviour
     private Button _bExit;
 
     private MGBase[] _allMiniGames; // array de todos los MGBase en la escena
+
+    private BKindnessUpDown _kind;
     void Start()
     {
         // Obtiene todos los MGBase en la escena
@@ -28,8 +31,9 @@ public class BExitMiniGame : MonoBehaviour
         ActiveObjs(false); //desactivar al inicio
 
         _bExit = GetComponent<Button>();
-
         _bExit.onClick.AddListener(ExitMG);
+
+        _kind = Object.FindFirstObjectByType<BKindnessUpDown>();
     }
     public void Update()
     {
@@ -50,6 +54,7 @@ public class BExitMiniGame : MonoBehaviour
             if (mg.gameObject.activeInHierarchy)
             {
                 mg.ExitMiniGame();
+                _kind.MiniBadDecision(); // bajara la barra cada que salga de un minijuego
             }
         }
 

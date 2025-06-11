@@ -5,9 +5,15 @@ public class DragSprite2_0 : MonoBehaviour
     private Vector3 _offset;
     private bool _isDragging = false;
 
-    private Vector2 _min = new Vector2(-25f,-10f); //para limitar el arrastre
-    private Vector2 _max = new Vector2(25f,8f);
+    private Vector2 _min = new Vector2(-20f,-10f); //para limitar el arrastre
+    private Vector2 _max = new Vector2(20f,8f);
 
+    private CursorManager _cursorManager; //pa cambiar el cursor
+
+    private void Start()
+    {
+        _cursorManager = Object.FindFirstObjectByType<CursorManager>();
+    }
     void OnMouseDown()
     {
         if (PauseStatus.IsPaused) return;
@@ -16,6 +22,8 @@ public class DragSprite2_0 : MonoBehaviour
 
         _offset = transform.position - GetMouseWorldPos();
         _isDragging = true;
+
+        _cursorManager?.SetCursorDrag(); //cursor de arrastre
     }
 
     void OnMouseUp()
@@ -25,6 +33,7 @@ public class DragSprite2_0 : MonoBehaviour
         if (CursorStatusInUI.IsPointerOverUI()) return;
 
         _isDragging = false;
+        _cursorManager?.SetCursorDefault(); //de nuevo al default
     }
 
     void Update()

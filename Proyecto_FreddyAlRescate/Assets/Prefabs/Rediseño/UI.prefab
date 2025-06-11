@@ -1031,6 +1031,7 @@ GameObject:
   - component: {fileID: 8746723672652649657}
   - component: {fileID: 2351914371036073671}
   - component: {fileID: 6816889589338982900}
+  - component: {fileID: 10270885020273930}
   m_Layer: 5
   m_Name: MiniMenu
   m_TagString: Untagged
@@ -1062,7 +1063,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 900, y: 365}
+  m_AnchoredPosition: {x: 811, y: 440}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2351914371036073671
@@ -1085,6 +1086,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5ee3e4f2b5cf94eb82ef03c8f3c812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &10270885020273930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781170305962476273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cc01dedf27c56147b5ddb49e19cbf12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cDefault: {fileID: 2800000, guid: 51fda4b3812ecb34983e6fe210fc7699, type: 3}
+  _cSelect: {fileID: 2800000, guid: ab7dd10d68a6b5247b6b04783f51af66, type: 3}
+  _cDrag: {fileID: 2800000, guid: 5490a64c7c880814ea60bfc27e5eb25e, type: 3}
+  _cDrop: {fileID: 2800000, guid: 78f5d139368ad7348b83e645d67c5072, type: 3}
 --- !u!1 &1095054769591689267
 GameObject:
   m_ObjectHideFlags: 0
@@ -9054,7 +9071,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1720, y: -740}
+  m_AnchoredPosition: {x: -1502, y: -893}
   m_SizeDelta: {x: 600, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2391183605374550313

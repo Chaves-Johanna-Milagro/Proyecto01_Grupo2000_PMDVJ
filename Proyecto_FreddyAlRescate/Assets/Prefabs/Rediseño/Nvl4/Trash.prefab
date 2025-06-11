@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8303307199304924404}
   - component: {fileID: 5499128734470347861}
   - component: {fileID: 1058407406993865694}
+  - component: {fileID: 5502007385882758244}
   m_Layer: 0
   m_Name: Trash
   m_TagString: Interactuable
@@ -120,7 +121,7 @@ PolygonCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -198,5 +199,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 337bda823c694c84d81e089927bbde10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5502007385882758244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3332098937100799198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11b973a18e73e9b478042eac739d6684, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

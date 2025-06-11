@@ -16,6 +16,7 @@ public class PrepareBackpack : MonoBehaviour
 
     private AudioSource _audioSource;
 
+    private CursorManager _cursorManager;
     void Start()
     {
         _check = Object.FindFirstObjectByType<BNotesChecks>();
@@ -33,6 +34,8 @@ public class PrepareBackpack : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
 
         VerificarCheck();
+
+        _cursorManager = Object.FindFirstObjectByType<CursorManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -63,6 +66,8 @@ public class PrepareBackpack : MonoBehaviour
         _audioSource.Play();
         other.gameObject.SetActive(false);
         VerificarCheck();
+
+        _cursorManager?.SetCursorDrop();
     }
 
     private void VerificarCheck()

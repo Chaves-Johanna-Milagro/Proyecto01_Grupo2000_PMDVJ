@@ -13,6 +13,7 @@ public class SimpleScaling2_0 : MonoBehaviour
 
     private AudioSource _hoverButton;
 
+    private CursorManager _cursorManager;
 
     private void Start()
     {
@@ -22,6 +23,8 @@ public class SimpleScaling2_0 : MonoBehaviour
         _targetScale = _originalScale * _scaleMultiplier;
 
         _hoverButton = GetComponent<AudioSource>();
+
+        _cursorManager = Object.FindFirstObjectByType<CursorManager>();
     }
 
     private void OnMouseEnter()
@@ -39,11 +42,14 @@ public class SimpleScaling2_0 : MonoBehaviour
 
         _isScaling = true;
         if (_hoverButton != null) _hoverButton.Play();
+
+        _cursorManager?.SetCursorSelect();
     }
 
     private void OnMouseExit()
     {
         _isScaling = false;
+        _cursorManager?.SetCursorDefault();
     }
 
     private void Update()
