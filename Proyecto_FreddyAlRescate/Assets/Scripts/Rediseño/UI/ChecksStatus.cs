@@ -26,4 +26,20 @@ public static class ChecksStatus
 
         GetChecksForScene(sceneName)[index] = true;
     }
+
+    // Devuelve la cantidad total de checks inactivos en todas las escenas
+    public static int GetTotalInactiveChecks()
+    {
+        int total = 0;
+        foreach (var kvp in _sceneChecks)
+        {
+            bool[] checks = kvp.Value;
+            foreach (bool check in checks)
+            {
+                if (!check)
+                    total++;
+            }
+        }
+        return total;
+    }
 }

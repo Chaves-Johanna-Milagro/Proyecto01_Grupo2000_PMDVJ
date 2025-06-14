@@ -5,11 +5,15 @@ public class ChangeRoom : MonoBehaviour
 {
     private string _roomName;
 
+    private BKindnessUpDown _kind;// se utilizara para manejar la cantidad de checks sin activar para bajar la barrita
+
     private CursorManager _cursorManager;
 
     void Start()
     {
         _roomName = gameObject.name;
+
+        _kind = Object.FindFirstObjectByType<BKindnessUpDown>();
 
         _cursorManager = Object.FindFirstObjectByType<CursorManager>();
     }
@@ -30,15 +34,21 @@ public class ChangeRoom : MonoBehaviour
 
         if (_roomName == "DoorRoom") SceneManager.LoadScene("Morning2.0"); // aquella que te dirige a la habitacion
         if (_roomName == "DoorDiningroom") SceneManager.LoadScene("Breackfast2.0"); // aquella que te dirige al comedor
-        if (_roomName == "DoorStreet") SceneManager.LoadScene("WayToSchool2.0"); // aqulla que te dirige fuera de la casa
+
+        if (_roomName == "DoorStreet")
+        {
+            if (ChecksStatus.GetTotalInactiveChecks() > 3) _kind.BadDecision(); // si hay mas de tres check inactivos baja la barrita
+
+            SceneManager.LoadScene("WayToSchool2.0"); // aquella que te dirige fuera de la casa
+        }
       
 
-        if (_roomName == "DoorSchool") SceneManager.LoadScene("School2.0"); // aqulla que te dirige a la entrada de la escuela
+        if (_roomName == "DoorSchool") SceneManager.LoadScene("School2.0"); // aquella que te dirige a la entrada de la escuela
 
-        if (_roomName == "DoorPatio") SceneManager.LoadScene("Playground2.0"); // aqulla que te dirige al patio de la escuela
+        if (_roomName == "DoorPatio") SceneManager.LoadScene("Playground2.0"); // aquella que te dirige al patio de la escuela
 
         //de momento se saltara el mg de la sube
-        if (_roomName == "TrafficLight") SceneManager.LoadScene("School2.0"); // aqulla que te dirige a la entrada de la escuela
+        if (_roomName == "TrafficLight") SceneManager.LoadScene("School2.0"); // aquella que te dirige a la entrada de la escuela
 
         if (_roomName == "DoorClassroom") SceneManager.LoadScene("Classroom2.0"); // aqulla que te dirige al aula
 
