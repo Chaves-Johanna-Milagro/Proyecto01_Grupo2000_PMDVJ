@@ -4,9 +4,14 @@ using UnityEngine.SceneManagement;
 public class ChangeRoom : MonoBehaviour
 {
     private string _roomName;
+
+    private CursorManager _cursorManager;
+
     void Start()
     {
         _roomName = gameObject.name;
+
+        _cursorManager = Object.FindFirstObjectByType<CursorManager>();
     }
 
     public void OnMouseDown()
@@ -22,6 +27,7 @@ public class ChangeRoom : MonoBehaviour
 
         if (DecisionStatus.ActiveDecision()) return; // si hay alguna desicion corriendo
 
+
         if (_roomName == "DoorRoom") SceneManager.LoadScene("Morning2.0"); // aquella que te dirige a la habitacion
         if (_roomName == "DoorDiningroom") SceneManager.LoadScene("Breackfast2.0"); // aquella que te dirige al comedor
         if (_roomName == "DoorStreet") SceneManager.LoadScene("WayToSchool2.0"); // aqulla que te dirige fuera de la casa
@@ -35,6 +41,8 @@ public class ChangeRoom : MonoBehaviour
         if (_roomName == "TrafficLight") SceneManager.LoadScene("School2.0"); // aqulla que te dirige a la entrada de la escuela
 
         if (_roomName == "DoorClassroom") SceneManager.LoadScene("Classroom2.0"); // aqulla que te dirige al aula
+
+        _cursorManager.SetCursorDefault();//setee al cursor por defecto
 
     }
 }

@@ -9,6 +9,10 @@ public class CursorManager : MonoBehaviour // el script lo tiene el miniMenu
 
     private Vector3 _hospost = Vector3.zero; //pos centrada
 
+    private void Start()
+    {
+        SetCursorDefault(); //setear el cursor al principio
+    }
     public void SetCursorDefault()
     {
         Cursor.SetCursor(_cDefault, _hospost, CursorMode.Auto);

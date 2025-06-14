@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class DropSprite2_0 : MonoBehaviour //pa zonas de dropeo de obj de los minijuegos
+public class DropSprite2_0 : MonoBehaviour //pa zonas de dropeo de obj de los minijuegos, en especifico las de la escuela
 {
     private string _spaceName;
     private bool _isOccupied = false;

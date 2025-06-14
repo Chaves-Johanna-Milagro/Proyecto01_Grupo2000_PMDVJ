@@ -44,8 +44,6 @@ public class DragTrash : MonoBehaviour
         // Ignorar colisiones mientras arrastra para evitar choques raros
         if (_playerCollider != null)
             Physics2D.IgnoreCollision(_myCollider, _playerCollider, true);
-
-        _cursorManager?.SetCursorDrag();
     }
 
     void OnMouseUp()
@@ -61,8 +59,6 @@ public class DragTrash : MonoBehaviour
         if (DecisionStatus.ActiveDecision()) return; // si hay alguna desicion corriendo
 
         _isDragging = false;
-
-        _cursorManager?.SetCursorDefault();
     }
 
     void Update()
@@ -85,7 +81,10 @@ public class DragTrash : MonoBehaviour
             newPos.y = Mathf.Clamp(newPos.y, _min.y, _max.y);
 
             transform.position = newPos;
+
+            _cursorManager.SetCursorDrag(); //setear el cursor si se esta arrastrando
         }
+
     }
 
     Vector3 GetMouseWorldPos()
