@@ -42,5 +42,5 @@ public class CharacterClickMove : MonoBehaviour // se encargara de mover al play
   
     public void StopMove() => _isMoving = false;  // Detiene el movimiento
 
-
+    public bool IsMoving () { return _isMoving; } //booleano pa saber si se mueve
 }
