@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ClickOption2_0 : MonoBehaviour
+public class ClickOption2_0 : MonoBehaviour//lo tiene las opciones de saludar en casa
 {
     private DecisionGreet2_0 _des;
 

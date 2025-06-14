@@ -12,6 +12,8 @@ public class DecisionRoad : MonoBehaviour
 
     private BPhone _phone;
 
+    private BMiniAfton _bAfton; //para dar retroalimentacion positiva cada que tenga modales
+
     void Start()
     {
         _img = transform.Find("Img").gameObject;
@@ -28,6 +30,8 @@ public class DecisionRoad : MonoBehaviour
         _roadRight.SetActive(true);
         _roadLeft.SetActive(true);
         _instruction.SetActive(true);*/
+
+        _bAfton = Object.FindFirstObjectByType<BMiniAfton>();
     }
 
     public void ChoiceRoad(string name)
@@ -41,6 +45,8 @@ public class DecisionRoad : MonoBehaviour
 
     private IEnumerator Delay()
     {
+        _bAfton.GoodFeedback();//pa dar felicidades cuando elija
+
         yield return new WaitForSeconds(1f);
         _img.SetActive(false);
         _roadRight.SetActive(false);

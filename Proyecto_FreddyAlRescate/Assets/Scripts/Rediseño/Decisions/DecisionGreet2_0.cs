@@ -24,6 +24,8 @@ public class DecisionGreet2_0 : MonoBehaviour //para objetos que tengan de hijos
 
     private BKindnessUpDown _kind;
 
+    private BMiniAfton _bAfton; //para dar retroalimentacion positiva cada que complete un objetivo
+
     void Start()
     {
         _img = transform.Find("Img").gameObject;
@@ -40,6 +42,8 @@ public class DecisionGreet2_0 : MonoBehaviour //para objetos que tengan de hijos
         _nameObj = gameObject.name;
 
         _kind = Object.FindFirstObjectByType<BKindnessUpDown>();
+
+        _bAfton = Object.FindFirstObjectByType<BMiniAfton>();
     }
 
     public void Update()
@@ -86,7 +90,8 @@ public class DecisionGreet2_0 : MonoBehaviour //para objetos que tengan de hijos
 
             _next = true;
             _greet = true;
-           
+
+            _bAfton.GoodFeedback();//activa el lorito para dar felicitaciones
         }
         if (opt == "Opt2")
         {
@@ -100,6 +105,8 @@ public class DecisionGreet2_0 : MonoBehaviour //para objetos que tengan de hijos
 
             _next = true;
             _greet = false;
+
+            _bAfton.BadFeedback(); // lo motiva al equivocarse
         }
     }
 

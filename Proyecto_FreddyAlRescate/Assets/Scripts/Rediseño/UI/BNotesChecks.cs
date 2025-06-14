@@ -18,6 +18,8 @@ public class BNotesChecks : MonoBehaviour
 
     //private AudioSource _audioCheck;
 
+    private BMiniAfton _bAfton; //para dar retroalimentacion positiva cada que complete un objetivo
+
     private void Start()
     {
         _imgChecks = transform.Find("ImgChecks")?.gameObject;
@@ -36,6 +38,8 @@ public class BNotesChecks : MonoBehaviour
         UpdateChecks();
 
         //_audioCheck = GetComponent<AudioSource>();
+
+        _bAfton = Object.FindFirstObjectByType<BMiniAfton>();
     }
 
     private void Update()
@@ -66,6 +70,8 @@ public class BNotesChecks : MonoBehaviour
 
         //_audioCheck.Play();
         PlaySound("Correct");
+
+        _bAfton.GoodFeedback();//activa el lorito para dar felicitaciones
     }
 
     public void Check2()
@@ -75,6 +81,8 @@ public class BNotesChecks : MonoBehaviour
 
         //_audioCheck.Play();
         PlaySound("Correct");
+
+        _bAfton.GoodFeedback();//activa el lorito para dar felicitaciones
     }
 
     public void Check3()
@@ -83,6 +91,8 @@ public class BNotesChecks : MonoBehaviour
         UpdateChecks();
 
         PlaySound("Correct");
+
+        _bAfton.GoodFeedback();//activa el lorito para dar felicitaciones
     }
 
     private void UpdateChecks()

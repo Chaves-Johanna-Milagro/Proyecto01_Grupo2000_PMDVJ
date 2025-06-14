@@ -24,6 +24,7 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
 
     private BKindnessUpDown _kind;
 
+    private BMiniAfton _bAfton; //para dar retroalimentacion positiva cada que tenga modales
 
     void Start()
     {
@@ -45,6 +46,8 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
         _nameObj = gameObject.name;
 
         _kind = Object.FindFirstObjectByType<BKindnessUpDown>();
+
+        _bAfton = Object.FindFirstObjectByType<BMiniAfton>();
     }
 
     private void Update()
@@ -86,6 +89,7 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
 
             _next = true;
 
+            _bAfton.GoodFeedback();//activa el lorito para dar felicitaciones
         }
         if (opt == "Opt2")
         {
@@ -101,6 +105,8 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
             _kind.BadDecision();
 
             _next = true;
+
+            _bAfton.BadFeedback(); // lo motiva al equivocarse
         }
     }
 

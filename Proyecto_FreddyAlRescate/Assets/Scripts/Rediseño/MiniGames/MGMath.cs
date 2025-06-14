@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MGMath : MonoBehaviour // pa el kiosko y la verduleria
 {
-    private GameObject _imgDes; // pa la imagen de lsa decision
+    private GameObject _imgDes; // pa la imagen de la decision
     private GameObject _imgMath; //seria la imagen que contenga a los objetos del mini juego las opciones 
 
     private GameObject _opt1;
@@ -14,7 +14,9 @@ public class MGMath : MonoBehaviour // pa el kiosko y la verduleria
     private GameObject _imgBad; // para cuando responda mal
 
     private BKindnessUpDown _kind;
-   
+
+    private BMiniAfton _bAfton; //para dar retroalimentacion positiva cuando acierte
+
     void Start()
     {
         _imgDes = transform.Find("ImgDes").gameObject;
@@ -28,6 +30,8 @@ public class MGMath : MonoBehaviour // pa el kiosko y la verduleria
         _imgBad = _imgMath.transform.Find("Bad").gameObject;
 
         _kind = Object.FindFirstObjectByType<BKindnessUpDown>();
+
+        _bAfton = Object.FindFirstObjectByType<BMiniAfton>();
     }
 
     public void ActiveMGMath(bool status)
@@ -47,6 +51,8 @@ public class MGMath : MonoBehaviour // pa el kiosko y la verduleria
             _opt3.SetActive(false);
 
             _kind.BadDecision();
+
+            _bAfton.BadFeedback(); //lo motiva al equivocarse
         }
         if (opt == "Opt2")
         {
@@ -57,6 +63,8 @@ public class MGMath : MonoBehaviour // pa el kiosko y la verduleria
             _opt3.SetActive(false);
 
             _kind.GoodDecision();   
+
+            _bAfton.GoodFeedback(); //fpa dar felicitaciones
         }
         StartCoroutine(Delay());
     }

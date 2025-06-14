@@ -51,6 +51,53 @@ public class BMiniAfton : MonoBehaviour
         "¿VISTE QUE NADIE VENÍA? ¡BUEN MOMENTO PARA CRUZAR!"
     };
 
+    private string[] _randomGoodFeedback = new string[]
+    {
+        "¡EXCELENTE TRABAJO!",
+        "¡LO HICISTE MUY BIEN!",
+        "¡SÚPER!",
+        "¡GENIAL, SIGUE ASÍ!",
+        "¡BUEN INTENTO!",
+        "¡LO ESTÁS HACIENDO MUY BIEN!",
+        "¡ERES UN CAMPEÓN!",
+        "¡MUY BUENA ELECCIÓN!",
+        "¡SIGUE PRACTICANDO, VAS MUY BIEN!",
+        "¡FANTÁSTICO!",
+        "¡BRAVO!",
+        "¡MUY INTELIGENTE!",
+        "¡CADA VEZ MEJOR!",
+        "¡VAMOS, TÚ PUEDES!",
+        "¡MUY BIEN HECHO!",
+        "¡INCREÍBLE!",
+        "¡ESTÁS APRENDIENDO MUY RÁPIDO!",
+        "¡ME IMPRESIONAS!",
+        "¡EXCELENTE ELECCIÓN!",
+        "¡SÚPER LOGRO!"
+    };
+
+    private string[] _randomBadFeedback = new string[]
+    {
+        "¡NO PASA NADA, INTÉNTALO OTRA VEZ!",
+        "¡CASI! SIGUE PROBANDO.",
+        "¡MUY CERCA! TÚ PUEDES LOGRARLO.",
+        "¡NO TE RINDAS, SIGUE JUGANDO!",
+        "¡BUEN INTENTO, INTÉNTALO NUEVAMENTE!",
+        "¡LO IMPORTANTE ES SEGUIR INTENTANDO!",
+        "¡APRENDER ES DIVERTIDO, VAMOS DE NUEVO!",
+        "¡SIGUE ADELANTE, LO ESTÁS HACIENDO BIEN!",
+        "¡POCO A POCO LO VAS A CONSEGUIR!",
+        "¡CADA VEZ TE SALE MEJOR!",
+        "¡LOS ERRORES NOS AYUDAN A MEJORAR!",
+        "¡VAS POR BUEN CAMINO, INTÉNTALO OTRA VEZ!",
+        "¡NO TE DESANIMES, SIGUE JUGANDO!",
+        "¡TODO GRAN LOGRO COMIENZA CON UN INTENTO!",
+        "¡PRACTICANDO SE APRENDE, SIGUE ADELANTE!",
+        "¡TÚ PUEDES CON ESTO!",
+        "¡AUNQUE TE EQUIVOQUES, ESTÁS APRENDIENDO!",
+        "¡SIGUE JUGANDO, CADA VEZ LO HARÁS MEJOR!",
+        "¡MUY BIEN POR INTENTARLO!",
+        "¡EXCELENTE ACTITUD, SIGAMOS JUGANDO!"
+    };
     private AudioSource _soundAfton;
     void Start()
     {
@@ -126,5 +173,31 @@ public class BMiniAfton : MonoBehaviour
     {
         if (_randomTextNvl3.Length > 0)
             _textComp.text = _randomTextNvl3[Random.Range(0, _randomTextNvl3.Length)];
+    }
+
+    public void GoodFeedback() //metodo para cuando en jugador complete o realize buenas acciones
+    {
+        _activated = true;
+
+        SetActive(_activated); //activar el globo y texto
+
+        if (_randomGoodFeedback.Length > 0)  // Selecciona un felicitaciones aleatorias
+        {
+            string randomLine = _randomGoodFeedback[Random.Range(0, _randomGoodFeedback.Length)];
+            _textComp.text = randomLine;
+        }
+    }
+
+    public void BadFeedback() //metodo para cuando en jugador se equivoque
+    {
+        _activated = true;
+
+        SetActive(_activated); //activar el globo y texto
+
+        if (_randomBadFeedback.Length > 0)  // Selecciona una motivacion aleatoria
+        {
+            string randomLine = _randomBadFeedback[Random.Range(0, _randomBadFeedback.Length)];
+            _textComp.text = randomLine;
+        }
     }
 }
