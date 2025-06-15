@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterAnim : MonoBehaviour
 {
@@ -6,10 +7,18 @@ public class CharacterAnim : MonoBehaviour
 
     private Animator _anim;
 
+    private string _nameScene;
     void Start()
     {
         _moveChar = GetComponent<CharacterClickMove>();
         _anim = GetComponent<Animator>();
+
+        _nameScene = SceneManager.GetActiveScene().name;
+
+        if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0" || _nameScene == "Classroom2.0" || _nameScene == "Playground2.0")
+        {
+            transform.localScale = new Vector3(0.1f, 0.1f, 1f);
+        }
     }
 
 
@@ -36,15 +45,26 @@ public class CharacterAnim : MonoBehaviour
         {
             if (useRP)
                 _anim.SetBool("R_Walk_RP", true);
-            else
+
+            else if (!useRP)
                 _anim.SetBool("R_Walk_PJ", true);
+
+            if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0")
+            {
+                _anim.SetBool("R_Walk_MP", true);
+            };
         }
         else if (clickPos.x < transform.position.x)
         {
             if (useRP)
                 _anim.SetBool("L_Walk_RP", true);
-            else
+            else if (!useRP)
                 _anim.SetBool("L_Walk_PJ", true);
+
+            if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0")
+            {
+                _anim.SetBool("L_Walk_MP", true);
+            };
         }
     }
 
@@ -58,8 +78,13 @@ public class CharacterAnim : MonoBehaviour
 
             if (useRP)
                 _anim.SetBool("Idle_RP", true);
-            else
+            else if (!useRP)
                 _anim.SetBool("Idle_PJ", true);
+
+            if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0")
+            {
+                _anim.SetBool("Idle_MP", true);
+            };
         }
     }
 
@@ -73,5 +98,9 @@ public class CharacterAnim : MonoBehaviour
         _anim.SetBool("R_Walk_RP", false);
         _anim.SetBool("L_Walk_RP", false);
         _anim.SetBool("Idle_RP", false);
+
+        _anim.SetBool("R_Walk_MP", false);
+        _anim.SetBool("L_Walk_MP", false);
+        _anim.SetBool("Idle_MP", false);
     }
 }
