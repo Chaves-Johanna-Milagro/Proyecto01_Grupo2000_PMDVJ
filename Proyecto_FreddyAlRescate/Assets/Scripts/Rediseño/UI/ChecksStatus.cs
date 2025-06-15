@@ -42,4 +42,27 @@ public static class ChecksStatus
         }
         return total;
     }
+
+    // Devuelve todos los índices de checks activos en una escena específica
+    public static List<int> GetActiveChecksForScene(string sceneName)
+    {
+        List<int> activeIndexes = new List<int>();
+        bool[] checks = GetChecksForScene(sceneName);
+        for (int i = 0; i < checks.Length; i++)
+        {
+            if (checks[i])
+                activeIndexes.Add(i);
+        }
+        return activeIndexes;
+    }
+
+    // Verifica si un check específico está activo
+    public static bool IsCheckActive(string sceneName, int index)
+    {
+        if (index < 0 || index > 2)
+            return false;
+
+        bool[] checks = GetChecksForScene(sceneName);
+        return checks[index];
+    }
 }
