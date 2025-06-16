@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Collections;
 
 public class BMiniAfton : MonoBehaviour
 {
@@ -186,6 +187,7 @@ public class BMiniAfton : MonoBehaviour
             string randomLine = _randomGoodFeedback[Random.Range(0, _randomGoodFeedback.Length)];
             _textComp.text = randomLine;
         }
+        StartCoroutine(Delay());
     }
 
     public void BadFeedback() //metodo para cuando en jugador se equivoque
@@ -199,5 +201,14 @@ public class BMiniAfton : MonoBehaviour
             string randomLine = _randomBadFeedback[Random.Range(0, _randomBadFeedback.Length)];
             _textComp.text = randomLine;
         }
+        StartCoroutine(Delay());
+    }
+
+    private IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(3f);
+
+        _activated = false;
+        SetActive(_activated);
     }
 }

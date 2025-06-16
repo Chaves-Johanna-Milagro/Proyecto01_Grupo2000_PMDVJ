@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class ChangeSprite2_0 : MonoBehaviour
+public class MakeBed : MonoBehaviour
 {
     private GameObject _img;
     private GameObject _objIncom;
@@ -47,7 +47,7 @@ public class ChangeSprite2_0 : MonoBehaviour
 
         _isClicked = true;
 
-        _img.SetActive(true);
+        //_img.SetActive(true);
         _objIncom.SetActive(false);
         _objCom.SetActive(true);
 
@@ -56,13 +56,14 @@ public class ChangeSprite2_0 : MonoBehaviour
 
     private IEnumerator DelayImg()
     {
+        _check.Check1();
         yield return new WaitForSeconds(2f);
-        _img.SetActive(false);
+        //_img.SetActive(false);
 
         // Guardamos el estado final de los hijos
         CinematicStatus.GuardarEstado(gameObject);
 
-        _check.Check1();
+        
         _kind.GoodDecision();
     }
 }
