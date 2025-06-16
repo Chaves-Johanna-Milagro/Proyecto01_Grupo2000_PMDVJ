@@ -56,6 +56,9 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/Scenes/Redise\xF1o/Playground2.0.unity"
     guid: b28dffdef221191479f1e5cbe60472a4
+  - enabled: 1
+    path: "Assets/Scenes/Redise\xF1o/SetUpTheGame2.0.unity"
+    guid: 82efa446d94d5354989cafe4507c73cd
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -7,12 +7,16 @@ public class MiniMenu : MonoBehaviour
     private GameObject _phone;
     private GameObject _calculator;
 
+    private GameObject _playerName;
+
     private string _sceneName;
     void Start()
     {
         _notes = transform.Find("BNotes").gameObject;
         _phone = transform.Find("BPhone").gameObject;
         _calculator = transform.Find("BCalculator").gameObject;
+
+        _playerName = transform.Find("NamePlayer").gameObject;
 
         _sceneName = SceneManager.GetActiveScene().name;
 
@@ -46,6 +50,9 @@ public class MiniMenu : MonoBehaviour
                _calculator.SetActive(false);
             }
         }
+
+        if (MiniGameStatus.ActiveMiniGame() || DecisionStatus.ActiveDecision() || CinematicStatus.ActiveCinematic()) _playerName.SetActive(false);
+        else _playerName.SetActive(true);
 
     }
 }

@@ -27,8 +27,7 @@ public class MainMenu2_0 : MonoBehaviour
 
     public void StartRediseño()
     {
-       // SceneManager.LoadScene("Morning2.0");
-       _bJugar.SetActive(false);
-       _imgMath.SetActive(true);
+        SceneManager.LoadScene("SetUpTheGame2.0");
+
     }
 }
