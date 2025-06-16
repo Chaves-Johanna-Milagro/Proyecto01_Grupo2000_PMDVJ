@@ -65,4 +65,19 @@ public static class ChecksStatus
         bool[] checks = GetChecksForScene(sceneName);
         return checks[index];
     }
+
+    // Consume el check si está activo 
+    public static bool ConsumeCheckIfActive(string sceneName, int index)
+    {
+        if (index < 0 || index > 2)
+            return false;
+
+        bool[] checks = GetChecksForScene(sceneName);
+        if (checks[index])
+        {
+            checks[index] = false; // Lo consume (lo desactiva)
+            return true;
+        }
+        return false;
+    }
 }
