@@ -5,7 +5,9 @@ public class ActiveTip : MonoBehaviour // objetos con los que se puede interactu
 {
     private GameObject[] _childs;
     private int _count;
-   
+
+    private bool _isClicked = false;
+
     void Start()
     {
         _count = transform.childCount;
@@ -16,11 +18,18 @@ public class ActiveTip : MonoBehaviour // objetos con los que se puede interactu
             _childs[i] = transform.GetChild(i).gameObject;
             _childs[i].SetActive(false);
         }
+
+        if (CinematicStatus.TieneEstado(gameObject))
+        {
+            CinematicStatus.RestaurarEstado(gameObject);
+            _isClicked = true;
+        }
     }
 
     public void OnMouseDown()
     {
-        
+        if (_isClicked) return;
+
         if (PauseStatus.IsPaused) return; // Verifica si el juego está en pausa antes de procesar el click
 
         if (CursorStatusInUI.IsPointerOverUI()) return; // si el cursor esta sobre la ui
@@ -46,5 +55,7 @@ public class ActiveTip : MonoBehaviour // objetos con los que se puede interactu
         {
             _childs[i].SetActive(false);
         }
+
+        CinematicStatus.GuardarEstado(gameObject);
     }
 }
