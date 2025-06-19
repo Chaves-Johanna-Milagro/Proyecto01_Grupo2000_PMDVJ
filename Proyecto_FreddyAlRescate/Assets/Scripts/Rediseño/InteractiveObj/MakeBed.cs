@@ -3,29 +3,33 @@ using System.Collections;
 
 public class MakeBed : MonoBehaviour
 {
-    private GameObject _img;
+    private GameObject _imgPJ;
+    private GameObject _imgRP;
     private GameObject _objIncom;
     private GameObject _objCom;
 
     private bool _isClicked = false;
+    private bool _useClothes = false;
 
     private BNotesChecks _check;
     private BKindnessUpDown _kind;
 
     void Start()
     {
-        _img = transform.Find("Img").gameObject;
-        _objIncom = transform.Find("Incomplete").gameObject;
-        _objCom = transform.Find("Complete").gameObject;
+        _imgPJ = transform.Find("ImgPJ")?.gameObject;
+        _imgRP = transform.Find("ImgRP")?.gameObject;
+        _objIncom = transform.Find("Incomplete")?.gameObject;
+        _objCom = transform.Find("Complete")?.gameObject;
+
+        if (_imgPJ == null) Debug.LogWarning("ImgPJ no encontrado");
+        if (_imgRP == null) Debug.LogWarning("ImgRP no encontrado");
+        if (_objIncom == null) Debug.LogWarning("Incomplete no encontrado");
+        if (_objCom == null) Debug.LogWarning("Complete no encontrado");
 
         if (CinematicStatus.TieneEstado(gameObject))
         {
             CinematicStatus.RestaurarEstado(gameObject);
-            _isClicked = true; // Ya se había hecho clic antes
-        }
-        else
-        {
-            CinematicStatus.GuardarEstado(gameObject);
+            _isClicked = true;
         }
 
         _check = Object.FindFirstObjectByType<BNotesChecks>();
@@ -38,32 +42,38 @@ public class MakeBed : MonoBehaviour
 
         if (PauseStatus.IsPaused) return;
 
-        if (CursorStatusInUI.IsPointerOverUI()) return; // si el cursor esta sobre la ui
+        if (CursorStatusInUI.IsPointerOverUI()) return;
 
-        if (MiniGameStatus.ActiveMiniGame()) return; // si hay algun minijuego
+        if (MiniGameStatus.ActiveMiniGame()) return;
 
-        if (DecisionStatus.ActiveDecision()) return; // si hay alguna desicion corriendo
+        if (DecisionStatus.ActiveDecision()) return;
 
+        if (CinematicStatus.ActiveCinematic()) return;
 
         _isClicked = true;
 
-        //_img.SetActive(true);
-        _objIncom.SetActive(false);
-        _objCom.SetActive(true);
+        _useClothes = ChecksStatus.IsCheckActive("Morning2.0", 1);
 
-        StartCoroutine(DelayImg());
+        if (_useClothes && _imgRP != null) _imgRP.SetActive(true);
+        else if (!_useClothes && _imgPJ != null) _imgPJ.SetActive(true);
+
+        if (_objIncom != null) _objIncom.SetActive(false);
+        if (_objCom != null) _objCom.SetActive(true);
+
+        StartCoroutine(DelayImg(_useClothes));
     }
 
-    private IEnumerator DelayImg()
+    private IEnumerator DelayImg(bool used)
     {
-        _check.Check1();
-        yield return new WaitForSeconds(2f);
-        //_img.SetActive(false);
+        _check?.Check1();
 
-        // Guardamos el estado final de los hijos
+        yield return new WaitForSeconds(2f);
+
+        if (used && _imgRP != null) _imgRP.SetActive(false);
+        else if (!used && _imgPJ != null) _imgPJ.SetActive(false);
+
         CinematicStatus.GuardarEstado(gameObject);
 
-        
-        _kind.GoodDecision();
+        _kind?.GoodDecision();
     }
 }

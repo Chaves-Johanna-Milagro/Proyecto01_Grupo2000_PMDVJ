@@ -24,7 +24,7 @@ public class CharacterAnim : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !ClicEnInteractuable())
         {
             Vector3 clickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             clickPos.z = -0.1f;
@@ -38,6 +38,17 @@ public class CharacterAnim : MonoBehaviour
     void HandleWalkAnimation(Vector3 clickPos)
     {
         ResetAllBools();
+
+        if (PauseStatus.IsPaused) return;
+
+        if (CursorStatusInUI.IsPointerOverUI()) return;
+
+        if (MiniGameStatus.ActiveMiniGame()) return;
+
+        if (DecisionStatus.ActiveDecision()) return;
+
+        if (CinematicStatus.ActiveCinematic()) return;
+
 
         bool useRP = ChecksStatus.IsCheckActive("Morning2.0", 1); // verificamos si se cambio de ropa usando el check activo/inactivo
 
@@ -70,7 +81,7 @@ public class CharacterAnim : MonoBehaviour
 
     void HandleIdleTransition()
     {
-        if (!_moveChar.IsMoving())
+        if (!_moveChar.IsMoving() || ClicEnInteractuable())
         {
             ResetAllBools();
 
@@ -102,5 +113,14 @@ public class CharacterAnim : MonoBehaviour
         _anim.SetBool("R_Walk_MP", false);
         _anim.SetBool("L_Walk_MP", false);
         _anim.SetBool("Idle_MP", false);
+    }
+
+
+    private bool ClicEnInteractuable() // Verifica si el clic fue sobre un objeto con tag "Interactuable"
+    {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+
+        return hit.collider != null && hit.collider.CompareTag("Interactuable");
     }
 }

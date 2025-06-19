@@ -17,6 +17,8 @@ public class CharacterClickMove : MonoBehaviour // se encargara de mover al play
         // Verifica si el juego está en pausa antes de procesar el click
         if (PauseStatus.IsPaused) return;
 
+        if (CursorStatusInUI.IsPointerOverUI()) return;
+
         if (MiniGameStatus.ActiveMiniGame()) return; // verifica que no este acivo un minijuego
 
         if (CinematicStatus.ActiveCinematic()) return; // si hay alguna cinematica corriendo
