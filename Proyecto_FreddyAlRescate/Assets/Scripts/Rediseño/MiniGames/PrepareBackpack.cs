@@ -17,6 +17,9 @@ public class PrepareBackpack : MonoBehaviour
     private AudioSource _audioSource;
 
     private CursorManager _cursorManager;
+
+    private MGBase _mgBase;
+
     void Start()
     {
         _check = Object.FindFirstObjectByType<BNotesChecks>();
@@ -36,6 +39,10 @@ public class PrepareBackpack : MonoBehaviour
         VerificarCheck();
 
         _cursorManager = Object.FindFirstObjectByType<CursorManager>();
+
+        GameObject _par = transform.parent.gameObject;
+
+        _mgBase = _par.GetComponentInParent<MGBase>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -86,6 +93,11 @@ public class PrepareBackpack : MonoBehaviour
         {
             _check.Check2(); //activa el check
             _kind.GoodDecision(); //sube la barrita
+
+            _cursorManager.SetCursorDefault();
+
+            _mgBase.ExitMiniGame();
+
         }
     }
 

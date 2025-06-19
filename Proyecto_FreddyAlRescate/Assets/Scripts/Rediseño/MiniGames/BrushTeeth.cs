@@ -11,12 +11,12 @@ public class BrushTeeh : MonoBehaviour // Este script lo tiene Mouth
     private bool _isTouching = false;
     private bool _completed = false;
 
-
     private BNotesChecks _check;
     private BKindnessUpDown _kind;
 
     private AudioSource _soundBrush;
 
+    private MGBase _mgBase;
 
     private void Start()
     {
@@ -30,6 +30,10 @@ public class BrushTeeh : MonoBehaviour // Este script lo tiene Mouth
         _kind = Object.FindFirstObjectByType<BKindnessUpDown>();
 
         _soundBrush = GetComponent<AudioSource>();
+
+        GameObject _par = transform.parent.gameObject;
+
+        _mgBase = _par.GetComponentInParent<MGBase>();
 
     }
 
@@ -47,6 +51,8 @@ public class BrushTeeh : MonoBehaviour // Este script lo tiene Mouth
             _mouthDirty.SetActive(false);        // Desactiva MouthDirty
             _mouthClean?.SetActive(true);       // Activa MouthClean
             _completed = true;
+
+            _mgBase.ExitMiniGame();//Se cierre el miniguejo una vez terminado
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

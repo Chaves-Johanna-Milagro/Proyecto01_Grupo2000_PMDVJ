@@ -6,7 +6,7 @@ using static UnityEngine.InputManagerEntry;
 
 public class BExitMiniGame : MonoBehaviour
 {
-    private GameObject _img;
+ /*   private GameObject _img;
     private GameObject _text;
 
     private Image _imgComp;
@@ -85,5 +85,5 @@ public class BExitMiniGame : MonoBehaviour
         var textColor = _textComp.color;
         textColor.a = PauseStatus.IsPaused ? 0.5f : 1f;
         _textComp.color = textColor;
-    }
+    }*/
 }

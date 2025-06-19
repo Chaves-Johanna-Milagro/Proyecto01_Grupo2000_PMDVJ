@@ -691,30 +691,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 904525139350570300, guid: fc50f9a9f5178844782935b08b85c7fa, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1421601426023979916, guid: fc50f9a9f5178844782935b08b85c7fa, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1421601426023979916, guid: fc50f9a9f5178844782935b08b85c7fa, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1421601426023979916, guid: fc50f9a9f5178844782935b08b85c7fa, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 1421601426023979916, guid: fc50f9a9f5178844782935b08b85c7fa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 4282031536769291810, guid: fc50f9a9f5178844782935b08b85c7fa, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 45
-      objectReference: {fileID: 0}
     - target: {fileID: 4282031536769291810, guid: fc50f9a9f5178844782935b08b85c7fa, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.1
@@ -755,33 +731,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4838813978135489809, guid: fc50f9a9f5178844782935b08b85c7fa, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5934327983040250270, guid: fc50f9a9f5178844782935b08b85c7fa, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5934327983040250270, guid: fc50f9a9f5178844782935b08b85c7fa, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5934327983040250270, guid: fc50f9a9f5178844782935b08b85c7fa, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 5934327983040250270, guid: fc50f9a9f5178844782935b08b85c7fa, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.9
-      objectReference: {fileID: 0}
     - target: {fileID: 7419225734251513791, guid: fc50f9a9f5178844782935b08b85c7fa, type: 3}
       propertyPath: m_Name
       value: LimitsRoad
-      objectReference: {fileID: 0}
-    - target: {fileID: 7679381739299324490, guid: fc50f9a9f5178844782935b08b85c7fa, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

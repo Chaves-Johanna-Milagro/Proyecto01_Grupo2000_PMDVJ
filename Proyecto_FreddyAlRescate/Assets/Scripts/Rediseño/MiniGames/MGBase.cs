@@ -10,6 +10,10 @@ public class MGBase : MonoBehaviour // se encarga de activar los minijuegos y gu
 
     private AudioSource _soundMG;
 
+    private CursorManager _cursorManager;
+
+    private bool _isCompleted = false;
+
     private void Start()
     {
         _miniGame = transform.Find("MiniGame")?.gameObject;
@@ -22,24 +26,20 @@ public class MGBase : MonoBehaviour // se encarga de activar los minijuegos y gu
 
         _soundMG = _miniGame?.GetComponent<AudioSource>();
 
-        // Restaurar estado de los hijos del objeto MiniGame
-        if (MiniGameStatus.TieneEstado(_sceneName, _objName))
+        // Restaurar estado del objeto MiniGame
+        if (MiniGameStatus.TieneEstado(gameObject))
         {
-            MiniGameStatus.RestaurarEstado(_sceneName, _objName, _miniGame.transform);
+            MiniGameStatus.RestaurarEstado(gameObject);
+            _isCompleted = true;
         }
-    }
 
-    private void OnDisable()
-    {
-        if (_miniGame != null)
-        {
-            // Guarda la posición y estado activo de todos los hijos de MiniGame
-            MiniGameStatus.GuardarEstado(_sceneName, _objName, _miniGame.transform);
-        }
+        _cursorManager = Object.FindFirstObjectByType<CursorManager>();
     }
 
     private void OnMouseDown()
     {
+        if (_isCompleted) return;
+
         if (PauseStatus.IsPaused) return;
 
         if (CursorStatusInUI.IsPointerOverUI()) return; // si el cursor esta sobre la ui
@@ -50,12 +50,19 @@ public class MGBase : MonoBehaviour // se encarga de activar los minijuegos y gu
 
         if (DecisionStatus.ActiveDecision()) return; // si hay alguna desicion corriendo
 
+        _isCompleted = true;
+
         _miniGame?.SetActive(true);
+
         if (_soundMG != null) _soundMG.Play();
     }
 
     public void ExitMiniGame()
     {
         _miniGame?.SetActive(false);
+
+        _cursorManager?.SetCursorDefault();
+
+        MiniGameStatus.GuardarEstado(gameObject);
     }
 }
