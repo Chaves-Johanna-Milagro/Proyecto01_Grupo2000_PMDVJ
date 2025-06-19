@@ -28,6 +28,8 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
 
     private BPhone _phone;
 
+    private bool _IsClicked = false;
+
     void Start()
     {
         _img = transform?.Find("ImgDes").gameObject;
@@ -52,6 +54,7 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
         _bAfton = Object.FindFirstObjectByType<BMiniAfton>();
 
         _phone = Object.FindFirstObjectByType<BPhone>();
+
     }
 
     private void Update()
@@ -65,6 +68,8 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
 
     public void OnMouseDown()
     {
+        if (_IsClicked) return;
+
         if (PauseStatus.IsPaused) return;
 
         if (CursorStatusInUI.IsPointerOverUI()) return;
@@ -77,9 +82,10 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
 
         if(_nameObj == "Greengrocery" && _phone.GetLastRoad() == "Izquierda" 
             ||
-           _nameObj == "Kiosk" && _phone.GetLastRoad() == "Derecha") return;
+           _nameObj == "Kiosk" && _phone.GetLastRoad() == "Derecha") return; 
 
-
+        _IsClicked = true;
+        
         _img.SetActive(true);
     }
 

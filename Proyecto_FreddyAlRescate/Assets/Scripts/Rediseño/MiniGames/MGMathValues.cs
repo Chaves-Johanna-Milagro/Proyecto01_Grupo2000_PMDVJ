@@ -17,7 +17,7 @@ public class MGMathValues : MonoBehaviour // lo tiene el precio y la plata del m
 
     private void Text()
     {
-        if (MGLevelMathStatus.GetLevelMath() == "Facil") // del 1 al 10
+        if (LevelGameStatus.GetLevel() == "Facil") // del 1 al 10
         {
             if (_name == "Dinero") _valueText.text = "DINERO: 10";
 
@@ -25,7 +25,7 @@ public class MGMathValues : MonoBehaviour // lo tiene el precio y la plata del m
 
         }
 
-        if (MGLevelMathStatus.GetLevelMath() == "Medio") // del 10 al 100
+        if (LevelGameStatus.GetLevel() == "Medio") // del 10 al 100
         {
             if (_name == "Dinero") _valueText.text = "DINERO: 100";
 
@@ -33,7 +33,7 @@ public class MGMathValues : MonoBehaviour // lo tiene el precio y la plata del m
 
         }
 
-        if (MGLevelMathStatus.GetLevelMath() == "Dificil") //del 100 al 1000
+        if (LevelGameStatus.GetLevel() == "Dificil") //del 100 al 1000
         {
             if (_name == "Dinero") _valueText.text = "DINERO: 1000";
 

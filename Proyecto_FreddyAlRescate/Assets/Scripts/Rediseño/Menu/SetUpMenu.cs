@@ -6,7 +6,7 @@ public class SetUpMenu : MonoBehaviour
 {
     private TMP_InputField _inputText; // pa que ponga su nombre
 
-    private Button _lvlEasy; //botes para elegir la dificultad
+    private Button _lvlEasy; //botones para elegir la dificultad
     private Button _lvlMedium;
     private Button _lvlHard;
 
@@ -46,8 +46,8 @@ public class SetUpMenu : MonoBehaviour
 
     void SetLevelAndStart(string level)
     {
-        MGLevelMathStatus.SetLevelMath(level);
-        Debug.Log("Nivel seleccionado: " + MGLevelMathStatus.GetLevelMath()); // Para verificar en consola
+        LevelGameStatus.SetLevel(level);
+        Debug.Log("Nivel seleccionado: " + LevelGameStatus.GetLevel()); // Para verificar en consola
         StartRediseño(); // Cargar la siguiente escena
     }
 }

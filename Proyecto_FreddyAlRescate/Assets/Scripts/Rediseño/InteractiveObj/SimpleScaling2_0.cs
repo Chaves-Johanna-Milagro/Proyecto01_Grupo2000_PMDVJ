@@ -45,7 +45,10 @@ public class SimpleScaling2_0 : MonoBehaviour
 
         _cursorManager?.SetCursorSelect();
     }
-
+    private void OnMouseOver()
+    {
+        if (CinematicStatus.ActiveCinematic()) _cursorManager.SetCursorDefault(); // si hay alguna cinematica corriendo
+    }
     private void OnMouseExit()
     {
         _isScaling = false;
