@@ -814,7 +814,7 @@ GameObject:
   - component: {fileID: 1190751355128822863}
   - component: {fileID: 3621763493801192506}
   m_Layer: 0
-  m_Name: GOMA
+  m_Name: CARTUCHERA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
