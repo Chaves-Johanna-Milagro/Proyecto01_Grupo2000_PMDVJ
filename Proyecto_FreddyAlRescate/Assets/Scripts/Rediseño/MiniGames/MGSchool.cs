@@ -12,7 +12,7 @@ public class MGSchool : MonoBehaviour
 
     private CursorManager _cursorManager;
 
-    private bool _isCompleted = false;
+    //private bool _isCompleted = false;
 
     private void Start()
     {
@@ -30,7 +30,7 @@ public class MGSchool : MonoBehaviour
         if (MiniGameStatus.TieneEstado(gameObject))
         {
             MiniGameStatus.RestaurarEstado(gameObject);
-            _isCompleted = true;
+            //_isCompleted = true;
         }
 
         _cursorManager = Object.FindFirstObjectByType<CursorManager>();

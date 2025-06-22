@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class NamePlayer : MonoBehaviour
+public class PlayerName : MonoBehaviour
 {
     private TMP_Text _namePlayer;
 
