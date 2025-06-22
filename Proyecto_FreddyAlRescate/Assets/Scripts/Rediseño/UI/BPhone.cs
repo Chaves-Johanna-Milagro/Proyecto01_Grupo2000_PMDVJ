@@ -67,4 +67,8 @@ public class BPhone : MonoBehaviour
             SetActive(true); // si ya está abierto, actualiza la imagen mostrada
         }
     }
+    public string GetLastRoad() //para se utilizado por limits road y marcar los limites en el mapa
+    {
+        return _lastRoad;
+    }
 }

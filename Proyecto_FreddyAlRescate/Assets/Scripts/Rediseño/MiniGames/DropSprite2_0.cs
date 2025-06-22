@@ -1,10 +1,17 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class DropSprite2_0 : MonoBehaviour //pa zonas de dropeo de obj de los minijuegos, en especifico las de la escuela
 {
     private string _spaceName;
+
     private bool _isOccupied = false;
+
+    private float _alfa; //e usara para que las guias sean cada vez mas transparentes mediante el alfa
+
+    private Dictionary<GameObject, float> _tiemposEnZona = new Dictionary<GameObject, float>();
+    private float _tiempoNecesario = 1f; // tiempo en segundos que debe quedarse para encastrar
 
     void Start()
     {
@@ -38,22 +45,72 @@ public class DropSprite2_0 : MonoBehaviour //pa zonas de dropeo de obj de los mi
                 _isOccupied = true;
             }
         }
+
+        _alfa = GetComponent<SpriteRenderer>().color.a; // para setear las guias mediante el nivel elegido
+
+        if (LevelGameStatus.GetLevel() == "Facil") _alfa = 0.8f;
+        if (LevelGameStatus.GetLevel() == "Medio") _alfa = 0.4f;
+        if (LevelGameStatus.GetLevel() == "Dificil") _alfa = 0f;
+
+        SetAlpha();
+    }
+    public void OnEnabled() //pa ser llamado una vez se active
+    {
+        _alfa = GetComponent<SpriteRenderer>().color.a; // para setear las guias mediante el nivel elegido
+
+        if (LevelGameStatus.GetLevel() == "Facil") _alfa = 0.8f;
+        if (LevelGameStatus.GetLevel() == "Medio") _alfa = 0.4f;
+        if (LevelGameStatus.GetLevel() == "Dificil") _alfa = 0f;
+
+        SetAlpha();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void SetAlpha()
+    {
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        Color c = sr.color;
+        c.a = _alfa;
+        sr.color = c;
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (_isOccupied) return;
 
         string numero = _spaceName.Replace("Space", "");
+        if (!collision.name.EndsWith(numero)) return;
 
-        if (collision.name.EndsWith(numero))
+        float distancia = Vector3.Distance(collision.transform.position, transform.position);
+        float distanciaMaximaPermitida = 1.5f;
+
+        if (distancia > distanciaMaximaPermitida)
+        {
+            if (_tiemposEnZona.ContainsKey(collision.gameObject))
+                _tiemposEnZona[collision.gameObject] = 0f;
+            return;
+        }
+
+        if (!_tiemposEnZona.ContainsKey(collision.gameObject))
+            _tiemposEnZona[collision.gameObject] = 0f;
+
+        _tiemposEnZona[collision.gameObject] += Time.deltaTime;
+
+        var drag = collision.GetComponent<DragSprite2_0>();
+        bool fueSoltado = drag != null && !drag.IsDragging();
+
+        if (_tiemposEnZona[collision.gameObject] >= _tiempoNecesario || fueSoltado)
         {
             _isOccupied = true;
-
             DropItemStatus.ObjetosColocados.Add(collision.name);
-
             StartCoroutine(SmoothSnap(collision.gameObject, transform.position));
         }
+    }
+
+
+    private void OnTriggerExit2D(Collider2D collision) //si la letra sale reiniciar el contador
+    {
+        if (_tiemposEnZona.ContainsKey(collision.gameObject))
+            _tiemposEnZona.Remove(collision.gameObject);
     }
 
     private IEnumerator SmoothSnap(GameObject obj, Vector3 destino)

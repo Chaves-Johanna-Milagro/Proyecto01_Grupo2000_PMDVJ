@@ -13,7 +13,7 @@ public class ObjectName : MonoBehaviour
         labelStyle = new GUIStyle();
 
         // Texto blanco, negrita, centrado
-        labelStyle.fontSize = 20;
+        labelStyle.fontSize = 40;
         labelStyle.fontStyle = FontStyle.Bold;
         labelStyle.normal.textColor = Color.white;
         labelStyle.alignment = TextAnchor.MiddleCenter;
@@ -58,8 +58,19 @@ public class ObjectName : MonoBehaviour
     {
         if (isMouseOver)
         {
+            Vector2 textSize = labelStyle.CalcSize(new GUIContent(gameObject.name));//obtener el tamaño del nombre
+
             Vector2 labelPosition = new Vector2(screenPosition.x, Screen.height - screenPosition.y - 30);
-            GUI.Label(new Rect(labelPosition.x - 75, labelPosition.y, 150, 30), gameObject.name, labelStyle);
+
+            Rect labelRect = new Rect(
+                            labelPosition.x - textSize.x / 2f,
+                            labelPosition.y,
+                            textSize.x + 1f,
+                            textSize.y
+            );
+
+            GUI.Label(labelRect, gameObject.name, labelStyle);
+
         }
     }
 }

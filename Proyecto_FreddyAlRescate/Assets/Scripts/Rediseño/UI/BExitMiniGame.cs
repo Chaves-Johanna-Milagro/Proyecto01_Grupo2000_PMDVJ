@@ -14,7 +14,9 @@ public class BExitMiniGame : MonoBehaviour
 
     private Button _bExit;
 
-    private MGBase[] _allMiniGames; // array de todos los MGBase en la escena
+    //private MGBase[] _allMiniGames; // array de todos los MGBase en la escenaD
+
+    private MGSchool[] _allMiniGames; // array de todos los MGBase en la escena
 
     private BKindnessUpDown _kind;
 
@@ -23,7 +25,8 @@ public class BExitMiniGame : MonoBehaviour
     void Start()
     {
         // Obtiene todos los MGBase en la escena
-        _allMiniGames = Object.FindObjectsByType<MGBase>(FindObjectsSortMode.None);
+        //_allMiniGames = Object.FindObjectsByType<MGBase>(FindObjectsSortMode.None);
+        _allMiniGames = Object.FindObjectsByType<MGSchool>(FindObjectsSortMode.None);
 
         _img = transform.GetChild(0).gameObject;
         _text = transform.GetChild(1).gameObject;
@@ -46,7 +49,9 @@ public class BExitMiniGame : MonoBehaviour
 
         if (PauseStatus.IsPaused) return;
 
-        if (MiniGameStatus.ActiveMiniGame() && SceneManager.GetActiveScene().name != "WayToSchool2.0") ActiveObjs(true);
+        //if (MiniGameStatus.ActiveMiniGame() && SceneManager.GetActiveScene().name != "WayToSchool2.0") ActiveObjs(true);
+
+        if (MiniGameStatus.ActiveMiniGame() && SceneManager.GetActiveScene().name == "Classroom2.0") ActiveObjs(true);
 
         if (_cursorManager == null) _cursorManager = Object.FindFirstObjectByType<CursorManager>(); //si es null que lo busque de nuevo
 

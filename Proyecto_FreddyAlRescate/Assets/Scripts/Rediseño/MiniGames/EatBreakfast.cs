@@ -22,6 +22,7 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
 
     private CursorManager _cursorManager;
 
+    private MGBase _mgBase;
     void Start()
     {
         GameObject parent = transform.parent.gameObject;
@@ -59,6 +60,10 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
         _soundEat = GetComponent<AudioSource>();
 
         _cursorManager = Object.FindFirstObjectByType<CursorManager>();
+
+        GameObject _par = transform.parent.gameObject;
+
+        _mgBase = _par.GetComponentInParent<MGBase>();
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -133,6 +138,8 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
         _kind.GoodDecision(); // sube la barrita
 
         _cursorManager?.SetCursorDefault(); //cursor por defecto
+
+        _mgBase.ExitMiniGame();//Se cierre el miniguejo una vez terminado
 
         _terminado = true;
         _comiendo = false;

@@ -39,7 +39,7 @@ public class MGMathClickOption : MonoBehaviour//lo tienen las opciones del mini 
     }
     private void Text()
     {
-        if (MGLevelMathStatus.GetLevelMath() == "Facil") // del 1 al 10
+        if (LevelGameStatus.GetLevel() == "Facil") // del 1 al 10
         {
             if (_name == "Opt1") _levelText.text = "5 + 10 = 6";
 
@@ -48,7 +48,7 @@ public class MGMathClickOption : MonoBehaviour//lo tienen las opciones del mini 
             if (_name == "Opt3") _levelText.text = "10 + 4 = 9";
         }
 
-        if (MGLevelMathStatus.GetLevelMath() == "Medio") // del 10 al 100
+        if (LevelGameStatus.GetLevel() == "Medio") // del 10 al 100
         {
             if (_name == "Opt1") _levelText.text = "50 + 100 = 60";
 
@@ -57,7 +57,7 @@ public class MGMathClickOption : MonoBehaviour//lo tienen las opciones del mini 
             if (_name == "Opt3") _levelText.text = "100 + 40 = 90";
         }
 
-        if (MGLevelMathStatus.GetLevelMath() == "Dificil") //del 100 al 1000
+        if (LevelGameStatus.GetLevel() == "Dificil") //del 100 al 1000
         {
             if (_name == "Opt1") _levelText.text = "500 + 1000 = 600";
 

@@ -16,7 +16,7 @@ public class MiniMenu : MonoBehaviour
         _phone = transform.Find("BPhone").gameObject;
         _calculator = transform.Find("BCalculator").gameObject;
 
-        _playerName = transform.Find("NamePlayer").gameObject;
+        _playerName = transform.Find("PlayerName").gameObject;
 
         _sceneName = SceneManager.GetActiveScene().name;
 

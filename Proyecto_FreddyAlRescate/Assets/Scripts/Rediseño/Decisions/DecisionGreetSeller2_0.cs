@@ -26,6 +26,10 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
 
     private BMiniAfton _bAfton; //para dar retroalimentacion positiva cada que tenga modales
 
+    private BPhone _phone;
+
+    private bool _IsClicked = false;
+
     void Start()
     {
         _img = transform?.Find("ImgDes").gameObject;
@@ -48,17 +52,24 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
         _kind = Object.FindFirstObjectByType<BKindnessUpDown>();
 
         _bAfton = Object.FindFirstObjectByType<BMiniAfton>();
+
+        _phone = Object.FindFirstObjectByType<BPhone>();
+
     }
 
     private void Update()
     {
         if (PauseStatus.IsPaused) return;
 
+        if (_phone == null) _phone = Object.FindFirstObjectByType<BPhone>();
+
         if (_next) NextAction();
     }
 
     public void OnMouseDown()
     {
+        if (_IsClicked) return;
+
         if (PauseStatus.IsPaused) return;
 
         if (CursorStatusInUI.IsPointerOverUI()) return;
@@ -69,6 +80,12 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
 
         if (DecisionStatus.ActiveDecision()) return;
 
+        if(_nameObj == "Greengrocery" && _phone.GetLastRoad() == "Izquierda" 
+            ||
+           _nameObj == "Kiosk" && _phone.GetLastRoad() == "Derecha") return; 
+
+        _IsClicked = true;
+        
         _img.SetActive(true);
     }
 

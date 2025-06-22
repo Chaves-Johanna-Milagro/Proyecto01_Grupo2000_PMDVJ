@@ -21,58 +21,63 @@ public static class CinematicStatus //para aquellos obj que muetren alguna cinem
 
     private class HijoEstado
     {
-        public Vector3 pos;
+        public Vector3 posicion;
         public bool activo;
     }
 
-    // Guarda: escena -> objeto -> nombreHijo -> estado
-    private static Dictionary<string, Dictionary<string, Dictionary<string, HijoEstado>>> _data =
-        new Dictionary<string, Dictionary<string, Dictionary<string, HijoEstado>>>();
+    // Guarda: escena -> objeto -> lista de estados de hijos (por índice)
+    private static Dictionary<string, Dictionary<string, List<HijoEstado>>> _data =
+        new Dictionary<string, Dictionary<string, List<HijoEstado>>>();
 
-    // Guarda el estado de los hijos del objeto que llama
+    // Guarda el estado de los hijos del objeto dado
     public static void GuardarEstado(GameObject objeto)
     {
         string escena = SceneManager.GetActiveScene().name;
         string nombreObjeto = objeto.name;
 
         if (!_data.ContainsKey(escena))
-            _data[escena] = new Dictionary<string, Dictionary<string, HijoEstado>>();
+            _data[escena] = new Dictionary<string, List<HijoEstado>>();
 
-        var hijos = new Dictionary<string, HijoEstado>();
+        var hijos = new List<HijoEstado>();
 
-        foreach (Transform hijo in objeto.transform)
+        for (int i = 0; i < objeto.transform.childCount; i++)
         {
-            hijos[hijo.name] = new HijoEstado
+            Transform hijo = objeto.transform.GetChild(i);
+            hijos.Add(new HijoEstado
             {
-                pos = hijo.position,
+                posicion = hijo.position,
                 activo = hijo.gameObject.activeSelf
-            };
+            });
         }
 
         _data[escena][nombreObjeto] = hijos;
     }
 
-    // Restaura el estado de los hijos del objeto que llama
+    // Restaura el estado de los hijos del objeto dado
     public static void RestaurarEstado(GameObject objeto)
     {
         string escena = SceneManager.GetActiveScene().name;
         string nombreObjeto = objeto.name;
 
-        if (!_data.ContainsKey(escena) || !_data[escena].ContainsKey(nombreObjeto)) return;
+        if (!_data.ContainsKey(escena) || !_data[escena].ContainsKey(nombreObjeto))
+        {
+            Debug.LogWarning($"[CinematicStatus] No hay estado guardado para {nombreObjeto} en escena {escena}");
+            return;
+        }
 
         var hijosGuardados = _data[escena][nombreObjeto];
 
-        foreach (Transform hijo in objeto.transform)
+        for (int i = 0; i < Mathf.Min(hijosGuardados.Count, objeto.transform.childCount); i++)
         {
-            if (hijosGuardados.TryGetValue(hijo.name, out var estado))
-            {
-                hijo.position = estado.pos;
-                hijo.gameObject.SetActive(estado.activo);
-            }
+            Transform hijo = objeto.transform.GetChild(i);
+            HijoEstado estado = hijosGuardados[i];
+
+            hijo.position = estado.posicion;
+            hijo.gameObject.SetActive(estado.activo);
         }
     }
 
-    // Verifica si hay datos guardados para este objeto
+    // Verifica si hay datos guardados para ese objeto
     public static bool TieneEstado(GameObject objeto)
     {
         string escena = SceneManager.GetActiveScene().name;
@@ -80,5 +85,4 @@ public static class CinematicStatus //para aquellos obj que muetren alguna cinem
 
         return _data.ContainsKey(escena) && _data[escena].ContainsKey(nombreObjeto);
     }
-
 }

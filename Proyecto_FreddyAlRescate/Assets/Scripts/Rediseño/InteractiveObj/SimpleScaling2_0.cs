@@ -41,11 +41,16 @@ public class SimpleScaling2_0 : MonoBehaviour
         if (DecisionStatus.ActiveDecision()) return; // si hay alguna desicion corriendo
 
         _isScaling = true;
+
         if (_hoverButton != null) _hoverButton.Play();
 
         _cursorManager?.SetCursorSelect();
     }
-
+    private void OnMouseOver()
+    {
+        if (CursorStatusInUI.IsPointerOverUI()) _cursorManager.SetCursorDefault();  
+        if (CinematicStatus.ActiveCinematic()) _cursorManager.SetCursorDefault(); // si hay alguna cinematica corriendo
+    }
     private void OnMouseExit()
     {
         _isScaling = false;

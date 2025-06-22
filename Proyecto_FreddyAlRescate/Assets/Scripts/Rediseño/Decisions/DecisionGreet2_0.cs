@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DecisionGreet2_0 : MonoBehaviour //para objetos que tengan de hijos a los obj de la decision
+public class DecisionGreet2_0 : MonoBehaviour //lo tiene la puerta que va a waytocshool en breackfast 
 {
     private GameObject _img;
 
@@ -26,6 +26,8 @@ public class DecisionGreet2_0 : MonoBehaviour //para objetos que tengan de hijos
 
     private BMiniAfton _bAfton; //para dar retroalimentacion positiva cada que complete un objetivo
 
+    private PlayerAttention _pAttention; // par aque no le deje salir si no se cambio primero
+
     void Start()
     {
         _img = transform.Find("Img").gameObject;
@@ -44,6 +46,8 @@ public class DecisionGreet2_0 : MonoBehaviour //para objetos que tengan de hijos
         _kind = Object.FindFirstObjectByType<BKindnessUpDown>();
 
         _bAfton = Object.FindFirstObjectByType<BMiniAfton>();
+
+        _pAttention = Object.FindFirstObjectByType<PlayerAttention>();
     }
 
     public void Update()
@@ -61,7 +65,17 @@ public class DecisionGreet2_0 : MonoBehaviour //para objetos que tengan de hijos
 
         if (CinematicStatus.ActiveCinematic()) return;
 
-        StatusSprites(true);
+        bool useRP = ChecksStatus.IsCheckActive("Morning2.0", 1); // verificamos si se cambio de ropa usando el check activo/inactivo
+
+        if (useRP)
+        {
+            _pAttention.AttentionGreet(); // le dice que tendra que elegir si saluda o no
+            StatusSprites(true);  // si se cambio que active la decision
+
+        }
+
+        else if (!useRP) _pAttention.AttentionBreackfast(); // sino que le de una advertencia
+       
     }
 
     private void StatusSprites(bool status)

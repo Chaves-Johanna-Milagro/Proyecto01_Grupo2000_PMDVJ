@@ -17,14 +17,14 @@ public class CharacterAnim : MonoBehaviour
 
         if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0" || _nameScene == "Classroom2.0" || _nameScene == "Playground2.0")
         {
-            transform.localScale = new Vector3(0.1f, 0.1f, 1f);
+            transform.localScale = new Vector3(0.11f, 0.11f, 1f);
         }
     }
 
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !ClicEnInteractuable())
         {
             Vector3 clickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             clickPos.z = -0.1f;
@@ -39,6 +39,17 @@ public class CharacterAnim : MonoBehaviour
     {
         ResetAllBools();
 
+        if (PauseStatus.IsPaused) return;
+
+        if (CursorStatusInUI.IsPointerOverUI()) return;
+
+        if (MiniGameStatus.ActiveMiniGame()) return;
+
+        if (DecisionStatus.ActiveDecision()) return;
+
+        if (CinematicStatus.ActiveCinematic()) return;
+
+
         bool useRP = ChecksStatus.IsCheckActive("Morning2.0", 1); // verificamos si se cambio de ropa usando el check activo/inactivo
 
         if (clickPos.x > transform.position.x)
@@ -49,7 +60,7 @@ public class CharacterAnim : MonoBehaviour
             else if (!useRP)
                 _anim.SetBool("R_Walk_PJ", true);
 
-            if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0")
+            if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0" || _nameScene == "Classroom2.0" || _nameScene == "Playground2.0")
             {
                 _anim.SetBool("R_Walk_MP", true);
             };
@@ -61,7 +72,7 @@ public class CharacterAnim : MonoBehaviour
             else if (!useRP)
                 _anim.SetBool("L_Walk_PJ", true);
 
-            if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0")
+            if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0" || _nameScene == "Classroom2.0" || _nameScene == "Playground2.0")
             {
                 _anim.SetBool("L_Walk_MP", true);
             };
@@ -70,7 +81,7 @@ public class CharacterAnim : MonoBehaviour
 
     void HandleIdleTransition()
     {
-        if (!_moveChar.IsMoving())
+        if (!_moveChar.IsMoving() || ClicEnInteractuable())
         {
             ResetAllBools();
 
@@ -81,7 +92,7 @@ public class CharacterAnim : MonoBehaviour
             else if (!useRP)
                 _anim.SetBool("Idle_PJ", true);
 
-            if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0")
+            if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0" || _nameScene == "Classroom2.0" || _nameScene == "Playground2.0")
             {
                 _anim.SetBool("Idle_MP", true);
             };
@@ -102,5 +113,14 @@ public class CharacterAnim : MonoBehaviour
         _anim.SetBool("R_Walk_MP", false);
         _anim.SetBool("L_Walk_MP", false);
         _anim.SetBool("Idle_MP", false);
+    }
+
+
+    private bool ClicEnInteractuable() // Verifica si el clic fue sobre un objeto con tag "Interactuable"
+    {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
+
+        return hit.collider != null && hit.collider.CompareTag("Interactuable");
     }
 }
