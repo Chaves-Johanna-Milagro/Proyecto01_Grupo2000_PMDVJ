@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu2_0 : MonoBehaviour
 {
-    private GameObject _bJugar;
+    //private GameObject _bJugar;
     private GameObject _bRediseño;
 
     private GameObject _imgMath;//hijo del boton de rediseño
@@ -14,11 +14,11 @@ public class MainMenu2_0 : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _bJugar = transform.Find("PlayButton").gameObject;
+        //_bJugar = transform.Find("PlayButton").gameObject;
 
         _bRediseño = transform.Find("BRediseño").gameObject;
 
-        _imgMath = _bRediseño.transform.Find("ImgMath").gameObject;
+        //_imgMath = _bRediseño.transform.Find("ImgMath").gameObject;
 
         _bRedise = _bRediseño.GetComponent<Button>();
 

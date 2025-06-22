@@ -17,7 +17,7 @@ public class CharacterAnim : MonoBehaviour
 
         if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0" || _nameScene == "Classroom2.0" || _nameScene == "Playground2.0")
         {
-            transform.localScale = new Vector3(0.1f, 0.1f, 1f);
+            transform.localScale = new Vector3(0.11f, 0.11f, 1f);
         }
     }
 
@@ -60,7 +60,7 @@ public class CharacterAnim : MonoBehaviour
             else if (!useRP)
                 _anim.SetBool("R_Walk_PJ", true);
 
-            if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0")
+            if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0" || _nameScene == "Playground2.0")
             {
                 _anim.SetBool("R_Walk_MP", true);
             };
@@ -72,7 +72,7 @@ public class CharacterAnim : MonoBehaviour
             else if (!useRP)
                 _anim.SetBool("L_Walk_PJ", true);
 
-            if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0")
+            if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0" || _nameScene == "Classroom2.0" || _nameScene == "Playground2.0")
             {
                 _anim.SetBool("L_Walk_MP", true);
             };
@@ -92,7 +92,7 @@ public class CharacterAnim : MonoBehaviour
             else if (!useRP)
                 _anim.SetBool("Idle_PJ", true);
 
-            if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0")
+            if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0" || _nameScene == "Classroom2.0" || _nameScene == "Playground2.0")
             {
                 _anim.SetBool("Idle_MP", true);
             };

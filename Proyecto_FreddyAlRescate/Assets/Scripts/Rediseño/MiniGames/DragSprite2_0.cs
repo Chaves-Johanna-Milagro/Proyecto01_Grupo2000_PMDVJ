@@ -59,6 +59,12 @@ public class DragSprite2_0 : MonoBehaviour
         mousePoint.z = 10f; // distancia de la cámara
         return Camera.main.ScreenToWorldPoint(mousePoint);
     }
+
+    public bool IsDragging()
+    {
+        return _isDragging;
+    }
+
 }
 
 

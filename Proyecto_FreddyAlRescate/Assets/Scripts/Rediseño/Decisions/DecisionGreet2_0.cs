@@ -66,8 +66,13 @@ public class DecisionGreet2_0 : MonoBehaviour //lo tiene la puerta que va a wayt
         if (CinematicStatus.ActiveCinematic()) return;
 
         bool useRP = ChecksStatus.IsCheckActive("Morning2.0", 1); // verificamos si se cambio de ropa usando el check activo/inactivo
-        
-        if (useRP)  StatusSprites(true); // si se cambio que active la decision
+
+        if (useRP)
+        {
+            _pAttention.AttentionGreet(); // le dice que tendra que elegir si saluda o no
+            StatusSprites(true);  // si se cambio que active la decision
+
+        }
 
         else if (!useRP) _pAttention.AttentionBreackfast(); // sino que le de una advertencia
        
