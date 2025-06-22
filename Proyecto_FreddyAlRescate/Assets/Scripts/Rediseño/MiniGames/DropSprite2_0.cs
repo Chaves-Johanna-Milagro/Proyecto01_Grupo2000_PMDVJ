@@ -80,6 +80,17 @@ public class DropSprite2_0 : MonoBehaviour //pa zonas de dropeo de obj de los mi
         string numero = _spaceName.Replace("Space", "");
         if (!collision.name.EndsWith(numero)) return;
 
+        float distancia = Vector3.Distance(collision.transform.position, transform.position);
+        float distanciaMaximaPermitida = 3f; // como distancia cercana
+
+        if (distancia > distanciaMaximaPermitida)
+        {
+            // Si está muy lejos, no acumula tiempo
+            if (_tiemposEnZona.ContainsKey(collision.gameObject))
+                _tiemposEnZona[collision.gameObject] = 0f;
+            return;
+        }
+
         if (!_tiemposEnZona.ContainsKey(collision.gameObject))
             _tiemposEnZona[collision.gameObject] = 0f;
 
@@ -91,8 +102,8 @@ public class DropSprite2_0 : MonoBehaviour //pa zonas de dropeo de obj de los mi
             DropItemStatus.ObjetosColocados.Add(collision.name);
             StartCoroutine(SmoothSnap(collision.gameObject, transform.position));
         }
-
     }
+
     private void OnTriggerExit2D(Collider2D collision) //si la letra sale reiniciar el contador
     {
         if (_tiemposEnZona.ContainsKey(collision.gameObject))

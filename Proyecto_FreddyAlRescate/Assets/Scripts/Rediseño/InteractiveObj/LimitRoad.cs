@@ -20,7 +20,18 @@ public class LimitRoad : MonoBehaviour
     {
        if ( _phone == null ) _phone = Object.FindFirstObjectByType<BPhone>();
 
-       if (_phone.GetLastRoad() == "Derecha" ) _LLimit.SetActive(true);
-       if (_phone.GetLastRoad() == "Izquierda" ) _RLimit.SetActive(true);
+        string lastRoad = _phone.GetLastRoad();
+
+        if (lastRoad == "Derecha")
+        {
+            _LLimit.SetActive(true);
+            _RLimit.SetActive(false);
+        }
+        else if (lastRoad == "Izquierda")
+        {
+            _RLimit.SetActive(true);
+            _LLimit.SetActive(false);
+        }
+
     }
 }

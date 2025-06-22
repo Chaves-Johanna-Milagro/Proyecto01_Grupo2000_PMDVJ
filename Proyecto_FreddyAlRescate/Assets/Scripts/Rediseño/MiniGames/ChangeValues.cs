@@ -32,7 +32,7 @@ public class ChangeValues : MonoBehaviour //lo tiene el minijuego de los dados
 
     }
 
-    private void Update() //busque de nuevo los objtetos
+    private void Update() //busque de nuevo los objetos
     {
         if (_pagNvl1 == null) _pagNvl1 = _mg.transform.Find("PagLvl1").gameObject;
         if (_pagNvl2 == null) _pagNvl2 = _mg.transform.Find("PagLvl2").gameObject;
