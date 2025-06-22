@@ -60,7 +60,7 @@ public class CharacterAnim : MonoBehaviour
             else if (!useRP)
                 _anim.SetBool("R_Walk_PJ", true);
 
-            if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0" || _nameScene == "Playground2.0")
+            if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0" || _nameScene == "Classroom2.0" || _nameScene == "Playground2.0")
             {
                 _anim.SetBool("R_Walk_MP", true);
             };
