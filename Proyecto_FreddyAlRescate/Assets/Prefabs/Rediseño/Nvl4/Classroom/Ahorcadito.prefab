@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 4973620434081544116}
   - component: {fileID: 3860501120554243240}
   m_Layer: 0
-  m_Name: SpaceL
+  m_Name: SpaceL3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 5184202278372859527}
   - component: {fileID: 8282564870224170994}
   m_Layer: 0
-  m_Name: LetterL
+  m_Name: LetterL3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -532,7 +532,7 @@ GameObject:
   - component: {fileID: 5731316358627359543}
   - component: {fileID: 1614382073731346250}
   m_Layer: 0
-  m_Name: LetterP
+  m_Name: LetterP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -707,7 +707,7 @@ GameObject:
   - component: {fileID: 2334013753013354941}
   - component: {fileID: 1605669424344707660}
   m_Layer: 0
-  m_Name: LetterA
+  m_Name: LetterA3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -881,7 +881,7 @@ GameObject:
   - component: {fileID: 7423310954404575937}
   - component: {fileID: 4429840839718732339}
   m_Layer: 0
-  m_Name: SpaceR
+  m_Name: SpaceR3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1029,7 +1029,7 @@ GameObject:
   - component: {fileID: 4884561602602024700}
   - component: {fileID: 4946100293082867531}
   m_Layer: 0
-  m_Name: LetterR
+  m_Name: LetterR1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1203,7 +1203,7 @@ GameObject:
   - component: {fileID: 5278785110523863477}
   - component: {fileID: 3334996739420677154}
   m_Layer: 0
-  m_Name: SpaceZ
+  m_Name: SpaceZ2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1482,7 +1482,7 @@ GameObject:
   - component: {fileID: 7373976169816961826}
   - component: {fileID: 5159868271908448412}
   m_Layer: 0
-  m_Name: LetterS
+  m_Name: LetterS2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1656,7 +1656,7 @@ GameObject:
   - component: {fileID: 3197152032334972126}
   - component: {fileID: 5685541039761555037}
   m_Layer: 0
-  m_Name: SpaceO
+  m_Name: SpaceO2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1849,7 +1849,7 @@ GameObject:
   - component: {fileID: 8337996278990598148}
   - component: {fileID: 6909010082601211866}
   m_Layer: 0
-  m_Name: SpaceO
+  m_Name: SpaceO1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2034,7 +2034,7 @@ GameObject:
   - component: {fileID: 3143550975995720474}
   - component: {fileID: 1492872403307531072}
   m_Layer: 0
-  m_Name: LetterR
+  m_Name: LetterR2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2209,7 +2209,7 @@ GameObject:
   - component: {fileID: 3542663875697502063}
   - component: {fileID: 5257543811538543894}
   m_Layer: 0
-  m_Name: LetterO
+  m_Name: LetterO2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2384,7 +2384,7 @@ GameObject:
   - component: {fileID: 5069398192935266786}
   - component: {fileID: 4978455278147205905}
   m_Layer: 0
-  m_Name: LetterB
+  m_Name: LetterB2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2558,7 +2558,7 @@ GameObject:
   - component: {fileID: 3202475018164255105}
   - component: {fileID: 5278492636508674327}
   m_Layer: 0
-  m_Name: SpaceN
+  m_Name: SpaceN3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2705,7 +2705,7 @@ GameObject:
   - component: {fileID: 1286963887785014519}
   - component: {fileID: 7459428331899591519}
   m_Layer: 0
-  m_Name: SpaceT
+  m_Name: SpaceT1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3064,7 +3064,7 @@ GameObject:
   - component: {fileID: 4722018871446469418}
   - component: {fileID: 7535000944670632136}
   m_Layer: 0
-  m_Name: SpaceB
+  m_Name: SpaceB2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3211,7 +3211,7 @@ GameObject:
   - component: {fileID: 719696122838771137}
   - component: {fileID: 217652237153036831}
   m_Layer: 0
-  m_Name: SpaceP
+  m_Name: SpaceP2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3359,7 +3359,7 @@ GameObject:
   - component: {fileID: 1565901256732185220}
   - component: {fileID: 6529285449529133969}
   m_Layer: 0
-  m_Name: LetterA
+  m_Name: LetterA1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3533,7 +3533,7 @@ GameObject:
   - component: {fileID: 5380510200599686006}
   - component: {fileID: 924179241859609265}
   m_Layer: 0
-  m_Name: SpaceL
+  m_Name: SpaceL1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3681,7 +3681,7 @@ GameObject:
   - component: {fileID: 1563760507830375086}
   - component: {fileID: 3591916913101598608}
   m_Layer: 0
-  m_Name: LetterR
+  m_Name: LetterR3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3856,7 +3856,7 @@ GameObject:
   - component: {fileID: 3437628249798008525}
   - component: {fileID: 5865536779804042448}
   m_Layer: 0
-  m_Name: LetterO
+  m_Name: LetterO3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4031,7 +4031,7 @@ GameObject:
   - component: {fileID: 5255284234543187273}
   - component: {fileID: 5106414698565939688}
   m_Layer: 0
-  m_Name: LetterP
+  m_Name: LetterP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4292,7 +4292,7 @@ GameObject:
   - component: {fileID: 2526278622739351758}
   - component: {fileID: 2619659207776847453}
   m_Layer: 0
-  m_Name: SpaceR
+  m_Name: SpaceR1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4440,7 +4440,7 @@ GameObject:
   - component: {fileID: 1739777278844856021}
   - component: {fileID: 5257100969885887806}
   m_Layer: 0
-  m_Name: LetterN
+  m_Name: LetterN3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4615,7 +4615,7 @@ GameObject:
   - component: {fileID: 6643413897539280859}
   - component: {fileID: 5609591579905272927}
   m_Layer: 0
-  m_Name: LetterB
+  m_Name: LetterB3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4789,7 +4789,7 @@ GameObject:
   - component: {fileID: 8247462980706118207}
   - component: {fileID: 1070035277652234286}
   m_Layer: 0
-  m_Name: SpaceO
+  m_Name: SpaceO3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4937,7 +4937,7 @@ GameObject:
   - component: {fileID: 4708557601235279605}
   - component: {fileID: 3696822668599548985}
   m_Layer: 0
-  m_Name: LetterO
+  m_Name: LetterO1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5199,7 +5199,7 @@ GameObject:
   - component: {fileID: 207916657570013503}
   - component: {fileID: 5121780858561565636}
   m_Layer: 0
-  m_Name: LetterT
+  m_Name: LetterT1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5373,7 +5373,7 @@ GameObject:
   - component: {fileID: 3563090125993349970}
   - component: {fileID: 5943678563296067524}
   m_Layer: 0
-  m_Name: SpaceA
+  m_Name: SpaceA1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5520,7 +5520,7 @@ GameObject:
   - component: {fileID: 5688832000602625258}
   - component: {fileID: 8440647103646668233}
   m_Layer: 0
-  m_Name: SpaceR
+  m_Name: SpaceR2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5668,7 +5668,7 @@ GameObject:
   - component: {fileID: 7248914920377313175}
   - component: {fileID: 7341539474339001287}
   m_Layer: 0
-  m_Name: LetterM
+  m_Name: LetterM3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5930,7 +5930,7 @@ GameObject:
   - component: {fileID: 1779236945573473900}
   - component: {fileID: 3548190969591508959}
   m_Layer: 0
-  m_Name: LetterL
+  m_Name: LetterL1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6104,7 +6104,7 @@ GameObject:
   - component: {fileID: 1116165939007194878}
   - component: {fileID: 3504835349822183151}
   m_Layer: 0
-  m_Name: SpaceS
+  m_Name: SpaceS2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6251,7 +6251,7 @@ GameObject:
   - component: {fileID: 4368768006615034695}
   - component: {fileID: 7721294586613363203}
   m_Layer: 0
-  m_Name: SpaceP
+  m_Name: SpaceP1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6399,7 +6399,7 @@ GameObject:
   - component: {fileID: 1058559648816939388}
   - component: {fileID: 2364302110107973570}
   m_Layer: 0
-  m_Name: LetterE
+  m_Name: LetterE2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6573,7 +6573,7 @@ GameObject:
   - component: {fileID: 1025788639514039232}
   - component: {fileID: 4152713427067950494}
   m_Layer: 0
-  m_Name: SpaceA
+  m_Name: SpaceA3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6916,7 +6916,7 @@ GameObject:
   - component: {fileID: 1210608919006005198}
   - component: {fileID: 4733466186349751451}
   m_Layer: 0
-  m_Name: SpaceE
+  m_Name: SpaceE2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7111,7 +7111,7 @@ GameObject:
   - component: {fileID: 5459601308327530172}
   - component: {fileID: 7321562670293913324}
   m_Layer: 0
-  m_Name: SpaceM
+  m_Name: SpaceM3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7259,7 +7259,7 @@ GameObject:
   - component: {fileID: 7355161269646936835}
   - component: {fileID: 7419240572310054727}
   m_Layer: 0
-  m_Name: LetterZ
+  m_Name: LetterZ2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7433,7 +7433,7 @@ GameObject:
   - component: {fileID: 7429775696313017488}
   - component: {fileID: 2751601364364113255}
   m_Layer: 0
-  m_Name: SpaceB
+  m_Name: SpaceB3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7581,7 +7581,7 @@ GameObject:
   - component: {fileID: 5232199980674901138}
   - component: {fileID: 725679283716665222}
   m_Layer: 0
-  m_Name: LetterT
+  m_Name: LetterT3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7755,7 +7755,7 @@ GameObject:
   - component: {fileID: 5398846439415609003}
   - component: {fileID: 9199384847623985396}
   m_Layer: 0
-  m_Name: SpaceT
+  m_Name: SpaceT3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
