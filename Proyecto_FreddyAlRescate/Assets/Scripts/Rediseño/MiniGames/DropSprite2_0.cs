@@ -4,134 +4,145 @@ using System.Collections.Generic;
 
 public class DropSprite2_0 : MonoBehaviour //pa zonas de dropeo de obj de los minijuegos, en especifico las de la escuela
 {
-    private string _spaceName;
+    private string _name;
+    private bool _ocupado = false;
+    private float _alpha;
+    private float _tiempoReq = 1f;
 
-    private bool _isOccupied = false;
-
-    private float _alfa; //e usara para que las guias sean cada vez mas transparentes mediante el alfa
-
-    private Dictionary<GameObject, float> _tiemposEnZona = new Dictionary<GameObject, float>();
-    private float _tiempoNecesario = 1f; // tiempo en segundos que debe quedarse para encastrar
+    private Dictionary<GameObject, float> _tiempos = new();
+    private MGSchool _mg;
 
     void Start()
     {
-        _spaceName = gameObject.name;
-        string numero = _spaceName.Replace("Space", "");
+        _name = name;
+        string num = _name.Replace("Space", "");
 
-        // Buscar coincidencia manualmente
-        string objetoColocado = null;
-        foreach (string nombre in DropItemStatus.ObjetosColocados)
+        // Si hay objeto previamente colocado, restaurar su posición y estado
+        foreach (string objName in DropItemStatus.ObjetosColocados)
         {
-            if (nombre.EndsWith(numero))
-            {
-                objetoColocado = nombre;
-                break;
-            }
+            if (!objName.EndsWith(num)) continue;
+
+            GameObject obj = GameObject.Find(objName);
+            if (obj == null) break;
+
+            obj.transform.position = transform.position;
+
+            var drag = obj.GetComponent<DragSprite2_0>();
+            if (drag) drag.enabled = false;
+
+            var col = obj.GetComponent<Collider2D>();
+            if (col) col.enabled = false;
+
+            _ocupado = true;
+            break;
         }
 
-        if (!string.IsNullOrEmpty(objetoColocado))
+        _alpha = GetComponent<SpriteRenderer>().color.a;
+        switch (LevelGameStatus.GetLevel())
         {
-            GameObject obj = GameObject.Find(objetoColocado);
-            if (obj != null)
-            {
-                obj.transform.position = transform.position;
-
-                var drag = obj.GetComponent<DragSprite2_0>();
-                if (drag != null) drag.enabled = false;
-
-                var col = obj.GetComponent<Collider2D>();
-                if (col != null) col.enabled = false;
-
-                _isOccupied = true;
-            }
+            case "Facil": _alpha = 0.8f; break;
+            case "Medio": _alpha = 0.4f; break;
+            case "Dificil": _alpha = 0f; break;
         }
-
-        _alfa = GetComponent<SpriteRenderer>().color.a; // para setear las guias mediante el nivel elegido
-
-        if (LevelGameStatus.GetLevel() == "Facil") _alfa = 0.8f;
-        if (LevelGameStatus.GetLevel() == "Medio") _alfa = 0.4f;
-        if (LevelGameStatus.GetLevel() == "Dificil") _alfa = 0f;
-
         SetAlpha();
+
+        _mg = transform.GetComponentInParent<MGSchool>();
     }
-    public void OnEnabled() //pa ser llamado una vez se active
+
+    public void OnEnabled()
     {
-        _alfa = GetComponent<SpriteRenderer>().color.a; // para setear las guias mediante el nivel elegido
-
-        if (LevelGameStatus.GetLevel() == "Facil") _alfa = 0.8f;
-        if (LevelGameStatus.GetLevel() == "Medio") _alfa = 0.4f;
-        if (LevelGameStatus.GetLevel() == "Dificil") _alfa = 0f;
-
+        switch (LevelGameStatus.GetLevel())
+        {
+            case "Facil": _alpha = 0.8f; break;
+            case "Medio": _alpha = 0.4f; break;
+            case "Dificil": _alpha = 0f; break;
+        }
         SetAlpha();
     }
 
     private void SetAlpha()
     {
-        SpriteRenderer sr = GetComponent<SpriteRenderer>();
-        Color c = sr.color;
-        c.a = _alfa;
+        var sr = GetComponent<SpriteRenderer>();
+        var c = sr.color;
+        c.a = _alpha;
         sr.color = c;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D col)
     {
-        if (_isOccupied) return;
+        if (_ocupado) return;
 
-        string numero = _spaceName.Replace("Space", "");
-        if (!collision.name.EndsWith(numero)) return;
+        string num = _name.Replace("Space", "");
+        if (!col.name.EndsWith(num)) return;
 
-        float distancia = Vector3.Distance(collision.transform.position, transform.position);
-        float distanciaMaximaPermitida = 1.5f;
-
-        if (distancia > distanciaMaximaPermitida)
+        float dist = Vector3.Distance(col.transform.position, transform.position);
+        if (dist > 1.5f)
         {
-            if (_tiemposEnZona.ContainsKey(collision.gameObject))
-                _tiemposEnZona[collision.gameObject] = 0f;
+            _tiempos[col.gameObject] = 0f;
             return;
         }
 
-        if (!_tiemposEnZona.ContainsKey(collision.gameObject))
-            _tiemposEnZona[collision.gameObject] = 0f;
+        if (!_tiempos.ContainsKey(col.gameObject))
+            _tiempos[col.gameObject] = 0f;
 
-        _tiemposEnZona[collision.gameObject] += Time.deltaTime;
+        _tiempos[col.gameObject] += Time.deltaTime;
 
-        var drag = collision.GetComponent<DragSprite2_0>();
-        bool fueSoltado = drag != null && !drag.IsDragging();
+        var drag = col.GetComponent<DragSprite2_0>();
+        bool soltado = drag != null && !drag.IsDragging();
 
-        if (_tiemposEnZona[collision.gameObject] >= _tiempoNecesario || fueSoltado)
+        if (_tiempos[col.gameObject] >= _tiempoReq || soltado)
         {
-            _isOccupied = true;
-            DropItemStatus.ObjetosColocados.Add(collision.name);
-            StartCoroutine(SmoothSnap(collision.gameObject, transform.position));
+            _ocupado = true;
+            DropItemStatus.ObjetosColocados.Add(col.name);
+            StartCoroutine(Snap(col.gameObject, transform.position));
+
+            DropItemStatus.SumarDrop(_mg.GetNameMG());
+
+            int total = DropItemStatus.GetDrops(_mg.GetNameMG());
+            Debug.Log(total);
+
+            string nivel = LevelGameStatus.GetLevel();
+            string nombreMG = _mg.GetNameMG();
+
+            // Validar si se completó el minijuego según tipo y nivel
+            if (
+                (nombreMG == "Ahorcadito" && total == _mg.GetTotalAhorcadito()) ||
+                (nombreMG == "Dados" && total == _mg.GetTotalDados()) ||
+                (nombreMG == "Puzzle" && (
+                    (nivel == "Facil" && total == _mg.GetTotalPuzzleLvl1()) ||
+                    (nivel == "Medio" && total == _mg.GetTotalPuzzleLvl2()) ||
+                    (nivel == "Dificil" && total == _mg.GetTotalPuzzleLvl3()))
+                )
+            )
+            {
+                _mg.ExitMiniGame();
+            }
         }
     }
 
-
-    private void OnTriggerExit2D(Collider2D collision) //si la letra sale reiniciar el contador
+    private void OnTriggerExit2D(Collider2D col)
     {
-        if (_tiemposEnZona.ContainsKey(collision.gameObject))
-            _tiemposEnZona.Remove(collision.gameObject);
+        _tiempos.Remove(col.gameObject);
     }
 
-    private IEnumerator SmoothSnap(GameObject obj, Vector3 destino)
+    private IEnumerator Snap(GameObject obj, Vector3 destino)
     {
-        float duracion = 0.3f;
-        float t = 0f;
-        Vector3 inicio = obj.transform.position;
+        float dur = 0.3f, t = 0f;
+        Vector3 ini = obj.transform.position;
 
-        Collider2D col = obj.GetComponent<Collider2D>();
-        if (col != null) col.enabled = false;
+        var col = obj.GetComponent<Collider2D>();
+        if (col) col.enabled = false;
 
-        while (t < duracion)
+        while (t < dur)
         {
-            obj.transform.position = Vector3.Lerp(inicio, destino, t / duracion);
+            obj.transform.position = Vector3.Lerp(ini, destino, t / dur);
             t += Time.deltaTime;
             yield return null;
         }
 
         obj.transform.position = destino;
 
-        DragSprite2_0 drag = obj.GetComponent<DragSprite2_0>();
-        if (drag != null) drag.enabled = false;
+        var drag = obj.GetComponent<DragSprite2_0>();
+        if (drag) drag.enabled = false;
     }
 }
