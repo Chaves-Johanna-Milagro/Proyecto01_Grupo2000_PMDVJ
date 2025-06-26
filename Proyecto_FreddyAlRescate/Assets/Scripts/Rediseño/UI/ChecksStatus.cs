@@ -80,4 +80,17 @@ public static class ChecksStatus
         }
         return false;
     }
+
+    // Devuelve la cantidad de checks activos en una escena específica
+    public static int GetActiveChecksCountForScene(string sceneName)
+    {
+        int count = 0;
+        bool[] checks = GetChecksForScene(sceneName);
+        foreach (bool check in checks)
+        {
+            if (check)
+                count++;
+        }
+        return count;
+    }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,20 +7,25 @@ public class ChangeRoom : MonoBehaviour
     private string _roomName;
 
     private BKindnessUpDown _kind;// se utilizara para manejar la cantidad de checks sin activar para bajar la barrita
+    private BNotesChecks _check;
 
     private CursorManager _cursorManager;
+
+    private bool _isClicked = false;
 
     void Start()
     {
         _roomName = gameObject.name;
 
         _kind = Object.FindFirstObjectByType<BKindnessUpDown>();
+        _check = Object.FindFirstObjectByType<BNotesChecks>();
 
         _cursorManager = Object.FindFirstObjectByType<CursorManager>();
     }
 
     public void OnMouseDown()
     {
+        if (_isClicked) return;
 
         if (PauseStatus.IsPaused) return; // Verifica si el juego está en pausa antes de procesar el click
 
@@ -43,16 +49,26 @@ public class ChangeRoom : MonoBehaviour
         }
       
 
-        if (_roomName == "DoorSchool") SceneManager.LoadScene("School2.0"); // aquella que te dirige a la entrada de la escuela
+        if (_roomName == "DoorSchool" && SceneManager.GetActiveScene().name == "Playground2.0") SceneManager.LoadScene("Recess2.0"); // aquella que te dirige a la entrada de la escuela cuando es recreo
 
-        if (_roomName == "DoorPatio") SceneManager.LoadScene("Playground2.0"); // aquella que te dirige al patio de la escuela
+        if (_roomName == "DoorPatio" && SceneManager.GetActiveScene().name == "Recess2.0") SceneManager.LoadScene("Playground2.0"); // aquella que te dirige al patio de la escuela en el recreo
 
         //de momento se saltara el mg de la sube
         if (_roomName == "TrafficLight") SceneManager.LoadScene("School2.0"); // aquella que te dirige a la entrada de la escuela
 
-        if (_roomName == "DoorClassroom") SceneManager.LoadScene("Classroom2.0"); // aqulla que te dirige al aula
+        if (_roomName == "DoorClassroom") StartCoroutine(DelayPaCheck()); // aqulla que te dirige al aula
 
         _cursorManager.SetCursorDefault();//setee al cursor por defecto
 
+    }
+
+    private IEnumerator DelayPaCheck()
+    {
+        _isClicked = true; //pa evitar que se reinicie la corrutina si cleckiea de nuevo
+
+        _check.Check1();
+        yield return new WaitForSeconds(1.5f);
+
+        SceneManager.LoadScene("Classroom2.0");
     }
 }

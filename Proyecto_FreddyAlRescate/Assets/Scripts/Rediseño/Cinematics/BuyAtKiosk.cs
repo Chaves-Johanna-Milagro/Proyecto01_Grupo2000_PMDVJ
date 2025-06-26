@@ -51,15 +51,19 @@ public class BuyAtKiosk : MonoBehaviour
 
     private IEnumerator Delay()
     {
-        _check?.Check2();
 
         yield return new WaitForSeconds(2f);
+
+        ChecksStatus.SetCheckActive("Recess2.0",1); //activamos tambien el check en esa escena
 
         if (_Img != null) _Img.SetActive(false);
 
         // Guardamos el estado final para que se mantenga entre escenas
         CinematicStatus.GuardarEstado(gameObject);
 
+        yield return new WaitForSeconds(1.5f);
+
+        _check?.Check2();
         _kind?.GoodDecision();
     }
 }

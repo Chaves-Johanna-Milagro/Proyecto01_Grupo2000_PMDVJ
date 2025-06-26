@@ -84,6 +84,8 @@ public class BNotesObjetives : MonoBehaviour
         else if (_sceneName == "School2.0") ObjNvl4_1();
         else if (_sceneName == "Classroom2.0") ObjNvl4_2();
         else if (_sceneName == "Playground2.0") ObjNvl4_3();
+
+        else if (_sceneName == "Recess2.0") ObjNvl4_3();
     }
 
     public void ObjNvl1()

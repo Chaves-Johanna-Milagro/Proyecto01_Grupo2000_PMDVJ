@@ -95,28 +95,6 @@ public class DropSprite2_0 : MonoBehaviour //pa zonas de dropeo de obj de los mi
             _ocupado = true;
             DropItemStatus.ObjetosColocados.Add(col.name);
             StartCoroutine(Snap(col.gameObject, transform.position));
-
-            DropItemStatus.SumarDrop(_mg.GetNameMG());
-
-            int total = DropItemStatus.GetDrops(_mg.GetNameMG());
-            Debug.Log(total);
-
-            string nivel = LevelGameStatus.GetLevel();
-            string nombreMG = _mg.GetNameMG();
-
-            // Validar si se completó el minijuego según tipo y nivel
-            if (
-                (nombreMG == "Ahorcadito" && total == _mg.GetTotalAhorcadito()) ||
-                (nombreMG == "Dados" && total == _mg.GetTotalDados()) ||
-                (nombreMG == "Puzzle" && (
-                    (nivel == "Facil" && total == _mg.GetTotalPuzzleLvl1()) ||
-                    (nivel == "Medio" && total == _mg.GetTotalPuzzleLvl2()) ||
-                    (nivel == "Dificil" && total == _mg.GetTotalPuzzleLvl3()))
-                )
-            )
-            {
-                _mg.ExitMiniGame();
-            }
         }
     }
 
@@ -144,5 +122,28 @@ public class DropSprite2_0 : MonoBehaviour //pa zonas de dropeo de obj de los mi
 
         var drag = obj.GetComponent<DragSprite2_0>();
         if (drag) drag.enabled = false;
+
+        /////////
+        DropItemStatus.SumarDrop(_mg.GetNameMG());
+
+        int total = DropItemStatus.GetDrops(_mg.GetNameMG());
+        Debug.Log(total);
+
+        string nivel = LevelGameStatus.GetLevel();
+        string nombreMG = _mg.GetNameMG();
+
+        // Validar si se completó el minijuego según tipo y nivel
+        if (
+            (nombreMG == "Ahorcadito" && total == _mg.GetTotalAhorcadito()) ||
+            (nombreMG == "Dados" && total == _mg.GetTotalDados()) ||
+            (nombreMG == "Puzzle" && (
+                (nivel == "Facil" && total == _mg.GetTotalPuzzleLvl1()) ||
+                (nivel == "Medio" && total == _mg.GetTotalPuzzleLvl2()) ||
+                (nivel == "Dificil" && total == _mg.GetTotalPuzzleLvl3()))
+            )
+        )
+        {
+            _mg.ExitMiniGame();
+        }
     }
 }
