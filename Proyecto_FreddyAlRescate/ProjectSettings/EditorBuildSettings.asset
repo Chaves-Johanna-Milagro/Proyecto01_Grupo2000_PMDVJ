@@ -62,6 +62,9 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/Scenes/Redise\xF1o/Recess2.0.unity"
     guid: 187596f3dd13be5408cd34cf441d903f
+  - enabled: 1
+    path: "Assets/Scenes/Redise\xF1o/Intro2.0.unity"
+    guid: 3ac4076cc69b873448620d029aebccd5
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

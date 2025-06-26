@@ -32,7 +32,7 @@ public class SetUpMenu : MonoBehaviour
 
     public void StartRediseño()
     {
-        SceneManager.LoadScene("Morning2.0");
+        SceneManager.LoadScene("Intro2.0");
         SaveName();
     }
 
