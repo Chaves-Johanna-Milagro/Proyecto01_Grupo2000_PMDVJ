@@ -51,7 +51,7 @@ public class BExitMiniGame : MonoBehaviour
 
         //if (MiniGameStatus.ActiveMiniGame() && SceneManager.GetActiveScene().name != "WayToSchool2.0") ActiveObjs(true);
 
-        if (MiniGameStatus.ActiveMiniGame() && SceneManager.GetActiveScene().name == "Classroom2.0") ActiveObjs(true);
+        //if (MiniGameStatus.ActiveMiniGame() && SceneManager.GetActiveScene().name == "Classroom2.0") ActiveObjs(true);
 
         if (_cursorManager == null) _cursorManager = Object.FindFirstObjectByType<CursorManager>(); //si es null que lo busque de nuevo
 

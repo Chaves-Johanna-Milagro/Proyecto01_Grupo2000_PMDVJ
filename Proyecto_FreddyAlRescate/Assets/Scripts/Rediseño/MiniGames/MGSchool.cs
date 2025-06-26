@@ -3,66 +3,109 @@ using UnityEngine.SceneManagement;
 
 public class MGSchool : MonoBehaviour
 {
-    private GameObject _miniGame;
+    private string _nombre;
+    private string _escena;
 
-    private string _objName;
-    private string _sceneName;
+    private AudioSource _sonido;
 
-    private AudioSource _soundMG;
+    private CursorManager _cursor;
+    private BNotesChecks _check;
+    private BKindnessUpDown _kind;
 
-    private CursorManager _cursorManager;
+    private bool _completado = false;
 
-    //private bool _isCompleted = false;
+    private GameObject _fondo;
+    private GameObject _pag1, _pag2, _pag3;
 
-    private void Start()
+    private readonly int _ahorcTotal = 21;
+    private readonly int _dadosTotal = 3;
+    private readonly int _puzL1 = 4, _puzL2 = 9, _puzL3 = 16;
+
+    void Start()
     {
-        _miniGame = transform.Find("MiniGame")?.gameObject;
+        _nombre = name;
+        _escena = SceneManager.GetActiveScene().name;
 
-
-        _miniGame.SetActive(false); // Lo oculta al inicio
-
-        _objName = gameObject.name;
-        _sceneName = SceneManager.GetActiveScene().name;
-
-        _soundMG = _miniGame?.GetComponent<AudioSource>();
-
-        // Restaurar estado del objeto MiniGame
         if (MiniGameStatus.TieneEstado(gameObject))
-        {
             MiniGameStatus.RestaurarEstado(gameObject);
-            //_isCompleted = true;
-        }
 
-        _cursorManager = Object.FindFirstObjectByType<CursorManager>();
+        _cursor = Object.FindFirstObjectByType<CursorManager>();
+        _check = Object.FindFirstObjectByType<BNotesChecks>();
+        _kind = Object.FindFirstObjectByType<BKindnessUpDown>();
+
+        _fondo = transform.Find("Img").gameObject;
+
+        // Asignar páginas según minijuego
+        if (_nombre == "Ahorcadito")
+        {
+            _pag1 = transform.Find("Pag1").gameObject;
+            _pag2 = transform.Find("Pag2").gameObject;
+            _pag3 = transform.Find("Pag3").gameObject;
+        }
+        else if (_nombre == "Dados" || _nombre == "Puzzle")
+        {
+            _pag1 = transform.Find("PagLvl1").gameObject;
+            _pag2 = transform.Find("PagLvl2").gameObject;
+            _pag3 = transform.Find("PagLvl3").gameObject;
+        }
     }
 
-    private void OnMouseDown()
+    void OnMouseDown()
     {
-        //if (_isCompleted) return;
+        if (_completado || PauseStatus.IsPaused || CursorStatusInUI.IsPointerOverUI() ||
+            MiniGameStatus.ActiveMiniGame() || CinematicStatus.ActiveCinematic() || DecisionStatus.ActiveDecision())
+            return;
 
-        if (PauseStatus.IsPaused) return;
+        // Evita que se vuelva a activar si ya se hizo el check
+        if ((_nombre == "Ahorcadito" && ChecksStatus.IsCheckActive("Classroom2.0", 0)) ||
+            (_nombre == "Dados" && ChecksStatus.IsCheckActive("Classroom2.0", 1)) ||
+            (_nombre == "Puzzle" && ChecksStatus.IsCheckActive("Classroom2.0", 2)))
+            return;
 
-        if (CursorStatusInUI.IsPointerOverUI()) return; // si el cursor esta sobre la ui
+        if (_sonido) _sonido.Play();
 
-        if (MiniGameStatus.ActiveMiniGame()) return; //si hay uno activo que retorne
+        _fondo.SetActive(true);
 
-        if (CinematicStatus.ActiveCinematic()) return; // si hay alguna cinematica corriendo
-
-        if (DecisionStatus.ActiveDecision()) return; // si hay alguna desicion corriendo
-
-        //_isCompleted = true;
-
-        _miniGame?.SetActive(true);
-
-        if (_soundMG != null) _soundMG.Play();
+        if (_nombre == "Ahorcadito")
+        {
+            transform.Find("ArrowRight").gameObject.SetActive(true);
+            transform.Find("ArrowLeft").gameObject.SetActive(true);
+            _pag1.SetActive(true);
+        }
+        else if (_nombre == "Dados" || _nombre == "Puzzle")
+        {
+            string lvl = LevelGameStatus.GetLevel();
+            if (lvl == "Facil") _pag1?.SetActive(true);
+            else if (lvl == "Medio") _pag2?.SetActive(true);
+            else if (lvl == "Dificil") _pag3?.SetActive(true);
+        }
     }
 
     public void ExitMiniGame()
     {
-        _miniGame?.SetActive(false);
+        _fondo.SetActive(false);
+        _pag1?.SetActive(false);
+        _pag2?.SetActive(false);
+        _pag3?.SetActive(false);
 
-        _cursorManager?.SetCursorDefault();
+        if (_nombre == "Ahorcadito")
+        {
+            transform.Find("ArrowRight").gameObject.SetActive(false);
+            transform.Find("ArrowLeft").gameObject.SetActive(false);
+            _check.Check1();
+        }
+        else if (_nombre == "Dados") _check.Check2();
+        else if (_nombre == "Puzzle") _check.Check3();
 
+        _cursor?.SetCursorDefault();
         MiniGameStatus.GuardarEstado(gameObject);
     }
+
+    // Getters usados por DropSprite para saber cuántos objetos deben colocarse
+    public string GetNameMG() => _nombre;
+    public int GetTotalAhorcadito() => _ahorcTotal;
+    public int GetTotalDados() => _dadosTotal;
+    public int GetTotalPuzzleLvl1() => _puzL1;
+    public int GetTotalPuzzleLvl2() => _puzL2;
+    public int GetTotalPuzzleLvl3() => _puzL3;
 }

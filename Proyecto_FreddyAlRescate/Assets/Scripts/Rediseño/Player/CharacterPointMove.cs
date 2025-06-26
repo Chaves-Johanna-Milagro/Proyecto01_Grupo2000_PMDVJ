@@ -34,7 +34,7 @@ public class CharacterPointMove : MonoBehaviour
         {
             // Convertir la posición del mouse a coordenadas del mundo
             Vector3 target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            target.z = -0.1f; // Asegura que se quede en el plano 2D
+            target.z = -0.2f; // Asegura que se quede en el plano 2D
 
             if (_nvlName == "WayToSchool2.0")
             {

@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 545221581871003733}
   - component: {fileID: 7446038589432050515}
-  - component: {fileID: 9028891737807192158}
   - component: {fileID: 130574813616973400}
   - component: {fileID: 8327717714198357759}
   - component: {fileID: 4296779289778010638}
+  - component: {fileID: 4656073958689220519}
   m_Layer: 0
   m_Name: DoorPatio
   m_TagString: Interactuable
@@ -91,18 +91,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9028891737807192158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3769687946374873525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b7a51003b65bab42a223670de4a0666, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &130574813616973400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,3 +214,15 @@ PolygonCollider2D:
       - {x: -3.375, y: -15.09375}
       - {x: 1.3125, y: -13.90625}
   m_UseDelaunayMesh: 0
+--- !u!114 &4656073958689220519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3769687946374873525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b7a51003b65bab42a223670de4a0666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
