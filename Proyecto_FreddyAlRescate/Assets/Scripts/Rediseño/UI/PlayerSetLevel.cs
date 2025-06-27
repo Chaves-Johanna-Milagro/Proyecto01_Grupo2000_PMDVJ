@@ -12,6 +12,7 @@ public class PlayerSetLevel : MonoBehaviour
     private Button _lvlMedium;
     private Button _lvlHard;
 
+    private AudioSource _audioSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,6 +34,7 @@ public class PlayerSetLevel : MonoBehaviour
 
         if (string.IsNullOrEmpty(LevelGameStatus.GetLevel())) ActiveSetMenu();
             
+        _audioSource = transform.Find("Afton").GetComponent<AudioSource>();
     }
 
     void SetupLevelButtons()
@@ -54,6 +56,7 @@ public class PlayerSetLevel : MonoBehaviour
         for (int i = 0; i < _count; i++) // desativar al inicio
         {
             _childs[i].SetActive(true);
+            if(_audioSource != null) _audioSource.Play();
         }
     }
     private void Desactive()
@@ -61,6 +64,7 @@ public class PlayerSetLevel : MonoBehaviour
         for (int i = 0; i < _count; i++) // desativar al inicio
         {
             _childs[i].SetActive(false);
+            if (_audioSource != null) _audioSource.Stop();
         }
     }
 }

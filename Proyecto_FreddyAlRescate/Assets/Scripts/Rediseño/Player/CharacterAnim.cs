@@ -9,6 +9,7 @@ public class CharacterAnim : MonoBehaviour
     private string _nameScene;
     private bool _sceneWithBackpack; // Escenas donde el personaje puede tener la mochila (colgada o puesta)
 
+    private AudioSource _audioSource;
     void Start()
     {
         _moveChar = GetComponent<CharacterClickMove>();
@@ -25,6 +26,8 @@ public class CharacterAnim : MonoBehaviour
         {
             transform.localScale = new Vector3(0.11f, 0.11f, 1f);
         }
+
+        _audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -36,6 +39,8 @@ public class CharacterAnim : MonoBehaviour
             clickPos.z = -0.1f;
 
             HandleWalkAnimation(clickPos);
+
+            _audioSource.Play();
         }
 
         // Si el personaje no se mueve, transiciona a idle
@@ -113,6 +118,8 @@ public class CharacterAnim : MonoBehaviour
             {
                 _anim.SetBool("Idle_RP", true);
             }
+
+            _audioSource.Stop();
         }
     }
 
