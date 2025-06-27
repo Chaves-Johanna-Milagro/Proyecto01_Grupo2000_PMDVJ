@@ -4,102 +4,131 @@ using UnityEngine.SceneManagement;
 public class CharacterAnim : MonoBehaviour
 {
     private CharacterClickMove _moveChar;
-
     private Animator _anim;
 
     private string _nameScene;
+    private bool _sceneWithBackpack; // Escenas donde el personaje puede tener la mochila (colgada o puesta)
+
     void Start()
     {
         _moveChar = GetComponent<CharacterClickMove>();
         _anim = GetComponent<Animator>();
 
+        // Guarda el nombre de la escena actual
         _nameScene = SceneManager.GetActiveScene().name;
 
-        if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0" || _nameScene == "Classroom2.0" || _nameScene == "Playground2.0" || _nameScene == "Recess2.0")
-        {
-            transform.localScale = new Vector3(0.11f, 0.11f, 1f);
-        }
-    }
+        // Solo en escenas diferentes a Morning y Breakfast se puede llevar mochila
+        _sceneWithBackpack = _nameScene != "Morning2.0" && _nameScene != "Breackfast2.0";
 
+        // Ajustamos el tamaño del personaje en las escenas 
+        if (_sceneWithBackpack)
+            transform.localScale = new Vector3(0.11f, 0.11f, 1f);
+    }
 
     void Update()
     {
+        // Solo manejamos movimiento si el clic NO es sobre un objeto interactuable
         if (Input.GetMouseButtonDown(0) && !ClicEnInteractuable())
         {
             Vector3 clickPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            clickPos.z = -0.1f;
-
+            clickPos.z = -0.2f; // Z fijo
             HandleWalkAnimation(clickPos);
         }
 
+        // Si el personaje no se mueve, transiciona a idle
         HandleIdleTransition();
     }
 
+
     void HandleWalkAnimation(Vector3 clickPos)
     {
-        ResetAllBools();
+        ResetAllBools(); // Desactiva todas las animaciones previas
 
-        if (PauseStatus.IsPaused) return;
+        if (PauseStatus.IsPaused) return;// Verifica si el juego está en pausa 
 
         if (CursorStatusInUI.IsPointerOverUI()) return;
 
-        if (MiniGameStatus.ActiveMiniGame()) return;
+        if (MiniGameStatus.ActiveMiniGame()) return; // verifica que no este acivo un minijuego
 
-        if (DecisionStatus.ActiveDecision()) return;
+        if (CinematicStatus.ActiveCinematic()) return; // si hay alguna cinematica corriendo
 
-        if (CinematicStatus.ActiveCinematic()) return;
+        if (DecisionStatus.ActiveDecision()) return; // si hay alguna desicion corriendo
 
 
-        bool useRP = ChecksStatus.IsCheckActive("Morning2.0", 1); // verificamos si se cambio de ropa usando el check activo/inactivo
+        bool useRP = ChecksStatus.IsCheckActive("Morning2.0", 1); // si se cambio la ropa
 
-        if (clickPos.x > transform.position.x)
+        // CAMINAR EN ESCENAS SIN MOCHILA
+        if (!_sceneWithBackpack)
         {
-            if (useRP)
-                _anim.SetBool("R_Walk_RP", true);
-
-            else if (!useRP)
-                _anim.SetBool("R_Walk_PJ", true);
-
-            if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0" || _nameScene == "Classroom2.0" || _nameScene == "Playground2.0" || _nameScene == "Recess2.0")
-            {
-                _anim.SetBool("R_Walk_MP", true);
-            };
+            if (clickPos.x > transform.position.x)
+                _anim.SetBool(useRP ? "R_Walk_RP" : "R_Walk_PJ", true);
+            else
+                _anim.SetBool(useRP ? "L_Walk_RP" : "L_Walk_PJ", true);
         }
-        else if (clickPos.x < transform.position.x)
+        // CAMINAR EN ESCENAS CON MOCHILA
+        else
         {
             if (useRP)
-                _anim.SetBool("L_Walk_RP", true);
-            else if (!useRP)
-                _anim.SetBool("L_Walk_PJ", true);
-
-            if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0" || _nameScene == "Classroom2.0" || _nameScene == "Playground2.0" || _nameScene == "Recess2.0")
             {
-                _anim.SetBool("L_Walk_MP", true);
-            };
+                if (RecessStatus.HangBackpack)
+                {
+                    // Ropa puesta y mochila colgada
+                    if (clickPos.x > transform.position.x)
+                        _anim.SetBool("R_Walk_RP", true);
+                    else
+                        _anim.SetBool("L_Walk_RP", true);
+                }
+                else
+                {
+                    // Ropa puesta pero con mochila 
+                    if (clickPos.x > transform.position.x)
+                        _anim.SetBool("R_Walk_MP", true);
+                    else
+                        _anim.SetBool("L_Walk_MP", true);
+                }
+            }
+            else
+            {
+                // Todavía en pijama
+                if (clickPos.x > transform.position.x)
+                    _anim.SetBool("R_Walk_PJ", true);
+                else
+                    _anim.SetBool("L_Walk_PJ", true);
+            }
         }
     }
 
     void HandleIdleTransition()
     {
+        // Solo pasamos a Idle si no se está moviendo o hizo clic sobre algo interactuable
         if (!_moveChar.IsMoving() || ClicEnInteractuable())
         {
             ResetAllBools();
 
-            bool useRP = ChecksStatus.IsCheckActive("Morning2.0", 1); // Revisamos de nuevo porsi la dudas
+            bool useRP = ChecksStatus.IsCheckActive("Morning2.0", 1);
 
-            if (useRP)
-                _anim.SetBool("Idle_RP", true);
-            else if (!useRP)
-                _anim.SetBool("Idle_PJ", true);
-
-            if (_nameScene == "WayToSchool2.0" || _nameScene == "School2.0" || _nameScene == "Classroom2.0" || _nameScene == "Playground2.0" || _nameScene == "Recess2.0")
+            // IDLE EN ESCENAS SIN MOCHILA
+            if (!_sceneWithBackpack)
             {
-                _anim.SetBool("Idle_MP", true);
-            };
+                _anim.SetBool(useRP ? "Idle_RP" : "Idle_PJ", true);
+            }
+            // IDLE EN ESCENAS CON MOCHILA
+            else
+            {
+                if (useRP)
+                {
+                    if (RecessStatus.HangBackpack)
+                        _anim.SetBool("Idle_RP", true);  // Mochila colgada
+                    else
+                        _anim.SetBool("Idle_MP", true);  // Mochila puesta
+                }
+                else
+                {
+                    _anim.SetBool("Idle_PJ", true); // En pijama
+                }
+            }
         }
     }
-
-
     void ResetAllBools()
     {
         _anim.SetBool("R_Walk_PJ", false);

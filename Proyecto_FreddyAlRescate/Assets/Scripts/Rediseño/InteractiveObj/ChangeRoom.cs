@@ -56,7 +56,7 @@ public class ChangeRoom : MonoBehaviour
         //de momento se saltara el mg de la sube
         if (_roomName == "TrafficLight") SceneManager.LoadScene("School2.0"); // aquella que te dirige a la entrada de la escuela
 
-        if (_roomName == "DoorClassroom") StartCoroutine(DelayPaCheck()); // aqulla que te dirige al aula
+        if (_roomName == "DoorClassroom" && SceneManager.GetActiveScene().name == "School2.0") StartCoroutine(DelayPaCheck()); // aqulla que te dirige al aula
 
         _cursorManager.SetCursorDefault();//setee al cursor por defecto
 
