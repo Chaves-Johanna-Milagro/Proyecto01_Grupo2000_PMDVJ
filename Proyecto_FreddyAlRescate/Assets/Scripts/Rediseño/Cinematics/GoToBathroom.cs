@@ -61,8 +61,6 @@ public class GoToBathroom : MonoBehaviour
         // Guardamos el estado final para que se mantenga entre escenas
         CinematicStatus.GuardarEstado(gameObject);
 
-        yield return new WaitForSeconds(1.5f);
-
         _check?.Check1();
         _kind?.GoodDecision();
     }

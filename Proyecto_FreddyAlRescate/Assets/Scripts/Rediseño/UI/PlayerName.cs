@@ -7,14 +7,20 @@ public class PlayerName : MonoBehaviour
     private TMP_Text _namePlayer;
 
     private Image _imgComp;
+
+    private string _name;
     
     void Start()
     {
         _imgComp = GetComponent<Image>();
         _namePlayer = transform.GetChild(0).GetComponent<TMP_Text>();
 
-        if (PlayerNameStatus.GetplayerName() == "") _namePlayer.text = "NOMBRE: FREEDY";
-        if (PlayerNameStatus.GetplayerName() != "") _namePlayer.text = "NOMBRE: " + PlayerNameStatus.GetplayerName();
+        _name = PlayerNameStatus.GetplayerName();
+
+        if (string.IsNullOrEmpty(_name))
+            _namePlayer.text = "NOMBRE: FREDDY";
+        else
+            _namePlayer.text = "NOMBRE: " + _name;
 
     }
     public void Update()
