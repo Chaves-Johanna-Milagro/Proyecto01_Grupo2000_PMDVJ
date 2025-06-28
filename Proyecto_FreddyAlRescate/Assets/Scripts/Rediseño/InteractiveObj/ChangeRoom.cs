@@ -39,7 +39,7 @@ public class ChangeRoom : MonoBehaviour
 
 
         if (_roomName == "DoorRoom") SceneManager.LoadScene("Morning2.0"); // aquella que te dirige a la habitacion
-        if (_roomName == "DoorDiningroom") SceneManager.LoadScene("Breackfast2.0"); // aquella que te dirige al comedor
+        if (_roomName == "DoorDiningroom" && SceneManager.GetActiveScene().name != "Night2.0") SceneManager.LoadScene("Breackfast2.0"); // aquella que te dirige al comedor
 
         if (_roomName == "DoorStreet")
         {
@@ -54,7 +54,7 @@ public class ChangeRoom : MonoBehaviour
         if (_roomName == "DoorPatio" && SceneManager.GetActiveScene().name == "Recess2.0") SceneManager.LoadScene("Playground2.0"); // aquella que te dirige al patio de la escuela en el recreo
 
         //de momento se saltara el mg de la sube
-        if (_roomName == "TrafficLight") SceneManager.LoadScene("School2.0"); // aquella que te dirige a la entrada de la escuela
+        if (_roomName == "TrafficLight") SceneManager.LoadScene("CSchoolStart"); // aquella que te dirige a la entrada de la escuela
 
         if (_roomName == "DoorClassroom" && SceneManager.GetActiveScene().name == "School2.0") StartCoroutine(DelayPaCheck()); // aqulla que te dirige al aula
 

@@ -1,9 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PutClothes : MonoBehaviour
 {
-    private GameObject _Img;
+    private GameObject _ImgRP;
+    private GameObject _ImgPJ;
 
     private BNotesChecks _check;
     private BKindnessUpDown _kind;
@@ -12,9 +14,10 @@ public class PutClothes : MonoBehaviour
 
     void Start()
     {
-        _Img = transform.Find("Img")?.gameObject;
+        _ImgRP = transform.Find("ImgRP")?.gameObject;
+        _ImgPJ = transform.Find("ImgPJ")?.gameObject;
 
-        if (_Img == null)
+        if (_ImgRP == null)
             Debug.LogWarning("No se encontró el objeto hijo 'Img'.");
 
         _check = Object.FindFirstObjectByType<BNotesChecks>();
@@ -44,8 +47,12 @@ public class PutClothes : MonoBehaviour
 
         _isClicked = true;
 
-        if (_Img != null) _Img.SetActive(true);
+        string sceneName = SceneManager.GetActiveScene().name;
 
+        if (sceneName == "Morning2.0" && _ImgRP != null) _ImgRP.SetActive(true);
+            
+        else if (sceneName == "Night2.0" && _ImgPJ != null) _ImgPJ.SetActive(true);
+           
         StartCoroutine(Delay());
     }
 
@@ -55,7 +62,8 @@ public class PutClothes : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        if (_Img != null) _Img.SetActive(false);
+        if (_ImgRP != null) _ImgRP.SetActive(false);
+        if (_ImgPJ != null) _ImgPJ.SetActive(false);
 
         // Guardamos el estado final para que se mantenga entre escenas
         CinematicStatus.GuardarEstado(gameObject);

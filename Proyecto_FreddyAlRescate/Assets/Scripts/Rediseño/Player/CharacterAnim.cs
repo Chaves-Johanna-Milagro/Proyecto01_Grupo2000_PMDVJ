@@ -22,12 +22,21 @@ public class CharacterAnim : MonoBehaviour
         _sceneWithBackpack = _nameScene != "Morning2.0" && _nameScene != "Breackfast2.0";
 
         // la hacemo ma chiquito
-        if (_sceneWithBackpack)
+        if (_sceneWithBackpack && _nameScene != "Night2.0")
         {
             transform.localScale = new Vector3(0.11f, 0.11f, 1f);
         }
 
         _audioSource = GetComponent<AudioSource>();
+
+        // Si estamos en la escena Night  usar RP por defecto
+        bool useRP = ChecksStatus.IsCheckActive("Morning2.0", 1);
+
+        if (_nameScene == "Night2.0" && !useRP)
+        {
+            ResetAllBools();
+            _anim.SetBool("Idle_RP", true);
+        }
     }
 
     void Update()
@@ -59,6 +68,8 @@ public class CharacterAnim : MonoBehaviour
 
         bool useRP = ChecksStatus.IsCheckActive("Morning2.0", 1); // Verifica si se cambió la ropa
 
+        bool usePJ = ChecksStatus.IsCheckActive("Night2.0", 1);
+
         if (clickPos.x > transform.position.x)
         {
             if (useRP)
@@ -70,10 +81,13 @@ public class CharacterAnim : MonoBehaviour
             {
                 _anim.SetBool("R_Walk_MP", true);
             }
-            if (!useRP && RecessStatus.HangBackpack)
+            if (!useRP && RecessStatus.HangBackpack || _nameScene == "Night2.0")
             {
                 _anim.SetBool("R_Walk_RP", true);
             }
+
+            if (usePJ) _anim.SetBool("IsNight", true);
+
         }
         else if (clickPos.x < transform.position.x)
         {
@@ -87,10 +101,13 @@ public class CharacterAnim : MonoBehaviour
                 _anim.SetBool("L_Walk_MP", true);
             }
 
-            if (!useRP && RecessStatus.HangBackpack)
+            if (!useRP && RecessStatus.HangBackpack || _nameScene == "Night2.0")
             {
                 _anim.SetBool("L_Walk_RP", true);
             }
+
+
+            if (usePJ) _anim.SetBool("IsNight", true);
         }
     }
 
@@ -103,6 +120,8 @@ public class CharacterAnim : MonoBehaviour
 
             bool useRP = ChecksStatus.IsCheckActive("Morning2.0", 1);
 
+            bool usePJ = ChecksStatus.IsCheckActive("Night2.0", 1);
+
             if (useRP)
                 _anim.SetBool("Idle_RP", true);
             else
@@ -114,10 +133,12 @@ public class CharacterAnim : MonoBehaviour
             }
 
             // Si colgó la mochila, volvemos a usar el idle de ropa puesta normal
-            if (!useRP && RecessStatus.HangBackpack)
+            if (!useRP && RecessStatus.HangBackpack || _nameScene == "Night2.0")
             {
                 _anim.SetBool("Idle_RP", true);
             }
+
+            if(usePJ) _anim.SetBool("IsNight",true);
 
             _audioSource.Stop();
         }

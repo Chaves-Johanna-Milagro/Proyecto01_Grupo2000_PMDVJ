@@ -83,9 +83,9 @@ public class BNotesObjetives : MonoBehaviour
 
         else if (_sceneName == "School2.0") ObjNvl4_1();
         else if (_sceneName == "Classroom2.0") ObjNvl4_2();
-        else if (_sceneName == "Playground2.0") ObjNvl4_3();
+        else if (_sceneName == "Playground2.0" || _sceneName == "Recess2.0") ObjNvl4_3();
 
-        else if (_sceneName == "Recess2.0") ObjNvl4_3();
+        else if (_sceneName == "Night2.0") ObjNvl5();
     }
 
     public void ObjNvl1()
@@ -156,5 +156,7 @@ public class BNotesObjetives : MonoBehaviour
         _objNvl4_1.SetActive(false);
         _objNvl4_2.SetActive(false);
         _objNvl4_3.SetActive(false);
+
+        _objNvl5.SetActive(false);
     }
 }

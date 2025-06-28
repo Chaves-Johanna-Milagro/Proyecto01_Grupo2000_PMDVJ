@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class MakeBed : MonoBehaviour
 {
@@ -34,6 +35,13 @@ public class MakeBed : MonoBehaviour
 
         _check = Object.FindFirstObjectByType<BNotesChecks>();
         _kind = Object.FindFirstObjectByType<BKindnessUpDown>();
+
+        if(SceneManager.GetActiveScene().name == "Night2.0")
+        {
+            if (_objIncom != null) _objIncom.SetActive(false);
+            if (_objCom != null) _objCom.SetActive(true);
+            _isClicked= true;
+        }
     }
 
     public void OnMouseDown()
