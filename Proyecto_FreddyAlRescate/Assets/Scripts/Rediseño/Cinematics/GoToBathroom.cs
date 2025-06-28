@@ -12,6 +12,7 @@ public class GoToBathroom : MonoBehaviour
 
     private bool _isClicked = false;
    
+    private AudioSource _audioSource;
     void Start()
     {
         _img = transform.Find("Img").gameObject;
@@ -25,6 +26,7 @@ public class GoToBathroom : MonoBehaviour
             CinematicStatus.RestaurarEstado(gameObject);
             _isClicked = true; // Ya se había hecho clic antes
         }
+        _audioSource = _img.GetComponent<AudioSource>();
     }
 
     public void OnMouseDown()
@@ -52,16 +54,18 @@ public class GoToBathroom : MonoBehaviour
     }
     private IEnumerator Delay()
     {
+        if(_audioSource != null) _audioSource.Play();
+
         yield return new WaitForSeconds(2f);
 
         ChecksStatus.SetCheckActive("Playground2.0", 0); //activamos tambien el check en esa escena
 
         if (_img != null) _img.SetActive(false);
 
+        if (_audioSource != null) _audioSource.Stop();
+
         // Guardamos el estado final para que se mantenga entre escenas
         CinematicStatus.GuardarEstado(gameObject);
-
-        yield return new WaitForSeconds(1.5f);
 
         _check?.Check1();
         _kind?.GoodDecision();

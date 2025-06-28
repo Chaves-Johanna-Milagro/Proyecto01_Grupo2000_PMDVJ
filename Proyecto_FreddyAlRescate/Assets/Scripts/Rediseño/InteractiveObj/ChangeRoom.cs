@@ -13,6 +13,8 @@ public class ChangeRoom : MonoBehaviour
 
     private bool _isClicked = false;
 
+    private AudioSource _audioSource;
+
     void Start()
     {
         _roomName = gameObject.name;
@@ -21,6 +23,8 @@ public class ChangeRoom : MonoBehaviour
         _check = Object.FindFirstObjectByType<BNotesChecks>();
 
         _cursorManager = Object.FindFirstObjectByType<CursorManager>();
+
+        _audioSource = transform.Find("Child")?.GetComponent<AudioSource>(); 
     }
 
     public void OnMouseDown()
@@ -37,9 +41,11 @@ public class ChangeRoom : MonoBehaviour
 
         if (DecisionStatus.ActiveDecision()) return; // si hay alguna desicion corriendo
 
+        if (_audioSource != null) _audioSource.Play();
+
 
         if (_roomName == "DoorRoom") SceneManager.LoadScene("Morning2.0"); // aquella que te dirige a la habitacion
-        if (_roomName == "DoorDiningroom") SceneManager.LoadScene("Breackfast2.0"); // aquella que te dirige al comedor
+        if (_roomName == "DoorDiningroom" && SceneManager.GetActiveScene().name != "Night2.0") SceneManager.LoadScene("Breackfast2.0"); // aquella que te dirige al comedor
 
         if (_roomName == "DoorStreet")
         {
@@ -54,9 +60,9 @@ public class ChangeRoom : MonoBehaviour
         if (_roomName == "DoorPatio" && SceneManager.GetActiveScene().name == "Recess2.0") SceneManager.LoadScene("Playground2.0"); // aquella que te dirige al patio de la escuela en el recreo
 
         //de momento se saltara el mg de la sube
-        if (_roomName == "TrafficLight") SceneManager.LoadScene("School2.0"); // aquella que te dirige a la entrada de la escuela
+        if (_roomName == "TrafficLight") SceneManager.LoadScene("CSchoolStart"); // aquella que te dirige a la entrada de la escuela
 
-        if (_roomName == "DoorClassroom") StartCoroutine(DelayPaCheck()); // aqulla que te dirige al aula
+        if (_roomName == "DoorClassroom" && SceneManager.GetActiveScene().name == "School2.0") StartCoroutine(DelayPaCheck()); // aqulla que te dirige al aula
 
         _cursorManager.SetCursorDefault();//setee al cursor por defecto
 
@@ -71,4 +77,5 @@ public class ChangeRoom : MonoBehaviour
 
         SceneManager.LoadScene("Classroom2.0");
     }
+
 }

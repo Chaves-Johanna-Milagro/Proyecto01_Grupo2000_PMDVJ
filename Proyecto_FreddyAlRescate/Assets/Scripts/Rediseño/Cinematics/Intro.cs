@@ -45,7 +45,7 @@ public class Intro : MonoBehaviour
     private IEnumerator FadeSequence(GameObject root)
     {
         float duration = 1f;
-        float stayTime = 1.5f;
+        float stayTime = 3f;
 
         root.SetActive(true);
 

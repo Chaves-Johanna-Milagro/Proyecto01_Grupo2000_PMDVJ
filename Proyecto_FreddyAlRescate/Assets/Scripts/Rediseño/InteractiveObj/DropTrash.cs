@@ -6,11 +6,15 @@ public class DropTrash : MonoBehaviour
     private BKindnessUpDown _Kind;
 
     private CursorManager _cursorManager;
+
+    private AudioSource _audioSource;
     private void Start()
     {
         _Kind = Object.FindFirstObjectByType<BKindnessUpDown>();
 
         _cursorManager = Object.FindFirstObjectByType<CursorManager>();
+
+        _audioSource = GetComponent<AudioSource>();
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -30,8 +34,10 @@ public class DropTrash : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
             _Kind.MiniGoodDecision();
-
+            
             _cursorManager.SetCursorDrop(); // cursor de dropeo
+
+            if(_audioSource != null) _audioSource.Play();
         }
     }
 }
