@@ -13,6 +13,8 @@ public class ChangeRoom : MonoBehaviour
 
     private bool _isClicked = false;
 
+    private AudioSource _audioSource;
+
     void Start()
     {
         _roomName = gameObject.name;
@@ -21,6 +23,8 @@ public class ChangeRoom : MonoBehaviour
         _check = Object.FindFirstObjectByType<BNotesChecks>();
 
         _cursorManager = Object.FindFirstObjectByType<CursorManager>();
+
+        _audioSource = transform.Find("Child")?.GetComponent<AudioSource>(); 
     }
 
     public void OnMouseDown()
@@ -36,6 +40,8 @@ public class ChangeRoom : MonoBehaviour
         if (CinematicStatus.ActiveCinematic()) return; // si hay alguna cinematica corriendo
 
         if (DecisionStatus.ActiveDecision()) return; // si hay alguna desicion corriendo
+
+        if (_audioSource != null) _audioSource.Play();
 
 
         if (_roomName == "DoorRoom") SceneManager.LoadScene("Morning2.0"); // aquella que te dirige a la habitacion
@@ -71,4 +77,5 @@ public class ChangeRoom : MonoBehaviour
 
         SceneManager.LoadScene("Classroom2.0");
     }
+
 }

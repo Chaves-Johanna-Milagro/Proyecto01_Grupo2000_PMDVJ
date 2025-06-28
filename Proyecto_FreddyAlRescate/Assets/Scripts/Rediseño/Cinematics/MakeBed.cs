@@ -15,6 +15,8 @@ public class MakeBed : MonoBehaviour
     private BNotesChecks _check;
     private BKindnessUpDown _kind;
 
+    private AudioSource _audioSource;
+
     void Start()
     {
         _imgPJ = transform.Find("ImgPJ")?.gameObject;
@@ -36,12 +38,13 @@ public class MakeBed : MonoBehaviour
         _check = Object.FindFirstObjectByType<BNotesChecks>();
         _kind = Object.FindFirstObjectByType<BKindnessUpDown>();
 
-        if(SceneManager.GetActiveScene().name == "Night2.0")
+        /*if(SceneManager.GetActiveScene().name == "Night2.0")
         {
             if (_objIncom != null) _objIncom.SetActive(false);
             if (_objCom != null) _objCom.SetActive(true);
             _isClicked= true;
-        }
+        }*/
+        _audioSource = _objCom.GetComponent<AudioSource>();
     }
 
     public void OnMouseDown()
@@ -58,6 +61,14 @@ public class MakeBed : MonoBehaviour
 
         if (CinematicStatus.ActiveCinematic()) return;
 
+        string scene = SceneManager.GetActiveScene().name;
+
+        if (scene == "Night2.0")
+        {
+            SceneManager.LoadScene("Cuestionario");
+            return;
+        }
+
         _isClicked = true;
 
         _useClothes = ChecksStatus.IsCheckActive("Morning2.0", 1);
@@ -67,6 +78,8 @@ public class MakeBed : MonoBehaviour
 
         if (_objIncom != null) _objIncom.SetActive(false);
         if (_objCom != null) _objCom.SetActive(true);
+
+        if(_audioSource != null)_audioSource.Play();
 
         StartCoroutine(DelayImg(_useClothes));
     }
@@ -79,6 +92,8 @@ public class MakeBed : MonoBehaviour
 
         if (used && _imgRP != null) _imgRP.SetActive(false);
         else if (!used && _imgPJ != null) _imgPJ.SetActive(false);
+
+        if (_audioSource != null) _audioSource.Stop();
 
         CinematicStatus.GuardarEstado(gameObject);
 
