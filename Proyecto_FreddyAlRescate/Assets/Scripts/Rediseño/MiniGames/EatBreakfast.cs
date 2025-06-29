@@ -100,27 +100,36 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
     {
         _comiendo = true;
 
-
-
         yield return new WaitForSeconds(_tiempoParaComer);
         ActivarBoca("open");
 
-        _cursorManager?.SetCursorDrop(); //cursor de dropeo
+        _cursorManager?.SetCursorDrop(); // cursor de dropeo
 
         yield return new WaitForSeconds(0.3f);
         ActivarBoca("close");
-        _soundEat?.Play();
 
-        _cursorManager?.SetCursorDefault(); //cursor por defecto
+        if (comida.name == "TAZA") //pa que suene el de sorbo
+        {
+            AudioSource tazaAudio = comida.GetComponent<AudioSource>();
+            if (tazaAudio != null)
+            {
+                tazaAudio.Play();
+            }
+        }
+        else
+        {
+            _soundEat?.Play(); // sonido general solo si NO es la taza
+            comida.SetActive(false); // solo desactivar si no es la taza
+        }
+
+        _cursorManager?.SetCursorDefault(); // cursor por defecto
 
         yield return new WaitForSeconds(0.3f);
         ActivarBoca("default");
 
-        comida.SetActive(false);
         _objetosComidos.Add(comida.name);
         _comiendo = false;
     }
-
     private IEnumerator LimpiarBocaConNapkin(GameObject napkin)
     {
         _comiendo = true;

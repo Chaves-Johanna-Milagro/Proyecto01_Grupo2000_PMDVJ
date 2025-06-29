@@ -29,6 +29,7 @@ public class PutClothes : MonoBehaviour
             CinematicStatus.RestaurarEstado(gameObject);
             _isClicked = true; // Ya se había hecho clic antes
         }
+
     }
 
     public void OnMouseDown()
@@ -50,7 +51,7 @@ public class PutClothes : MonoBehaviour
         string sceneName = SceneManager.GetActiveScene().name;
 
         if (sceneName == "Morning2.0" && _ImgRP != null) _ImgRP.SetActive(true);
-            
+
         else if (sceneName == "Night2.0" && _ImgPJ != null) _ImgPJ.SetActive(true);
            
         StartCoroutine(Delay());

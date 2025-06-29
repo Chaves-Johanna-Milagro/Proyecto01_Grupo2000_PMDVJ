@@ -72,6 +72,18 @@ public class PlayerAttention : MonoBehaviour
 
         AftonStatus.GuardarEstado(gameObject);
     }
+
+    public void AttentionNight() // pa que le de una dvertencia de q se ponga el pijama antes de acostarse
+    {
+        for (int i = 0; i < _count; i++) // activar
+        {
+            _childs[i].SetActive(true);
+        }
+
+        _text.text = "¡¡¡PONTE EL PIJAMA ANTES DE DORMIR!!!";
+    }
+
+
     private void Desactiveobjs()
     {
         for (int i = 0; i < _count; i++) // desativar
