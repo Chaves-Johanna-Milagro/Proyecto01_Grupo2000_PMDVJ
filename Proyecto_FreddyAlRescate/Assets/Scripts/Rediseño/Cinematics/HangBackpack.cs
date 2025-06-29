@@ -12,6 +12,8 @@ public class HangBackpack : MonoBehaviour
     private BKindnessUpDown _kind;
 
     private bool _isClicked = false;
+
+    private AudioSource _audioSource;
     void Start()
     {
         _img = transform.Find("Img")?.gameObject;
@@ -28,6 +30,8 @@ public class HangBackpack : MonoBehaviour
 
         _check = Object.FindFirstObjectByType<BNotesChecks>();
         _kind = Object.FindFirstObjectByType<BKindnessUpDown>();
+
+        _audioSource = _img.GetComponent<AudioSource>();
     }
 
     public void OnMouseDown()
@@ -57,6 +61,7 @@ public class HangBackpack : MonoBehaviour
 
     private IEnumerator DelayImg()
     {
+        if (_audioSource != null) _audioSource.Play();
 
         yield return new WaitForSeconds(2f);
 

@@ -49,7 +49,6 @@ public class CharacterAnim : MonoBehaviour
 
             HandleWalkAnimation(clickPos);
 
-            _audioSource.Play();
         }
 
         // Si el personaje no se mueve, transiciona a idle
@@ -109,6 +108,9 @@ public class CharacterAnim : MonoBehaviour
 
             if (usePJ) _anim.SetBool("IsNight", true);
         }
+
+
+        _audioSource.Play();
     }
 
     void HandleIdleTransition()

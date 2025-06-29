@@ -46,7 +46,7 @@ public class MakeBed : MonoBehaviour
             if (_objCom != null) _objCom.SetActive(true);
             _isClicked= true;
         }*/
-        _audioSource = _objCom.GetComponent<AudioSource>();
+        _audioSource = transform.Find("Child").GetComponent<AudioSource>();
 
         _pAttention = Object.FindFirstObjectByType<PlayerAttention>();
     }

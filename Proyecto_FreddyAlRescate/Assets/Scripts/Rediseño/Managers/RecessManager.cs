@@ -6,9 +6,12 @@ public class RecessManager : MonoBehaviour // encargado de mover al jugador cuan
 {
     private bool _transition = false;
 
+    private PlayerAttention _pAttention;
     private void Start()
     {
         string _scene = SceneManager.GetActiveScene().name;
+
+        _pAttention = Object.FindFirstObjectByType<PlayerAttention>();
 
         if (!RecessStatus.AlreadyWentToRecess && (_scene == "Recess2.0" || _scene == "Playground2.0"))
         {
@@ -26,7 +29,8 @@ public class RecessManager : MonoBehaviour // encargado de mover al jugador cuan
         // Si ya completó los 3 checks, sin importar dónde esté, que terminen las clases
         if (activeChecks == 3)
         {
-            StartCoroutine(TransitionToScene("CSchoolEnd", 2f));
+            _pAttention.AttentionEndRecess();
+            StartCoroutine(TransitionToScene("CSchoolEnd", 3f));
             return;
         }
 
@@ -36,7 +40,8 @@ public class RecessManager : MonoBehaviour // encargado de mover al jugador cuan
             if (activeChecks >= 2)
             {
                 RecessStatus.AlreadyWentToRecess = true;
-                StartCoroutine(TransitionToScene("Recess2.0", 2.5f));
+                _pAttention.AttentionStartRecess();
+                StartCoroutine(TransitionToScene("Recess2.0", 5f));
             }
         }
 

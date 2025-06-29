@@ -12,6 +12,8 @@ public class DropSprite2_0 : MonoBehaviour //pa zonas de dropeo de obj de los mi
     private Dictionary<GameObject, float> _tiempos = new();
     private MGSchool _mg;
 
+    private AudioSource _audioSource;
+
     void Start()
     {
         _name = name;
@@ -47,6 +49,8 @@ public class DropSprite2_0 : MonoBehaviour //pa zonas de dropeo de obj de los mi
         SetAlpha();
 
         _mg = transform.GetComponentInParent<MGSchool>();
+
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void OnEnabled()
@@ -123,6 +127,8 @@ public class DropSprite2_0 : MonoBehaviour //pa zonas de dropeo de obj de los mi
         var drag = obj.GetComponent<DragSprite2_0>();
         if (drag) drag.enabled = false;
 
+        //////
+        if (_audioSource != null) _audioSource.Play();
         /////////
         DropItemStatus.SumarDrop(_mg.GetNameMG());
 
