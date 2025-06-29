@@ -74,7 +74,7 @@ public class MakeBed : MonoBehaviour
             SceneManager.LoadScene("Cuestionario");// si se puso el pijama que active 
             return;
         }
-         else if (!usePJ) _pAttention.AttentionNight(); // sino que le de una advertencia
+         else if (!usePJ && scene == "Night2.0") _pAttention.AttentionNight(); // sino que le de una advertencia
 
 
 

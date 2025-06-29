@@ -19,7 +19,6 @@ public class PlayerAttention : MonoBehaviour
 
     private string _name;
 
-    private AudioSource _audioSource;
     void Start()
     {
         _count = transform.childCount;
@@ -39,7 +38,6 @@ public class PlayerAttention : MonoBehaviour
 
         _name = PlayerNameStatus.GetplayerName();
 
-        _audioSource = GetComponent<AudioSource>();
 
         if (string.IsNullOrEmpty(_name))
             PlayerNameStatus.SetPlayerName("FREDDY");
@@ -64,7 +62,7 @@ public class PlayerAttention : MonoBehaviour
         for (int i = 0; i < _count; i++) // activar
         {
             _childs[i].SetActive(true);
-            if(_audioSource != null) _audioSource.Play();
+            PlaySound("afton_avisoRopa");
         }
 
         _text.text = "¡¡¡CAMBIATE ANTES DE SALIR!!!";
@@ -75,7 +73,6 @@ public class PlayerAttention : MonoBehaviour
         for (int i = 0; i < _count; i++) // activar
         {
             _childs[i].SetActive(true);
-            if (_audioSource != null) _audioSource.Play();
         }
 
         _text.text = "ELIGE SALUDAR O NO. \nRECUERDA QUE: \n¡ES BUENO TENER MODALES!";
@@ -87,7 +84,6 @@ public class PlayerAttention : MonoBehaviour
         for (int i = 0; i < _count; i++) // activar
         {
             _childs[i].SetActive(true);
-            if (_audioSource != null) _audioSource.Play();
             _isShow = true;
         }
 
@@ -103,7 +99,6 @@ public class PlayerAttention : MonoBehaviour
         for (int i = 0; i < _count; i++) // activar
         {
             _childs[i].SetActive(true);
-            if (_audioSource != null) _audioSource.Play();
             _isShow = true;
         }
 
@@ -119,11 +114,11 @@ public class PlayerAttention : MonoBehaviour
         for (int i = 0; i < _count; i++) // activar
         {
             _childs[i].SetActive(true);
-            if (_audioSource != null) _audioSource.Play();
+            PlaySound("afton_escuela_completado");
             _isShow = true;
         }
 
-        _text.text = "BIEN " + PlayerNameStatus.GetplayerName() + "!! \nHICISTE LAS ACTIVIDADES DE HOY" + "\nYA ES HORA DE IR A CASA!!!";
+        _text.text = "BIEN " + PlayerNameStatus.GetplayerName() + "!! \nHICISTE LAS ACTIVIDADES DE HOY";
 
         AftonStatus.GuardarEstado(gameObject);
     }
@@ -133,7 +128,7 @@ public class PlayerAttention : MonoBehaviour
         for (int i = 0; i < _count; i++) // activar
         {
             _childs[i].SetActive(true);
-            if (_audioSource != null) _audioSource.Play();
+
         }
 
         _text.text = "HA SIDO UN DIA LARGO, SEGURO ESTAS CANSADO ASI QUE PREPARATE PARA IR A DORMIR!!!";
@@ -144,7 +139,7 @@ public class PlayerAttention : MonoBehaviour
         for (int i = 0; i < _count; i++) // activar
         {
             _childs[i].SetActive(true);
-            if (_audioSource != null) _audioSource.Play();
+            
         }
 
         _text.text = "¡¡¡PONTE EL PIJAMA ANTES DE DORMIR!!!";
@@ -156,6 +151,16 @@ public class PlayerAttention : MonoBehaviour
         for (int i = 0; i < _count; i++) // desativar
         {
             _childs[i].SetActive(false);
+        }
+    }
+
+    public void PlaySound(string name)
+    {
+        AudioSource[] sounds = GetComponents<AudioSource>();
+
+        foreach (AudioSource sound in sounds)
+        {
+            if (sound.clip != null && sound.clip.name == name) sound.Play();
         }
     }
 }
