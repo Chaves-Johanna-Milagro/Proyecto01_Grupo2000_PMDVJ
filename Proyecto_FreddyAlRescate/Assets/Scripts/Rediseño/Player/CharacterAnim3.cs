@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CharacterAnim : MonoBehaviour
+public class CharacterAnim3 : MonoBehaviour //para la escena de la noche
 {
     private CharacterClickMove _moveChar;
     private Animator _anim;
@@ -17,6 +17,7 @@ public class CharacterAnim : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
 
         _nameScene = SceneManager.GetActiveScene().name;
+
     }
 
     void Update()
@@ -28,6 +29,10 @@ public class CharacterAnim : MonoBehaviour
             HandleWalkAnimation(clickPos);
         }
 
+    }
+
+    private void LateUpdate()
+    {
         HandleIdleTransition();
     }
 
@@ -38,17 +43,29 @@ public class CharacterAnim : MonoBehaviour
         if (PauseStatus.IsPaused || CursorStatusInUI.IsPointerOverUI() || MiniGameStatus.ActiveMiniGame() || DecisionStatus.ActiveDecision() || CinematicStatus.ActiveCinematic())
             return;
 
-        bool useRP = ChecksStatus.IsCheckActive("Morning2.0", 1);
 
-        bool toRight = clickPos.x > transform.position.x;
+        if (clickPos.x > transform.position.x)
+        {
+            bool usePJ = ChecksStatus.IsCheckActive("Night2.0", 1);
 
-        if (useRP)
-            _anim.SetBool(toRight ? "R_Walk_RP" : "L_Walk_RP", true);
-        else
-            _anim.SetBool(toRight ? "R_Walk_PJ" : "L_Walk_PJ", true);
+            if (usePJ)
+                _anim.SetBool("R_Walk_PJ", true);
+            else
+                _anim.SetBool("R_Walk_RP", true);
+        }
+        else if (clickPos.x < transform.position.x)
+        {
+            bool usePJ = ChecksStatus.IsCheckActive("Night2.0", 1);
+
+            if (usePJ)
+                _anim.SetBool("L_Walk_PJ", true);
+            else
+                _anim.SetBool("L_Walk_RP", true);
+        }
 
         _audioSource.Play();
     }
+
 
     void HandleIdleTransition()
     {
@@ -56,12 +73,12 @@ public class CharacterAnim : MonoBehaviour
         {
             ResetAllBools();
 
-            bool useRP = ChecksStatus.IsCheckActive("Morning2.0", 1);
-            
-            if (useRP)
-                _anim.SetBool("Idle_RP", true);
-            else
+            bool usePJ = ChecksStatus.IsCheckActive("Night2.0", 1);
+
+            if (usePJ)
                 _anim.SetBool("Idle_PJ", true);
+            else
+                _anim.SetBool("Idle_RP", true);
 
             _audioSource.Stop();
         }

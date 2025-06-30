@@ -1,7 +1,7 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CharacterAnim : MonoBehaviour
+public class CharacterAnim2 : MonoBehaviour // para las escenas de camino y en la escul
 {
     private CharacterClickMove _moveChar;
     private Animator _anim;
@@ -17,8 +17,11 @@ public class CharacterAnim : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
 
         _nameScene = SceneManager.GetActiveScene().name;
+
+        transform.localScale = new Vector3(0.11f, 0.11f, 1f);
     }
 
+    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && !ClicEnInteractuable())
@@ -27,7 +30,11 @@ public class CharacterAnim : MonoBehaviour
             clickPos.z = -0.1f;
             HandleWalkAnimation(clickPos);
         }
+        
+    }
 
+    private void LateUpdate()
+    {
         HandleIdleTransition();
     }
 
@@ -38,17 +45,25 @@ public class CharacterAnim : MonoBehaviour
         if (PauseStatus.IsPaused || CursorStatusInUI.IsPointerOverUI() || MiniGameStatus.ActiveMiniGame() || DecisionStatus.ActiveDecision() || CinematicStatus.ActiveCinematic())
             return;
 
-        bool useRP = ChecksStatus.IsCheckActive("Morning2.0", 1);
 
-        bool toRight = clickPos.x > transform.position.x;
+        if (clickPos.x > transform.position.x)
+        {
+            if (RecessStatus.HangBackpack)
+                _anim.SetBool("R_Walk_SM", true);
+            else
+                _anim.SetBool("R_Walk_MP", true);
+        }
+        else if (clickPos.x < transform.position.x)
+        {
+            if (RecessStatus.HangBackpack)
+                _anim.SetBool("L_Walk_SM", true);
+            else
+                _anim.SetBool("L_Walk_MP", true);
+        }
 
-        if (useRP)
-            _anim.SetBool(toRight ? "R_Walk_RP" : "L_Walk_RP", true);
-        else
-            _anim.SetBool(toRight ? "R_Walk_PJ" : "L_Walk_PJ", true);
-
-        _audioSource.Play();
+            _audioSource.Play();
     }
+
 
     void HandleIdleTransition()
     {
@@ -56,12 +71,10 @@ public class CharacterAnim : MonoBehaviour
         {
             ResetAllBools();
 
-            bool useRP = ChecksStatus.IsCheckActive("Morning2.0", 1);
-            
-            if (useRP)
-                _anim.SetBool("Idle_RP", true);
+            if (RecessStatus.HangBackpack)
+                _anim.SetBool("Idle_SM", true);
             else
-                _anim.SetBool("Idle_PJ", true);
+                _anim.SetBool("Idle_MP", true);
 
             _audioSource.Stop();
         }
@@ -69,13 +82,13 @@ public class CharacterAnim : MonoBehaviour
 
     void ResetAllBools()
     {
-        _anim.SetBool("R_Walk_PJ", false);
-        _anim.SetBool("L_Walk_PJ", false);
-        _anim.SetBool("Idle_PJ", false);
+        _anim.SetBool("R_Walk_MP", false);
+        _anim.SetBool("L_Walk_MP", false);
+        _anim.SetBool("Idle_MP", false);
 
-        _anim.SetBool("R_Walk_RP", false);
-        _anim.SetBool("L_Walk_RP", false);
-        _anim.SetBool("Idle_RP", false);
+        _anim.SetBool("R_Walk_SM", false);
+        _anim.SetBool("L_Walk_SM", false);
+        _anim.SetBool("Idle_SM", false);
     }
 
     private bool ClicEnInteractuable() // Verifica si el clic fue sobre un objeto con tag "Interactuable"
