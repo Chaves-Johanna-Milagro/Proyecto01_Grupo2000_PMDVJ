@@ -85,4 +85,10 @@ public static class CinematicStatus //para aquellos obj que muetren alguna cinem
 
         return _data.ContainsKey(escena) && _data[escena].ContainsKey(nombreObjeto);
     }
+
+    // Resetea todos los estados guardados de todas las escenas
+    public static void ResetCinematicStatus()
+    {
+        _data.Clear();
+    }
 }

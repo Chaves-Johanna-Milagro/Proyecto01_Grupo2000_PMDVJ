@@ -93,4 +93,10 @@ public static class ChecksStatus
         }
         return count;
     }
+
+    // Resetea todos los checks de todas las escenas
+    public static void ResetAllChecks()
+    {
+        _sceneChecks.Clear();
+    }
 }

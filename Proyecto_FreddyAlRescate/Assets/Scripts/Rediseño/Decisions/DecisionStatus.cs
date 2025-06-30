@@ -71,4 +71,10 @@ public static class DecisionStatus
     {
         return _data.ContainsKey(escena) && _data[escena].ContainsKey(decision);
     }
+
+    // Resetea todos los estados de decisiones guardadas
+    public static void ResetDecisionStatus()
+    {
+        _data.Clear();
+    }
 }
