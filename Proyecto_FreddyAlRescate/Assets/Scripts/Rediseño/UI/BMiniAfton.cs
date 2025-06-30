@@ -19,26 +19,25 @@ public class BMiniAfton : MonoBehaviour
 
     private string[] _randomTextNvl1 = new string[]
     {
-        "¿QUIÉN NO AMA UNA CAMA BIEN HECHA?",
-        "¡UNA SONRISA LIMPIA ES TU MEJOR ARMADURA!",
-        "¡ESE PIJAMA YA CUMPLIÓ SU MISIÓN, HORA DE VESTIRSE!",
-        "ORDENAR TU ESPACIO TAMBIÉN ORDENA TU CABEZA.",
-        "UN CUARTO LIMPIO DICE: '¡ESTOY LISTO PARA TODO!'",
-        "TODO HÉROE EMPIEZA SU DÍA CON BUENOS HÁBITOS.",
-        "CAMA ORDENADA, MENTE ENFOCADA.",
-        "¡HASTA LOS DIENTES QUIEREN LLEGAR PROLIJOS A CLASE!"
+        "QUIEN NO AMA UNA CAMA BIEN HECHA",
+        "UNA SONRISA LIMPIA ES TU MEJOR ARMADURA",
+        "HORA DE VESTIRSE",
+        "ORDENAR TU ESPACIO TAMBIEN ORDENA TU CABEZA",
+        "UN CUARTO LIMPIO DICE ESTOY LISTO PARA TODO",
+        "TODO HEROE EMPIEZA SU DIA CON BUENOS HABITOS",
+        "CAMA ORDENADA MENTE ENFOCADA",
+        "HASTA LOS DIENTES QUIEREN LLEGAR PROLIJOS A CLASE"
     };
 
     private string[] _randomTextNvl2 = new string[]
     {
-        "¡NO OLVIDES NADA, FREDDY!",
-        "DESAYUNAR ES COMO CARGAR COMBUSTIBLE PARA TU CEREBRO.",
-        "UNA MOCHILA ORDENADA ES UN SUPERPODER ESCOLAR.",
-        "¡AGRADECER LA COMIDA TAMBIÉN ES EDUCACIÓN!",
-        "¿YA PUSISTE TU CUADERNO? ¡NO LO DEJES!",
-        "TODO SABE MEJOR CUANDO ESTÁS PREPARADO.",
-        "¡NO TE VAYAS SIN DESPEDIRTE!",
-        "SI TE VAS SIN DESPEDIRTE, ALGUIEN TE VA A EXTRAÑAR."
+        "NO OLVIDES NADA",
+        "DESAYUNAR ES COMO CARGAR COMBUSTIBLE PARA TU CEREBRO",
+        "UNA MOCHILA ORDENADA ES UN SUPERPODER ESCOLAR",
+        "YA PUSISTE TU CUADERNO NO LO OLVIDES",
+        "TODO SABE MEJOR CUANDO ESTAS PREPARADO",
+        "NO TE VAYAS SIN DESPEDIRTE",
+        "SI TE VAS SIN DESPEDIRTE ALGUIEN TE VA A EXTRAÑAR"
     };
 
     private string[] _randomTextNvl3 = new string[]
@@ -54,52 +53,33 @@ public class BMiniAfton : MonoBehaviour
 
     private string[] _randomGoodFeedback = new string[]
     {
-        "¡EXCELENTE TRABAJO!",
-        "¡LO HICISTE MUY BIEN!",
-        "¡SÚPER!",
-        "¡GENIAL, SIGUE ASÍ!",
-        "¡BUEN INTENTO!",
-        "¡LO ESTÁS HACIENDO MUY BIEN!",
-        "¡ERES UN CAMPEÓN!",
-        "¡MUY BUENA ELECCIÓN!",
-        "¡SIGUE PRACTICANDO, VAS MUY BIEN!",
-        "¡FANTÁSTICO!",
-        "¡BRAVO!",
-        "¡MUY INTELIGENTE!",
-        "¡CADA VEZ MEJOR!",
-        "¡VAMOS, TÚ PUEDES!",
-        "¡MUY BIEN HECHO!",
-        "¡INCREÍBLE!",
-        "¡ESTÁS APRENDIENDO MUY RÁPIDO!",
-        "¡ME IMPRESIONAS!",
-        "¡EXCELENTE ELECCIÓN!",
-        "¡SÚPER LOGRO!"
+        "EXCELENTE TRABAJO",
+        "LO HICISTE MUY BIEN",
+        "SUPER",
+        "GENIAL SIGUE ASI",
+        "LO ESTÁS HACIENDO MUY BIEN",
+        "MUY BUENA ELECCION",
+        "FANTASTICO",
+        "BRAVO",
+        "MUY BIEN HECHO",
+        "INCREIBLE",
+        "ME IMPRESIONAS",
+        "EXCELENTE ELECCION"
     };
 
     private string[] _randomBadFeedback = new string[]
     {
-        "¡NO PASA NADA, INTÉNTALO OTRA VEZ!",
-        "¡CASI! SIGUE PROBANDO.",
-        "¡MUY CERCA! TÚ PUEDES LOGRARLO.",
-        "¡NO TE RINDAS, SIGUE JUGANDO!",
-        "¡BUEN INTENTO, INTÉNTALO NUEVAMENTE!",
-        "¡LO IMPORTANTE ES SEGUIR INTENTANDO!",
-        "¡APRENDER ES DIVERTIDO, VAMOS DE NUEVO!",
-        "¡SIGUE ADELANTE, LO ESTÁS HACIENDO BIEN!",
-        "¡POCO A POCO LO VAS A CONSEGUIR!",
-        "¡CADA VEZ TE SALE MEJOR!",
-        "¡LOS ERRORES NOS AYUDAN A MEJORAR!",
-        "¡VAS POR BUEN CAMINO, INTÉNTALO OTRA VEZ!",
-        "¡NO TE DESANIMES, SIGUE JUGANDO!",
-        "¡TODO GRAN LOGRO COMIENZA CON UN INTENTO!",
-        "¡PRACTICANDO SE APRENDE, SIGUE ADELANTE!",
-        "¡TÚ PUEDES CON ESTO!",
-        "¡AUNQUE TE EQUIVOQUES, ESTÁS APRENDIENDO!",
-        "¡SIGUE JUGANDO, CADA VEZ LO HARÁS MEJOR!",
-        "¡MUY BIEN POR INTENTARLO!",
-        "¡EXCELENTE ACTITUD, SIGAMOS JUGANDO!"
+        "NO PASA NADA INTENTALO OTRA VEZ",
+        "CASI SIGUE PROBANDO",
+        "MUY CERCA TU PUEDES LOGRARLO",
+        "LO IMPORTANTE ES SEGUIR INTENTANDO",
+        "POCO A POCO LO VAS A CONSEGUIR",
+        "LOS ERRORES NOS AYUDAN A MEJORAR",
+        "PRACTICANDO SE APRENDE SIGUE ADELANTE",
+        "AUNQUE TE EQUIVOQUES ESTAS APRENDIENDO"
     };
-    private AudioSource _soundAfton;
+    //private AudioSource _soundAfton;
+    private AudioSource _currentAudio; // guarda el audio que está sonando
     void Start()
     {
         _globoImg = transform.GetChild(0).gameObject;
@@ -115,7 +95,7 @@ public class BMiniAfton : MonoBehaviour
 
         _bMiniAfton.onClick.AddListener(Toggle);
 
-        _soundAfton = GetComponent<AudioSource>();
+        //_soundAfton = GetComponent<AudioSource>();
 
     }
     public void Update()
@@ -133,15 +113,28 @@ public class BMiniAfton : MonoBehaviour
         _activated = !_activated;
         SetActive(_activated);
 
-        ShowByScene();
-
-        if (_activated) _soundAfton.Play();
+        if (_activated)
+        {
+            ShowByScene(); // Solo muestra consejo si se activó
+        }
+        else
+        {
+            if (_currentAudio != null && _currentAudio.isPlaying)
+            {
+                _currentAudio.Stop(); // Cortar sonido si se desactiva
+            }
+        }
     }
 
     private void SetActive(bool state)
     {
         _globoImg.SetActive(state);
         _textObj.SetActive(state);
+
+        if (!state && _currentAudio != null && _currentAudio.isPlaying)
+        {
+            _currentAudio.Stop();
+        }
     }
 
     private void ShowByScene()
@@ -157,7 +150,8 @@ public class BMiniAfton : MonoBehaviour
         if (_randomTextNvl1.Length > 0)  // Selecciona un concejo aleatorio
         {
             string randomLine = _randomTextNvl1[Random.Range(0, _randomTextNvl1.Length)];
-            _textComp.text = randomLine;
+            _textComp.text = "¡" + randomLine + "!";
+            PlaySound(randomLine);//pa que suene el audio que corresponda
         }
     }
 
@@ -166,7 +160,8 @@ public class BMiniAfton : MonoBehaviour
         if (_randomTextNvl2.Length > 0)  // Selecciona un concejo aleatorio
         {
             string randomLine = _randomTextNvl2[Random.Range(0, _randomTextNvl2.Length)];
-            _textComp.text = randomLine;
+            _textComp.text = "¡" + randomLine + "!";
+            PlaySound(randomLine);
         }
     }
 
@@ -185,7 +180,8 @@ public class BMiniAfton : MonoBehaviour
         if (_randomGoodFeedback.Length > 0)  // Selecciona un felicitaciones aleatorias
         {
             string randomLine = _randomGoodFeedback[Random.Range(0, _randomGoodFeedback.Length)];
-            _textComp.text = randomLine;
+            _textComp.text = "¡" + randomLine + "!";
+            PlaySound(randomLine);
         }
         StartCoroutine(Delay());
     }
@@ -199,7 +195,8 @@ public class BMiniAfton : MonoBehaviour
         if (_randomBadFeedback.Length > 0)  // Selecciona una motivacion aleatoria
         {
             string randomLine = _randomBadFeedback[Random.Range(0, _randomBadFeedback.Length)];
-            _textComp.text = randomLine;
+            _textComp.text = "¡" + randomLine + "!";
+            PlaySound(randomLine);
         }
         StartCoroutine(Delay());
     }
@@ -210,5 +207,27 @@ public class BMiniAfton : MonoBehaviour
 
         _activated = false;
         SetActive(_activated);
+    }
+
+    public void PlaySound(string name)
+    {
+        // Si había un audio sonando, lo detenemos
+        if (_currentAudio != null && _currentAudio.isPlaying)
+        {
+            _currentAudio.Stop();
+        }
+
+        AudioSource[] sounds = GetComponents<AudioSource>();
+
+        foreach (AudioSource sound in sounds)
+        {
+            if (sound.clip != null && sound.clip.name == name)
+            {
+                sound.volume = 0.5f;
+                sound.Play();
+                _currentAudio = sound; // guardamos cuál audio está sonando ahora
+                break;
+            }
+        }
     }
 }

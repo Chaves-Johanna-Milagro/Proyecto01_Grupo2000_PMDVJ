@@ -12,6 +12,7 @@ public class PutClothes : MonoBehaviour
 
     private bool _isClicked = false;
 
+    private AudioSource _audioSource;
     void Start()
     {
         _ImgRP = transform.Find("ImgRP")?.gameObject;
@@ -29,6 +30,8 @@ public class PutClothes : MonoBehaviour
             CinematicStatus.RestaurarEstado(gameObject);
             _isClicked = true; // Ya se había hecho clic antes
         }
+
+        _audioSource = transform.Find("Child").GetComponent<AudioSource>();
     }
 
     public void OnMouseDown()
@@ -47,10 +50,12 @@ public class PutClothes : MonoBehaviour
 
         _isClicked = true;
 
+        if (_audioSource != null) _audioSource.Play();
+
         string sceneName = SceneManager.GetActiveScene().name;
 
         if (sceneName == "Morning2.0" && _ImgRP != null) _ImgRP.SetActive(true);
-            
+
         else if (sceneName == "Night2.0" && _ImgPJ != null) _ImgPJ.SetActive(true);
            
         StartCoroutine(Delay());
@@ -64,6 +69,8 @@ public class PutClothes : MonoBehaviour
 
         if (_ImgRP != null) _ImgRP.SetActive(false);
         if (_ImgPJ != null) _ImgPJ.SetActive(false);
+
+        if (_audioSource != null) _audioSource.Stop();
 
         // Guardamos el estado final para que se mantenga entre escenas
         CinematicStatus.GuardarEstado(gameObject);

@@ -42,8 +42,11 @@ public class SimpleScaling2_0 : MonoBehaviour
 
         _isScaling = true;
 
-        if (_hoverButton != null) _hoverButton.Play();
-
+        if (_hoverButton != null)
+        {
+            _hoverButton.Play();
+            _hoverButton.volume = 0.3f;// seteamos el volumen
+        }
         _cursorManager?.SetCursorSelect();
     }
     private void OnMouseOver()

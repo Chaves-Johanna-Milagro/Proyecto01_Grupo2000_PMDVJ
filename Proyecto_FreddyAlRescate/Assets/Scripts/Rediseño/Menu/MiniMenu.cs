@@ -51,6 +51,22 @@ public class MiniMenu : MonoBehaviour
             }
         }
 
+        /*if (_sceneName == "Classroom2.0")
+        {
+            GameObject math = GameObject.FindWithTag("Math"); //para que busque con el tag math
+
+            if (math != null && math.activeInHierarchy)//desactiva la libreta y activa la calculadora para usarla
+            {
+                _notes.SetActive(false);
+                _calculator.SetActive(true);
+            }
+            else
+            {
+                _notes.SetActive(true);
+                _calculator.SetActive(false);
+            }
+        }*/
+
         if (MiniGameStatus.ActiveMiniGame() || DecisionStatus.ActiveDecision() || CinematicStatus.ActiveCinematic()) _playerName.SetActive(false);
         else _playerName.SetActive(true);
 

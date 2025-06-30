@@ -17,6 +17,8 @@ public class MakeBed : MonoBehaviour
 
     private AudioSource _audioSource;
 
+    private PlayerAttention _pAttention;
+
     void Start()
     {
         _imgPJ = transform.Find("ImgPJ")?.gameObject;
@@ -44,7 +46,9 @@ public class MakeBed : MonoBehaviour
             if (_objCom != null) _objCom.SetActive(true);
             _isClicked= true;
         }*/
-        _audioSource = _objCom.GetComponent<AudioSource>();
+        _audioSource = transform.Find("Child").GetComponent<AudioSource>();
+
+        _pAttention = Object.FindFirstObjectByType<PlayerAttention>();
     }
 
     public void OnMouseDown()
@@ -63,25 +67,37 @@ public class MakeBed : MonoBehaviour
 
         string scene = SceneManager.GetActiveScene().name;
 
-        if (scene == "Night2.0")
+        bool usePJ = ChecksStatus.IsCheckActive("Night2.0", 1); // verificamos si se cambio de ropa usando el check activo/inactivo
+  
+        if (scene == "Night2.0" && usePJ)
         {
-            SceneManager.LoadScene("Cuestionario");
+            SceneManager.LoadScene("Cuestionario");// si se puso el pijama que active 
             return;
         }
+         else if (!usePJ && scene == "Night2.0") _pAttention.AttentionNight(); // sino que le de una advertencia
 
-        _isClicked = true;
+
 
         _useClothes = ChecksStatus.IsCheckActive("Morning2.0", 1);
 
-        if (_useClothes && _imgRP != null) _imgRP.SetActive(true);
-        else if (!_useClothes && _imgPJ != null) _imgPJ.SetActive(true);
+        if (scene == "Morning2.0")
+        {
+            _isClicked = true;
 
-        if (_objIncom != null) _objIncom.SetActive(false);
-        if (_objCom != null) _objCom.SetActive(true);
+            if (_useClothes && _imgRP != null) _imgRP.SetActive(true);
+            else if (!_useClothes && _imgPJ != null) _imgPJ.SetActive(true);
+
+            if (_objIncom != null) _objIncom.SetActive(false);
+            if (_objCom != null) _objCom.SetActive(true);
+
+            StartCoroutine(DelayImg(_useClothes));
+
+        }
+
 
         if(_audioSource != null)_audioSource.Play();
 
-        StartCoroutine(DelayImg(_useClothes));
+
     }
 
     private IEnumerator DelayImg(bool used)

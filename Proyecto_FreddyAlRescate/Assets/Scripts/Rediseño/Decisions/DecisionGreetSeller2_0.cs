@@ -187,4 +187,14 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
             _most.SetActive(true);
         }
     }
+
+    public void PlaySound(string name)
+    {
+        AudioSource[] sounds = GetComponents<AudioSource>();
+
+        foreach (AudioSource sound in sounds)
+        {
+            if (sound.clip != null && sound.clip.name == name) sound.Play();
+        }
+    }
 }

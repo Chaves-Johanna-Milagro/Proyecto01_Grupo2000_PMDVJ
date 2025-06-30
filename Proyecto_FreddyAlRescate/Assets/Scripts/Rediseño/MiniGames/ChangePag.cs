@@ -3,9 +3,12 @@ using UnityEngine;
 public class ChangePag : MonoBehaviour // lo tiene la flchicas del mg de el ahorcadito
 {
     private GameObject[] _pages;
+
     private int _currentPageIndex = 0;
+
     private string _nameArrow;
 
+    private AudioSource _audioSource;
     void Start()
     {
         GameObject parent = transform.parent.gameObject;
@@ -23,6 +26,8 @@ public class ChangePag : MonoBehaviour // lo tiene la flchicas del mg de el ahor
         // Solo activamos la primera pag
         for (int i = 0; i < _pages.Length; i++)
             _pages[i].SetActive(i == 0);
+
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void OnMouseDown()
@@ -41,6 +46,8 @@ public class ChangePag : MonoBehaviour // lo tiene la flchicas del mg de el ahor
                 break;
             }
         }
+
+        if (_audioSource != null) _audioSource.Play();
 
         // Desactivamos la actual
         _pages[_currentPageIndex].SetActive(false);
