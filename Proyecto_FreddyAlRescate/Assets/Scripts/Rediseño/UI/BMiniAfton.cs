@@ -69,26 +69,14 @@ public class BMiniAfton : MonoBehaviour
 
     private string[] _randomBadFeedback = new string[]
     {
-        "¡NO PASA NADA, INTÉNTALO OTRA VEZ!",
-        "¡CASI! SIGUE PROBANDO.",
-        "¡MUY CERCA! TÚ PUEDES LOGRARLO.",
-        "¡NO TE RINDAS, SIGUE JUGANDO!",
-        "¡BUEN INTENTO, INTÉNTALO NUEVAMENTE!",
-        "¡LO IMPORTANTE ES SEGUIR INTENTANDO!",
-        "¡APRENDER ES DIVERTIDO, VAMOS DE NUEVO!",
-        "¡SIGUE ADELANTE, LO ESTÁS HACIENDO BIEN!",
-        "¡POCO A POCO LO VAS A CONSEGUIR!",
-        "¡CADA VEZ TE SALE MEJOR!",
-        "¡LOS ERRORES NOS AYUDAN A MEJORAR!",
-        "¡VAS POR BUEN CAMINO, INTÉNTALO OTRA VEZ!",
-        "¡NO TE DESANIMES, SIGUE JUGANDO!",
-        "¡TODO GRAN LOGRO COMIENZA CON UN INTENTO!",
-        "¡PRACTICANDO SE APRENDE, SIGUE ADELANTE!",
-        "¡TÚ PUEDES CON ESTO!",
-        "¡AUNQUE TE EQUIVOQUES, ESTÁS APRENDIENDO!",
-        "¡SIGUE JUGANDO, CADA VEZ LO HARÁS MEJOR!",
-        "¡MUY BIEN POR INTENTARLO!",
-        "¡EXCELENTE ACTITUD, SIGAMOS JUGANDO!"
+        "NO PASA NADA INTENTALO OTRA VEZ",
+        "CASI SIGUE PROBANDO",
+        "MUY CERCA TU PUEDES LOGRARLO",
+        "LO IMPORTANTE ES SEGUIR INTENTANDO",
+        "POCO A POCO LO VAS A CONSEGUIR",
+        "LOS ERRORES NOS AYUDAN A MEJORAR",
+        "PRACTICANDO SE APRENDE SIGUE ADELANTE",
+        "AUNQUE TE EQUIVOQUES ESTAS APRENDIENDO"
     };
     //private AudioSource _soundAfton;
     private AudioSource _currentAudio; // guarda el audio que está sonando
@@ -162,7 +150,7 @@ public class BMiniAfton : MonoBehaviour
         if (_randomTextNvl1.Length > 0)  // Selecciona un concejo aleatorio
         {
             string randomLine = _randomTextNvl1[Random.Range(0, _randomTextNvl1.Length)];
-            _textComp.text = randomLine;
+            _textComp.text = "¡" + randomLine + "!";
             PlaySound(randomLine);//pa que suene el audio que corresponda
         }
     }
@@ -172,7 +160,7 @@ public class BMiniAfton : MonoBehaviour
         if (_randomTextNvl2.Length > 0)  // Selecciona un concejo aleatorio
         {
             string randomLine = _randomTextNvl2[Random.Range(0, _randomTextNvl2.Length)];
-            _textComp.text = randomLine;
+            _textComp.text = "¡" + randomLine + "!";
             PlaySound(randomLine);
         }
     }
@@ -192,7 +180,7 @@ public class BMiniAfton : MonoBehaviour
         if (_randomGoodFeedback.Length > 0)  // Selecciona un felicitaciones aleatorias
         {
             string randomLine = _randomGoodFeedback[Random.Range(0, _randomGoodFeedback.Length)];
-            _textComp.text = randomLine;
+            _textComp.text = "¡" + randomLine + "!";
             PlaySound(randomLine);
         }
         StartCoroutine(Delay());
@@ -207,7 +195,8 @@ public class BMiniAfton : MonoBehaviour
         if (_randomBadFeedback.Length > 0)  // Selecciona una motivacion aleatoria
         {
             string randomLine = _randomBadFeedback[Random.Range(0, _randomBadFeedback.Length)];
-            _textComp.text = randomLine;
+            _textComp.text = "¡" + randomLine + "!";
+            PlaySound(randomLine);
         }
         StartCoroutine(Delay());
     }

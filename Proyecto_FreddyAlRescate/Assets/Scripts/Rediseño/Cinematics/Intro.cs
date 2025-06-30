@@ -14,7 +14,11 @@ public class Intro : MonoBehaviour
     private TMP_Text _cText1;
     private TMP_Text _cText2;
     private TMP_Text _cText3;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    private AudioSource _aImg1;
+    private AudioSource _aImg2;
+    private AudioSource _aImg3;
+    
     void Start()
     {
         _cImg1 = transform.Find("Img1").gameObject;
@@ -24,6 +28,10 @@ public class Intro : MonoBehaviour
         _cText1 = _cImg1.transform.Find("Text").GetComponent<TMP_Text>();
         _cText2 = _cImg2.transform.Find("Text").GetComponent<TMP_Text>();
         _cText3 = _cImg3.transform.Find("Text").GetComponent<TMP_Text>();
+
+        _aImg1 = _cImg1.GetComponent<AudioSource>();
+        _aImg2 = _cImg2.GetComponent<AudioSource>();
+        _aImg3 = _cImg3.GetComponent<AudioSource>();
 
         if (PlayerNameStatus.GetplayerName() == "") _cText1.text = "AFTON:" + "\n   BUENOS DIAS FREDDY" + "! \n   YA ES HORA DE LEVANTARSE!!!";
         if (PlayerNameStatus.GetplayerName() != "") _cText1.text = "AFTON:" + "\n   BUENOS DIAS " + PlayerNameStatus.GetplayerName() + "! \n   YA ES HORA DE LEVANTARSE!!!";
@@ -36,16 +44,16 @@ public class Intro : MonoBehaviour
     }
     private IEnumerator PlayIntroSequence()
     {
-        yield return StartCoroutine(FadeSequence(_cImg1));
-        yield return StartCoroutine(FadeSequence(_cImg2));
-        yield return StartCoroutine(FadeSequence(_cImg3));
+        yield return StartCoroutine(FadeSequence(_cImg1,_aImg1));
+        yield return StartCoroutine(FadeSequence(_cImg2, _aImg2));
+        yield return StartCoroutine(FadeSequence(_cImg3, _aImg3));
         SceneManager.LoadScene("Morning2.0");
     }
 
-    private IEnumerator FadeSequence(GameObject root)
+    private IEnumerator FadeSequence(GameObject root,AudioSource audio)
     {
         float duration = 1f;
-        float stayTime = 3f;
+        float stayTime = 6f;
 
         root.SetActive(true);
 
@@ -73,7 +81,13 @@ public class Intro : MonoBehaviour
         foreach (Graphic g in graphics)
             g.color = originalColors[g];
 
+        // Reproducir sonido cuando ya se ve todo
+        if (audio != null) audio.Play();
+
         yield return new WaitForSeconds(stayTime);
+
+        // Detener sonido justo antes del fade out
+        if (audio != null) audio.Stop();
 
         // Fade out (de su color original a negro)
         for (float t = 0; t < duration; t += Time.deltaTime)
