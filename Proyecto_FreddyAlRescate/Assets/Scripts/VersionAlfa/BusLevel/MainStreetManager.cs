@@ -22,6 +22,8 @@ public class MainStreetManager : MonoBehaviour
     private static bool childIntroShown = false;
     [SerializeField] private float typeSpeed = 0.04f;
 
+    private Coroutine currentPulse;
+
     void Start()
     {
         // inicializar solo una vez
@@ -91,7 +93,71 @@ public class MainStreetManager : MonoBehaviour
         trafficLightButton.interactable = true;
         lookAroundButton.interactable = lookedAtTrafficLight;
         crosswalkButton.interactable = lookedAtTrafficLight && lookedBothWays;
+        // Lógica para resaltar solo el botón correspondiente
+        if (!lookedAtTrafficLight)
+        {
+            EmpezarResaltado(trafficLightButton);
+        }
+        else if (lookedAtTrafficLight && !lookedBothWays)
+        {
+            EmpezarResaltado(lookAroundButton);
+        }
+        else if (lookedAtTrafficLight && lookedBothWays)
+        {
+            EmpezarResaltado(crosswalkButton);
+        }
+        else
+        {
+            DetenerResaltado();
+        }
     }
+
+    void EmpezarResaltado(Button boton)
+    {
+        if (currentPulse != null) return; // ya está resaltando
+        currentPulse = StartCoroutine(ResaltarBoton(boton));
+    }
+
+    void DetenerResaltado()
+    {
+        if (currentPulse != null)
+        {
+            StopCoroutine(currentPulse);
+            ResetearEscalaTodosLosBotones();
+            currentPulse = null;
+        }
+    }
+
+    IEnumerator ResaltarBoton(Button boton)
+    {
+        RectTransform rect = boton.GetComponent<RectTransform>();
+        Vector3 escalaOriginal = rect.localScale;
+
+        while (true)
+        {
+            yield return Escalar(rect, escalaOriginal, escalaOriginal * 1.2f, 0.5f);
+            yield return Escalar(rect, escalaOriginal * 1.2f, escalaOriginal, 0.5f);
+        }
+    }
+
+    IEnumerator Escalar(RectTransform rect, Vector3 inicio, Vector3 fin, float duracion)
+    {
+        float t = 0;
+        while (t < duracion)
+        {
+            t += Time.deltaTime;
+            rect.localScale = Vector3.Lerp(inicio, fin, t / duracion);
+            yield return null;
+        }
+    }
+
+    void ResetearEscalaTodosLosBotones()
+    {
+        trafficLightButton.GetComponent<RectTransform>().localScale = Vector3.one;
+        lookAroundButton.GetComponent<RectTransform>().localScale = Vector3.one;
+        crosswalkButton.GetComponent<RectTransform>().localScale = Vector3.one;
+    }
+
 
     IEnumerator ShowParrotDialogue(string message)
     {
