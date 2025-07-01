@@ -3,7 +3,7 @@ using UnityEngine;
 public class SlideCredits : MonoBehaviour
 {
     private RectTransform _image; // La imagen que se va a deslizar
-    private float _speed = 0.1f;     // Velocidad del deslizamiento
+    private float _speed = 0.05f;     // Velocidad del deslizamiento
 
     private Vector2 _startPos;
     private Vector2 _targetPos;
@@ -28,8 +28,8 @@ public class SlideCredits : MonoBehaviour
         {
             _image.anchoredPosition = Vector2.Lerp(_image.anchoredPosition, _targetPos, Time.deltaTime * _speed);
 
-            // Detenemos cuando está cerca del objetivo
-            if (Vector2.Distance(_image.anchoredPosition, _targetPos) < 0.01f)
+            // Detenemos cuando estï¿½ cerca del objetivo
+            if (Vector2.Distance(_image.anchoredPosition, _targetPos) < 0.05f)
             {
                 _image.anchoredPosition = _targetPos;
                 _sliding = false;
