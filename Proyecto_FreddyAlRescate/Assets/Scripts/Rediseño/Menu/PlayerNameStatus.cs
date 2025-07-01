@@ -13,4 +13,10 @@ public static class PlayerNameStatus //para que el jugador se ponga su nombre
     {
         return _namePlayer;
     }
+
+    // Resetea el nombre del jugador
+    public static void ResetPlayerName()
+    {
+        _namePlayer = null;
+    }
 }

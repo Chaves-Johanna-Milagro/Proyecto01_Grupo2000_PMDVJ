@@ -70,4 +70,10 @@ public static class AftonStatus
 
         return _data.ContainsKey(escena) && _data[escena].ContainsKey(nombreObjeto);
     }
+
+    // Resetea todos los estados guardados de todas las escenas
+    public static void ResetAftonStatus()
+    {
+        _data.Clear();
+    }
 }

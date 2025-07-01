@@ -13,5 +13,11 @@ public static class KindnessStatus
     {
         _nowBarY = y;
     }
+
+    // Resetea la posición de la barra a su valor inicial
+    public static void ResetKindness()
+    {
+        _nowBarY = -490f;
+    }
 }
 

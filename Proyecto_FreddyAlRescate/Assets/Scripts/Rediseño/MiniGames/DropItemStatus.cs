@@ -28,4 +28,11 @@ public static class DropItemStatus // para que los objetos de algunos minijuegos
         if (dropsPorMinijuego.ContainsKey(nombreMG))
             dropsPorMinijuego[nombreMG] = 0;
     }
+
+    // Resetea todos los objetos colocados y los drops de todos los minijuegos
+    public static void ResetearTodo()
+    {
+        ObjetosColocados.Clear();
+        dropsPorMinijuego.Clear();
+    }
 }
