@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 577856971}
   - component: {fileID: 577856970}
   - component: {fileID: 577856974}
+  - component: {fileID: 577856975}
   m_Layer: 5
   m_Name: Creditos
   m_TagString: Untagged
@@ -320,6 +321,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &577856975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577856969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9145a8e2c16be4486a958a16bb252f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &647092256
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,6 +344,7 @@ GameObject:
   - component: {fileID: 647092257}
   - component: {fileID: 647092259}
   - component: {fileID: 647092258}
+  - component: {fileID: 647092260}
   m_Layer: 5
   m_Name: CImg
   m_TagString: Untagged
@@ -395,6 +409,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 647092256}
   m_CullTransparentMesh: 1
+--- !u!114 &647092260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647092256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c0d9d53bab551d4cb6b86cc525aa4a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1008778252
 GameObject:
   m_ObjectHideFlags: 0
