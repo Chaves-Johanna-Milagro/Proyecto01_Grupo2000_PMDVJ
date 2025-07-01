@@ -1141,7 +1141,7 @@ RectTransform:
   m_GameObject: {fileID: 404214089}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4242, y: 1.4242, z: 1.4242}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 127136603}
@@ -1149,7 +1149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -807, y: 447}
+  m_AnchoredPosition: {x: -684, y: 426}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &404214091
@@ -1565,24 +1565,23 @@ MonoBehaviour:
   typingSpeed: 0.03
   dialogos:
   - id: intro1
-    texto: "\xA1HOLA! BIENVENIDO AL JUEGO. SOY AFTON. TE VOY A GUIAR PARA QUE PUEDAS
-      AYUDAR A FREDDY EN SU AVENTURA."
+    texto: "\xA1HOLA! SOY AFTON Y TE VOY A GUIAR EN ESTA AVENTURA"
   - id: intro2
-    texto: "EMPEZAREMOS A VER PARA QU\xC9 SIRVEN LOS BOTONES."
+    texto: "VEAMOS PARA QU\xC9 SIRVEN LOS BOTONES."
   - id: intro3
-    texto: "SI HACES CLICK AQU\xCD PODR\xC1S VER LOS OBJETIVOS DEL NIVEL PARA COMPLETAR."
+    texto: SI NO SABES QUE HACER ESTA LIBRETA TE AYUDARA!
   - id: intro4
-    texto: "SI HACES CLICK AQU\xCD PODR\xC1S VER TUS ACIERTOS Y DESACIERTOS. SER
-      AMABLE ES IMPORTANTE."
+    texto: "ESTE MEDIDOR TE MOSTRAR\xC1 QUE TAN BIEN TE COMPORTAS. COMPLETA LOS OBJETIVOS
+      Y HAZ BUENAS ACCIONES PARA QUE AUMENTE! "
   - id: intro5
-    texto: SI NECESITAS AYUDA, CONESJOS O PISTAS PUEDES HACER CLICK EN EL MINI YO.
+    texto: "YO TAMBI\xC9N ESTOY AQU\xCD SI LO NECESITAS"
   - id: intro6
-    texto: "SI QUIERES DESCANSAR UN RATO PUEDES HACER CLICK AQUI.  DESPU\xC9S PUEDES
-      CONTINUAR JUGANDO."
+    texto: SI QUIERES DESCANSAR UN RATO PUEDES HACER CLICK AQUI..
   - id: intro7
-    texto: PUEDES MOVERTE E INTERACTUAR CON OBJETOS CON CLICK.
+    texto: "PARA MOVERTE HAZ CLIC A DONDE QUIERAS IR! PARA INTERACTUAR CON ALGO HAZ
+      CLIC EN \xC9L!"
   - id: intro8
-    texto: "\xA1ESO ES TODO! ESPERO QUE DISFRUTES DEL JUEGO."
+    texto: "\xA1ESO ES TODO! BUENA SUERTE!"
 --- !u!4 &579515552
 Transform:
   m_ObjectHideFlags: 0
@@ -2602,7 +2601,7 @@ MonoBehaviour:
   typingSpeed: 0.03
   dialogos:
   - id: intro1
-    texto: "\xA1HOLA! UN GUSTO, SOY FREDDY Y QUIERO QUE ME ACOMPA\xD1ES EN ESTA AVENTURA."
+    texto: "\xA1HOLA! BIENVENIDO AL JUEGO!"
 --- !u!4 &1170751199
 Transform:
   m_ObjectHideFlags: 0
