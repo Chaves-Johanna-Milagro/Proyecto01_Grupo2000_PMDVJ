@@ -1,4 +1,3 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -48,7 +47,7 @@ public class BKindness : MonoBehaviour
 
         GameObject notes = GameObject.FindWithTag("Notes");
 
-        if (notes != null && notes.activeInHierarchy) return; // No se activa si Notes está activo
+        if (notes != null && notes.activeInHierarchy) return; // No se activa si Notes estï¿½ activo
 
         _isActive = !_isActive;
         SetActive(_isActive);

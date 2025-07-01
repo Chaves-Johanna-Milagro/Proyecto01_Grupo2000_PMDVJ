@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using static UnityEngine.InputManagerEntry;
 
 public class GoToBathroom : MonoBehaviour
 {
@@ -20,11 +19,11 @@ public class GoToBathroom : MonoBehaviour
         _check = Object.FindFirstObjectByType<BNotesChecks>();
         _kind = Object.FindFirstObjectByType<BKindnessUpDown>();
 
-        // Restauramos si ya se había hecho antes
+        // Restauramos si ya se habï¿½a hecho antes
         if (CinematicStatus.TieneEstado(gameObject))
         {
             CinematicStatus.RestaurarEstado(gameObject);
-            _isClicked = true; // Ya se había hecho clic antes
+            _isClicked = true; // Ya se habï¿½a hecho clic antes
         }
         _audioSource = _img.GetComponent<AudioSource>();
     }
@@ -35,7 +34,7 @@ public class GoToBathroom : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "School2.0") return; //paq namas se lave la mano en el recreo
 
-        if (PauseStatus.IsPaused) return; // Verifica si el juego está en pausa antes de procesar el click
+        if (PauseStatus.IsPaused) return; // Verifica si el juego estï¿½ en pausa antes de procesar el click
 
         if (CursorStatusInUI.IsPointerOverUI()) return; // si el cursor esta sobre la ui
 
