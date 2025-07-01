@@ -16,7 +16,7 @@ public class FadeCredits : MonoBehaviour
         // Buscar todos los hijos que se llamen "img" o "cImg"
         foreach (Transform child in transform)
         {
-            if (child.name == "Img" || child.name == "CImg")
+            if (child.name == "Img" || child.name == "CImg" || child.name == "ButtonExit")
             {
                 Image img = child.GetComponent<Image>();
                 if (img != null)
