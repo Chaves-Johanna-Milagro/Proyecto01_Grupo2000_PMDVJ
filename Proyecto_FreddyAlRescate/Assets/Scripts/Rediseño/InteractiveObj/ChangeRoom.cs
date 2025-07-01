@@ -31,7 +31,7 @@ public class ChangeRoom : MonoBehaviour
     {
         if (_isClicked) return;
 
-        if (PauseStatus.IsPaused) return; // Verifica si el juego está en pausa antes de procesar el click
+        if (PauseStatus.IsPaused) return; // Verifica si el juego estï¿½ en pausa antes de procesar el click
 
         if (CursorStatusInUI.IsPointerOverUI()) return; // si el cursor esta sobre la ui
 
@@ -60,7 +60,7 @@ public class ChangeRoom : MonoBehaviour
         if (_roomName == "DoorPatio" && SceneManager.GetActiveScene().name == "Recess2.0") SceneManager.LoadScene("Playground2.0"); // aquella que te dirige al patio de la escuela en el recreo
 
         //de momento se saltara el mg de la sube
-        if (_roomName == "TrafficLight") SceneManager.LoadScene("CSchoolStart"); // aquella que te dirige a la entrada de la escuela
+        if (_roomName == "TrafficLight") SceneManager.LoadScene("MainStreet"); // aquella que te dirige a la entrada de la escuela
 
         if (_roomName == "DoorClassroom" && SceneManager.GetActiveScene().name == "School2.0") StartCoroutine(DelayPaCheck()); // aqulla que te dirige al aula
 
