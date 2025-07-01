@@ -1,4 +1,3 @@
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class BKindnessUpDown : MonoBehaviour
@@ -9,13 +8,13 @@ public class BKindnessUpDown : MonoBehaviour
     private float _minY = -720f; //limite inferior
 
     private float _amount = 30f; // la cantidad de frames que se movera
-    private float _minAmount = 5f; //para acciones pequeñas como tirar lña basura al tacho
+    private float _minAmount = 5f; //para acciones pequeï¿½as como tirar lï¿½a basura al tacho
     void Start()
     {
         _nowBar = transform.Find("Now").GetComponent<RectTransform>();
 
 
-        // Cargar la posición guardada
+        // Cargar la posiciï¿½n guardada
         float savedY = Mathf.Clamp(KindnessStatus.GetNowBarY(), _minY, _maxY);
         Vector2 newPos = _nowBar.anchoredPosition;
         newPos.y = savedY;
@@ -34,7 +33,7 @@ public class BKindnessUpDown : MonoBehaviour
         newPos.y = Mathf.Clamp(newPos.y, _minY, _maxY);
         _nowBar.anchoredPosition = newPos;
 
-        KindnessStatus.SetNowBarY(newPos.y); // Guardar la nueva posición
+        KindnessStatus.SetNowBarY(newPos.y); // Guardar la nueva posiciï¿½n
     }
 
     public void MiniGoodDecision()
@@ -43,7 +42,7 @@ public class BKindnessUpDown : MonoBehaviour
         newPos.y = Mathf.Clamp(newPos.y, _minY, _maxY);
         _nowBar.anchoredPosition = newPos;
 
-        KindnessStatus.SetNowBarY(newPos.y); // Guardar la nueva posición
+        KindnessStatus.SetNowBarY(newPos.y); // Guardar la nueva posiciï¿½n
     }
 
 
@@ -53,7 +52,7 @@ public class BKindnessUpDown : MonoBehaviour
         newPos.y = Mathf.Clamp(newPos.y, _minY, _maxY);
         _nowBar.anchoredPosition = newPos;
 
-        KindnessStatus.SetNowBarY(newPos.y); // Guardar la nueva posición
+        KindnessStatus.SetNowBarY(newPos.y); // Guardar la nueva posiciï¿½n
     }
 
     public void MiniBadDecision()
@@ -62,6 +61,6 @@ public class BKindnessUpDown : MonoBehaviour
         newPos.y = Mathf.Clamp(newPos.y, _minY, _maxY);
         _nowBar.anchoredPosition = newPos;
 
-        KindnessStatus.SetNowBarY(newPos.y); // Guardar la nueva posición
+        KindnessStatus.SetNowBarY(newPos.y); // Guardar la nueva posiciï¿½n
     }
 }
