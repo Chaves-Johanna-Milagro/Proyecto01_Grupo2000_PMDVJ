@@ -15,6 +15,9 @@ public class ReaderDetector : MonoBehaviour
     public Animator checkAnimator;
     public Animator crossAnimator;
 
+    public AudioSource _goodPay;
+    public AudioSource _badPay;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("SUBE"))
@@ -49,6 +52,7 @@ public class ReaderDetector : MonoBehaviour
             if (timer >= 3f)
             { 
                 Debug.Log("Pago exitoso");
+                
                 paymentSuccessful = true;
          
                 if (checkAnimator != null)
@@ -59,6 +63,7 @@ public class ReaderDetector : MonoBehaviour
                 if (payText != null)
                 {
                     payText.text = "PAGO EXITOSO";
+                    if (_goodPay != null) _goodPay.Play(); ///
                     payText.gameObject.SetActive(true);
                 }
             }
@@ -76,7 +81,8 @@ public class ReaderDetector : MonoBehaviour
                if (crossAnimator != null)
                {
                   crossAnimator.SetTrigger("Failure");
-                  StartCoroutine(ResetCross());
+                  if (_badPay != null) _badPay.Play();
+                    StartCoroutine(ResetCross());
                }
             }
         }
