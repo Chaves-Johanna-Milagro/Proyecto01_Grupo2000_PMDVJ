@@ -77,6 +77,12 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/Scenes/Redise\xF1o/Cuestionario.unity"
     guid: a910bcb57950ae2408870905a48822dc
+  - enabled: 1
+    path: "Assets/Scenes/Redise\xF1o/Tutorial.unity"
+    guid: 6937a3edebc68b64d9358c23fecc7e76
+  - enabled: 1
+    path: "Assets/Scenes/Redise\xF1o/Credits.unity"
+    guid: 69652fc39de2875449ffa639d87a3c2d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
