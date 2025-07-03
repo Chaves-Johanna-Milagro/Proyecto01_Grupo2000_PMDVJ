@@ -57,8 +57,19 @@ public class PlayerAttention : MonoBehaviour
         }
     }
 
+    public void AttentionBathroom() // muestra explicacion de mj mochila
+    {
+        for (int i = 0; i < _count; i++) // activar
+        {
+            _childs[i].SetActive(true);
+            PlaySound("afton_tutorial_cepillo");
+        }
+
+        _text.text = "AGARRA Y ARRASTRA EL CEPILLO PARA LIMPIAR TUS DIENTES!";
+    }
+
     public void AttentionBreackfast() // pa que le de una dvertencia de q se cambie pa pasr al sig lvl
-   {
+    {
         for (int i = 0; i < _count; i++) // activar
         {
             _childs[i].SetActive(true);
@@ -66,7 +77,18 @@ public class PlayerAttention : MonoBehaviour
         }
 
         _text.text = "���CAMBIATE ANTES DE SALIR!!!";
-   }
+    }
+
+   public void AttentionBackpack() // muestra explicacion de mj mochila
+    {
+        for (int i = 0; i < _count; i++) // activar
+        {
+            _childs[i].SetActive(true);
+            PlaySound("afton_tutorial_mochila");
+        }
+
+        _text.text = "HAY QUE PREPARAR LA MOCHILA! AGARRA LOS UTILES Y PONELOS EN LA MOCHILA. PRESTA ATENCION, HAY COSAS QUE NO SE LLEVAN A LA ESCUELA!";
+    }
 
     public void AttentionGreet() // pa que le explique al momento de decidir saludar o no
     {
