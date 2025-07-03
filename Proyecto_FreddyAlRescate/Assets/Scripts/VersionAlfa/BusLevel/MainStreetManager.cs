@@ -39,19 +39,22 @@ public class MainStreetManager : MonoBehaviour
         crosswalkButton.onClick.AddListener(OnClickCrosswalk);
 
         parrotSpeechBubble.SetActive(false);
-        parrotDialogueText = parrotSpeechBubble.GetComponentInChildren<TMPro.TMP_Text>(); 
+        parrotDialogueText = parrotSpeechBubble.GetComponentInChildren<TMPro.TMP_Text>();
 
 
         string pendingDialogue = PlayerPrefs.GetString("PendingDialogue", "");
 
         if (pendingDialogue == "semaforo")
         {
-            StartCoroutine(ShowParrotDialogue("¡MUY BIEN! MIRAR EL SEMÁFORO ES IMPORANTE PARA CRUZAR SEGURO."));
+            StartCoroutine(ShowParrotDialogue("ï¿½MUY BIEN! MIRAR EL SEMï¿½FORO ES IMPORANTE PARA CRUZAR SEGURO."));
+            PlaySound("afton_semaforo_1");
             PlayerPrefs.SetString("PendingDialogue", "");
+            
         }
         else if (pendingDialogue == "costados")
         {
-            StartCoroutine(ShowParrotDialogue("¡EXCELENTE! MIRAR A AMBOS LADOS EVITA ACCIDENTES."));
+            StartCoroutine(ShowParrotDialogue("ï¿½EXCELENTE! MIRAR A AMBOS LADOS EVITA ACCIDENTES."));
+            PlaySound("afton_semaforo_2");
             PlayerPrefs.SetString("PendingDialogue", "");
         }
 
@@ -61,7 +64,8 @@ public class MainStreetManager : MonoBehaviour
         if (!childIntroShown)
         {
             childIntroShown = true;
-            StartCoroutine(ShowChildDialogue("TENGO QUE TOMAR EL COLECTIVO PERO DEBO CRUZAR ESTA CALLE ¿QUÉ TENGO QUE HACER PRIMERO?."));
+            StartCoroutine(ShowChildDialogue("TENGO QUE TOMAR EL COLECTIVO PERO DEBO CRUZAR ESTA CALLE ï¿½QUï¿½ TENGO QUE HACER PRIMERO?."));
+            PlaySound("freddy_calle");
         }
 
     }
@@ -89,11 +93,11 @@ public class MainStreetManager : MonoBehaviour
         lookedAtTrafficLight = PlayerPrefs.GetInt("LookedAtTrafficLight", 0) == 1;
         lookedBothWays = PlayerPrefs.GetInt("LookedBothWays", 0) == 1;
 
-        // habilitar botones según el progreso
+        // habilitar botones segï¿½n el progreso
         trafficLightButton.interactable = true;
         lookAroundButton.interactable = lookedAtTrafficLight;
         crosswalkButton.interactable = lookedAtTrafficLight && lookedBothWays;
-        // Lógica para resaltar solo el botón correspondiente
+        // Lï¿½gica para resaltar solo el botï¿½n correspondiente
         if (!lookedAtTrafficLight)
         {
             EmpezarResaltado(trafficLightButton);
@@ -114,7 +118,7 @@ public class MainStreetManager : MonoBehaviour
 
     void EmpezarResaltado(Button boton)
     {
-        if (currentPulse != null) return; // ya está resaltando
+        if (currentPulse != null) return; // ya estï¿½ resaltando
         currentPulse = StartCoroutine(ResaltarBoton(boton));
     }
 
@@ -187,5 +191,15 @@ public class MainStreetManager : MonoBehaviour
 
         yield return new WaitForSeconds(8f);
         childSpeechBubble.SetActive(false);
+    }
+    
+    public void PlaySound(string name)
+    {
+        AudioSource[] sounds = GetComponents<AudioSource>();
+
+        foreach (AudioSource sound in sounds)
+        {
+            if (sound.clip != null && sound.clip.name == name) sound.Play();
+        }
     }
 }
