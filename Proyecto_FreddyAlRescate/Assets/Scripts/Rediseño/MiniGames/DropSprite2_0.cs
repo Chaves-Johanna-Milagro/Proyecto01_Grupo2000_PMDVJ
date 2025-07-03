@@ -12,10 +12,16 @@ public class DropSprite2_0 : MonoBehaviour //pa zonas de dropeo de obj de los mi
     private Dictionary<GameObject, float> _tiempos = new();
     private MGSchool _mg;
 
+
+    private CursorManager _cursorManager; //pa cambiar el cursor
+
     private AudioSource _audioSource;
 
     void Start()
     {
+
+        _cursorManager = Object.FindFirstObjectByType<CursorManager>();
+
         _name = name;
         string num = _name.Replace("Space", "");
 
@@ -149,6 +155,9 @@ public class DropSprite2_0 : MonoBehaviour //pa zonas de dropeo de obj de los mi
             )
         )
         {
+            if(_cursorManager == null) _cursorManager = Object.FindFirstObjectByType<CursorManager>();
+                
+            _cursorManager.SetCursorDefault();//seteamos al por defecto al terminar cualquier minijuego
             _mg.ExitMiniGame();
         }
     }

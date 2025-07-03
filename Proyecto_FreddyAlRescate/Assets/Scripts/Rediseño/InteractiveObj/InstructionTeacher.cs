@@ -40,9 +40,12 @@ public class InstructionTeacher : MonoBehaviour
 
     private IEnumerator Delay()
     {
+        AudioSource _inst = transform.Find("Text").GetComponent<AudioSource>();
+
         for (int i = 0; i < _count; i++) 
         {
             _childs[i].SetActive(true);
+           if(_inst != null) _inst.Play();
         }
 
         yield return new WaitForSeconds(5f);
@@ -50,6 +53,7 @@ public class InstructionTeacher : MonoBehaviour
         for (int i = 0; i < _count; i++)
         {
             _childs[i].SetActive(false);
+            if (_inst != null) _inst.Stop();
         }
 
     }

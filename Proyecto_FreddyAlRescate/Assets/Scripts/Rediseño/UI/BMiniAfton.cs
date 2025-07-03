@@ -51,6 +51,27 @@ public class BMiniAfton : MonoBehaviour
         "¿VISTE QUE NADIE VENÍA? ¡BUEN MOMENTO PARA CRUZAR!"
     };
 
+    private string[] _randomTextNvl4 = new string[]
+    {
+        "PRESTAR ATENCIÓN ES TU SUPERPODER EN CLASE",
+        "LEVANTAR LA MANO TE HACE PARTE DEL EQUIPO",
+        "PREGUNTAR TE HACE MÁS INTELIGENTE",
+        "APRENDER ES UNA AVENTURA CADA DÍA",
+        "NO TENGAS MIEDO DE EQUIVOCARTE, ASÍ SE APRENDE",
+        "CADA CLASE TE ACERCA MÁS A TUS SUEÑOS",
+        "COMPARTIR EN CLASE TAMBIÉN ES APRENDER"
+    };
+
+    private string[] _randomTextRecreo = new string[]
+    {
+        "JUGAR TAMBIÉN ES APRENDER",
+        "COMPARTIR EN EL RECREO HACE AMIGOS FUERTES",
+        "SIEMPRE ES BUEN MOMENTO PARA SER AMABLE",
+        "REÍRTE UN RATO TAMBIÉN ES CUIDAR TU MENTE",
+        "LAVARSE LAS MANOS ES IMPORTANTE",
+        "DISFRUTÁ EL MOMENTO, PRONTO VOLVEMOS A CLASE"
+    };
+
     private string[] _randomGoodFeedback = new string[]
     {
         "EXCELENTE TRABAJO",
@@ -142,6 +163,8 @@ public class BMiniAfton : MonoBehaviour
         if (_sceneName == "Morning2.0") ConcejosNvl1();
         else if (_sceneName == "Breackfast2.0") ConcejosNvl2();
         else if (_sceneName == "WayToSchool2.0") ConcejosNvl3();
+        else if (_sceneName == "School2.0" || _sceneName == "Classroom2.0") ConcejosNvl4();
+        else if (_sceneName == "Recess2.0" || _sceneName == "Playground2.0") ConcejosRecreo();
     }
 
 
@@ -169,6 +192,24 @@ public class BMiniAfton : MonoBehaviour
     {
         if (_randomTextNvl3.Length > 0)
             _textComp.text = _randomTextNvl3[Random.Range(0, _randomTextNvl3.Length)];
+    }
+
+    private void ConcejosNvl4()
+    {
+        if (_randomTextNvl4.Length > 0)
+        {
+            string randomLine = _randomTextNvl4[Random.Range(0, _randomTextNvl4.Length)];
+            _textComp.text = randomLine;
+        }
+    }
+
+    private void ConcejosRecreo()
+    {
+        if (_randomTextRecreo.Length > 0)
+        {
+            string randomLine = _randomTextRecreo[Random.Range(0, _randomTextRecreo.Length)];
+            _textComp.text = randomLine;
+        }
     }
 
     public void GoodFeedback() //metodo para cuando en jugador complete o realize buenas acciones

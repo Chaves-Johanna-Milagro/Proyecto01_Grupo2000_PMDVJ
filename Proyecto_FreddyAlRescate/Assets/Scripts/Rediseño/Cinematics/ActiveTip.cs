@@ -8,6 +8,8 @@ public class ActiveTip : MonoBehaviour // objetos con los que se puede interactu
 
     private bool _isClicked = false;
 
+    private AudioSource _source;
+
     void Start()
     {
         _count = transform.childCount;
@@ -18,6 +20,7 @@ public class ActiveTip : MonoBehaviour // objetos con los que se puede interactu
             _childs[i] = transform.GetChild(i).gameObject;
             _childs[i].SetActive(false);
         }
+        _source = transform.Find("Tip").GetComponent<AudioSource>();
 
         if (CinematicStatus.TieneEstado(gameObject))
         {
@@ -43,6 +46,7 @@ public class ActiveTip : MonoBehaviour // objetos con los que se puede interactu
         for (int i = 0; i < _count; i++)
         {
             _childs[i].SetActive(true);
+            _source.Play();
         }
         StartCoroutine(Delay());
     }
@@ -54,6 +58,7 @@ public class ActiveTip : MonoBehaviour // objetos con los que se puede interactu
         for (int i = 0; i < _count; i++)
         {
             _childs[i].SetActive(false);
+            _source.Stop();
         }
 
         CinematicStatus.GuardarEstado(gameObject);
