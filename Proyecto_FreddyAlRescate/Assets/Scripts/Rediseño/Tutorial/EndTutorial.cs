@@ -1,22 +1,18 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class SkipTutorial : MonoBehaviour
+public class EndTutorial : MonoBehaviour
 {
-    private Button _bSkip;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _bSkip = GetComponent<Button>();
-
-        _bSkip.onClick.AddListener(SkipTuto);
-        
+        Debug.Log("inicie");
+        Invoke("End", 118f);
     }
-    
-    private void SkipTuto()
+
+    private void End()
     {
+        Debug.Log("funcione");
         SceneManager.LoadScene("Morning2.0");
     }
-
- }
+}

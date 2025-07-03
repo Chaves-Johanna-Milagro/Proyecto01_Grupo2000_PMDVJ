@@ -941,6 +941,7 @@ GameObject:
   m_Component:
   - component: {fileID: 345795975}
   - component: {fileID: 345795974}
+  - component: {fileID: 345795976}
   m_Layer: 0
   m_Name: TutorialDirector
   m_TagString: Untagged
@@ -1019,6 +1020,16 @@ PlayableDirector:
     value: {fileID: 799942874}
   - key: {fileID: 5361423524344023872, guid: 9e22124cfbffe254b9c06c253587f84c, type: 2}
     value: {fileID: 850759427}
+  - key: {fileID: 9094216454345117752, guid: 9e22124cfbffe254b9c06c253587f84c, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -9034873909557017715, guid: 9e22124cfbffe254b9c06c253587f84c, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 3427700188062623716, guid: 9e22124cfbffe254b9c06c253587f84c, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -7109233058755954871, guid: 9e22124cfbffe254b9c06c253587f84c, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 5121081312711553135, guid: 9e22124cfbffe254b9c06c253587f84c, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References:
     - c10cc7039d554684ea8edd6234a8bd95: {fileID: 1800583074}
@@ -1037,6 +1048,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &345795976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345795973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd4c8e068cc2b54798182888ff15d4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &358770961
 GameObject:
   m_ObjectHideFlags: 0
@@ -1578,8 +1601,8 @@ MonoBehaviour:
   - id: intro6
     texto: SI QUIERES DESCANSAR UN RATO PUEDES HACER CLICK AQUI..
   - id: intro7
-    texto: "PARA MOVERTE HAZ CLIC A DONDE QUIERAS IR! PARA INTERACTUAR CON ALGO HAZ
-      CLIC EN \xC9L!"
+    texto: PARA MOVERTE HAZ CLIC A DONDE QUIERAS IR! PARA INTERACTUAR CON ALGO HAZ
+      CLIC EN EL OBJETO!
   - id: intro8
     texto: "\xA1ESO ES TODO! BUENA SUERTE!"
 --- !u!4 &579515552
@@ -3547,7 +3570,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: e1736a6e81eab6649b3c4e963afc6570, type: 3}
   m_Resource: {fileID: 8300000, guid: e1736a6e81eab6649b3c4e963afc6570, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
