@@ -134,6 +134,8 @@ public class DecisionGreet2_0 : MonoBehaviour //lo tiene la puerta que va a wayt
             {
                 GameObject _despedida = transform.Find("Despedida")?.gameObject;
                 _despedida?.SetActive(true);
+                AudioSource _des = _despedida.GetComponent<AudioSource>();
+                if (_des != null) _des.Play();
             }
 
             StartCoroutine(Delay());

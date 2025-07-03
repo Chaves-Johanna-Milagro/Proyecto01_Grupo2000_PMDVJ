@@ -30,6 +30,9 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
 
     private bool _IsClicked = false;
 
+    //private AudioSource _aShop; //pa el audio de la instruccion
+    //private AudioSource _aShop; //pa el audio de la instruccion
+
     private AudioSource _aInst; //pa el audio de la instruccion
     private AudioSource _aGreet; //pa el audio del saludo de freddy
     private AudioSource _aInstSeller; //pa el audio del saludo e instruccion del vendedor
@@ -94,8 +97,10 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
            _nameObj == "Kiosk" && _phone.GetLastRoad() == "Derecha") return; 
 
         _IsClicked = true;
-        
+
         _img.SetActive(true);
+        AudioSource _imgd = _img.GetComponent<AudioSource>();
+        if (_imgd != null)_imgd.Play();
         if(_aInst != null)_aInst.Play();
     }
 
