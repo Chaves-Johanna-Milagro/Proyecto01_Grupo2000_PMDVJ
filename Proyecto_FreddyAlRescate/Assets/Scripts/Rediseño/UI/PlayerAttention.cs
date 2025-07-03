@@ -65,7 +65,7 @@ public class PlayerAttention : MonoBehaviour
             PlaySound("afton_avisoRopa");
         }
 
-        _text.text = "¡¡¡CAMBIATE ANTES DE SALIR!!!";
+        _text.text = "ï¿½ï¿½ï¿½CAMBIATE ANTES DE SALIR!!!";
    }
 
     public void AttentionGreet() // pa que le explique al momento de decidir saludar o no
@@ -73,9 +73,10 @@ public class PlayerAttention : MonoBehaviour
         for (int i = 0; i < _count; i++) // activar
         {
             _childs[i].SetActive(true);
+            PlaySound("afton_tutorial_saludo");
         }
 
-        _text.text = "ELIGE SALUDAR O NO. \nRECUERDA QUE: \n¡ES BUENO TENER MODALES!";
+        _text.text = "ELIGE SALUDAR O NO. \nRECUERDA QUE: \nï¿½ES BUENO TENER MODALES!";
     }
     public void AttentionSchool() // pa que el jugador sepa que puede tira la basura
     {
@@ -85,6 +86,7 @@ public class PlayerAttention : MonoBehaviour
         {
             _childs[i].SetActive(true);
             _isShow = true;
+            PlaySound("afton_tutorial_basura");
         }
 
         _text.text = "MIRA " + PlayerNameStatus.GetplayerName() + "!! \nHAY BASURA EN EL SUELO" + "\nTIRALA EN EL TACHO";
@@ -100,9 +102,10 @@ public class PlayerAttention : MonoBehaviour
         {
             _childs[i].SetActive(true);
             _isShow = true;
+            PlaySound("afton_recreo");
         }
 
-        _text.text = "MIRA " + PlayerNameStatus.GetplayerName() + "!! \nES HORA DEL RECREO" + "\nAPROVECHA ESTE MOMENTO PARA " + "\nIR AL BAÑO O COMPRAR ALGO EN EL KIOSCO";
+        _text.text = "MIRA " + PlayerNameStatus.GetplayerName() + "!! \nES HORA DEL RECREO" + "\nAPROVECHA ESTE MOMENTO PARA " + "\nIR AL BAï¿½O O COMPRAR ALGO EN EL KIOSCO";
 
         AftonStatus.GuardarEstado(gameObject);
     }
@@ -128,7 +131,7 @@ public class PlayerAttention : MonoBehaviour
         for (int i = 0; i < _count; i++) // activar
         {
             _childs[i].SetActive(true);
-
+            PlaySound("afton_nv5_intro");
         }
 
         _text.text = "HA SIDO UN DIA LARGO, SEGURO ESTAS CANSADO ASI QUE PREPARATE PARA IR A DORMIR!!!";
@@ -142,7 +145,7 @@ public class PlayerAttention : MonoBehaviour
             
         }
 
-        _text.text = "¡¡¡PONTE EL PIJAMA ANTES DE DORMIR!!!";
+        _text.text = "ï¿½ï¿½ï¿½PONTE EL PIJAMA ANTES DE DORMIR!!!";
     }
 
 
