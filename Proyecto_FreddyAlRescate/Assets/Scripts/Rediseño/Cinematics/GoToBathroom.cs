@@ -55,7 +55,7 @@ public class GoToBathroom : MonoBehaviour
     {
         if(_audioSource != null) _audioSource.Play();
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
 
         ChecksStatus.SetCheckActive("Playground2.0", 0); //activamos tambien el check en esa escena
 
