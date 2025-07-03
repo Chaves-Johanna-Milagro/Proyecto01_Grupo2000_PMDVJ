@@ -40,14 +40,14 @@ public class DialogueGreetingsBus : MonoBehaviour
     IEnumerator GreetingsSequence()
     {
         childSpeechBubble.SetActive(true);
-        yield return StartCoroutine(TypeText(childDialogueText, "¡BUENOS DIAS, CHOFER!"));
-
+        yield return StartCoroutine(TypeText(childDialogueText, "ï¿½BUENOS DIAS, CHOFER!"));
+        PlaySound("freddy_chofer");
         yield return new WaitForSeconds(2f);
 
         childSpeechBubble.SetActive(false);
         driverSpeechBubble.SetActive(true);
-        yield return StartCoroutine(TypeText(driverDialogueText, "¡HOLA JOVEN! PASE POR FAVOR."));
-
+        yield return StartCoroutine(TypeText(driverDialogueText, "ï¿½HOLA JOVEN! PASE POR FAVOR."));
+        PlaySound("chofer_1");
         yield return new WaitForSeconds(4f);
         SceneManager.LoadScene("MinigameSube");
     }
@@ -74,6 +74,16 @@ public class DialogueGreetingsBus : MonoBehaviour
         {
             textComponent.text += letter;
             yield return new WaitForSeconds(typeSpeed);
+        }
+    }
+
+    public void PlaySound(string name)
+    {
+        AudioSource[] sounds = GetComponents<AudioSource>();
+
+        foreach (AudioSource sound in sounds)
+        {
+            if (sound.clip != null && sound.clip.name == name) sound.Play();
         }
     }
 }
