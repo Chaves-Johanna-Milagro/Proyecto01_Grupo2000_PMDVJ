@@ -30,6 +30,9 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
 
     private bool _IsClicked = false;
 
+    private AudioSource _aInst; //pa el audio de la instruccion
+    private AudioSource _aGreet; //pa el audio del saludo de freddy
+    private AudioSource _aInstSeller; //pa el audio del saludo e instruccion del vendedor
     void Start()
     {
         _img = transform?.Find("ImgDes").gameObject;
@@ -55,6 +58,10 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
 
         _phone = Object.FindFirstObjectByType<BPhone>();
 
+
+        _aInst = _instruction.GetComponent<AudioSource>();
+        _aGreet = _greet.GetComponent<AudioSource>();
+        _aInstSeller = _instructionSeller.GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -64,6 +71,8 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
         if (_phone == null) _phone = Object.FindFirstObjectByType<BPhone>();
 
         if (_next) NextAction();
+
+        FindAudio();
     }
 
     public void OnMouseDown()
@@ -87,6 +96,7 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
         _IsClicked = true;
         
         _img.SetActive(true);
+        if(_aInst != null)_aInst.Play();
     }
 
     public void SelectOpt(string opt)
@@ -94,13 +104,16 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
         if (opt == "Opt1")
         {
             _charGreet.SetActive(true); // se activa el saludo
+            
 
             _charDefault.SetActive(false);
             _opt1.SetActive(false);
             _opt2.SetActive(false);
             _instruction.SetActive(false);
+            _aInst.Stop();
 
             _greet.SetActive(true);
+            if(_aGreet != null)_aGreet.Play();
 
             _kind.GoodDecision();
 
@@ -146,8 +159,12 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         _greet.SetActive(false);
+        if (_aGreet != null) _aGreet.Stop(); 
         _greetSeller.SetActive(false);
+
         _instructionSeller.SetActive(true);
+
+        if (_aInstSeller != null) _aInstSeller.Play();
 
         yield return new WaitForSeconds(1f);
 
@@ -196,5 +213,12 @@ public class DecisionGreetSeller2_0 : MonoBehaviour
         {
             if (sound.clip != null && sound.clip.name == name) sound.Play();
         }
+    }
+
+    private void FindAudio()
+    {
+        _aInst = _instruction.GetComponent<AudioSource>();
+        _aGreet = _greet.GetComponent<AudioSource>();
+        _aInstSeller = _instructionSeller.GetComponent<AudioSource>();
     }
 }
