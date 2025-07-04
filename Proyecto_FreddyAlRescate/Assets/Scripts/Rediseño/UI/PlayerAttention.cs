@@ -164,7 +164,7 @@ public class PlayerAttention : MonoBehaviour
         for (int i = 0; i < _count; i++) // activar
         {
             _childs[i].SetActive(true);
-            
+            PlaySound("afton_pijama");
         }
 
         _text.text = "���PONTE EL PIJAMA ANTES DE DORMIR!!!";
