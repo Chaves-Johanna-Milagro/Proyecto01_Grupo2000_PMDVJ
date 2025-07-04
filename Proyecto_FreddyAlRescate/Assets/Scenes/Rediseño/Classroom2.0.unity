@@ -1109,6 +1109,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoomClassroom
       objectReference: {fileID: 0}
+    - target: {fileID: 5811834392717649234, guid: 4925ad4aff52e1341b48800e1da69571, type: 3}
+      propertyPath: m_Volume
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
