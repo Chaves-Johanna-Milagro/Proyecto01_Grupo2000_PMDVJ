@@ -11,7 +11,7 @@ public class HangBackpack : MonoBehaviour
     private BNotesChecks _check;
     private BKindnessUpDown _kind;
 
-    private bool _isClicked = false;
+   // private bool _isClicked = false;
 
     private AudioSource _audioSource;
     void Start()
@@ -25,7 +25,7 @@ public class HangBackpack : MonoBehaviour
         if (CinematicStatus.TieneEstado(gameObject))
         {
             CinematicStatus.RestaurarEstado(gameObject);
-            _isClicked = true;
+            //_isClicked = true;
         }
 
         _check = Object.FindFirstObjectByType<BNotesChecks>();
@@ -36,7 +36,7 @@ public class HangBackpack : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (_isClicked) return;
+        //if (_isClicked) return;
 
         if (PauseStatus.IsPaused) return;
 
@@ -48,8 +48,8 @@ public class HangBackpack : MonoBehaviour
 
         if (CinematicStatus.ActiveCinematic()) return;
 
-        _isClicked = true;
-
+        //_isClicked = true;
+        if(RecessStatus.HangBackpack) return; // si ya se colgo la mochi retornar
 
         if (_img != null) _img.SetActive(true);
 

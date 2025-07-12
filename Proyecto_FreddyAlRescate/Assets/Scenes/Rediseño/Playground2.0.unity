@@ -1017,10 +1017,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 407941669718950043, guid: b8e9287f8d31ff1468e565ccbfe659ce, type: 3}
-      propertyPath: m_Volume
-      value: 0.2
-      objectReference: {fileID: 0}
     - target: {fileID: 1949180970524256884, guid: b8e9287f8d31ff1468e565ccbfe659ce, type: 3}
       propertyPath: m_Name
       value: RoomPlayground

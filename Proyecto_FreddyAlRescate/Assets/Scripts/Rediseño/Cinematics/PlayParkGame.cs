@@ -60,6 +60,6 @@ public class PlayParkGame : MonoBehaviour
         // Guardamos el estado final para que se mantenga entre escenas
         CinematicStatus.GuardarEstado(gameObject);
 
-        _kind?.GoodDecision();
+        _kind?.MiniGoodDecision();//pa q no se llene tanto la barrita
     }
 }

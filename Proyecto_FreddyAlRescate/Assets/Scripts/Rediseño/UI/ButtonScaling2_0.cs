@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ButtonScaling2_0 : MonoBehaviour // pa los botones en la version del rediseño
+public class ButtonScaling2_0 : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler // pa los botones en la version del rediseño
 {
-    private float _scaleMultiplier = 1.5f;
+    private float _scaleMultiplier = 1.2f;
     private float _scaleSpeed = 5f;
 
     private RectTransform _rectTransform;

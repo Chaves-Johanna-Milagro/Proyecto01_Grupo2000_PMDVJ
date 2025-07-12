@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class BuyAtKiosk : MonoBehaviour
@@ -8,7 +9,8 @@ public class BuyAtKiosk : MonoBehaviour
     private BNotesChecks _check;
     private BKindnessUpDown _kind;
 
-    private bool _isClicked = false;
+    //private bool _isClicked = false;
+    private string _scene;
 
     void Start()
     {
@@ -20,17 +22,19 @@ public class BuyAtKiosk : MonoBehaviour
         _check = Object.FindFirstObjectByType<BNotesChecks>();
         _kind = Object.FindFirstObjectByType<BKindnessUpDown>();
 
+        _scene = SceneManager.GetActiveScene().name;
+
         // Restauramos si ya se había hecho antes
         if (CinematicStatus.TieneEstado(gameObject))
         {
             CinematicStatus.RestaurarEstado(gameObject);
-            _isClicked = true; // Ya se había hecho clic antes
+            //_isClicked = true; // Ya se había hecho clic antes
         }
     }
 
     public void OnMouseDown()
     {
-        if (_isClicked) return;
+      //  if (_isClicked) return;
 
         if (PauseStatus.IsPaused) return;
 
@@ -42,7 +46,8 @@ public class BuyAtKiosk : MonoBehaviour
 
         if (CinematicStatus.ActiveCinematic()) return;
 
-        _isClicked = true;
+       // _isClicked = true;
+       if(ChecksStatus.IsCheckActive("Playground2.0",1) || ChecksStatus.IsCheckActive("Recess2.0",1)) return; //evitar que se pued interactual al ya estar activo el check
 
         if (_Img != null) _Img.SetActive(true);
 

@@ -127,7 +127,7 @@ public class PlayerAttention : MonoBehaviour
             PlaySound("afton_recreo");
         }
 
-        _text.text = "MIRA " + PlayerNameStatus.GetplayerName() + "!! \nES HORA DEL RECREO" + "\nAPROVECHA ESTE MOMENTO PARA " + "\nIR AL BA�O O COMPRAR ALGO EN EL KIOSCO";
+        _text.text = "MIRA " + PlayerNameStatus.GetplayerName() + "!! \nES HORA DEL RECREO" + "\nAPROVECHA ESTE MOMENTO PARA " + "\nIR AL BAÑO O COMPRAR ALGO EN EL KIOSCO";
 
         AftonStatus.GuardarEstado(gameObject);
     }
@@ -167,12 +167,19 @@ public class PlayerAttention : MonoBehaviour
             PlaySound("afton_pijama");
         }
 
-        _text.text = "���PONTE EL PIJAMA ANTES DE DORMIR!!!";
+        _text.text = "PONTE EL PIJAMA ANTES DE DORMIR!!!";
     }
 
 
     private void Desactiveobjs()
     {
+        // Detener todos los audios antes de desactivar los hijos
+        AudioSource[] sounds = GetComponents<AudioSource>();
+        foreach (AudioSource sound in sounds)
+        {
+            sound.Stop();
+        }
+
         for (int i = 0; i < _count; i++) // desativar
         {
             _childs[i].SetActive(false);

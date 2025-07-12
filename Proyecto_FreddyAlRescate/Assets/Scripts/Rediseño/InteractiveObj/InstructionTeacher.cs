@@ -42,11 +42,15 @@ public class InstructionTeacher : MonoBehaviour
     {
         AudioSource _inst = transform.Find("Text").GetComponent<AudioSource>();
 
-        for (int i = 0; i < _count; i++) 
+        for (int i = 0; i < _count; i++)
         {
             _childs[i].SetActive(true);
-           if(_inst != null) _inst.Play();
         }
+
+        // Espera un frame para que los objetos se activen bien
+        yield return null;
+
+        if (_inst != null) _inst.Play();
 
         yield return new WaitForSeconds(5f);
 
