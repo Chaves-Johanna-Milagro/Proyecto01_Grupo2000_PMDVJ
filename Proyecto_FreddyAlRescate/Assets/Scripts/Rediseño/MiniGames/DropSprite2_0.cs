@@ -50,7 +50,7 @@ public class DropSprite2_0 : MonoBehaviour //pa zonas de dropeo de obj de los mi
         {
             case "Facil": _alpha = 0.8f; break;
             case "Medio": _alpha = 0.4f; break;
-            case "Dificil": _alpha = 0.2f; break;
+            case "Dificil": _alpha = 0f; break;
         }
         SetAlpha();
 
@@ -65,7 +65,7 @@ public class DropSprite2_0 : MonoBehaviour //pa zonas de dropeo de obj de los mi
         {
             case "Facil": _alpha = 0.8f; break;
             case "Medio": _alpha = 0.4f; break;
-            case "Dificil": _alpha = 0.2f; break;
+            case "Dificil": _alpha = 0f; break;
         }
         SetAlpha();
     }
@@ -138,7 +138,8 @@ public class DropSprite2_0 : MonoBehaviour //pa zonas de dropeo de obj de los mi
         var sr = obj.GetComponent<SpriteRenderer>();
         if (sr != null)
         {
-            sr.color = new Color(0f, 0f, 0f, 1f);
+            Color original = sr.color;
+            sr.color = new Color(original.r * 0.4f, original.g * 0.4f, original.b * 0.4f, original.a);
         }
 
         if (_audioSource != null) _audioSource.Play();
