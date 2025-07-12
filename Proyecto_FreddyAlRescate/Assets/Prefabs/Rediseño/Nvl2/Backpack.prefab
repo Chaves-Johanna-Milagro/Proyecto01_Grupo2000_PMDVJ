@@ -668,6 +668,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5668700511823519381}
   - component: {fileID: 1889847278695793914}
+  - component: {fileID: 6963084023981377645}
   m_Layer: 0
   m_Name: MiniGame
   m_TagString: Untagged
@@ -798,6 +799,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6963084023981377645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2351415666590355423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24aafd33b7f472345b3c3f10574512ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2851226721805507059
 GameObject:
   m_ObjectHideFlags: 0

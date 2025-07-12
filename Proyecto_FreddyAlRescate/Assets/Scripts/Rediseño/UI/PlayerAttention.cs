@@ -76,7 +76,7 @@ public class PlayerAttention : MonoBehaviour
             PlaySound("afton_avisoRopa");
         }
 
-        _text.text = "���CAMBIATE ANTES DE SALIR!!!";
+        _text.text = "¡¡¡CAMBIATE ANTES DE SALIR!!!";
     }
 
    public void AttentionBackpack() // muestra explicacion de mj mochila
@@ -98,7 +98,7 @@ public class PlayerAttention : MonoBehaviour
             PlaySound("afton_tutorial_saludo");
         }
 
-        _text.text = "ELIGE SALUDAR O NO. \nRECUERDA QUE: \n�ES BUENO TENER MODALES!";
+        _text.text = "ELIGE SALUDAR O NO. \nRECUERDA QUE: \n¡ES BUENO TENER MODALES!";
     }
     public void AttentionSchool() // pa que el jugador sepa que puede tira la basura
     {
