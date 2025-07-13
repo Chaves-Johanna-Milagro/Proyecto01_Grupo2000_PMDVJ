@@ -24,6 +24,8 @@ public class CharacterPointMove : MonoBehaviour
         
         if (PauseStatus.IsPaused) return;// Verifica si el juego está en pausa antes de procesar el click
 
+        //if (CursorStatusInUI.IsPointerOverUI()) return;
+
         if (MiniGameStatus.ActiveMiniGame()) return; // verifica que no este acivo un minijuego
 
         if (CinematicStatus.ActiveCinematic()) return; // si hay alguna cinematica corriendo

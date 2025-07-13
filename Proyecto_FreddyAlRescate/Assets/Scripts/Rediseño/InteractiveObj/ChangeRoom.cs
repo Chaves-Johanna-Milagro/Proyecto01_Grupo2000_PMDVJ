@@ -47,12 +47,12 @@ public class ChangeRoom : MonoBehaviour
         if (_roomName == "DoorRoom") SceneManager.LoadScene("Morning2.0"); // aquella que te dirige a la habitacion
         if (_roomName == "DoorDiningroom" && SceneManager.GetActiveScene().name != "Night2.0") SceneManager.LoadScene("Breackfast2.0"); // aquella que te dirige al comedor
 
-        if (_roomName == "DoorStreet")
+       /* if (_roomName == "DoorStreet")
         {
             if (ChecksStatus.GetTotalInactiveChecks() > 3) _kind.BadDecision(); // si hay mas de tres check inactivos baja la barrita
 
             SceneManager.LoadScene("WayToSchool2.0"); // aquella que te dirige fuera de la casa
-        }
+        }*/
       
 
         if (_roomName == "DoorSchool" && SceneManager.GetActiveScene().name == "Playground2.0") SceneManager.LoadScene("Recess2.0"); // aquella que te dirige a la entrada de la escuela cuando es recreo
@@ -68,7 +68,7 @@ public class ChangeRoom : MonoBehaviour
 
     }
 
-    private IEnumerator DelayPaCheck()
+    private IEnumerator DelayPaCheck() //para marcar el check de ir al aula al llegar a la school
     {
         _isClicked = true; //pa evitar que se reinicie la corrutina si cleckiea de nuevo
 

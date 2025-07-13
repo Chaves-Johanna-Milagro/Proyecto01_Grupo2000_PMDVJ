@@ -7,7 +7,7 @@ public class BKindnessUpDown : MonoBehaviour
     private float _maxY = -270f; //limite superior
     private float _minY = -720f; //limite inferior
 
-    private float _amount = 30f; // la cantidad de frames que se movera
+    private float _amount = 20f; // la cantidad de frames que se movera
     private float _minAmount = 5f; //para acciones peque�as como tirar l�a basura al tacho
     void Start()
     {
@@ -33,7 +33,7 @@ public class BKindnessUpDown : MonoBehaviour
         newPos.y = Mathf.Clamp(newPos.y, _minY, _maxY);
         _nowBar.anchoredPosition = newPos;
 
-        KindnessStatus.SetNowBarY(newPos.y); // Guardar la nueva posici�n
+        KindnessStatus.SetNowBarY(newPos.y); // Guardar la nueva posicion
     }
 
     public void MiniGoodDecision()
@@ -42,7 +42,7 @@ public class BKindnessUpDown : MonoBehaviour
         newPos.y = Mathf.Clamp(newPos.y, _minY, _maxY);
         _nowBar.anchoredPosition = newPos;
 
-        KindnessStatus.SetNowBarY(newPos.y); // Guardar la nueva posici�n
+        KindnessStatus.SetNowBarY(newPos.y); // Guardar la nueva posicion
     }
 
 
@@ -52,7 +52,7 @@ public class BKindnessUpDown : MonoBehaviour
         newPos.y = Mathf.Clamp(newPos.y, _minY, _maxY);
         _nowBar.anchoredPosition = newPos;
 
-        KindnessStatus.SetNowBarY(newPos.y); // Guardar la nueva posici�n
+        KindnessStatus.SetNowBarY(newPos.y); // Guardar la nueva posicion
     }
 
     public void MiniBadDecision()
@@ -61,6 +61,6 @@ public class BKindnessUpDown : MonoBehaviour
         newPos.y = Mathf.Clamp(newPos.y, _minY, _maxY);
         _nowBar.anchoredPosition = newPos;
 
-        KindnessStatus.SetNowBarY(newPos.y); // Guardar la nueva posici�n
+        KindnessStatus.SetNowBarY(newPos.y); // Guardar la nueva posicion
     }
 }

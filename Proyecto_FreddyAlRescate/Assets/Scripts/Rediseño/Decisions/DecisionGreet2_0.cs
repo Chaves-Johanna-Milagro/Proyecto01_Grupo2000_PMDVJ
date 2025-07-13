@@ -144,6 +144,13 @@ public class DecisionGreet2_0 : MonoBehaviour //lo tiene la puerta que va a wayt
 
     private IEnumerator Delay()
     {
+        int inactivos = ChecksStatus.GetInactiveChecksFromScenes("Morning2.0", "Breackfast2.0");
+
+        for (int i = 0; i < inactivos; i++)
+        {
+            _kind.BadDecision(); // se ejecuta una vez por cada check inactivo
+        }
+
         yield return new WaitForSeconds(2f);
         if (_nameObj == "DoorStreet") SceneManager.LoadScene("WayToSchool2.0");
     }

@@ -255,23 +255,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e978418e24139104abb9ffc141b59096, type: 3}
---- !u!1 &591562507 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4082147492999941175, guid: c0d4a293c43ad9e40bb48420290509f5, type: 3}
-  m_PrefabInstance: {fileID: 1450203625317217879}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &591562510
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 591562507}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bac66a85573177545aa4c571cedc396e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1115366476
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,113 +621,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1472661618009828222, guid: bfd23340f67889d40b59aaec7d7d1b34, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1759478095}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfd23340f67889d40b59aaec7d7d1b34, type: 3}
---- !u!1 &1759478094 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1472661618009828222, guid: bfd23340f67889d40b59aaec7d7d1b34, type: 3}
-  m_PrefabInstance: {fileID: 1759478093}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1759478095
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1759478094}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 000661065423a0049a36f1afb18a30b5, type: 3}
-  m_Resource: {fileID: 8300000, guid: 000661065423a0049a36f1afb18a30b5, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.7
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1001 &426816928225709430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -914,10 +792,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4082147492999941175, guid: c0d4a293c43ad9e40bb48420290509f5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 591562510}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0d4a293c43ad9e40bb48420290509f5, type: 3}
 --- !u!1001 &4844094868412399491
 PrefabInstance:

@@ -56,6 +56,27 @@ public static class ChecksStatus
         return activeIndexes;
     }
 
+    //devuelve la cantidad de checks inactivos en escenas especificas
+    public static int GetInactiveChecksFromScenes(params string[] sceneNames)
+    {
+        int total = 0;
+        foreach (string scene in sceneNames)
+        {
+            if (_sceneChecks.ContainsKey(scene))
+            {
+                bool[] checks = _sceneChecks[scene];
+                foreach (bool check in checks)
+                {
+                    if (!check)
+                        total++;
+                }
+            }
+        }
+        return total;
+    }
+
+
+
     // Verifica si un check específico está activo
     public static bool IsCheckActive(string sceneName, int index)
     {
