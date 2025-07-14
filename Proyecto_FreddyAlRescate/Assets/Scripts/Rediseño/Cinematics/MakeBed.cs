@@ -72,7 +72,8 @@ public class MakeBed : MonoBehaviour
   
         if (scene == "Night2.0" && usePJ)
         {
-            SceneManager.LoadScene("Credits");// si se puso el pijama que active 
+            //SceneManager.LoadScene("Credits");// si se puso el pijama que active 
+            StartCoroutine(DelayPaCuest());
             return;
         }
          else if (!usePJ && scene == "Night2.0") _pAttention.AttentionNight(); // sino que le de una advertencia
@@ -115,5 +116,14 @@ public class MakeBed : MonoBehaviour
         CinematicStatus.GuardarEstado(gameObject);
 
         _kind?.GoodDecision();
+    }
+
+    private IEnumerator DelayPaCuest()
+    {
+        _pAttention.AttentionEndNight(); //que le tire el mesaje de que va a pasar al cuestionario
+
+        yield return new WaitForSeconds(5f);
+
+        SceneManager.LoadScene("Cuestionario");
     }
 }

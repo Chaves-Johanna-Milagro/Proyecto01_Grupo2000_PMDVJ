@@ -80,7 +80,7 @@ public class PlayerAttention : MonoBehaviour
     }
 
    public void AttentionBackpack() // muestra explicacion de mj mochila
-    {
+   {
         for (int i = 0; i < _count; i++) // activar
         {
             _childs[i].SetActive(true);
@@ -88,7 +88,7 @@ public class PlayerAttention : MonoBehaviour
         }
 
         _text.text = "HAY QUE PREPARAR LA MOCHILA! AGARRA LOS UTILES Y PONELOS EN LA MOCHILA. PRESTA ATENCION, HAY COSAS QUE NO SE LLEVAN A LA ESCUELA!";
-    }
+   }
 
     public void AttentionGreet() // pa que le explique al momento de decidir saludar o no
     {
@@ -170,6 +170,16 @@ public class PlayerAttention : MonoBehaviour
         _text.text = "PONTE EL PIJAMA ANTES DE DORMIR!!!";
     }
 
+    public void AttentionEndNight() // pa que le diga que va a pasar al cuestionario
+    {
+        for (int i = 0; i < _count; i++) // activar
+        {
+            _childs[i].SetActive(true);
+            PlaySound("afton_nv5_cuestionario");
+        }
+
+        _text.text = "ANTES DE DORMIR REPASEMOS LO QUE HEMOS APRENDIDO HOY!!!";
+    }
 
     private void Desactiveobjs()
     {
