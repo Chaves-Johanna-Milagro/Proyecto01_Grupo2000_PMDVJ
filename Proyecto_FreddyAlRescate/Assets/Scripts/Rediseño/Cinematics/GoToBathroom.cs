@@ -9,7 +9,7 @@ public class GoToBathroom : MonoBehaviour
     private BNotesChecks _check;
     private BKindnessUpDown _kind;
 
-    private bool _isClicked = false;
+   // private bool _isClicked = false;
    
     private AudioSource _audioSource;
     void Start()
@@ -23,14 +23,14 @@ public class GoToBathroom : MonoBehaviour
         if (CinematicStatus.TieneEstado(gameObject))
         {
             CinematicStatus.RestaurarEstado(gameObject);
-            _isClicked = true; // Ya se hab�a hecho clic antes
+            //_isClicked = true; // Ya se hab�a hecho clic antes
         }
         _audioSource = _img.GetComponent<AudioSource>();
     }
 
     public void OnMouseDown()
     {
-        if (_isClicked) return;
+      //  if (_isClicked) return;
 
         if (SceneManager.GetActiveScene().name == "School2.0") return; //paq namas se lave la mano en el recreo
 
@@ -44,7 +44,8 @@ public class GoToBathroom : MonoBehaviour
 
         if (DecisionStatus.ActiveDecision()) return; // si hay alguna desicion corriendo
 
-        _isClicked = true;
+       // _isClicked = true;
+        if (ChecksStatus.IsCheckActive("Playground2.0", 0) || ChecksStatus.IsCheckActive("Recess2.0", 0)) return; //evitar que se pued interactual al ya estar activo el check
 
         if (_img != null) _img.SetActive(true);
 

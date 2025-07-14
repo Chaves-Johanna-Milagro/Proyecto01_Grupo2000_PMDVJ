@@ -5,14 +5,14 @@ public class MGBase : MonoBehaviour // se encarga de activar los minijuegos y gu
 {
     private GameObject _miniGame;
 
-    private string _objName;
+    private string _obj; //nombre del objeto que tiene el script
     private string _sceneName;
 
     private AudioSource _soundMG;
 
     private CursorManager _cursorManager;
 
-    private bool _isCompleted = false;
+   // private bool _isCompleted = false;
 
     private void Start()
     {
@@ -21,7 +21,7 @@ public class MGBase : MonoBehaviour // se encarga de activar los minijuegos y gu
 
         _miniGame.SetActive(false); // Lo oculta al inicio
 
-        _objName = gameObject.name;
+        _obj = gameObject.name;
         _sceneName = SceneManager.GetActiveScene().name;
 
         _soundMG = _miniGame?.GetComponent<AudioSource>();
@@ -30,7 +30,7 @@ public class MGBase : MonoBehaviour // se encarga de activar los minijuegos y gu
         if (MiniGameStatus.TieneEstado(gameObject))
         {
             MiniGameStatus.RestaurarEstado(gameObject);
-            _isCompleted = true;
+            //_isCompleted = true;
         }
 
         _cursorManager = Object.FindFirstObjectByType<CursorManager>();
@@ -38,7 +38,7 @@ public class MGBase : MonoBehaviour // se encarga de activar los minijuegos y gu
 
     private void OnMouseDown()
     {
-        if (_isCompleted) return;
+       // if (_isCompleted) return;
 
         if (PauseStatus.IsPaused) return;
 
@@ -50,7 +50,10 @@ public class MGBase : MonoBehaviour // se encarga de activar los minijuegos y gu
 
         if (DecisionStatus.ActiveDecision()) return; // si hay alguna desicion corriendo
 
-        _isCompleted = true;
+        //_isCompleted = true;
+        if (_obj == "Bathroom" && ChecksStatus.IsCheckActive("Morning2.0",2) ||
+            _obj == "Diningroom" && ChecksStatus.IsCheckActive("Breackfast2.0", 0) ||
+            _obj == "Backpack" && ChecksStatus.IsCheckActive("Breackfast2.0", 1)) return; //pa q ya no interactue si ya estan sus checks activos
 
         _miniGame?.SetActive(true);
 

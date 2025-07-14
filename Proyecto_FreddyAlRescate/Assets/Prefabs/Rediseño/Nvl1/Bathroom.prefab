@@ -610,7 +610,6 @@ GameObject:
   m_Component:
   - component: {fileID: 361775642289729918}
   - component: {fileID: 9046818194743171187}
-  - component: {fileID: 6160870984068674520}
   - component: {fileID: 7750037739268676782}
   - component: {fileID: 528035349611701275}
   - component: {fileID: 6101537075755449331}
@@ -694,18 +693,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6160870984068674520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3989524376985014186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 222ad7aacaec5b341a93620359b11a82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7750037739268676782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -895,6 +882,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8471225342073021233}
   - component: {fileID: 8521328118779205599}
+  - component: {fileID: 5872299776312254265}
   m_Layer: 0
   m_Name: MiniGame
   m_TagString: Untagged
@@ -1019,6 +1007,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5872299776312254265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4082147492999941175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac66a85573177545aa4c571cedc396e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4254907787677006259
 GameObject:
   m_ObjectHideFlags: 0

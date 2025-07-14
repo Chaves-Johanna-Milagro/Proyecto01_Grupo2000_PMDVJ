@@ -134,6 +134,14 @@ public class DropSprite2_0 : MonoBehaviour //pa zonas de dropeo de obj de los mi
         if (drag) drag.enabled = false;
 
         //////
+        // Cambiar color a negro
+        var sr = obj.GetComponent<SpriteRenderer>();
+        if (sr != null)
+        {
+            Color original = sr.color;
+            sr.color = new Color(original.r * 0.4f, original.g * 0.4f, original.b * 0.4f, original.a);
+        }
+
         if (_audioSource != null) _audioSource.Play();
         /////////
         DropItemStatus.SumarDrop(_mg.GetNameMG());

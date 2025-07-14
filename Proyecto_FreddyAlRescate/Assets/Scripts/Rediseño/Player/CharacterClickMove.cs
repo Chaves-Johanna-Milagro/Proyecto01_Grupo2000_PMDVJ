@@ -17,7 +17,7 @@ public class CharacterClickMove : MonoBehaviour // se encargara de mover al play
         // Verifica si el juego está en pausa antes de procesar el click
         if (PauseStatus.IsPaused) return;
 
-        if (CursorStatusInUI.IsPointerOverUI()) return;
+        //if (CursorStatusInUI.IsPointerOverUI()) return;
 
         if (MiniGameStatus.ActiveMiniGame()) return; // verifica que no este acivo un minijuego
 
@@ -29,7 +29,7 @@ public class CharacterClickMove : MonoBehaviour // se encargara de mover al play
         transform.position = Vector3.MoveTowards(transform.position, _targetPosition, _speed * Time.deltaTime);
 
         // Al llegar, dejar de moverse
-        if (transform.position == _targetPosition)
+        if (transform.position == _targetPosition || CursorStatusInUI.IsPointerOverUI()) //si llega a destino o el cursor esta en la ui
             _isMoving = false;
     }
 

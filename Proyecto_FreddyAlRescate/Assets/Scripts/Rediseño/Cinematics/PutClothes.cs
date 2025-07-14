@@ -10,7 +10,7 @@ public class PutClothes : MonoBehaviour
     private BNotesChecks _check;
     private BKindnessUpDown _kind;
 
-    private bool _isClicked = false;
+   // private bool _isClicked = false;
 
     private AudioSource _audioSource;
     void Start()
@@ -28,7 +28,7 @@ public class PutClothes : MonoBehaviour
         if (CinematicStatus.TieneEstado(gameObject))
         {
             CinematicStatus.RestaurarEstado(gameObject);
-            _isClicked = true; // Ya se había hecho clic antes
+            //_isClicked = true; // Ya se había hecho clic antes
         }
 
         _audioSource = transform.Find("Child").GetComponent<AudioSource>();
@@ -36,7 +36,7 @@ public class PutClothes : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (_isClicked) return;
+      //  if (_isClicked) return;
 
         if (PauseStatus.IsPaused) return;
 
@@ -48,7 +48,9 @@ public class PutClothes : MonoBehaviour
 
         if (CinematicStatus.ActiveCinematic()) return;
 
-        _isClicked = true;
+        //_isClicked = true;
+
+        if(ChecksStatus.IsCheckActive("Morning2.0",1) || ChecksStatus.IsCheckActive("Night2.0", 1)) return; //evitar que se active si su check ya se marco
 
         if (_audioSource != null) _audioSource.Play();
 

@@ -9,7 +9,7 @@ public class MakeBed : MonoBehaviour
     private GameObject _objIncom;
     private GameObject _objCom;
 
-    private bool _isClicked = false;
+   // private bool _isClicked = false;
     private bool _useClothes = false;
 
     private BNotesChecks _check;
@@ -34,7 +34,7 @@ public class MakeBed : MonoBehaviour
         if (CinematicStatus.TieneEstado(gameObject))
         {
             CinematicStatus.RestaurarEstado(gameObject);
-            _isClicked = true;
+           // _isClicked = true;
         }
 
         _check = Object.FindFirstObjectByType<BNotesChecks>();
@@ -53,7 +53,7 @@ public class MakeBed : MonoBehaviour
 
     public void OnMouseDown()
     {
-        if (_isClicked) return;
+       // if (_isClicked) return;
 
         if (PauseStatus.IsPaused) return;
 
@@ -67,11 +67,13 @@ public class MakeBed : MonoBehaviour
 
         string scene = SceneManager.GetActiveScene().name;
 
+
         bool usePJ = ChecksStatus.IsCheckActive("Night2.0", 1); // verificamos si se cambio de ropa usando el check activo/inactivo
   
         if (scene == "Night2.0" && usePJ)
         {
-            SceneManager.LoadScene("Credits");// si se puso el pijama que active 
+            //SceneManager.LoadScene("Credits");// si se puso el pijama que active 
+            StartCoroutine(DelayPaCuest());
             return;
         }
          else if (!usePJ && scene == "Night2.0") _pAttention.AttentionNight(); // sino que le de una advertencia
@@ -80,9 +82,9 @@ public class MakeBed : MonoBehaviour
 
         _useClothes = ChecksStatus.IsCheckActive("Morning2.0", 1);
 
-        if (scene == "Morning2.0")
+        if (scene == "Morning2.0" && !ChecksStatus.IsCheckActive("Morning2.0",0))
         {
-            _isClicked = true;
+            //_isClicked = true;
 
             if (_useClothes && _imgRP != null) _imgRP.SetActive(true);
             else if (!_useClothes && _imgPJ != null) _imgPJ.SetActive(true);
@@ -114,5 +116,14 @@ public class MakeBed : MonoBehaviour
         CinematicStatus.GuardarEstado(gameObject);
 
         _kind?.GoodDecision();
+    }
+
+    private IEnumerator DelayPaCuest()
+    {
+        _pAttention.AttentionEndNight(); //que le tire el mesaje de que va a pasar al cuestionario
+
+        yield return new WaitForSeconds(5f);
+
+        SceneManager.LoadScene("Cuestionario");
     }
 }

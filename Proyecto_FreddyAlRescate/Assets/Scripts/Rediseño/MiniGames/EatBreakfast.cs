@@ -23,6 +23,9 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
     private CursorManager _cursorManager;
 
     private MGBase _mgBase;
+
+    private Vector3 _posOriginalTaza; //pa que rebote luego de usarla
+    private GameObject _taza;
     void Start()
     {
         GameObject parent = transform.parent.gameObject;
@@ -47,6 +50,11 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
 
         GameObject cup = GameObject.Find("TAZA");
         if (cup == null || !cup.activeInHierarchy) _objetosComidos.Add("TAZA");
+        else
+        {
+            _taza = cup;
+            _posOriginalTaza = cup.transform.position;
+        }
 
         GameObject napkin = GameObject.Find("SERVILLETA");
         if (napkin == null || !napkin.activeInHierarchy) _objetosComidos.Add("SERVILLETA");
@@ -115,6 +123,7 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
             {
                 tazaAudio.Play();
             }
+            StartCoroutine(ReboteTaza(comida));
         }
         else
         {
@@ -153,6 +162,33 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
         _terminado = true;
         _comiendo = false;
     }
+
+    private IEnumerator ReboteTaza(GameObject taza)
+    {
+        yield return new WaitForSeconds(1f);
+
+        float dur = 0.4f;
+        float t = 0f;
+
+        Vector3 inicio = taza.transform.position;
+        Vector3 destino = _posOriginalTaza;
+
+        var drag = taza.GetComponent<DragSprite2_0>();
+        if (drag != null) drag.enabled = false;
+
+        while (t < dur)
+        {
+            float smoothT = Mathf.SmoothStep(0, 1, t / dur);
+            float rebote = Mathf.Sin(smoothT * Mathf.PI);
+            taza.transform.position = Vector3.Lerp(inicio, destino, smoothT) + Vector3.up * rebote * 0.1f;
+
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        taza.transform.position = destino;
+    }
+
 
     private void ActivarBoca(string estado)
     {

@@ -76,11 +76,11 @@ public class PlayerAttention : MonoBehaviour
             PlaySound("afton_avisoRopa");
         }
 
-        _text.text = "���CAMBIATE ANTES DE SALIR!!!";
+        _text.text = "¡¡¡CAMBIATE ANTES DE SALIR!!!";
     }
 
    public void AttentionBackpack() // muestra explicacion de mj mochila
-    {
+   {
         for (int i = 0; i < _count; i++) // activar
         {
             _childs[i].SetActive(true);
@@ -88,7 +88,7 @@ public class PlayerAttention : MonoBehaviour
         }
 
         _text.text = "HAY QUE PREPARAR LA MOCHILA! AGARRA LOS UTILES Y PONELOS EN LA MOCHILA. PRESTA ATENCION, HAY COSAS QUE NO SE LLEVAN A LA ESCUELA!";
-    }
+   }
 
     public void AttentionGreet() // pa que le explique al momento de decidir saludar o no
     {
@@ -98,7 +98,7 @@ public class PlayerAttention : MonoBehaviour
             PlaySound("afton_tutorial_saludo");
         }
 
-        _text.text = "ELIGE SALUDAR O NO. \nRECUERDA QUE: \n�ES BUENO TENER MODALES!";
+        _text.text = "ELIGE SALUDAR O NO. \nRECUERDA QUE: \n¡ES BUENO TENER MODALES!";
     }
     public void AttentionSchool() // pa que el jugador sepa que puede tira la basura
     {
@@ -127,7 +127,7 @@ public class PlayerAttention : MonoBehaviour
             PlaySound("afton_recreo");
         }
 
-        _text.text = "MIRA " + PlayerNameStatus.GetplayerName() + "!! \nES HORA DEL RECREO" + "\nAPROVECHA ESTE MOMENTO PARA " + "\nIR AL BA�O O COMPRAR ALGO EN EL KIOSCO";
+        _text.text = "MIRA " + PlayerNameStatus.GetplayerName() + "!! \nES HORA DEL RECREO" + "\nAPROVECHA ESTE MOMENTO PARA " + "\nIR AL BAÑO O COMPRAR ALGO EN EL KIOSCO";
 
         AftonStatus.GuardarEstado(gameObject);
     }
@@ -167,12 +167,29 @@ public class PlayerAttention : MonoBehaviour
             PlaySound("afton_pijama");
         }
 
-        _text.text = "���PONTE EL PIJAMA ANTES DE DORMIR!!!";
+        _text.text = "PONTE EL PIJAMA ANTES DE DORMIR!!!";
     }
 
+    public void AttentionEndNight() // pa que le diga que va a pasar al cuestionario
+    {
+        for (int i = 0; i < _count; i++) // activar
+        {
+            _childs[i].SetActive(true);
+            PlaySound("afton_nv5_cuestionario");
+        }
+
+        _text.text = "ANTES DE DORMIR REPASEMOS LO QUE HEMOS APRENDIDO HOY!!!";
+    }
 
     private void Desactiveobjs()
     {
+        // Detener todos los audios antes de desactivar los hijos
+        AudioSource[] sounds = GetComponents<AudioSource>();
+        foreach (AudioSource sound in sounds)
+        {
+            sound.Stop();
+        }
+
         for (int i = 0; i < _count; i++) // desativar
         {
             _childs[i].SetActive(false);
