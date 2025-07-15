@@ -29,7 +29,7 @@ public class EChooseBeakfast : MonoBehaviour
         for (int i = 0; i < _count; i++)
         {
             _childs[i] = transform.GetChild(i).gameObject;
-            _childs[i].SetActive(true); // activar visualmente
+            _childs[i].SetActive(true); // activar 
         }
 
         _napkin = transform.parent.Find("SERVILLETA").gameObject; //pa servilleta

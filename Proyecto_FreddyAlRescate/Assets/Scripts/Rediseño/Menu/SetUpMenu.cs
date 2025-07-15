@@ -22,7 +22,7 @@ public class SetUpMenu : MonoBehaviour
     }
     public void SaveName()
     {
-        string name = _inputText.text;
+        string name = _inputText.text.ToUpper(); //pa convertirle en mayusculas
 
         PlayerNameStatus.SetPlayerName(name);
 
