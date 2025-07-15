@@ -83,7 +83,7 @@ public class PlayerAttention : MonoBehaviour
             //PlaySound("afton_tutorial_mochila");
         }
 
-        _text.text = "PUEDES ELEGIR LA BEDIDA Y ACOMPAÑAMIENTO QUE MAS TE GUSTE!!!";
+        _text.text = "PUEDES ELEGIR LA BEBIDA Y ACOMPAÑAMIENTO QUE MAS TE GUSTE!!!";
     }
 
     public void AttentionBackpack() // muestra explicacion de mj mochila
