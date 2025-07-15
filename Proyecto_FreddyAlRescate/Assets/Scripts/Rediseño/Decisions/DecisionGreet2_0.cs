@@ -74,7 +74,7 @@ public class DecisionGreet2_0 : MonoBehaviour //lo tiene la puerta que va a wayt
 
         }
 
-        else if (!useRP) _pAttention.AttentionBreackfast(); // sino que le de una advertencia
+        else if (!useRP) _pAttention.AttentionDoorStreet(); // sino que le de una advertencia
        
     }
 

@@ -23,6 +23,8 @@ TagManager:
   - Cinematic
   - Math
   - Question
+  - Food
+  - Drink
   layers:
   - Default
   - TransparentFX

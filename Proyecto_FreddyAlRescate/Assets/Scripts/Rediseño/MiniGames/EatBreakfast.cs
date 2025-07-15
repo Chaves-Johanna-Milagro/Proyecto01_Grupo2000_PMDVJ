@@ -11,21 +11,20 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
     private bool _comiendo = false;
     private bool _terminado = false;
 
-    private HashSet<string> _objetosComidos = new HashSet<string>(); //es como una lista de colliders
+    private HashSet<string> _objetosComidos = new HashSet<string>();
 
     private float _tiempoParaComer = 0.5f;
 
     private BNotesChecks _check;
     private BKindnessUpDown _kind;
+    private CursorManager _cursorManager;
+    private MGBase _mgBase;
 
     private AudioSource _soundEat;
 
-    private CursorManager _cursorManager;
+    private Vector3 _posDrink;
+    private EChooseBeakfast _ecBreak;
 
-    private MGBase _mgBase;
-
-    private Vector3 _posOriginalTaza; //pa que rebote luego de usarla
-    private GameObject _taza;
     void Start()
     {
         GameObject parent = transform.parent.gameObject;
@@ -37,41 +36,15 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
         _check = Object.FindFirstObjectByType<BNotesChecks>();
         _kind = Object.FindFirstObjectByType<BKindnessUpDown>();
 
-        ActivarBoca("default");
+        _cursorManager = Object.FindFirstObjectByType<CursorManager>();
 
-        // Reset de estado
-        _comiendo = false;
-        _terminado = false;
-        _objetosComidos.Clear();
-
-        // Verificar estado de cada objeto
-        GameObject bread = GameObject.Find("PAN");
-        if (bread == null || !bread.activeInHierarchy) _objetosComidos.Add("PAN");
-
-        GameObject cup = GameObject.Find("TAZA");
-        if (cup == null || !cup.activeInHierarchy) _objetosComidos.Add("TAZA");
-        else
-        {
-            _taza = cup;
-            _posOriginalTaza = cup.transform.position;
-        }
-
-        GameObject napkin = GameObject.Find("SERVILLETA");
-        if (napkin == null || !napkin.activeInHierarchy) _objetosComidos.Add("SERVILLETA");
-
-        // Marcar como terminado si ya están los 3 comidos
-        if (_objetosComidos.Contains("PAN") && _objetosComidos.Contains("TAZA") && _objetosComidos.Contains("SERVILLETA"))
-        {
-            _terminado = true;
-        }
+        _mgBase = parent.GetComponentInParent<MGBase>();
 
         _soundEat = GetComponent<AudioSource>();
 
-        _cursorManager = Object.FindFirstObjectByType<CursorManager>();
+        ActivarBoca("default");
 
-        GameObject _par = transform.parent.gameObject;
-
-        _mgBase = _par.GetComponentInParent<MGBase>();
+        _ecBreak = Object.FindFirstObjectByType<EChooseBeakfast>();
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -84,61 +57,64 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
     private void RevisarObjeto(Collider2D other)
     {
         string nombre = other.name;
+        string tag = other.tag;
 
         if (_objetosComidos.Contains(nombre)) return;
 
-        // Primera comida: Bread o Cup
-        if ((_objetosComidos.Count == 0 && (nombre == "PAN" || nombre == "TAZA")) ||
-            (_objetosComidos.Count == 1 && (nombre == "PAN" || nombre == "TAZA") && !_objetosComidos.Contains(nombre)))
+        // Solo se puede usar comida o bebida primero
+        if ((_objetosComidos.Count == 0 && (tag == "Food" || tag == "Drink")) ||
+            (_objetosComidos.Count == 1 && (tag == "Food" || tag == "Drink") && !_objetosComidos.Contains(nombre)))
         {
             StartCoroutine(ComerObjeto(other.gameObject));
         }
 
-        // Napkin solo si ya se comieron Bread y Cup
+        // Servilleta solo si ya se usó comida y bebida
         else if (nombre == "SERVILLETA" &&
-                 _objetosComidos.Contains("PAN") &&
-                 _objetosComidos.Contains("TAZA") &&
+                 _objetosComidos.ExistsWithTag("Food") &&
+                 _objetosComidos.ExistsWithTag("Drink") &&
                  !_objetosComidos.Contains("SERVILLETA"))
         {
             StartCoroutine(LimpiarBocaConNapkin(other.gameObject));
         }
     }
 
-    private IEnumerator ComerObjeto(GameObject comida)
+    private IEnumerator ComerObjeto(GameObject obj)
     {
         _comiendo = true;
 
         yield return new WaitForSeconds(_tiempoParaComer);
         ActivarBoca("open");
 
-        _cursorManager?.SetCursorDrop(); // cursor de dropeo
+        _cursorManager?.SetCursorDrop();
 
         yield return new WaitForSeconds(0.3f);
         ActivarBoca("close");
 
-        if (comida.name == "TAZA") //pa que suene el de sorbo
+        if (obj.CompareTag("Drink"))
         {
-            AudioSource tazaAudio = comida.GetComponent<AudioSource>();
-            if (tazaAudio != null)
-            {
-                tazaAudio.Play();
-            }
-            StartCoroutine(ReboteTaza(comida));
+            // Guardar la posición original de la bebida antes del rebote
+            _posDrink = _ecBreak.GetPosDrink();
+
+            AudioSource bebidaAudio = obj.GetComponent<AudioSource>();
+            if (bebidaAudio != null) bebidaAudio.Play();
+
+            StartCoroutine(ReboteBebida(obj));
         }
-        else
+        else // Si es comida
         {
-            _soundEat?.Play(); // sonido general solo si NO es la taza
-            comida.SetActive(false); // solo desactivar si no es la taza
+            _soundEat?.Play();
+            obj.SetActive(false);
         }
 
-        _cursorManager?.SetCursorDefault(); // cursor por defecto
+        _cursorManager?.SetCursorDefault();
 
         yield return new WaitForSeconds(0.3f);
         ActivarBoca("default");
 
-        _objetosComidos.Add(comida.name);
+        _objetosComidos.Add(obj.name);
         _comiendo = false;
     }
+
     private IEnumerator LimpiarBocaConNapkin(GameObject napkin)
     {
         _comiendo = true;
@@ -152,43 +128,48 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
         napkin.SetActive(false);
         _objetosComidos.Add("SERVILLETA");
 
-        _check.Check1(); // marcar minijuego como completado
-        _kind.GoodDecision(); // sube la barrita
-
-        _cursorManager?.SetCursorDefault(); //cursor por defecto
-
-        _mgBase.ExitMiniGame();//Se cierre el miniguejo una vez terminado
+        _check.Check1();
+        _kind.GoodDecision();
+        _cursorManager?.SetCursorDefault();
+        _mgBase.ExitMiniGame();
 
         _terminado = true;
         _comiendo = false;
     }
 
-    private IEnumerator ReboteTaza(GameObject taza)
+    private IEnumerator ReboteBebida(GameObject bebida)
     {
         yield return new WaitForSeconds(1f);
 
         float dur = 0.4f;
         float t = 0f;
 
-        Vector3 inicio = taza.transform.position;
-        Vector3 destino = _posOriginalTaza;
+        Vector3 inicio = bebida.transform.position;
+        Vector3 destino = _posDrink;
 
-        var drag = taza.GetComponent<DragSprite2_0>();
+        var drag = bebida.GetComponent<DragSprite2_0>();
         if (drag != null) drag.enabled = false;
 
         while (t < dur)
         {
             float smoothT = Mathf.SmoothStep(0, 1, t / dur);
             float rebote = Mathf.Sin(smoothT * Mathf.PI);
-            taza.transform.position = Vector3.Lerp(inicio, destino, smoothT) + Vector3.up * rebote * 0.1f;
+            bebida.transform.position = Vector3.Lerp(inicio, destino, smoothT) + Vector3.up * rebote * 0.1f;
 
             t += Time.deltaTime;
             yield return null;
         }
 
-        taza.transform.position = destino;
-    }
+        bebida.transform.position = destino;
 
+        if (bebida.name == "LICUADO")//
+        {
+            GameObject licTerminado = transform.parent.Find("LICUADO TERMINADO").gameObject;
+            if (licTerminado != null) licTerminado.SetActive(true);
+
+            bebida.SetActive(false);
+        }
+    }
 
     private void ActivarBoca(string estado)
     {
@@ -196,4 +177,17 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
         _mouthOpen.SetActive(estado == "open");
         _mouthClose.SetActive(estado == "close");
     }
+
 }
+    public static class BreakfastExtensions
+    {
+        public static bool ExistsWithTag(this HashSet<string> objetosComidos, string tag)
+        {
+            foreach (GameObject obj in GameObject.FindGameObjectsWithTag(tag))
+            {
+                if (!obj.activeInHierarchy || objetosComidos.Contains(obj.name)) continue;
+                return false;
+            }
+            return true;
+        }
+    }
