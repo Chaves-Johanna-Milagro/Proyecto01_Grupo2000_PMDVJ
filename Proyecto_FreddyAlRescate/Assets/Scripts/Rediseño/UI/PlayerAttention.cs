@@ -46,10 +46,6 @@ public class PlayerAttention : MonoBehaviour
         {
             AttentionSchool();
         }
-        /*if (SceneManager.GetActiveScene().name == "Recess2.0" && !AftonStatus.TieneEstado(gameObject))
-        {
-            AttentionRecess();
-        }*/
 
         if (SceneManager.GetActiveScene().name == "Night2.0" && !AftonStatus.TieneEstado(gameObject))
         {
@@ -68,7 +64,7 @@ public class PlayerAttention : MonoBehaviour
         _text.text = "AGARRA Y ARRASTRA EL CEPILLO PARA LIMPIAR TUS DIENTES!";
     }
 
-    public void AttentionBreackfast() // pa que le de una dvertencia de q se cambie pa pasr al sig lvl
+    public void AttentionDoorStreet() // pa que le de una dvertencia de q se cambie pa pasr al sig lvl
     {
         for (int i = 0; i < _count; i++) // activar
         {
@@ -79,7 +75,18 @@ public class PlayerAttention : MonoBehaviour
         _text.text = "¡¡¡CAMBIATE ANTES DE SALIR!!!";
     }
 
-   public void AttentionBackpack() // muestra explicacion de mj mochila
+    public void AttentionBreackfast() // muestra explicacion de mj desayuno
+    {
+        for (int i = 0; i < _count; i++) // activar
+        {
+            _childs[i].SetActive(true);
+            //PlaySound("afton_tutorial_mochila");
+        }
+
+        _text.text = "ELIGE EL DESAYUNO QUE PREFIERAS!!!";
+    }
+
+    public void AttentionBackpack() // muestra explicacion de mj mochila
    {
         for (int i = 0; i < _count; i++) // activar
         {
