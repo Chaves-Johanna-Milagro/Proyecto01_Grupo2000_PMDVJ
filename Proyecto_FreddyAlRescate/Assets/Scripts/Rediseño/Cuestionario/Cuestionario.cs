@@ -1,19 +1,17 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Cuestionario : MonoBehaviour
 {
     private List<Asks> _asksPendientes = new List<Asks>(); // Lista de Asks no mostrados
-                                                           
-    // Contadores de respuestas
-    private int _correctas = 0;
-    private int _incorrectas = 0;
-
+    
     // Máximo de preguntas que se pueden mostrar 
     private int _maxPreguntas = 5;
 
     void Start()
     {
+
         // Reunimos todos los Asks hijos y los desactivamos
         List<Asks> todosLosAsks = new List<Asks>();
         foreach (Transform child in transform)
@@ -46,7 +44,8 @@ public class Cuestionario : MonoBehaviour
         if (_asksPendientes.Count == 0)
         {
             Debug.Log("¡Cuestionario terminado!");
-            Debug.Log("Correctas: " + _correctas + " | Incorrectas: " + _incorrectas);
+            //Debug.Log("Correctas: " + _correctas + " | Incorrectas: " + _incorrectas);
+            SceneManager.LoadScene("CResultado");
             return;
         }
 
@@ -62,12 +61,14 @@ public class Cuestionario : MonoBehaviour
     {
         if (esCorrecta)
         {
-            _correctas++; 
+            ResultStatus.Correct++; 
             PlaySound("SoundSuccess");
+            Debug.Log(ResultStatus.GetCorrects());
         }
         else {
-            _incorrectas++;
+            ResultStatus.Incorrect++;
             PlaySound("SoundError");
+            Debug.Log(ResultStatus.GetIncorrects());
         }
     }
 

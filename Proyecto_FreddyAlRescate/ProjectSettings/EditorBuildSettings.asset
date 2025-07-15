@@ -83,6 +83,12 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/Scenes/Redise\xF1o/Credits.unity"
     guid: 69652fc39de2875449ffa639d87a3c2d
+  - enabled: 1
+    path: "Assets/Scenes/Redise\xF1o/Menu2.0.unity"
+    guid: 9609ff9e1f1a0df47b066a61acd57b6b
+  - enabled: 1
+    path: "Assets/Scenes/Redise\xF1o/CResultado.unity"
+    guid: 2da99c07e96be244f8bd9b5b3b53ba81
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
