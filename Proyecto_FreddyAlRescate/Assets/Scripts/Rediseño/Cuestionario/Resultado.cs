@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Resultado : MonoBehaviour
 {
@@ -15,27 +17,42 @@ public class Resultado : MonoBehaviour
         _result4 = transform.Find("R4").gameObject;
 
         int correctas = ResultStatus.GetCorrects();
-        int incorrectas = ResultStatus.GetIncorrects();
+        int totalPreguntas = 5;
 
-        // Priorizamos el orden para que no se superpongan
-        if (correctas == 1 || incorrectas == 5)
+        //Porcentaje de respuestas correctas
+        float porcentajeQuiz = (float)correctas / totalPreguntas;
+
+        //Porcentaje de amabilidad (posición de la barra)
+        float porcentajeBarra = KindnessStatus.GetKindnessPercent();
+
+        //Promedio final
+        float promedioFinal = (porcentajeQuiz + porcentajeBarra) / 2f;
+
+        Debug.Log($"Quiz: {porcentajeQuiz}, Barra: {porcentajeBarra}, Promedio final: {promedioFinal}");
+
+        //Evaluación combinada
+        if (promedioFinal < 0.3f)
         {
             _result1.SetActive(true);
         }
-        else if (correctas == 2 || incorrectas == 3)
+        else if (promedioFinal < 0.55f)
         {
             _result2.SetActive(true);
         }
-        else if (correctas == 3 || (incorrectas == 2 && correctas < 4))
+        else if (promedioFinal < 0.8f)
         {
-            // Solo mostramos R3 si no hay 4 o más correctas (para que no se solape con R4)
             _result3.SetActive(true);
         }
-        else if (correctas >= 4 || incorrectas == 1 || (incorrectas == 2 && correctas >= 4))
+        else
         {
             _result4.SetActive(true);
         }
+        StartCoroutine(DelayCredits());
     }
 
-   
+    private IEnumerator DelayCredits()
+    {
+        yield return new WaitForSeconds(10f);
+        SceneManager.LoadScene("Credits");
+    }
 }
