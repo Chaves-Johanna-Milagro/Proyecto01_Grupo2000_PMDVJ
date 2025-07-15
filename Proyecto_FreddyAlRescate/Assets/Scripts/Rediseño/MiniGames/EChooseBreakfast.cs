@@ -17,6 +17,9 @@ public class EChooseBeakfast : MonoBehaviour
     private bool _foodReady = false;
     private bool _drinkReady = false;
 
+    private GameObject _napkin;
+    private PlayerAttention _pAttention;
+
     void Start()
     {
         _count = transform.childCount;
@@ -28,6 +31,15 @@ public class EChooseBeakfast : MonoBehaviour
             _childs[i] = transform.GetChild(i).gameObject;
             _childs[i].SetActive(true); // activar visualmente
         }
+
+        _napkin = transform.parent.Find("SERVILLETA").gameObject; //pa servilleta
+        _napkin.SetActive(true);
+
+        Collider2D colNap = _napkin.GetComponent<Collider2D>(); //desactivamo su collider pa que no se pueda arrastra
+        if (colNap != null) colNap.enabled = false;
+
+        _pAttention = Object.FindFirstObjectByType<PlayerAttention>();
+        _pAttention.AttentionBreackfast(); // activa el cartel explicacion del mj desayuno
     }
 
     public void SelectFood(string foodName)
@@ -78,6 +90,7 @@ public class EChooseBeakfast : MonoBehaviour
             Collider2D col = obj.GetComponent<Collider2D>();
             if (col != null) col.enabled = false;
 
+
             return obj;
         }
 
@@ -112,6 +125,9 @@ public class EChooseBeakfast : MonoBehaviour
         {
             _childs[i].SetActive(false);
         }
+
+        Collider2D colNap = _napkin.GetComponent<Collider2D>(); // activar el collider de la servilleta
+        if (colNap != null) colNap.enabled = true;
     }
 
     public Vector3 GetPosFood() => _posFood;

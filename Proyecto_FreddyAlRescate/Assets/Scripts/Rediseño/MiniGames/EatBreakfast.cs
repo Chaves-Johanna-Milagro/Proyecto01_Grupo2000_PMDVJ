@@ -161,6 +161,14 @@ public class EatBreakfast : MonoBehaviour // este script lo tiene mout de miniju
         }
 
         bebida.transform.position = destino;
+
+        if (bebida.name == "LICUADO")//
+        {
+            GameObject licTerminado = transform.parent.Find("LICUADO TERMINADO").gameObject;
+            if (licTerminado != null) licTerminado.SetActive(true);
+
+            bebida.SetActive(false);
+        }
     }
 
     private void ActivarBoca(string estado)
