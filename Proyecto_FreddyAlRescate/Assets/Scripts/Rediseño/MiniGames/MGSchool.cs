@@ -93,9 +93,18 @@ public class MGSchool : MonoBehaviour
             transform.Find("ArrowRight").gameObject.SetActive(false);
             transform.Find("ArrowLeft").gameObject.SetActive(false);
             _check.Check1();
+            _kind.MiniGoodDecision();//como son obligatorios que no suba tanto la barrita
         }
-        else if (_nombre == "Dados") _check.Check2();
-        else if (_nombre == "Puzzle") _check.Check3();
+        else if (_nombre == "Dados")
+        {
+            _check.Check2();
+            _kind.MiniGoodDecision();
+        }
+        else if (_nombre == "Puzzle")
+        {
+            _check.Check3();
+            _kind.MiniGoodDecision();
+        }
 
         _cursor?.SetCursorDefault();
         MiniGameStatus.GuardarEstado(gameObject);

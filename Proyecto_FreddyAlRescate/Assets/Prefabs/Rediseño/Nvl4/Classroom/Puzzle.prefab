@@ -7268,7 +7268,7 @@ GameObject:
   - component: {fileID: 176217976549715725}
   - component: {fileID: 8737925875047880296}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Recuadro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
