@@ -15,6 +15,7 @@ public class BOmitir : MonoBehaviour
 
     private void Next(string scene)
     {
-        if(scene == "Intro2.0") SceneManager.LoadScene("Tutorial");
+        if(scene == "Intro2.0") SceneManager.LoadScene("Tutorial2.0");
+        if(scene == "Tutorial2.0") SceneManager.LoadScene("Morning2.0");
     }
 }

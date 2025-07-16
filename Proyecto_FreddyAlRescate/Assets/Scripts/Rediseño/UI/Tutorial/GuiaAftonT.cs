@@ -34,6 +34,8 @@ public class GuiaAftonT : MonoBehaviour
     private AudioSource[] _aGuias; //audios guia
 
     private bool _isGuiaActive = true; //pa que los botones desactiven sus hijos cuando se activen las explicaciones
+
+    private int _countAnims = 0; // para ver en cual animacion debe estar
     void Start()
     {
         _img = transform.Find("Background").gameObject;
@@ -64,13 +66,14 @@ public class GuiaAftonT : MonoBehaviour
 
         for (int i = 1; i < 3; i++) // guia pal movimiento
         {
+            _countAnims++; //pa setear el numero de animaciones 
             _isGuiaActive = true; //que se desactiven los hijos de los bototnes UI
 
             _img.SetActive(true); // Mostrar fondo
             _gText.text = _guiasText[i]; // Mostrar texto
             _aGuias[i].Play(); //reproducir audio
 
-            yield return new WaitForSeconds(8f); // Tiempo de lectura
+            yield return new WaitForSeconds(7f); // Tiempo de lectura
 
             _isGuiaActive = false; //que se puedan activer los hijos de los bototnes UI
 
@@ -80,23 +83,25 @@ public class GuiaAftonT : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
+        _countAnims++; //pa setear el numero de animaciones
         _isGuiaActive = true; //que se desactiven los hijos de los bototnes UI
 
         _img.SetActive(true);
         _gText.text = _guiasText[3];//pa mostra el mnsaje de como funcionan los botones
         _aGuias[3].Play(); //reproducir audio
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
 
         for (int i = 4; i < _guiasText.Length; i++) //continuar con la guia de los botones y terminar con la despedida
         {
+            _countAnims++; //pa setear el numero de animaciones 
             _isGuiaActive = true; //que se desactiven los hijos de los bototnes UI
 
             _img.SetActive(true); // Mostrar fondo
             _gText.text = _guiasText[i]; // Mostrar texto
             _aGuias[i].Play(); //reproducir audio
 
-            yield return new WaitForSeconds(8f); // Tiempo de lectura
+            yield return new WaitForSeconds(7f); // Tiempo de lectura
 
             _isGuiaActive = false; //que se puedan activer los hijos de los bototnes UI
 
@@ -109,4 +114,5 @@ public class GuiaAftonT : MonoBehaviour
     }
 
     public bool IsActiveGuia() { return _isGuiaActive; } //
+    public int GetCurrentAnim() { return _countAnims; } //
 }
