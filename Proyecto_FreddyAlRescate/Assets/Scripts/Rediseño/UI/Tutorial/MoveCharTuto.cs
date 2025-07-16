@@ -16,7 +16,8 @@ public class MoveCharTuto : MonoBehaviour
     {
         if (!_canMove) return;
 
-        if (PauseStatus.IsPaused) return;
+        if (PauseStatus.IsPaused) return; 
+        //if (CursorStatusInUI.IsPointerOverUI()) return;
         if (MiniGameStatus.ActiveMiniGame()) return;
         if (CinematicStatus.ActiveCinematic()) return;
         if (DecisionStatus.ActiveDecision()) return;
