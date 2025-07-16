@@ -11,6 +11,8 @@ public class BNotesT : MonoBehaviour //pa la libreta del tutorial
     private Button _bNotes;
 
     private GameObject _check1; // pa mostra q se marca un check al cumplir on objetivo
+
+    private GuiaAftonT _gAftonT;
     void Start()
     {
         _count = transform.childCount;
@@ -28,10 +30,12 @@ public class BNotesT : MonoBehaviour //pa la libreta del tutorial
         Transform childCheck = transform.Find("Check1");
         _check1 = childCheck.transform.Find("Image").gameObject;
         _check1.SetActive(false);
+
+        _gAftonT = Object.FindFirstObjectByType<GuiaAftonT>();
     }
     private void Update()
     {
-        if (PauseStatus.IsPaused && _isActive)
+        if (_gAftonT.IsActiveGuia() && _isActive)
         {
             _isActive = false;
             StopSound("ButtonNotes");

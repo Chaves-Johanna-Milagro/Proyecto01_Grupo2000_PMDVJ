@@ -10,6 +10,8 @@ public class BPauseT : MonoBehaviour
 
     private Button _bNotes;
 
+    private GuiaAftonT _gAftonT;
+
     void Start()
     {
         _count = transform.childCount;
@@ -23,10 +25,12 @@ public class BPauseT : MonoBehaviour
 
         _bNotes = GetComponent<Button>();
         _bNotes.onClick.AddListener(Toggle);
+
+        _gAftonT = Object.FindFirstObjectByType<GuiaAftonT>();
     }
     private void Update()
     {
-        if (PauseStatus.IsPaused && _isActive)
+        if (_gAftonT.IsActiveGuia() && _isActive)
         {
             _isActive = false;
             Objts(false);

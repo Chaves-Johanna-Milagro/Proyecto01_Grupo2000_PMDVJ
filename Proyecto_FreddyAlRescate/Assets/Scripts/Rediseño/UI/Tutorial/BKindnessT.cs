@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEngine.InputManagerEntry;
 
 public class BKindnessT : MonoBehaviour //pa la barrita de amabilidad del tutorial
 {
@@ -14,6 +15,8 @@ public class BKindnessT : MonoBehaviour //pa la barrita de amabilidad del tutori
 
     private Vector2 _posNow;
     private float _amount = 50f;
+
+    private GuiaAftonT _gAftonT;
     void Start()
     {
         _count = transform.childCount;
@@ -31,10 +34,12 @@ public class BKindnessT : MonoBehaviour //pa la barrita de amabilidad del tutori
         _nowBar = transform.Find("Now").GetComponent<RectTransform>();
 
         _posNow = _nowBar.anchoredPosition;
+
+        _gAftonT = Object.FindFirstObjectByType<GuiaAftonT>();
     }
     private void Update()
     {
-        if (PauseStatus.IsPaused && _isActive)
+        if (_gAftonT.IsActiveGuia() && _isActive)
         {
             _isActive = false;
             StopSound("ButtonKindness");

@@ -29,7 +29,11 @@ public class GuiaAftonT : MonoBehaviour
         "YO TAMBIEN ESTOY AQUI SI LO NECESITAS",//audio tuto4
         
         "ESO ES TODO BUENA SUERTE"//audio tuto9
-    };    
+    };
+
+    private AudioSource[] _aGuias; //audios guia
+
+    private bool _isGuiaActive = true; //pa que los botones desactiven sus hijos cuando se activen las explicaciones
     void Start()
     {
         _img = transform.Find("Background").gameObject;
@@ -48,19 +52,27 @@ public class GuiaAftonT : MonoBehaviour
 
         _gText.text = _guiasText[0];//pa mostra la presentacion de afton
 
+        _aGuias = GetComponents<AudioSource>();// pa los audios
+
         StartCoroutine(DelayGuia());
     }
 
     private IEnumerator DelayGuia()
     {
+        _aGuias[0].Play();//reproducir audio de presentacion
         yield return new WaitForSeconds(3f);
 
-        for (int i = 1; i < 3; i++)
+        for (int i = 1; i < 3; i++) // guia pal movimiento
         {
+            _isGuiaActive = true; //que se desactiven los hijos de los bototnes UI
+
             _img.SetActive(true); // Mostrar fondo
             _gText.text = _guiasText[i]; // Mostrar texto
+            _aGuias[i].Play(); //reproducir audio
 
             yield return new WaitForSeconds(8f); // Tiempo de lectura
+
+            _isGuiaActive = false; //que se puedan activer los hijos de los bototnes UI
 
             _img.SetActive(false); // Ocultar fondo unos segundos (como respiro)
             yield return new WaitForSeconds(4f); // Pausa entre frases
@@ -68,17 +80,25 @@ public class GuiaAftonT : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
+        _isGuiaActive = true; //que se desactiven los hijos de los bototnes UI
+
         _img.SetActive(true);
-        _gText.text = _guiasText[3];//pa mostra la presentacion de afton
+        _gText.text = _guiasText[3];//pa mostra el mnsaje de como funcionan los botones
+        _aGuias[3].Play(); //reproducir audio
 
         yield return new WaitForSeconds(2f);
 
-        for (int i = 4; i < _guiasText.Length; i++)
+        for (int i = 4; i < _guiasText.Length; i++) //continuar con la guia de los botones y terminar con la despedida
         {
+            _isGuiaActive = true; //que se desactiven los hijos de los bototnes UI
+
             _img.SetActive(true); // Mostrar fondo
             _gText.text = _guiasText[i]; // Mostrar texto
+            _aGuias[i].Play(); //reproducir audio
 
             yield return new WaitForSeconds(8f); // Tiempo de lectura
+
+            _isGuiaActive = false; //que se puedan activer los hijos de los bototnes UI
 
             _img.SetActive(false); // Ocultar fondo unos segundos (como respiro)
             yield return new WaitForSeconds(4f); // Pausa entre frases
@@ -88,4 +108,5 @@ public class GuiaAftonT : MonoBehaviour
         SceneManager.LoadScene("Morning2.0");
     }
 
+    public bool IsActiveGuia() { return _isGuiaActive; } //
 }
