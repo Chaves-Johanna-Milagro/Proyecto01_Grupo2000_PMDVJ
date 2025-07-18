@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BKindnessUpDown : MonoBehaviour
 {
@@ -21,46 +22,45 @@ public class BKindnessUpDown : MonoBehaviour
         _nowBar.anchoredPosition = newPos;
     }
 
-  /*  public void Update()//prueba de funcionamiento
+    public void Update()//prueba de funcionamiento
     {
-        if (Input.GetMouseButtonDown(0)) GoodDecision();
-        if (Input.GetMouseButtonDown(1)) BadDecision();
-    }*/
+          //if (Input.GetMouseButtonDown(0)) GoodDecision();
+          //if (Input.GetMouseButtonDown(1)) BadDecision();
+    }
 
     public void GoodDecision()
     {
-        Vector2 newPos = _nowBar.anchoredPosition + new Vector2(0f,_amount );
-        newPos.y = Mathf.Clamp(newPos.y, _minY, _maxY);
-        _nowBar.anchoredPosition = newPos;
-
-        KindnessStatus.SetNowBarY(newPos.y); // Guardar la nueva posicion
+        MoverBarra(_amount);
     }
 
     public void MiniGoodDecision()
     {
-        Vector2 newPos = _nowBar.anchoredPosition + new Vector2(0f, _minAmount);
-        newPos.y = Mathf.Clamp(newPos.y, _minY, _maxY);
-        _nowBar.anchoredPosition = newPos;
-
-        KindnessStatus.SetNowBarY(newPos.y); // Guardar la nueva posicion
+        MoverBarra(_minAmount);
     }
-
 
     public void BadDecision()
     {
-        Vector2 newPos = _nowBar.anchoredPosition + new Vector2(0f, -_amount);
-        newPos.y = Mathf.Clamp(newPos.y, _minY, _maxY);
-        _nowBar.anchoredPosition = newPos;
-
-        KindnessStatus.SetNowBarY(newPos.y); // Guardar la nueva posicion
+        MoverBarra(-_amount);
     }
 
     public void MiniBadDecision()
     {
-        Vector2 newPos = _nowBar.anchoredPosition + new Vector2(0f, -_minAmount);
+        MoverBarra(-_minAmount);
+    }
+
+    private void MoverBarra(float deltaY)
+    {
+        Vector2 newPos = _nowBar.anchoredPosition + new Vector2(0f, deltaY);
         newPos.y = Mathf.Clamp(newPos.y, _minY, _maxY);
         _nowBar.anchoredPosition = newPos;
 
-        KindnessStatus.SetNowBarY(newPos.y); // Guardar la nueva posicion
+        KindnessStatus.SetNowBarY(newPos.y); // Guardar la nueva posición
+
+        // Si llega al límite inferior, cargar GameOver
+        if (Mathf.Approximately(newPos.y, _minY))
+        {
+            Debug.Log("GameOver...");
+            SceneManager.LoadScene("GameOver");
+        }
     }
 }
