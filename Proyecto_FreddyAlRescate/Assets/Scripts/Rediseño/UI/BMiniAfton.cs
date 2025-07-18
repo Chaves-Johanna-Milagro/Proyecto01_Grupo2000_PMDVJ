@@ -162,7 +162,7 @@ public class BMiniAfton : MonoBehaviour
     {
         if (_sceneName == "Morning2.0") ConcejosNvl1();
         else if (_sceneName == "Breackfast2.0") ConcejosNvl2();
-        else if (_sceneName == "WayToSchool2.0") ConcejosNvl3();
+        else if (_sceneName == "WayToSchool2.0" || _sceneName == "Street2.0") ConcejosNvl3();
         else if (_sceneName == "School2.0" || _sceneName == "Classroom2.0") ConcejosNvl4();
         else if (_sceneName == "Recess2.0" || _sceneName == "Playground2.0") ConcejosRecreo();
     }
