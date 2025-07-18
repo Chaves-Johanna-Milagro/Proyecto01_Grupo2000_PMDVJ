@@ -12,4 +12,10 @@ public static class PauseStatus
         _isPaused = pause;
         Time.timeScale = pause ? 0f : 1f;
     }
+
+    public static void ResetPause()
+    {
+        _isPaused = false;
+        Time.timeScale = 1f; // Asegura que el tiempo vuelve a correr
+    }
 }
