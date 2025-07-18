@@ -34,7 +34,7 @@ public class CStreet : MonoBehaviour
 
         _isCliked = true;
 
-        CrossStreet.SetStep();
+        CrossStreetStatus.SetStep();
 
         StartCoroutine(DelayPaCinematic());
     }
@@ -45,11 +45,11 @@ public class CStreet : MonoBehaviour
         yield return new WaitForSeconds(5f);
         _img.SetActive(false);
         //yield return new WaitForSeconds(0.1f);
-        _pAttention.AttentionCrossStreet(gameObject.name,CrossStreet.GetStep());
+        _pAttention.AttentionCrossStreet(gameObject.name,CrossStreetStatus.GetStep());
     }
 }
 
-public static class CrossStreet
+public static class CrossStreetStatus
 {
     private static int step = 0;
     
@@ -60,4 +60,9 @@ public static class CrossStreet
     }
 
     public static int GetStep() {  return step; }
+
+    public static void ResetStep()
+    {
+        step = 0;
+    }
 }

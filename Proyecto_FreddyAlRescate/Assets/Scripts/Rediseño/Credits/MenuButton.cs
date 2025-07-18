@@ -22,6 +22,7 @@ public class MenuButton : MonoBehaviour //script del boton de menu de los credit
         KindnessStatus.ResetKindness();
         CinematicStatus.ResetCinematicStatus();
         DecisionStatus.ResetDecisionStatus();
+        CrossStreetStatus.ResetStep();
         RecessStatus.ResetRecessStatus();
         PauseStatus.ResetPause();
 
