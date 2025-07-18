@@ -92,6 +92,9 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/Scenes/Redise\xF1o/Tutorial2.0.unity"
     guid: 347e70d1d7ab9e3449aa3234a54fcf1c
+  - enabled: 1
+    path: "Assets/Scenes/Redise\xF1o/GameOver.unity"
+    guid: ec2c9ec6de41c1f478228318ac7e4ea2
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

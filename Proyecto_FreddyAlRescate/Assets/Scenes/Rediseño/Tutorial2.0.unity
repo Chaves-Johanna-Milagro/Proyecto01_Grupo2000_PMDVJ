@@ -692,18 +692,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1510830233736781790, guid: 820869c938c83624792d2bcfa140c106, type: 3}
-      propertyPath: m_fontColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1510830233736781790, guid: 820869c938c83624792d2bcfa140c106, type: 3}
-      propertyPath: m_fontColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1510830233736781790, guid: 820869c938c83624792d2bcfa140c106, type: 3}
-      propertyPath: m_fontColor.r
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5551075421632564302, guid: 820869c938c83624792d2bcfa140c106, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -783,22 +771,6 @@ PrefabInstance:
     - target: {fileID: 5551075421632564302, guid: 820869c938c83624792d2bcfa140c106, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5865999823862099623, guid: 820869c938c83624792d2bcfa140c106, type: 3}
-      propertyPath: m_fontColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5865999823862099623, guid: 820869c938c83624792d2bcfa140c106, type: 3}
-      propertyPath: m_fontColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5865999823862099623, guid: 820869c938c83624792d2bcfa140c106, type: 3}
-      propertyPath: m_fontColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5865999823862099623, guid: 820869c938c83624792d2bcfa140c106, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4278190080
       objectReference: {fileID: 0}
     - target: {fileID: 9094831239838911006, guid: 820869c938c83624792d2bcfa140c106, type: 3}
       propertyPath: m_Name
