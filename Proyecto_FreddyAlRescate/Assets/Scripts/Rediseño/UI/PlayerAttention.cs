@@ -107,6 +107,38 @@ public class PlayerAttention : MonoBehaviour
 
         _text.text = "ELIGE SALUDAR O NO. \nRECUERDA QUE: \n¡ES BUENO TENER MODALES!";
     }
+
+    public void AttentionCrossStreet(string bClick, int step) // pa que le felicite cuando cruze correctamente
+    {
+        for (int i = 0; i < _count; i++) // activar
+        {
+            _childs[i].SetActive(true);
+        }
+
+        if (bClick == "BLookTraffic")
+        {
+            _text.text = "MUY BIEN!! \n¡MIRAR EL SEMAFORO \nES IMPORTANTE PARA CRUZAR SEGURO!";
+            PlaySound("afton_semaforo_1");
+        }
+        if (bClick == "BLookSides")
+        {
+            _text.text = "EXCELENTE!! \n¡MIRAR A AMBOS LADOS \nEVITA ACCIDENTES!";
+            PlaySound("afton_semaforo_2");
+        }
+        if (bClick == "BCross" && (step == 1 || step == 2)) 
+        {
+            _text.text = "...";
+            SceneManager.LoadScene("GameOver"); 
+        }
+        if (bClick == "BCross" && step == 3)
+        {
+            _text.text = "¡MUY BIEN HECHO!"; 
+            PlaySound("MUY BIEN HECHO");
+        }
+
+
+    }
+
     public void AttentionSchool() // pa que el jugador sepa que puede tira la basura
     {
         if (_isShow) return;

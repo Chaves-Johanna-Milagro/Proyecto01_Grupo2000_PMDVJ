@@ -60,7 +60,7 @@ public class ChangeRoom : MonoBehaviour
         if (_roomName == "DoorPatio" && SceneManager.GetActiveScene().name == "Recess2.0") SceneManager.LoadScene("Playground2.0"); // aquella que te dirige al patio de la escuela en el recreo
 
         //de momento se saltara el mg de la sube
-        if (_roomName == "TrafficLight") SceneManager.LoadScene("MainStreet"); // aquella que te dirige a la entrada de la escuela
+        if (_roomName == "TrafficLight") SceneManager.LoadScene("Street2.0"); // aquella que te dirige a la entrada de la escuela
 
         if (_roomName == "DoorClassroom" && SceneManager.GetActiveScene().name == "School2.0") StartCoroutine(DelayPaCheck()); // aqulla que te dirige al aula
 

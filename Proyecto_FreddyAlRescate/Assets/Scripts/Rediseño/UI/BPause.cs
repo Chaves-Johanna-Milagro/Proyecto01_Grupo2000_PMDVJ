@@ -75,6 +75,7 @@ public class BPause : MonoBehaviour
         KindnessStatus.ResetKindness();
         CinematicStatus.ResetCinematicStatus();
         DecisionStatus.ResetDecisionStatus();
+        CrossStreetStatus.ResetStep();
         RecessStatus.ResetRecessStatus();
         PauseStatus.ResetPause();
 
