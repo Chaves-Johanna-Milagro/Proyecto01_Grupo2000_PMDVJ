@@ -128,6 +128,7 @@ public class PlayerAttention : MonoBehaviour
         if (bClick == "BCross" && (step == 1 || step == 2)) 
         {
             _text.text = "...";
+            GameOverStatus.MotiveCross();
             SceneManager.LoadScene("GameOver"); 
         }
         if (bClick == "BCross" && step == 3)

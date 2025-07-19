@@ -20,6 +20,8 @@ public class CStreetChar : MonoBehaviour
     private bool _isCompleted = false;
     private bool _isIncompleted = true;
 
+    private BKindnessUpDown _kind;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -35,6 +37,7 @@ public class CStreetChar : MonoBehaviour
         _bGreet = transform.Find("BGreet").gameObject;
         _bDontGreet = transform.Find("BDontGreet").gameObject;
 
+        _kind = Object.FindFirstObjectByType<BKindnessUpDown>();
     }
 
     // Update is called once per frame
@@ -76,6 +79,7 @@ public class CStreetChar : MonoBehaviour
             if (globo != null) globo.SetActive(true);
 
             Debug.Log("no se saludo");
+            _kind.BadDecision();
 
             StartCoroutine(DelayMGsube());
         }

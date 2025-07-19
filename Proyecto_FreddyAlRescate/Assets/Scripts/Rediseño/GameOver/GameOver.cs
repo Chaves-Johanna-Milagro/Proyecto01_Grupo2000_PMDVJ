@@ -8,6 +8,7 @@ public class GameOver : MonoBehaviour
     private Button _bMenu;
     private Button _bExit;
 
+    private AudioSource[] _audios;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,6 +17,11 @@ public class GameOver : MonoBehaviour
 
         _bMenu.onClick.AddListener(ReturnMenu);
         _bExit.onClick.AddListener(ExitGame);
+
+        _audios = GetComponents<AudioSource>();
+
+        if(GameOverStatus.GetMotive() == "Cross") _audios[0].Play();
+        if(GameOverStatus.GetMotive() == "DownBar") _audios[1].Play();
     }
 
     public void ReturnMenu()
@@ -31,6 +37,7 @@ public class GameOver : MonoBehaviour
         CrossStreetStatus.ResetStep();
         RecessStatus.ResetRecessStatus();
         PauseStatus.ResetPause();
+        GameOverStatus.ResetMotive();
 
         Debug.Log("volviendo al menu");
     }
@@ -39,4 +46,20 @@ public class GameOver : MonoBehaviour
         Debug.Log("Saliendo del juego...");
         Application.Quit(); //cierra el ejecutable
     }
+}
+
+public static class GameOverStatus
+{
+    //private static AudioSource[] _audio = GetComponents<AudioSource>();
+    private static string _reason = "";
+    public static void MotiveCross()
+    {
+        _reason = "Cross";
+    }
+    public static void MotiveDownBar()
+    {
+        _reason = "DownBar";
+    }
+    public static string GetMotive() { return _reason; }
+    public static void ResetMotive() { _reason = ""; }
 }

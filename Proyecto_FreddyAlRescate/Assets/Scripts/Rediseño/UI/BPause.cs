@@ -78,6 +78,7 @@ public class BPause : MonoBehaviour
         CrossStreetStatus.ResetStep();
         RecessStatus.ResetRecessStatus();
         PauseStatus.ResetPause();
+        GameOverStatus.ResetMotive();
 
         Debug.Log("volviendo al menu");
     }
