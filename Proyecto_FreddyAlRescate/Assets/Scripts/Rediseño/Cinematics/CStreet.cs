@@ -1,5 +1,7 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.SceneManagement;
 
 public class CStreet : MonoBehaviour
 {
@@ -44,7 +46,8 @@ public class CStreet : MonoBehaviour
         _img.SetActive(true);
         yield return new WaitForSeconds(5f);
         _img.SetActive(false);
-        //yield return new WaitForSeconds(0.1f);
+        //if (CrossStreetStatus.GetStep() == 1 || CrossStreetStatus.GetStep() == 2) SceneManager.LoadScene("GameOver");
+        //yield return new WaitForSeconds(1f);
         _pAttention.AttentionCrossStreet(gameObject.name,CrossStreetStatus.GetStep());
     }
 }

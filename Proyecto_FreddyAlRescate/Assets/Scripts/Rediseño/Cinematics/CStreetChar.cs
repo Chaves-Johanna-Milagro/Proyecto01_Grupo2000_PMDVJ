@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CStreetChar : MonoBehaviour
 {
@@ -16,12 +17,15 @@ public class CStreetChar : MonoBehaviour
     private GameObject _bDontGreet; //boton de ...
 
     private bool _isBus = false;
+    private bool _isCompleted = false;
+    private bool _isIncompleted = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _cStopBus = transform.Find("CStopBus").gameObject;
         _cUpBus = transform.Find("CUpBus").gameObject;
+        _cBus = transform.Find("CBus").gameObject;
 
         _char1 = transform.Find("Char1").gameObject;
         _char2 = transform.Find("Char2").gameObject;
@@ -36,27 +40,32 @@ public class CStreetChar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_isIncompleted && _isCompleted) StartCoroutine(NextScene());
+
         if (_isBus) return;
 
         if (CinematicStatus.ActiveCinematic()) _char1.SetActive(false); // si hay alguna cinematica corriendo
         else _char1.SetActive(true);
 
         if (CrossStreetStatus.GetStep() == 3) StartCoroutine(DelayCinematict());
+
+
     }
     public void Greet(string opt)
     {
         if (opt == "BGreet")
         {
-            GameObject tGreet = _chofer.transform.Find("TextG").gameObject;
-            GameObject globo = _chofer.transform.Find("Globo").gameObject;
+            //GameObject tGreet = _chofer.transform.Find("TextG").gameObject;
+            //GameObject globo = _chofer.transform.Find("Globo").gameObject;
 
-            if (tGreet != null) tGreet.SetActive(true);
-            if (globo != null) globo.SetActive(true);
+            StartCoroutine(DelayGreet());
 
-            AudioSource _ag = _char2.GetComponent<AudioSource>();
-            if (_ag != null) _ag.Play();
+            //if (tGreet != null) tGreet.SetActive(true);
+            //if (globo != null) globo.SetActive(true);
 
             Debug.Log("se saludo");
+
+            StartCoroutine(DelayMGsube());
         }
         if(opt == "BDontGreet")
         {
@@ -67,6 +76,8 @@ public class CStreetChar : MonoBehaviour
             if (globo != null) globo.SetActive(true);
 
             Debug.Log("no se saludo");
+
+            StartCoroutine(DelayMGsube());
         }
 
         _bGreet.SetActive(false);
@@ -89,4 +100,43 @@ public class CStreetChar : MonoBehaviour
         _bGreet.SetActive(true);
         _bDontGreet.SetActive(true);
     }
+
+    private IEnumerator DelayMGsube()
+    {
+        yield return new WaitForSeconds(7f);
+        GameObject mj = transform.Find("MGSube").gameObject;
+        mj.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        _char2.SetActive(false);
+        _cUpBus.SetActive(false);
+        _chofer.SetActive(false);
+    }
+
+    private IEnumerator NextScene()
+    {
+        _isIncompleted = false;
+
+        yield return new WaitForSeconds(3.5f);
+        _cBus.SetActive(true);
+        GameObject mj = transform.Find("MGSube").gameObject;
+        mj.SetActive(false);
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("CSchoolStart");
+    }
+    private IEnumerator DelayGreet() 
+    {
+        AudioSource _ag = _char2.GetComponent<AudioSource>();
+        if (_ag != null) _ag.Play();
+
+        yield return new WaitForSeconds(2.5f);
+        GameObject tGreet = _chofer.transform.Find("TextG").gameObject;
+        GameObject globo = _chofer.transform.Find("Globo").gameObject;
+
+        AudioSource _agc = _chofer.GetComponent<AudioSource>();
+        if (_agc != null) _agc.Play();
+
+        if (tGreet != null) tGreet.SetActive(true);
+        if (globo != null) globo.SetActive(true);
+    }
+    public void IsCompleteMG() { _isCompleted = true; }
 }

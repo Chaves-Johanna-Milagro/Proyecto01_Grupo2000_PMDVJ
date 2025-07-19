@@ -113,7 +113,6 @@ public class PlayerAttention : MonoBehaviour
         for (int i = 0; i < _count; i++) // activar
         {
             _childs[i].SetActive(true);
-            //PlaySound("afton_tutorial_saludo");
         }
 
         if (bClick == "BLookTraffic")
@@ -128,13 +127,13 @@ public class PlayerAttention : MonoBehaviour
         }
         if (bClick == "BCross" && (step == 1 || step == 2)) 
         {
-            _text.text = "O NO!";
+            _text.text = "...";
             SceneManager.LoadScene("GameOver"); 
         }
         if (bClick == "BCross" && step == 3)
         {
-            _text.text = "¡BIEN HECHO!";
-            //SceneManager.LoadScene("GameOver");
+            _text.text = "¡MUY BIEN HECHO!"; 
+            PlaySound("MUY BIEN HECHO");
         }
 
 
