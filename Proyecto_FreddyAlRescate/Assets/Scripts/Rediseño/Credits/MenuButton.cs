@@ -25,6 +25,7 @@ public class MenuButton : MonoBehaviour //script del boton de menu de los credit
         CrossStreetStatus.ResetStep();
         RecessStatus.ResetRecessStatus();
         PauseStatus.ResetPause();
+        GameOverStatus.ResetMotive();
 
         Debug.Log("volviendo al menu");
     }

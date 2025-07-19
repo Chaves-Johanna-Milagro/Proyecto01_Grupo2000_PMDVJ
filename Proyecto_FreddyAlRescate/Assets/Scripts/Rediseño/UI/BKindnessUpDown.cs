@@ -25,7 +25,7 @@ public class BKindnessUpDown : MonoBehaviour
     public void Update()//prueba de funcionamiento
     {
           //if (Input.GetMouseButtonDown(0)) GoodDecision();
-          //if (Input.GetMouseButtonDown(1)) BadDecision();
+         // if (Input.GetMouseButtonDown(1)) BadDecision();
     }
 
     public void GoodDecision()
@@ -59,6 +59,7 @@ public class BKindnessUpDown : MonoBehaviour
         // Si llega al límite inferior, cargar GameOver
         if (Mathf.Approximately(newPos.y, _minY))
         {
+            GameOverStatus.MotiveDownBar();
             Debug.Log("GameOver...");
             SceneManager.LoadScene("GameOver");
         }

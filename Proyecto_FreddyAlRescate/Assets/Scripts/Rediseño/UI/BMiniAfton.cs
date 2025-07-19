@@ -42,34 +42,34 @@ public class BMiniAfton : MonoBehaviour
 
     private string[] _randomTextNvl3 = new string[]
     {
-        "¡SALUDAR ES EL PRIMER PASO PARA UNA BUENA COMPRA!",
-        "FREDDY, RECORDÁ MIRAR A AMBOS LADOS ANTES DE CRUZAR.",
-        "SI EL SEMÁFORO ESTÁ EN ROJO, ¡ESPERÁ!",
-        "NO HAY APURO SI SE TRATA DE CRUZAR SEGURO.",
-        "¡YA CASI LLEGÁS A LA PARADA!",
-        "CAMINAR CON ATENCIÓN TAMBIÉN ES SER UN HÉROE.",
-        "¿VISTE QUE NADIE VENÍA? ¡BUEN MOMENTO PARA CRUZAR!"
+        "SALUDAR ES EL PRIMER PASO PARA UNA BUENA COMPRA",
+        "RECORDA MIRAR A AMBOS LADOS ANTES DE CRUZAR",
+        "SI EL SEMAFORO ESTA EN ROJO ESPERA",
+        "NO HAY APURO SI SE TRATA DE CRUZAR SEGURO",
+        "YA CASI LLEGAS A LA PARADA",
+        "CAMINAR CON ATENCION TAMBIEN ES SER UN HEROE",
+        "VISTE QUE NADIE VENIA BUEN MOMENTO PARA CRUZAR"
     };
 
     private string[] _randomTextNvl4 = new string[]
     {
-        "PRESTAR ATENCIÓN ES TU SUPERPODER EN CLASE",
+        "PRESTAR ATENCION ES TU SUPERPODER EN CLASE",
         "LEVANTAR LA MANO TE HACE PARTE DEL EQUIPO",
-        "PREGUNTAR TE HACE MÁS INTELIGENTE",
-        "APRENDER ES UNA AVENTURA CADA DÍA",
-        "NO TENGAS MIEDO DE EQUIVOCARTE, ASÍ SE APRENDE",
-        "CADA CLASE TE ACERCA MÁS A TUS SUEÑOS",
-        "COMPARTIR EN CLASE TAMBIÉN ES APRENDER"
+        "PREGUNTAR TE HACE MAS INTELIGENTE",
+        "APRENDER ES UNA AVENTURA CADA DIA",
+        "NO TENGAS MIEDO DE EQUIVOCARTE ASI SE APRENDE",
+        "CADA CLASE TE ACERCA MAS A TUS SUEÑOS",
+        "COMPARTIR EN CLASE TAMBIEN ES APRENDER"
     };
 
     private string[] _randomTextRecreo = new string[]
     {
-        "JUGAR TAMBIÉN ES APRENDER",
+        "JUGAR TAMBIEN ES APRENDER",
         "COMPARTIR EN EL RECREO HACE AMIGOS FUERTES",
         "SIEMPRE ES BUEN MOMENTO PARA SER AMABLE",
-        "REÍRTE UN RATO TAMBIÉN ES CUIDAR TU MENTE",
+        "REIRTE UN RATO TAMBIEN ES CUIDAR TU MENTE",
         "LAVARSE LAS MANOS ES IMPORTANTE",
-        "DISFRUTÁ EL MOMENTO, PRONTO VOLVEMOS A CLASE"
+        "DISFRUTA EL MOMENTO PRONTO VOLVEMOS A CLASE"
     };
 
     private string[] _randomGoodFeedback = new string[]
@@ -191,7 +191,12 @@ public class BMiniAfton : MonoBehaviour
     private void ConcejosNvl3()
     {
         if (_randomTextNvl3.Length > 0)
-            _textComp.text = _randomTextNvl3[Random.Range(0, _randomTextNvl3.Length)];
+        {
+            string randomLine = _randomTextNvl3[Random.Range(0, _randomTextNvl3.Length)];
+            _textComp.text = "¡" + randomLine + "!";
+            PlaySound(randomLine);
+        }
+
     }
 
     private void ConcejosNvl4()
@@ -199,7 +204,8 @@ public class BMiniAfton : MonoBehaviour
         if (_randomTextNvl4.Length > 0)
         {
             string randomLine = _randomTextNvl4[Random.Range(0, _randomTextNvl4.Length)];
-            _textComp.text = randomLine;
+            _textComp.text = "¡" + randomLine + "!";
+            PlaySound(randomLine);
         }
     }
 
@@ -208,7 +214,8 @@ public class BMiniAfton : MonoBehaviour
         if (_randomTextRecreo.Length > 0)
         {
             string randomLine = _randomTextRecreo[Random.Range(0, _randomTextRecreo.Length)];
-            _textComp.text = randomLine;
+            _textComp.text = "¡" + randomLine + "!";
+            PlaySound(randomLine);
         }
     }
 
