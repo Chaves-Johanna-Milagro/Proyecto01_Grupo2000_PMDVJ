@@ -80,7 +80,7 @@ public class PlayerAttention : MonoBehaviour
         for (int i = 0; i < _count; i++) // activar
         {
             _childs[i].SetActive(true);
-            //PlaySound("afton_tutorial_mochila");
+            PlaySound("afton_tutorial_desayuno");;
         }
 
         _text.text = "PUEDES ELEGIR LA BEBIDA Y ACOMPAÑAMIENTO QUE MAS TE GUSTE!!!";

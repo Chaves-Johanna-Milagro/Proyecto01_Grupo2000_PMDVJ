@@ -464,6 +464,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1441010221074188019, guid: 5a3b46418fa97114e91112d8f041c860, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1475434910007972859, guid: 5a3b46418fa97114e91112d8f041c860, type: 3}
       propertyPath: m_Name
       value: Menu
