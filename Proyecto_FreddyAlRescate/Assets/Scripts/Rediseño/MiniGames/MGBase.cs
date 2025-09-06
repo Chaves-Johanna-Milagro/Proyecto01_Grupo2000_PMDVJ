@@ -53,7 +53,8 @@ public class MGBase : MonoBehaviour // se encarga de activar los minijuegos y gu
         //_isCompleted = true;
         if (_obj == "Bathroom" && ChecksStatus.IsCheckActive("Morning2.0",2) ||
             _obj == "Diningroom" && ChecksStatus.IsCheckActive("Breackfast2.0", 0) ||
-            _obj == "Backpack" && ChecksStatus.IsCheckActive("Breackfast2.0", 1)) return; //pa q ya no interactue si ya estan sus checks activos
+            _obj == "Backpack" && ChecksStatus.IsCheckActive("Breackfast2.0", 1) ||
+            _obj == "Bathroom" && ChecksStatus.IsCheckActive("Night2.0",2)) return; //pa q ya no interactue si ya estan sus checks activos
 
         _miniGame?.SetActive(true);
 

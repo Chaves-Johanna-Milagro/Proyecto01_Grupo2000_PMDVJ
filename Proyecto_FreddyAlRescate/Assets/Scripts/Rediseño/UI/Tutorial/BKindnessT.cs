@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEngine.InputManagerEntry;
 
 public class BKindnessT : MonoBehaviour //pa la barrita de amabilidad del tutorial
 {

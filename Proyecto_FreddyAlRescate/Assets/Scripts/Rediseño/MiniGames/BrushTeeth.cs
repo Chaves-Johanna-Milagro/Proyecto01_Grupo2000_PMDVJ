@@ -23,7 +23,7 @@ public class BrushTeeh : MonoBehaviour // Este script lo tiene Mouth
         // Busca a MouthClean dentro del padre (MiniGame)
         _mouthDirty = transform.parent.Find("MouthDirty")?.gameObject;
         _mouthClean = transform.parent.Find("MouthClean")?.gameObject;
-        // if (_mouthClean != null) _mouthClean.SetActive(false); // Asegura que esté oculta al inicio
+        // if (_mouthClean != null) _mouthClean.SetActive(false); // Asegura que estï¿½ oculta al inicio
 
 
         _check = Object.FindFirstObjectByType<BNotesChecks>();
