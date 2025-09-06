@@ -419,6 +419,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1899315603245593987, guid: 0221a7ae2a6ecb64ea8e095e2e79fc07, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 3637.6445
+      objectReference: {fileID: 0}
+    - target: {fileID: 1899315603245593987, guid: 0221a7ae2a6ecb64ea8e095e2e79fc07, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2042.8224
+      objectReference: {fileID: 0}
     - target: {fileID: 2680660905534174910, guid: 0221a7ae2a6ecb64ea8e095e2e79fc07, type: 3}
       propertyPath: m_Name
       value: Creditos
