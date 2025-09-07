@@ -25,7 +25,7 @@ public class PutClothes : MonoBehaviour
         _kind = Object.FindFirstObjectByType<BKindnessUpDown>();
 
         // Restauramos si ya se había hecho antes
-        if (CinematicStatus.TieneEstado(gameObject))
+        if (CinematicStatus.TieneEstado(gameObject) && SceneManager.GetActiveScene().name == "Morning2.0")
         {
             CinematicStatus.RestaurarEstado(gameObject);
             //_isClicked = true; // Ya se había hecho clic antes
@@ -50,7 +50,8 @@ public class PutClothes : MonoBehaviour
 
         //_isClicked = true;
 
-        if(ChecksStatus.IsCheckActive("Morning2.0",1) || ChecksStatus.IsCheckActive("Night2.0", 1)) return; //evitar que se active si su check ya se marco
+        if(SceneManager.GetActiveScene().name == "Morning2.0" && ChecksStatus.IsCheckActive("Morning2.0",1)) return;
+        if(SceneManager.GetActiveScene().name == "Night2.0" && ChecksStatus.IsCheckActive("Night2.0", 1)) return; //evitar que se active si su check ya se marco
 
         if (_audioSource != null) _audioSource.Play();
 
